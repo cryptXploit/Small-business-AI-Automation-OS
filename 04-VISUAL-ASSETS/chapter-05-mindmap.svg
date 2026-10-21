@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="hubGrad05" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow05m" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Pure White Canvas -->
+  <rect width="900" height="480" fill="#FFFFFF"/>
+
+  <!-- Top Header Banner -->
+  <rect x="0" y="0" width="900" height="54" fill="#0F172A"/>
+  <text x="28" y="24" fill="#FFFFFF" font-size="14" font-weight="700" letter-spacing="0.5">CHAPTER 5 ARCHITECTURE — THE ZERO-DROP HANDOFF PROTOCOL</text>
+  <text x="28" y="42" fill="#64748B" font-size="11" font-weight="500">4-Stage Payment-to-Fulfillment Onboarding, Asset Verification &amp; Internal Task Provisioning Engine</text>
+  <rect x="742" y="14" width="132" height="26" rx="13" fill="#059669"/>
+  <text x="808" y="31" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">SLA: &lt; 5 SEC TRIGGER</text>
+
+  <!-- Subtle Background Grid Frame -->
+  <rect x="20" y="68" width="860" height="392" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Connectors from Center Hub to 4 Stage Quadrants -->
+  <path d="M 340 245 L 285 162" stroke="#059669" stroke-width="2.5" fill="none"/>
+  <path d="M 560 245 L 615 162" stroke="#0284C7" stroke-width="2.5" fill="none"/>
+  <path d="M 340 285 L 285 358" stroke="#D97706" stroke-width="2.5" fill="none"/>
+  <path d="M 560 285 L 615 358" stroke="#0F172A" stroke-width="2.5" fill="none"/>
+
+  <!-- Circular Flow Arrows Between Stages -->
+  <path d="M 295 130 L 605 130" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5,4" fill="none"/>
+  <path d="M 745 218 L 745 292" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5,4" fill="none"/>
+  <path d="M 295 385 L 605 385" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5,4" fill="none"/>
+
+  <!-- CENTRAL HUB NODE -->
+  <g filter="url(#shadow05m)">
+    <rect x="330" y="205" width="240" height="118" rx="12" fill="url(#hubGrad05)" stroke="#059669" stroke-width="2.5"/>
+    <rect x="378" y="194" width="144" height="20" rx="10" fill="#059669"/>
+    <text x="450" y="208" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">DEPT 03 ONBOARDING CORE</text>
+    <text x="450" y="238" fill="#FFFFFF" font-size="14" font-weight="700" text-anchor="middle">ZERO-DROP HANDOFF</text>
+    <text x="450" y="256" fill="#38BDF8" font-size="11.5" font-weight="600" text-anchor="middle">PROTOCOL ENGINE</text>
+    <line x1="352" y1="268" x2="548" y2="268" stroke="#334155" stroke-width="1"/>
+    <text x="450" y="285" fill="#E2E8F0" font-size="10" text-anchor="middle">Zero Post-Deposit Silence</text>
+    <text x="450" y="301" fill="#10B981" font-size="10" font-weight="600" text-anchor="middle">100% Verified Specs Before Kickoff</text>
+  </g>
+
+  <!-- STAGE 1: TOP LEFT (Emerald #059669) -->
+  <g filter="url(#shadow05m)">
+    <rect x="38" y="86" width="256" height="132" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+    <rect x="38" y="86" width="256" height="30" rx="6" fill="#059669"/>
+    <text x="50" y="105" fill="#FFFFFF" font-size="11" font-weight="700">STAGE 1: INSTANT PAYMENT TRIGGER</text>
+    <text x="50" y="134" fill="#1E293B" font-size="10.5" font-weight="600">• Webhook: invoice.paid / checkout</text>
+    <text x="50" y="152" fill="#1E293B" font-size="10.5">• Signed SOW + Deposit Verification</text>
+    <text x="50" y="170" fill="#1E293B" font-size="10.5">• CRM State: Quoted -&gt; Onboarding</text>
+    <text x="50" y="188" fill="#1E293B" font-size="10.5">• Stop Stage-4 Quote Chaser Loop</text>
+    <rect x="50" y="196" width="232" height="16" rx="4" fill="#ECFDF5"/>
+    <text x="166" y="208" fill="#059669" font-size="9.5" font-weight="700" text-anchor="middle">Latency: &lt; 5 Seconds Post-Payment</text>
+  </g>
+
+  <!-- STAGE 2: TOP RIGHT (Cyan #0284C7) -->
+  <g filter="url(#shadow05m)">
+    <rect x="606" y="86" width="256" height="132" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+    <rect x="606" y="86" width="256" height="30" rx="6" fill="#0284C7"/>
+    <text x="618" y="105" fill="#FFFFFF" font-size="11" font-weight="700">STAGE 2: WELCOME &amp; EXPECTATIONS</text>
+    <text x="618" y="134" fill="#1E293B" font-size="10.5" font-weight="600">• Personalized Welcome Packet (5.2)</text>
+    <text x="618" y="152" fill="#1E293B" font-size="10.5">• Named Point-of-Contact Intro</text>
+    <text x="618" y="170" fill="#1E293B" font-size="10.5">• Exact Milestone Dates &amp; SLA Rules</text>
+    <text x="618" y="188" fill="#1E293B" font-size="10.5">• Pre-Filled Dynamic Intake Link</text>
+    <rect x="618" y="196" width="232" height="16" rx="4" fill="#F0F9FF"/>
+    <text x="734" y="208" fill="#0284C7" font-size="9.5" font-weight="700" text-anchor="middle">Eliminates Buyer's Remorse &amp; Anxiety</text>
+  </g>
+
+  <!-- STAGE 3: BOTTOM LEFT (Amber #D97706) -->
+  <g filter="url(#shadow05m)">
+    <rect x="38" y="294" width="256" height="142" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
+    <rect x="38" y="294" width="256" height="30" rx="6" fill="#D97706"/>
+    <text x="50" y="313" fill="#FFFFFF" font-size="11" font-weight="700">STAGE 3: INTAKE AUDIT &amp; CHASER</text>
+    <text x="50" y="342" fill="#1E293B" font-size="10.5" font-weight="600">• AI Asset Completeness Audit (5.3)</text>
+    <text x="50" y="360" fill="#1E293B" font-size="10.5">• Photo/File Clarity &amp; Spec Check</text>
+    <text x="50" y="378" fill="#1E293B" font-size="10.5">• Day 1 / Day 3 / Day 5 Polite Chasers</text>
+    <text x="50" y="396" fill="#1E293B" font-size="10.5">• Hard Gate: Hold Dispatch Until 100%</text>
+    <rect x="50" y="408" width="232" height="18" rx="4" fill="#FFFBEB"/>
+    <text x="166" y="420" fill="#D97706" font-size="9.5" font-weight="700" text-anchor="middle">AMBER GATE: Missing/Scope Drift Flag</text>
+  </g>
+
+  <!-- STAGE 4: BOTTOM RIGHT (Navy #0F172A) -->
+  <g filter="url(#shadow05m)">
+    <rect x="606" y="294" width="256" height="142" rx="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+    <rect x="606" y="294" width="256" height="30" rx="6" fill="#0F172A"/>
+    <text x="618" y="313" fill="#FFFFFF" font-size="11" font-weight="700">STAGE 4: DELIVERY BRIEF &amp; DISPATCH</text>
+    <text x="618" y="342" fill="#1E293B" font-size="10.5" font-weight="600">• AI Internal Delivery Brief (5.1)</text>
+    <text x="618" y="360" fill="#1E293B" font-size="10.5">• Auto-Create Drive/Notion Folders</text>
+    <text x="618" y="378" fill="#1E293B" font-size="10.5">• Task Board &amp; Crew Provisioning</text>
+    <text x="618" y="396" fill="#1E293B" font-size="10.5">• Scope-Creep Guardrail Check (5.5)</text>
+    <rect x="618" y="408" width="232" height="18" rx="4" fill="#F1F5F9"/>
+    <text x="734" y="420" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">Zero-Ambiguity Staff Handoff Packet</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="330" y="352" width="240" height="84" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="450" y="370" fill="#0F172A" font-size="10.5" font-weight="700" text-anchor="middle">BENCHMARK ONBOARDING IMPACT</text>
+  <text x="450" y="388" fill="#059669" font-size="10" font-weight="600" text-anchor="middle">Kickoff Time: 11 Days -&gt; 28 Hours</text>
+  <text x="450" y="404" fill="#0284C7" font-size="10" font-weight="600" text-anchor="middle">Staff Rework Reduced by 74%</text>
+  <text x="450" y="420" fill="#64748B" font-size="9.5" text-anchor="middle">No-Show Rate Cut Below 3.5%</text>
+</svg>

@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow06f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#64748B"/>
+    </marker>
+    <marker id="arrowGreen06f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#059669"/>
+    </marker>
+    <marker id="arrowAmber06f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#D97706"/>
+    </marker>
+    <marker id="arrowNavy06f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#0F172A"/>
+    </marker>
+    <filter id="shadow06f" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- White Canvas -->
+  <rect width="900" height="480" fill="#FFFFFF"/>
+
+  <!-- Top Banner -->
+  <rect x="0" y="0" width="900" height="52" fill="#0F172A"/>
+  <text x="24" y="23" fill="#FFFFFF" font-size="13.5" font-weight="700">CHAPTER 6 DECISION TREE — SUPPORT INTENT CLASSIFICATION, SENTIMENT GATE &amp; ROUTING</text>
+  <text x="24" y="40" fill="#64748B" font-size="10.5">Deterministic Safety Scan, Sentiment Threshold (-0.50), Policy Confidence (&gt;= 0.90) &amp; 3-Tier Execution</text>
+  <rect x="730" y="13" width="146" height="26" rx="13" fill="#059669"/>
+  <text x="803" y="30" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">ZERO-GUESS GUARDRAIL</text>
+
+  <!-- Step 1: Inbound Ticket -->
+  <g filter="url(#shadow06f)">
+    <rect x="24" y="76" width="168" height="74" rx="8" fill="#0F172A"/>
+    <text x="108" y="99" fill="#38BDF8" font-size="9.5" font-weight="700" text-anchor="middle">INBOUND MESSAGE</text>
+    <text x="108" y="117" fill="#FFFFFF" font-size="11" font-weight="700" text-anchor="middle">Email / SMS / Chat / DM</text>
+    <text x="108" y="135" fill="#94A3B8" font-size="9.5" text-anchor="middle">Lookup CRM + Order Record</text>
+  </g>
+  <line x1="192" y1="113" x2="230" y2="113" stroke="#64748B" stroke-width="2" marker-end="url(#arrow06f)"/>
+
+  <!-- Gate 1: Red-Zone Safety, Sentiment & VIP Escalation Check -->
+  <g filter="url(#shadow06f)">
+    <rect x="236" y="70" width="214" height="86" rx="10" fill="#FFFFFF" stroke="#0F172A" stroke-width="2.5"/>
+    <rect x="236" y="70" width="214" height="22" rx="6" fill="#0F172A"/>
+    <text x="343" y="85" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">GATE 1: RED-ZONE RISK SCAN (6.2)</text>
+    <text x="343" y="108" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">Sentiment &lt; -0.50 OR</text>
+    <text x="343" y="124" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">Safety / Legal / Chargeback?</text>
+    <text x="343" y="143" fill="#64748B" font-size="9.5" text-anchor="middle">Regex + Sentiment + VIP Check</text>
+  </g>
+
+  <!-- Gate 1 YES -> Tier 3 Red Zone Box -->
+  <line x1="450" y1="113" x2="528" y2="113" stroke="#0F172A" stroke-width="2.5" marker-end="url(#arrowNavy06f)"/>
+  <text x="489" y="105" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">YES (RED)</text>
+
+  <g filter="url(#shadow06f)">
+    <rect x="534" y="70" width="340" height="86" rx="8" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.5"/>
+    <rect x="534" y="70" width="340" height="24" rx="6" fill="#0F172A"/>
+    <text x="704" y="86" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">TIER 3: IMMEDIATE HUMAN TAKEOVER &amp; RECOVERY BRIEF (6.5)</text>
+    <text x="548" y="110" fill="#1E293B" font-size="10" font-weight="600">• Suppress Automated AI Reply Immediately (Prevent Bot Loops)</text>
+    <text x="548" y="127" fill="#1E293B" font-size="10">• Compile Timeline, Order History &amp; Make-Good Options</text>
+    <text x="548" y="144" fill="#0284C7" font-size="10" font-weight="700">• Alert Owner/Manager in #urgent-escalations (SLA &lt; 15 Min)</text>
+  </g>
+
+  <!-- Gate 1 NO -> Gate 2 Financial / Policy Exception Check -->
+  <line x1="343" y1="156" x2="343" y2="196" stroke="#64748B" stroke-width="2" marker-end="url(#arrow06f)"/>
+  <text x="364" y="180" fill="#059669" font-size="9.5" font-weight="700">NO</text>
+
+  <g filter="url(#shadow06f)">
+    <rect x="236" y="202" width="214" height="86" rx="10" fill="#FFFFFF" stroke="#D97706" stroke-width="2.5"/>
+    <rect x="236" y="202" width="214" height="22" rx="6" fill="#D97706"/>
+    <text x="343" y="217" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">GATE 2: AMBER EXCEPTION CHECK</text>
+    <text x="343" y="240" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">Refund / Credit Request OR</text>
+    <text x="343" y="256" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">KB Confidence &lt; 0.90?</text>
+    <text x="343" y="275" fill="#64748B" font-size="9.5" text-anchor="middle">Checks Policy Citation &amp; Dollar Cap</text>
+  </g>
+
+  <!-- Gate 2 YES -> Tier 2 Amber Zone Box -->
+  <line x1="450" y1="245" x2="528" y2="245" stroke="#D97706" stroke-width="2.5" marker-end="url(#arrowAmber06f)"/>
+  <text x="489" y="237" fill="#D97706" font-size="9.5" font-weight="700" text-anchor="middle">YES (AMBER)</text>
+
+  <g filter="url(#shadow06f)">
+    <rect x="534" y="202" width="340" height="86" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="2.5"/>
+    <rect x="534" y="202" width="340" height="24" rx="6" fill="#D97706"/>
+    <text x="704" y="218" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">TIER 2: HUMAN-IN-THE-LOOP ASSISTED DRAFT (PROMPT 6.4)</text>
+    <text x="548" y="242" fill="#1E293B" font-size="10" font-weight="600">• Generate Internal Context Whisper + Policy Recommendation</text>
+    <text x="548" y="259" fill="#1E293B" font-size="10">• Draft Empathetic Customer Reply Ready for 1-Click Approval</text>
+    <text x="548" y="276" fill="#D97706" font-size="10" font-weight="700">• Route to Support Desk Queue (Target SLA &lt; 2 Business Hours)</text>
+  </g>
+
+  <!-- Gate 2 NO -> Gate 3 Tier 1 Green Zone Autonomous Execution -->
+  <line x1="343" y1="288" x2="343" y2="330" stroke="#059669" stroke-width="2.5" marker-end="url(#arrowGreen06f)"/>
+  <text x="385" y="314" fill="#059669" font-size="9.5" font-weight="700">NO (CONFIDENCE &gt;= 0.90)</text>
+
+  <g filter="url(#shadow06f)">
+    <rect x="236" y="336" width="638" height="112" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="2.5"/>
+    <rect x="236" y="336" width="638" height="26" rx="6" fill="#059669"/>
+    <text x="555" y="353" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">TIER 1: GREEN-ZONE AUTONOMOUS RESOLUTION (PROMPT 6.3 — 60% TO 75% OF TOTAL VOLUME)</text>
+    <text x="254" y="382" fill="#0F172A" font-size="10.5" font-weight="700">1. Grounded Policy &amp; Status Reply:</text>
+    <text x="448" y="382" fill="#1E293B" font-size="10">Inject verified tracking link, booking reschedule URL, or exact FAQ chunk.</text>
+    <text x="254" y="402" fill="#0F172A" font-size="10.5" font-weight="700">2. Deterministic Guardrail Pass:</text>
+    <text x="448" y="402" fill="#1E293B" font-size="10">Verify zero unapproved promises, valid URLs, and citation of `policy_chunk_id`.</text>
+    <text x="254" y="422" fill="#0F172A" font-size="10.5" font-weight="700">3. Instant Delivery &amp; Audit Log:</text>
+    <text x="448" y="422" fill="#059669" font-size="10" font-weight="700">Send in &lt; 30 seconds, log resolution in CRM, and offer "Reply HUMAN anytime".</text>
+  </g>
+
+  <!-- Left Bottom Continuous Improvement Loop -->
+  <rect x="24" y="202" width="184" height="246" rx="8" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.5"/>
+  <rect x="24" y="202" width="184" height="26" rx="6" fill="#0284C7"/>
+  <text x="116" y="219" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">FRIDAY KB FLYWHEEL (6.1)</text>
+  <text x="36" y="246" fill="#0F172A" font-size="10" font-weight="700">Weekly Ticket Mining:</text>
+  <text x="36" y="264" fill="#1E293B" font-size="9.5">Every Friday, audit Tier 2</text>
+  <text x="36" y="279" fill="#1E293B" font-size="9.5">human-edited replies to</text>
+  <text x="36" y="294" fill="#1E293B" font-size="9.5">extract new FAQ chunks.</text>
+  <line x1="36" y1="308" x2="196" y2="308" stroke="#BAE6FD" stroke-width="1"/>
+  <text x="36" y="328" fill="#059669" font-size="10" font-weight="700">Compounding Accuracy:</text>
+  <text x="36" y="346" fill="#1E293B" font-size="9.5">• Week 1: 52% Auto-Resolved</text>
+  <text x="36" y="363" fill="#1E293B" font-size="9.5">• Week 4: 64% Auto-Resolved</text>
+  <text x="36" y="380" fill="#059669" font-size="9.5" font-weight="700">• Week 8: 72% Auto-Resolved</text>
+  <text x="36" y="405" fill="#64748B" font-size="9">CSAT Benchmark: 96.4%</text>
+  <text x="36" y="421" fill="#64748B" font-size="9">Saved: 26 Staff Hrs/Week</text>
+</svg>

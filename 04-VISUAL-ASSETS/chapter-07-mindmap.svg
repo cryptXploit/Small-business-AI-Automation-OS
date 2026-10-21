@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="hubGrad07" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow07m" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Pure White Canvas -->
+  <rect width="900" height="480" fill="#FFFFFF"/>
+
+  <!-- Top Header Banner -->
+  <rect x="0" y="0" width="900" height="54" fill="#0F172A"/>
+  <text x="28" y="24" fill="#FFFFFF" font-size="14" font-weight="700" letter-spacing="0.5">CHAPTER 7 ARCHITECTURE — THE R.E.V.I.E.W. &amp; WIN-BACK FLYWHEEL</text>
+  <text x="28" y="42" fill="#64748B" font-size="11" font-weight="500">6-Stage Reputation Velocity, Private Service Recovery, Local SEO Indexing &amp; 90-Day Reactivation Engine</text>
+  <rect x="726" y="14" width="148" height="26" rx="13" fill="#059669"/>
+  <text x="800" y="31" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">FTC / GOOGLE COMPLIANT</text>
+
+  <!-- Outer Frame -->
+  <rect x="20" y="66" width="860" height="394" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Radial Spokes from Center Hub to 6 Nodes -->
+  <line x1="350" y1="225" x2="270" y2="145" stroke="#059669" stroke-width="2.5"/>
+  <line x1="450" y1="196" x2="450" y2="165" stroke="#0284C7" stroke-width="2.5"/>
+  <line x1="550" y1="225" x2="630" y2="145" stroke="#059669" stroke-width="2.5"/>
+  <line x1="350" y1="295" x2="270" y2="365" stroke="#D97706" stroke-width="2.5"/>
+  <line x1="450" y1="324" x2="450" y2="348" stroke="#0284C7" stroke-width="2.5"/>
+  <line x1="550" y1="295" x2="630" y2="365" stroke="#0F172A" stroke-width="2.5"/>
+
+  <!-- CENTER HUB NODE -->
+  <g filter="url(#shadow07m)">
+    <rect x="338" y="196" width="224" height="124" rx="14" fill="url(#hubGrad07)" stroke="#059669" stroke-width="2.5"/>
+    <rect x="374" y="185" width="152" height="20" rx="10" fill="#059669"/>
+    <text x="450" y="199" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">COMPOUNDING LTV ENGINE</text>
+    <text x="450" y="229" fill="#FFFFFF" font-size="14" font-weight="700" text-anchor="middle">R.E.V.I.E.W. &amp;</text>
+    <text x="450" y="248" fill="#38BDF8" font-size="12.5" font-weight="700" text-anchor="middle">WIN-BACK FLYWHEEL</text>
+    <line x1="358" y1="260" x2="542" y2="260" stroke="#334155" stroke-width="1"/>
+    <text x="450" y="278" fill="#10B981" font-size="10" font-weight="600" text-anchor="middle">4.9★ Local Search Dominance</text>
+    <text x="450" y="296" fill="#E2E8F0" font-size="9.5" text-anchor="middle">60 / 90 / 180-Day Repeat Bookings</text>
+  </g>
+
+  <!-- NODE 1 (TOP LEFT): R — Real-Time Completion Trigger -->
+  <g filter="url(#shadow07m)">
+    <rect x="36" y="80" width="244" height="102" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+    <rect x="36" y="80" width="244" height="26" rx="6" fill="#059669"/>
+    <text x="48" y="97" fill="#FFFFFF" font-size="10" font-weight="700">R — REAL-TIME COMPLETION TRIGGER</text>
+    <text x="48" y="120" fill="#1E293B" font-size="9.5" font-weight="600">• Job Signed Off / Visit Completed</text>
+    <text x="48" y="136" fill="#1E293B" font-size="9.5">• E-Comm: Delivered + 48h Usage Delay</text>
+    <text x="48" y="152" fill="#1E293B" font-size="9.5">• Zero Open Dispute Suppression Gate</text>
+    <text x="48" y="170" fill="#059669" font-size="9" font-weight="700">Fires at Peak Customer Satisfaction</text>
+  </g>
+
+  <!-- NODE 2 (TOP CENTER): E — Emotional Sentiment Pulse Check -->
+  <g filter="url(#shadow07m)">
+    <rect x="328" y="76" width="244" height="90" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+    <rect x="328" y="76" width="244" height="26" rx="6" fill="#0284C7"/>
+    <text x="340" y="93" fill="#FFFFFF" font-size="10" font-weight="700">E — EMOTIONAL SENTIMENT PULSE (7.1)</text>
+    <text x="340" y="116" fill="#1E293B" font-size="9.5" font-weight="600">• 1-Click SMS/Email Experience Check</text>
+    <text x="340" y="132" fill="#1E293B" font-size="9.5">• Captures Score (1–10) in &lt; 5 Seconds</text>
+    <text x="340" y="148" fill="#0284C7" font-size="9" font-weight="700">38%–52% Customer Response Rate</text>
+  </g>
+
+  <!-- NODE 3 (TOP RIGHT): V — Velocity Routing to Public Review -->
+  <g filter="url(#shadow07m)">
+    <rect x="620" y="80" width="244" height="102" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+    <rect x="620" y="80" width="244" height="26" rx="6" fill="#059669"/>
+    <text x="632" y="97" fill="#FFFFFF" font-size="10" font-weight="700">V — VELOCITY PUBLIC ROUTING (7.1)</text>
+    <text x="632" y="120" fill="#1E293B" font-size="9.5" font-weight="600">• Score 9–10: Direct Google/Trustpilot Link</text>
+    <text x="632" y="136" fill="#1E293B" font-size="9.5">• AI Review Thought-Starter Bullets</text>
+    <text x="632" y="152" fill="#1E293B" font-size="9.5">• Single-Tap Deep Link (Zero Login Friction)</text>
+    <text x="632" y="170" fill="#059669" font-size="9" font-weight="700">FTC Non-Gating Compliant Architecture</text>
+  </g>
+
+  <!-- NODE 4 (BOTTOM LEFT): I — Internal Private Recovery Loop -->
+  <g filter="url(#shadow07m)">
+    <rect x="36" y="338" width="244" height="106" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+    <rect x="36" y="338" width="244" height="26" rx="6" fill="#D97706"/>
+    <text x="48" y="355" fill="#FFFFFF" font-size="10" font-weight="700">I — INTERNAL RECOVERY LOOP (7.3)</text>
+    <text x="48" y="378" fill="#1E293B" font-size="9.5" font-weight="600">• Score 1–7: Instant Manager Alert</text>
+    <text x="48" y="394" fill="#1E293B" font-size="9.5">• Priority Owner Outreach (&lt; 60 Mins)</text>
+    <text x="48" y="410" fill="#1E293B" font-size="9.5">• Pre-Authorized Make-Good Resolution</text>
+    <text x="48" y="428" fill="#D97706" font-size="9" font-weight="700">Solves Issues Before Public Frustration</text>
+  </g>
+
+  <!-- NODE 5 (BOTTOM CENTER): E — Automated SEO Review Response -->
+  <g filter="url(#shadow07m)">
+    <rect x="328" y="348" width="244" height="96" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+    <rect x="328" y="348" width="244" height="26" rx="6" fill="#0284C7"/>
+    <text x="340" y="365" fill="#FFFFFF" font-size="10" font-weight="700">E — SEO REVIEW RESPONDER (7.2)</text>
+    <text x="340" y="388" fill="#1E293B" font-size="9.5" font-weight="600">• Drafts Custom Reply Within 2 Hours</text>
+    <text x="340" y="404" fill="#1E293B" font-size="9.5">• Natural Service + City SEO Keywords</text>
+    <text x="340" y="422" fill="#0284C7" font-size="9" font-weight="700">5★ Auto-Publish | 1–3★ Amber Approval</text>
+  </g>
+
+  <!-- NODE 6 (BOTTOM RIGHT): W — Win-Back & Referral Engine -->
+  <g filter="url(#shadow07m)">
+    <rect x="620" y="338" width="244" height="106" rx="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+    <rect x="620" y="338" width="244" height="26" rx="6" fill="#0F172A"/>
+    <text x="632" y="355" fill="#FFFFFF" font-size="10" font-weight="700">W — WIN-BACK &amp; VIP REFERRAL (7.4/7.5)</text>
+    <text x="632" y="378" fill="#1E293B" font-size="9.5" font-weight="600">• 60/90/180-Day Maintenance &amp; Refill</text>
+    <text x="632" y="394" fill="#1E293B" font-size="9.5">• Personalized Last-Service Context</text>
+    <text x="632" y="410" fill="#1E293B" font-size="9.5">• VIP Advocate Dual-Sided Referral Gift</text>
+    <text x="632" y="428" fill="#059669" font-size="9" font-weight="700">Zero-CAC Repeat Revenue Generation</text>
+  </g>
+</svg>
