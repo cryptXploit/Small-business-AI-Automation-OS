@@ -1,0 +1,236 @@
+# ==============================================================================
+# MASTER STUDIO CONFIGURATION — FLAGSHIP PRODUCT #2
+# The Small Business AI Automation Operating System
+# ==============================================================================
+
+project:
+  project_id: "SMALLBIZ-AI-AUTOMATION-OS-V1"
+  title: "The Small Business AI Automation Operating System"
+  subtitle: "A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff"
+  author: "Executive Operations Publishing Studio"
+  publisher: "Digital Publishing Studio Press"
+  edition: "2026 Enterprise Edition"
+  language: "en-US"
+  publication_year: 2026
+  rights: "Copyright © 2026 Digital Publishing Studio. All Rights Reserved."
+  isbn_digital: "979-8-89542-201-4"
+  isbn_print_kdp: "979-8-89542-202-1"
+  bisac_categories:
+    - "BUS059000 — BUSINESS & ECONOMICS / Small Business"
+    - "BUS087000 — BUSINESS & ECONOMICS / Operations Research"
+    - "COM004000 — COMPUTERS / Artificial Intelligence / General"
+  pro_access_code: "SMALLBIZ-OS-PRO-2026"
+  studio_root: "e:/Ebook-Makaer/Small-Business-AI-Automation-OS/DIGITAL-PUBLISHING-STUDIO/"
+
+manuscript_metrics:
+  target_word_count_min: 65000
+  target_word_count_max: 75000
+  chapter_word_count_floor: 6500
+  worksheet_word_count_floor: 1500
+  total_parts: 4
+  total_chapters: 10
+  total_worksheets: 10
+  total_svg_diagrams: 20
+  total_structured_prompts: 50
+  prompts_per_chapter: 5
+  total_emergency_scripts: 12
+
+design_system:
+  palette_name: "Executive Emerald & Slate"
+  colors:
+    primary: "#0F172A"        # Deep Executive Navy/Slate (Headers, Hub Nodes, Cover Base)
+    accent: "#059669"         # Operations Emerald (Revenue, Active Automation, ROI Highlights)
+    secondary: "#0284C7"      # System Cyan/Blue (Data Bridges, Routing, Secondary Modules)
+    warning: "#D97706"        # Amber Approval Gate (Human-in-the-Loop Checkpoints, Risk Alerts)
+    text: "#1E293B"           # High-Contrast Slate Body Text
+    muted: "#64748B"          # Captions, Footers, Metadata Labels
+    bg: "#FFFFFF"             # Pure White Canvas
+    surface_light: "#F8FAFC"  # Callout & Table Zebra Surface
+    border_subtle: "#CBD5E1"  # Structural Hairlines & Grid Borders
+
+  typography:
+    heading_font: "Inter, 'Noto Sans', 'Segoe UI', sans-serif"
+    body_font: "Inter, 'Noto Sans', 'Segoe UI', sans-serif"
+    monospace_font: "'JetBrains Mono', 'Cascadia Code', Consolas, monospace"
+    digital_pdf:
+      h1_size: "22pt"
+      h2_size: "15.5pt"
+      h3_size: "12.5pt"
+      body_size: "10.5pt"     # Strict body floor >= 10.5pt
+      line_height: 1.48
+      table_cell_size: "9.5pt" # Strict table floor >= 9.5pt
+      prompt_block_size: "9.5pt" # Strict prompt floor >= 9.5pt
+      caption_footer_size: "8.5pt" # Strict caption floor >= 8.5pt
+    print_kdp_6x9:
+      trim_width: "6in"
+      trim_height: "9in"
+      inside_gutter_margin: "0.75in"
+      outside_margin: "0.55in"
+      top_margin: "0.65in"
+      bottom_margin: "0.70in"
+      mirrored_margins: true
+      color_mode: "Monochrome High-Contrast Grayscale (300 DPI)"
+      body_size: "10.5pt"
+      table_prompt_size: "9.5pt"
+      caption_size: "8.5pt"
+
+  svg_specifications:
+    viewBox: "0 0 900 480"
+    width: 900
+    height: 480
+    font_family: "Inter, 'Segoe UI', Arial, sans-serif"
+    required_brand_tokens:
+      - "#0F172A"
+      - "#059669"
+      - "#0284C7"
+      - "#D97706"
+
+chapter_manifest:
+  front_matter: "03-MANUSCRIPT/front-matter.md"
+  chapters:
+    - number: 1
+      part: "Part I: Operations Audit & Automation Architecture"
+      file: "03-MANUSCRIPT/chapter-01.md"
+      title: "The Owner’s Bottleneck: Mapping the 5-Department Automation Engine"
+      framework: "The 5-Department Small Business Engine & Cost of Manual Friction (CMF) Formula"
+      mindmap: "04-VISUAL-ASSETS/chapter-01-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-01-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-01.md"
+      prompts: ["Prompt 1.1", "Prompt 1.2", "Prompt 1.3", "Prompt 1.4", "Prompt 1.5"]
+    - number: 2
+      part: "Part I: Operations Audit & Automation Architecture"
+      file: "03-MANUSCRIPT/chapter-02.md"
+      title: "The \"Human-in-the-Loop\" Architecture: Designing Safe, Zero-Hallucination Workflows"
+      framework: "The T.R.A.V. Automation Gate"
+      mindmap: "04-VISUAL-ASSETS/chapter-02-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-02-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-02.md"
+      prompts: ["Prompt 2.1", "Prompt 2.2", "Prompt 2.3", "Prompt 2.4", "Prompt 2.5"]
+    - number: 3
+      part: "Part II: Revenue Frontline — Lead Capture, Speed-to-Lead & Quoting"
+      file: "03-MANUSCRIPT/chapter-03.md"
+      title: "The 60-Second Speed-to-Lead & Multi-Channel Intake System"
+      framework: "The I.N.S.T.A.N.T. Lead Router"
+      mindmap: "04-VISUAL-ASSETS/chapter-03-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-03-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-03.md"
+      prompts: ["Prompt 3.1", "Prompt 3.2", "Prompt 3.3", "Prompt 3.4", "Prompt 3.5"]
+    - number: 4
+      part: "Part II: Revenue Frontline — Lead Capture, Speed-to-Lead & Quoting"
+      file: "03-MANUSCRIPT/chapter-04.md"
+      title: "Automated Estimating, Quotes & Follow-Up Sequences That Close"
+      framework: "The 3-Option Instant Quote & 14-Day Multi-Touch Nurture Loop"
+      mindmap: "04-VISUAL-ASSETS/chapter-04-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-04-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-04.md"
+      prompts: ["Prompt 4.1", "Prompt 4.2", "Prompt 4.3", "Prompt 4.4", "Prompt 4.5"]
+    - number: 5
+      part: "Part III: Customer Experience — Onboarding, Support & Reputation"
+      file: "03-MANUSCRIPT/chapter-05.md"
+      title: "Frictionless Customer Onboarding, Scheduling & Order Handoffs"
+      framework: "The Zero-Drop Handoff Protocol"
+      mindmap: "04-VISUAL-ASSETS/chapter-05-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-05-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-05.md"
+      prompts: ["Prompt 5.1", "Prompt 5.2", "Prompt 5.3", "Prompt 5.4", "Prompt 5.5"]
+    - number: 6
+      part: "Part III: Customer Experience — Onboarding, Support & Reputation"
+      file: "03-MANUSCRIPT/chapter-06.md"
+      title: "24/7 AI Customer Support Triage, FAQ Resolution & Smart Escalation"
+      framework: "The 3-Tier Support Shield"
+      mindmap: "04-VISUAL-ASSETS/chapter-06-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-06-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-06.md"
+      prompts: ["Prompt 6.1", "Prompt 6.2", "Prompt 6.3", "Prompt 6.4", "Prompt 6.5"]
+    - number: 7
+      part: "Part III: Customer Experience — Onboarding, Support & Reputation"
+      file: "03-MANUSCRIPT/chapter-07.md"
+      title: "Automated Customer Retention, Review Generation & Reactivation Campaigns"
+      framework: "The R.E.V.I.E.W. & Win-Back Flywheel"
+      mindmap: "04-VISUAL-ASSETS/chapter-07-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-07-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-07.md"
+      prompts: ["Prompt 7.1", "Prompt 7.2", "Prompt 7.3", "Prompt 7.4", "Prompt 7.5"]
+    - number: 8
+      part: "Part IV: Back-Office, Team SOPs & Executive Command"
+      file: "03-MANUSCRIPT/chapter-08.md"
+      title: "Back-Office Autopilot: Invoicing, Payment Chasers, Bookkeeping Prep & Vendor Triage"
+      framework: "The Cashflow Collection & Receipt Extraction Pipeline"
+      mindmap: "04-VISUAL-ASSETS/chapter-08-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-08-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-08.md"
+      prompts: ["Prompt 8.1", "Prompt 8.2", "Prompt 8.3", "Prompt 8.4", "Prompt 8.5"]
+    - number: 9
+      part: "Part IV: Back-Office, Team SOPs & Executive Command"
+      file: "03-MANUSCRIPT/chapter-09.md"
+      title: "Internal Team SOPs, Meeting Synthesis & Instant Staff Training Systems"
+      framework: "The Living SOP & Voice-to-Checklist Delegation Engine"
+      mindmap: "04-VISUAL-ASSETS/chapter-09-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-09-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-09.md"
+      prompts: ["Prompt 9.1", "Prompt 9.2", "Prompt 9.3", "Prompt 9.4", "Prompt 9.5"]
+    - number: 10
+      part: "Part IV: Back-Office, Team SOPs & Executive Command"
+      file: "03-MANUSCRIPT/chapter-10.md"
+      title: "The 15-Minute Friday Owner Scorecard & 90-Day Automation Rollout Roadmap"
+      framework: "The Weekly Executive Pulse & 90-Day Phased Automation Sprint"
+      mindmap: "04-VISUAL-ASSETS/chapter-10-mindmap.svg"
+      flowchart: "04-VISUAL-ASSETS/chapter-10-flowchart.svg"
+      worksheet: "05-WORKBOOKS/worksheet-10.md"
+      prompts: ["Prompt 10.1", "Prompt 10.2", "Prompt 10.3", "Prompt 10.4", "Prompt 10.5"]
+  back_matter: "03-MANUSCRIPT/back-matter.md"
+
+export_specifications:
+  pdf_digital_color:
+    output_path: "09-EXPORTS/PDF/Small-Business-AI-Automation-OS-Digital-Edition.pdf"
+    page_size: "US Letter (8.5in x 11in)"
+    color_profile: "sRGB Full Color (#0F172A / #059669 / #0284C7 / #D97706)"
+    features: ["Interactive TOC Bookmarks", "Embedded Vector SVGs", "Syntax-Highlighted Prompt Blocks"]
+  pdf_print_kdp:
+    output_path: "09-EXPORTS/PRINT/Small-Business-AI-Automation-OS-KDP-Print-6x9.pdf"
+    page_size: "6in x 9in Trade Paperback"
+    margins: "Mirrored Gutter (0.75in inside, 0.55in outside, 0.65in top, 0.70in bottom)"
+    color_profile: "High-Contrast Monochrome Print Ready"
+  pdf_workbooks:
+    us_letter_path: "09-EXPORTS/PDF/Small-Business-AI-Automation-Workbooks-US-Letter.pdf"
+    iso_a4_path: "09-EXPORTS/PDF/Small-Business-AI-Automation-Workbooks-ISO-A4.pdf"
+    tablet_landscape_path: "09-EXPORTS/PDF/Small-Business-AI-Automation-Tablet-Planner-11x8.5.pdf"
+    tier0_lead_magnet_path: "09-EXPORTS/PDF/Free-5-Day-Business-Time-and-Lead-Leak-Audit-Kit.pdf"
+  visual_shortcut_atlas:
+    output_path: "13-VISUAL-CHEAT-SHEETS/Small-Business-AI-Visual-Shortcut-Atlas-12-Page.pdf"
+    pages: 12
+    page_size: "Landscape 11in x 8.5in Desk Reference"
+  epub3:
+    output_path: "09-EXPORTS/EPUB/Small-Business-AI-Automation-OS.epub"
+    standard: "EPUB 3.0 Reflowable (Kindle, Apple Books, Kobo, Draft2Digital Validated)"
+  interactive_web_app:
+    entry_path: "07-INTERACTIVE-TOOLS/index.html"
+    access_gate_code: "SMALLBIZ-OS-PRO-2026"
+    modules:
+      - "Cost of Manual Friction (CMF) & Speed-to-Lead Calculator"
+      - "A.U.T.O. Workflow Priority Scorer"
+      - "T.R.A.V. Safety Gate Simulator"
+      - "50-Prompt Interactive Variable Builder & Copy Engine"
+      - "15-Minute Friday Owner KPI Scorecard & 90-Day Tracker"
+  notion_and_spreadsheets:
+    notion_root: "06-NOTION-TEMPLATES/"
+    excel_command_center: "06-NOTION-TEMPLATES/Spreadsheets/Small-Business-AI-Automation-Command-Center.xlsx"
+    excel_tabs: 8
+  editable_office_suite:
+    word_docs_dir: "12-EDITABLE-OFFICE-SUITE/Word-Docs/"
+    word_docs_count: 7
+    slide_decks_dir: "12-EDITABLE-OFFICE-SUITE/Slide-Decks/"
+    slide_decks_count: 3
+  cover_and_customizer:
+    cover_dir: "08-COVER-DESIGN/"
+    customizer_app: "08-COVER-DESIGN/Editable-Design-Kit/design-customizer.html"
+  automation_blueprints:
+    blueprints_dir: "14-AUTOMATION-BLUEPRINTS/"
+    blueprint_files:
+      - "14-AUTOMATION-BLUEPRINTS/01-instant-missed-call-and-lead-router.json"
+      - "14-AUTOMATION-BLUEPRINTS/02-three-option-quote-and-14-day-nurture.json"
+      - "14-AUTOMATION-BLUEPRINTS/03-zero-drop-client-onboarding-handoff.json"
+      - "14-AUTOMATION-BLUEPRINTS/04-three-tier-ai-support-triage-shield.json"
+      - "14-AUTOMATION-BLUEPRINTS/05-friday-owner-kpi-pulse-and-ar-chaser.json"
+  master_hybrid_bundle:
+    zip_path: "09-EXPORTS/HYBRID-BUNDLE/Small-Business-AI-Automation-OS-Complete-Flagship-Bundle.zip"

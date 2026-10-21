@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706" />
+    </marker>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.10" />
+    </filter>
+  </defs>
+
+  <!-- Pure White Canvas & Subtle Frame -->
+  <rect x="0" y="0" width="900" height="480" fill="#FFFFFF" />
+  <rect x="8" y="8" width="884" height="464" rx="10" fill="none" stroke="#CBD5E1" stroke-width="1.5" />
+
+  <!-- Top Header Banner -->
+  <rect x="8" y="8" width="884" height="46" rx="10" fill="#0F172A" />
+  <rect x="8" y="38" width="884" height="16" fill="#0F172A" />
+  <text x="26" y="31" fill="#FFFFFF" font-size="14" font-weight="700" letter-spacing="0.4">CHAPTER 1 SYSTEM MINDMAP — THE 5-DEPARTMENT SMALL BUSINESS AUTOMATION ENGINE</text>
+  <text x="26" y="46" fill="#64748B" font-size="10" font-weight="500">Replacing the "Owner-as-Human-Router" Bottleneck with Deterministic Triggers, AI Processing &amp; T.R.A.V. Approval Gates</text>
+  <rect x="738" y="18" width="138" height="24" rx="12" fill="#059669" />
+  <text x="807" y="34" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">ARCHITECTURE v1.0</text>
+
+  <!-- Connecting Orthogonal & Curved Data Buses from Central Hub (450, 248) -->
+  <!-- Hub to Dept 01 (Top-Left: 155, 125) -->
+  <path d="M 335 215 C 295 215, 295 125, 275 125" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-emerald)" />
+  <!-- Hub to Dept 02 (Bottom-Left: 155, 315) -->
+  <path d="M 335 270 C 295 270, 295 315, 275 315" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-emerald)" />
+  <!-- Hub to Dept 03 (Top-Right: 745, 110) -->
+  <path d="M 565 205 C 600 205, 600 110, 625 110" fill="none" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrow-cyan)" />
+  <!-- Hub to Dept 04 (Middle-Right: 745, 248) -->
+  <path d="M 565 248 L 625 248" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-emerald)" />
+  <!-- Hub to Dept 05 (Bottom-Right: 745, 382) -->
+  <path d="M 565 290 C 600 290, 600 382, 625 382" fill="none" stroke="#0284C7" stroke-width="2.2" marker-end="url(#arrow-cyan)" />
+
+  <!-- Cross-Department Revenue Flow (Dept 01 -> Dept 02) -->
+  <path d="M 150 185 L 150 250" fill="none" stroke="#D97706" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrow-amber)" />
+  <rect x="86" y="207" width="128" height="20" rx="4" fill="#FFFFFF" stroke="#D97706" stroke-width="1" />
+  <text x="150" y="220" fill="#D97706" font-size="9" font-weight="700" text-anchor="middle">QUALIFIED DEAL HANDOFF</text>
+
+  <!-- CENTRAL HUB NODE: UNIFIED AUTOMATION OPERATING CORE -->
+  <g filter="url(#card-shadow)">
+    <rect x="335" y="158" width="230" height="184" rx="12" fill="#0F172A" stroke="#059669" stroke-width="2.5" />
+    <rect x="351" y="170" width="198" height="22" rx="5" fill="#059669" />
+    <text x="450" y="185" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">CENTRAL AUTOMATION KERNEL</text>
+    <text x="450" y="210" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">5-Department Small</text>
+    <text x="450" y="227" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">Business OS Hub</text>
+
+    <line x1="351" y1="238" x2="549" y2="238" stroke="#64748B" stroke-width="1" />
+    <text x="450" y="254" fill="#FFFFFF" font-size="9.5" font-weight="600" text-anchor="middle">Webhook Event Bus (Make / Zapier / n8n)</text>
+    <text x="450" y="270" fill="#CBD5E1" font-size="9.5" text-anchor="middle">Single Source CRM &amp; Ledger State</text>
+    <text x="450" y="286" fill="#CBD5E1" font-size="9.5" text-anchor="middle">Context-Grounded AI Prompt Engine</text>
+
+    <!-- Embedded T.R.A.V. Safety Gate Pill -->
+    <rect x="351" y="300" width="198" height="28" rx="6" fill="#D97706" />
+    <text x="450" y="313" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">T.R.A.V. HUMAN APPROVAL GATE</text>
+    <text x="450" y="324" fill="#FFFFFF" font-size="8.5" text-anchor="middle">Green: Auto | Amber: 1-Click Approve</text>
+  </g>
+
+  <!-- Cost of Manual Friction (CMF) Benchmark Box Below Hub -->
+  <rect x="335" y="356" width="230" height="72" rx="8" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.5" />
+  <text x="450" y="373" fill="#0F172A" font-size="10" font-weight="700" text-anchor="middle">COST OF MANUAL FRICTION (CMF) IMPACT</text>
+  <text x="450" y="389" fill="#1E293B" font-size="9.5" text-anchor="middle">Reclaims 15–25 Owner Hours / Week</text>
+  <text x="450" y="404" fill="#059669" font-size="9.5" font-weight="700" text-anchor="middle">Plugs 20%–35% Inbound Lead Leak</text>
+  <text x="450" y="419" fill="#64748B" font-size="8.5" text-anchor="middle">Cuts Overdue Receivables DSO by 38%–52%</text>
+
+  <!-- DEPT 01 (TOP LEFT): LEAD CAPTURE & SPEED-TO-LEAD -->
+  <g filter="url(#card-shadow)">
+    <rect x="24" y="68" width="251" height="116" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="24" y="68" width="251" height="26" rx="8" fill="#059669" />
+    <rect x="24" y="84" width="251" height="10" fill="#059669" />
+    <text x="34" y="85" fill="#FFFFFF" font-size="10.5" font-weight="700">DEPT 01: LEAD CAPTURE &amp; INTAKE</text>
+    <text x="34" y="109" fill="#0F172A" font-size="9.5" font-weight="700">Triggers: Missed Call, Web Form, SMS, DM</text>
+    <text x="34" y="125" fill="#1E293B" font-size="9.5">• 60-Second Instant SMS/Email Reply</text>
+    <text x="34" y="140" fill="#1E293B" font-size="9.5">• AI Lead Normalization &amp; Fit Scoring</text>
+    <text x="34" y="155" fill="#1E293B" font-size="9.5">• Direct Calendar Booking &amp; CRM Sync</text>
+    <text x="34" y="173" fill="#059669" font-size="9" font-weight="700">KPI: First-Response SLA &lt; 60 Seconds</text>
+  </g>
+
+  <!-- DEPT 02 (BOTTOM LEFT): SALES QUALIFICATION, QUOTING & FOLLOW-UP -->
+  <g filter="url(#card-shadow)">
+    <rect x="24" y="252" width="251" height="122" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="24" y="252" width="251" height="26" rx="8" fill="#059669" />
+    <rect x="24" y="268" width="251" height="10" fill="#059669" />
+    <text x="34" y="269" fill="#FFFFFF" font-size="10.5" font-weight="700">DEPT 02: QUOTING &amp; FOLLOW-UP</text>
+    <text x="34" y="293" fill="#0F172A" font-size="9.5" font-weight="700">Triggers: Discovery Notes / Site Call</text>
+    <text x="34" y="309" fill="#1E293B" font-size="9.5">• 3-Option Quote Builder (Core/Pro/Max)</text>
+    <text x="34" y="324" fill="#D97706" font-size="9.5" font-weight="700">• Amber Gate: Owner Margin Approval</text>
+    <text x="34" y="339" fill="#1E293B" font-size="9.5">• 14-Day Multi-Touch Nurture Sequence</text>
+    <text x="34" y="354" fill="#1E293B" font-size="9.5">• Stalled Quote Objection Handler</text>
+    <text x="34" y="368" fill="#059669" font-size="9" font-weight="700">KPI: Quote Turnaround &lt; 15m | +35% Close</text>
+  </g>
+
+  <!-- Customer Lifecycle Badge Under Left Column -->
+  <rect x="24" y="388" width="251" height="40" rx="6" fill="#0F172A" />
+  <text x="149" y="405" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">FRONTLINE REVENUE ENGINE (DEPTS 01–02)</text>
+  <text x="149" y="419" fill="#059669" font-size="9" font-weight="600" text-anchor="middle">Captures Every Inquiry &amp; Closes Unfollowed Quotes</text>
+
+  <!-- DEPT 03 (TOP RIGHT): ONBOARDING, SUPPORT & REPUTATION -->
+  <g filter="url(#card-shadow)">
+    <rect x="625" y="64" width="251" height="114" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="625" y="64" width="251" height="25" rx="8" fill="#0284C7" />
+    <rect x="625" y="79" width="251" height="10" fill="#0284C7" />
+    <text x="635" y="81" fill="#FFFFFF" font-size="10.5" font-weight="700">DEPT 03: ONBOARDING &amp; SUPPORT</text>
+    <text x="635" y="103" fill="#0F172A" font-size="9.5" font-weight="700">Triggers: Signed Quote / Support Ticket</text>
+    <text x="635" y="118" fill="#1E293B" font-size="9.5">• Zero-Drop Client Folder &amp; Task Setup</text>
+    <text x="635" y="133" fill="#1E293B" font-size="9.5">• 24/7 Tier-1 FAQ Shield &amp; VIP Escalation</text>
+    <text x="635" y="148" fill="#1E293B" font-size="9.5">• Sentiment-Gated 5-Star Review Funnel</text>
+    <text x="635" y="166" fill="#0284C7" font-size="9" font-weight="700">KPI: 70% Ticket Deflection | 3.8x Reviews</text>
+  </g>
+
+  <!-- DEPT 04 (MIDDLE RIGHT): INVOICING, RECEIVABLES & BACK-OFFICE -->
+  <g filter="url(#card-shadow)">
+    <rect x="625" y="191" width="251" height="114" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="625" y="191" width="251" height="25" rx="8" fill="#059669" />
+    <rect x="625" y="206" width="251" height="10" fill="#059669" />
+    <text x="635" y="208" fill="#FFFFFF" font-size="10.5" font-weight="700">DEPT 04: INVOICING &amp; BACK-OFFICE</text>
+    <text x="635" y="230" fill="#0F172A" font-size="9.5" font-weight="700">Triggers: Job Complete / Vendor PDF</text>
+    <text x="635" y="245" fill="#1E293B" font-size="9.5">• Instant Milestone Invoice Dispatch</text>
+    <text x="635" y="260" fill="#1E293B" font-size="9.5">• 5-Stage Polite-to-Firm AR Chaser Loop</text>
+    <text x="635" y="275" fill="#1E293B" font-size="9.5">• OCR Vendor Receipt &amp; Ledger Prep</text>
+    <text x="635" y="293" fill="#059669" font-size="9" font-weight="700">KPI: Same-Day Billing | -45% Overdue AR</text>
+  </g>
+
+  <!-- DEPT 05 (BOTTOM RIGHT): TEAM SOPS, DELEGATION & FRIDAY SCORECARD -->
+  <g filter="url(#card-shadow)">
+    <rect x="625" y="318" width="251" height="110" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="625" y="318" width="251" height="25" rx="8" fill="#0284C7" />
+    <rect x="625" y="333" width="251" height="10" fill="#0284C7" />
+    <text x="635" y="335" fill="#FFFFFF" font-size="10.5" font-weight="700">DEPT 05: TEAM SOPS &amp; COMMAND</text>
+    <text x="635" y="357" fill="#0F172A" font-size="9.5" font-weight="700">Triggers: Voice Note / Friday 3:00 PM</text>
+    <text x="635" y="372" fill="#1E293B" font-size="9.5">• 5-Min Voice/Loom to Living Team SOP</text>
+    <text x="635" y="387" fill="#1E293B" font-size="9.5">• Grounded Internal Staff Q&amp;A Assistant</text>
+    <text x="635" y="402" fill="#1E293B" font-size="9.5">• 15-Minute Friday Owner KPI Scorecard</text>
+    <text x="635" y="418" fill="#0284C7" font-size="9" font-weight="700">KPI: -75% Staff Interruptions | 15m Pulse</text>
+  </g>
+
+  <!-- Bottom Legend Footer -->
+  <rect x="24" y="440" width="852" height="24" rx="5" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" />
+  <circle cx="42" cy="452" r="5" fill="#0F172A" />
+  <text x="52" y="455" fill="#1E293B" font-size="9.5" font-weight="600">Core Hub &amp; State</text>
+  <circle cx="168" cy="452" r="5" fill="#059669" />
+  <text x="178" y="455" fill="#1E293B" font-size="9.5" font-weight="600">Revenue &amp; Cashflow Depts (01, 02, 04)</text>
+  <circle cx="395" cy="452" r="5" fill="#0284C7" />
+  <text x="405" y="455" fill="#1E293B" font-size="9.5" font-weight="600">Delivery, SOP &amp; Command Depts (03, 05)</text>
+  <circle cx="635" cy="452" r="5" fill="#D97706" />
+  <text x="645" y="455" fill="#1E293B" font-size="9.5" font-weight="600">Amber Human-in-the-Loop Gate (T.R.A.V.)</text>
+</svg>
