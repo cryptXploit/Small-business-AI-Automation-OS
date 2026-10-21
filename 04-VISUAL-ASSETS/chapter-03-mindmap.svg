@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ch3m-emerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="ch3m-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7" />
+    </marker>
+    <marker id="ch3m-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706" />
+    </marker>
+    <filter id="ch3m-shadow" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.10" />
+    </filter>
+  </defs>
+
+  <!-- Canvas & Frame -->
+  <rect x="0" y="0" width="900" height="480" fill="#FFFFFF" />
+  <rect x="8" y="8" width="884" height="464" rx="10" fill="none" stroke="#CBD5E1" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <rect x="8" y="8" width="884" height="46" rx="10" fill="#0F172A" />
+  <rect x="8" y="38" width="884" height="16" fill="#0F172A" />
+  <text x="26" y="31" fill="#FFFFFF" font-size="14" font-weight="700" letter-spacing="0.4">CHAPTER 3 SYSTEM MINDMAP — THE I.N.S.T.A.N.T. MULTI-CHANNEL LEAD ROUTER</text>
+  <text x="26" y="46" fill="#64748B" font-size="10" font-weight="500">Intercepting Missed Calls, Web Forms, SMS/WhatsApp, Social DMs &amp; Google Messages in Under 60 Seconds (24/7/365)</text>
+  <rect x="730" y="18" width="146" height="24" rx="12" fill="#059669" />
+  <text x="803" y="34" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">SLA &lt; 60 SECONDS</text>
+
+  <!-- Connectors: Left Inbound Channels -> Central I.N.S.T.A.N.T. Hub -> Right Execution Modules -->
+  <path d="M 274 115 C 305 115, 305 195, 332 195" fill="none" stroke="#0284C7" stroke-width="2.2" marker-end="url(#ch3m-cyan)" />
+  <path d="M 274 235 L 332 235" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#ch3m-emerald)" />
+  <path d="M 274 358 C 305 358, 305 275, 332 275" fill="none" stroke="#0284C7" stroke-width="2.2" marker-end="url(#ch3m-cyan)" />
+
+  <path d="M 568 190 C 598 190, 598 112, 625 112" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#ch3m-emerald)" />
+  <path d="M 568 240 L 625 240" fill="none" stroke="#0284C7" stroke-width="2.2" marker-end="url(#ch3m-cyan)" />
+  <path d="M 568 290 C 598 290, 598 368, 625 368" fill="none" stroke="#D97706" stroke-width="2.2" marker-end="url(#ch3m-amber)" />
+
+  <!-- CENTRAL HUB: I.N.S.T.A.N.T. ROUTER ENGINE -->
+  <g filter="url(#ch3m-shadow)">
+    <rect x="332" y="128" width="236" height="224" rx="12" fill="#0F172A" stroke="#059669" stroke-width="2.5" />
+    <rect x="348" y="140" width="204" height="22" rx="5" fill="#059669" />
+    <text x="450" y="155" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">DEPT 01 INTAKE ENGINE</text>
+    <text x="450" y="179" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">The I.N.S.T.A.N.T.</text>
+    <text x="450" y="195" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">Lead Router</text>
+    <line x1="348" y1="205" x2="552" y2="205" stroke="#64748B" stroke-width="1" />
+    <text x="352" y="222" fill="#0284C7" font-size="9" font-weight="700">I:</text>
+    <text x="366" y="222" fill="#FFFFFF" font-size="9">Inbound Omni-Channel Capture</text>
+    <text x="352" y="238" fill="#0284C7" font-size="9" font-weight="700">N:</text>
+    <text x="366" y="238" fill="#FFFFFF" font-size="9">Normalize E.164 &amp; CRM Dedup</text>
+    <text x="352" y="254" fill="#059669" font-size="9" font-weight="700">S:</text>
+    <text x="366" y="254" fill="#FFFFFF" font-size="9">Score Intent, Urgency &amp; Filter Spam</text>
+    <text x="352" y="270" fill="#059669" font-size="9" font-weight="700">T:</text>
+    <text x="366" y="270" fill="#FFFFFF" font-size="9">Text + Email 60-Sec First Touch</text>
+    <text x="352" y="286" fill="#0284C7" font-size="9" font-weight="700">A:</text>
+    <text x="366" y="286" fill="#FFFFFF" font-size="9">Automated Calendar / Territory Route</text>
+    <text x="352" y="302" fill="#D97706" font-size="9" font-weight="700">N:</text>
+    <text x="366" y="302" fill="#FFFFFF" font-size="9">Notify Closer on VIP / Urgent Lead</text>
+    <text x="352" y="318" fill="#059669" font-size="9" font-weight="700">T:</text>
+    <text x="366" y="318" fill="#FFFFFF" font-size="9">Track Source ROI &amp; SLA Seconds</text>
+    <rect x="348" y="326" width="204" height="18" rx="4" fill="#059669" />
+    <text x="450" y="338" fill="#FFFFFF" font-size="8.5" font-weight="700" text-anchor="middle">391% Conversion Lift vs. 5-Min Delay</text>
+  </g>
+
+  <!-- SLA Benchmark Callout Below Central Hub -->
+  <rect x="332" y="364" width="236" height="58" rx="8" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.5" />
+  <text x="450" y="381" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">[T] TELEMETRY &amp; ATTRIBUTION LOG</text>
+  <text x="450" y="396" fill="#1E293B" font-size="9" text-anchor="middle">`latency_sec = first_reply_at - created_at`</text>
+  <text x="450" y="411" fill="#059669" font-size="9" font-weight="700" text-anchor="middle">Feeds Friday Owner Scorecard (Dept 05)</text>
+
+  <!-- LEFT COLUMN: [I] & [N] OMNI-CHANNEL INTAKE & NORMALIZATION -->
+  <!-- Box L1: Phone & Missed Call -->
+  <g filter="url(#ch3m-shadow)">
+    <rect x="24" y="66" width="250" height="98" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="24" y="66" width="250" height="24" rx="8" fill="#0284C7" />
+    <rect x="24" y="80" width="250" height="10" fill="#0284C7" />
+    <text x="34" y="82" fill="#FFFFFF" font-size="10" font-weight="700">[I.1] VOICE &amp; MISSED-CALL CAPTURE</text>
+    <text x="34" y="104" fill="#0F172A" font-size="9.5" font-weight="700">VoIP Webhook (OpenPhone / RingCentral / Twilio)</text>
+    <text x="34" y="120" fill="#1E293B" font-size="9">• Triggers on `No-Answer` (20s) or Voicemail</text>
+    <text x="34" y="134" fill="#1E293B" font-size="9">• Stops 80% caller hang-up leak immediately</text>
+    <text x="34" y="150" fill="#0284C7" font-size="8.5" font-weight="700">Instant SMS Concierge Fired in &lt; 30 Seconds</text>
+  </g>
+
+  <!-- Box L2: Web Forms & Landing Pages -->
+  <g filter="url(#ch3m-shadow)">
+    <rect x="24" y="182" width="250" height="106" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="24" y="182" width="250" height="24" rx="8" fill="#059669" />
+    <rect x="24" y="196" width="250" height="10" fill="#059669" />
+    <text x="34" y="198" fill="#FFFFFF" font-size="10" font-weight="700">[I.2] WEB FORMS &amp; SEARCH ADS</text>
+    <text x="34" y="220" fill="#0F172A" font-size="9.5" font-weight="700">Website Quote Forms, Google LSA &amp; Meta Lead Ads</text>
+    <text x="34" y="236" fill="#1E293B" font-size="9">• Direct Webhook POST to Router Bus</text>
+    <text x="34" y="250" fill="#1E293B" font-size="9">• Captures UTM Source, Campaign &amp; Keyword</text>
+    <text x="34" y="264" fill="#1E293B" font-size="9">• Verifies A2P 10DLC SMS Consent Checkbox</text>
+    <text x="34" y="279" fill="#059669" font-size="8.5" font-weight="700">Zero Manual Inbox Copy-Pasting</text>
+  </g>
+
+  <!-- Box L3: Messaging & Normalization -->
+  <g filter="url(#ch3m-shadow)">
+    <rect x="24" y="306" width="250" height="116" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="24" y="306" width="250" height="24" rx="8" fill="#0284C7" />
+    <rect x="24" y="320" width="250" height="10" fill="#0284C7" />
+    <text x="34" y="322" fill="#FFFFFF" font-size="10" font-weight="700">[I.3 &amp; N] DMs + NORMALIZATION</text>
+    <text x="34" y="344" fill="#0F172A" font-size="9.5" font-weight="700">WhatsApp, IG/FB DMs, Google Business Chat</text>
+    <text x="34" y="360" fill="#1E293B" font-size="9">• Formats Phone to E.164 (`+15125550199`)</text>
+    <text x="34" y="374" fill="#1E293B" font-size="9">• Lowercases Email &amp; Strips Tracking Junk</text>
+    <text x="34" y="388" fill="#1E293B" font-size="9">• 3-Second CRM Lookup (Upsert vs. Create)</text>
+    <text x="34" y="406" fill="#0284C7" font-size="8.5" font-weight="700">Prevents Duplicate Contact Records</text>
+  </g>
+
+  <!-- RIGHT COLUMN: [S], [T], [A], [N] QUALIFICATION, FIRST TOUCH & ROUTING -->
+  <!-- Box R1: Scoring & 60s First Touch -->
+  <g filter="url(#ch3m-shadow)">
+    <rect x="625" y="66" width="251" height="106" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="625" y="66" width="251" height="24" rx="8" fill="#059669" />
+    <rect x="625" y="80" width="251" height="10" fill="#059669" />
+    <text x="635" y="82" fill="#FFFFFF" font-size="10" font-weight="700">[S &amp; T] AI SCORING &amp; 60s FIRST TOUCH</text>
+    <text x="635" y="104" fill="#0F172A" font-size="9.5" font-weight="700">Prompts 3.1 &amp; 3.2 (Green Gate Execution)</text>
+    <text x="635" y="120" fill="#1E293B" font-size="9">• Filters Cold Solicitors, Bots &amp; Wrong Geo</text>
+    <text x="635" y="134" fill="#1E293B" font-size="9">• Scores Intent (0–100) &amp; Urgency Tier</text>
+    <text x="635" y="148" fill="#1E293B" font-size="9">• Sends Compliant SMS + Email in &lt; 60 Secs</text>
+    <text x="635" y="163" fill="#059669" font-size="8.5" font-weight="700">Asks 1–2 Frictionless Qualifying Questions</text>
+  </g>
+
+  <!-- Box R2: Calendar & Territory Routing -->
+  <g filter="url(#ch3m-shadow)">
+    <rect x="625" y="190" width="251" height="106" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="625" y="190" width="251" height="24" rx="8" fill="#0284C7" />
+    <rect x="625" y="204" width="251" height="10" fill="#0284C7" />
+    <text x="635" y="206" fill="#FFFFFF" font-size="10" font-weight="700">[A] CALENDAR &amp; DISPATCH ROUTING</text>
+    <text x="635" y="228" fill="#0F172A" font-size="9.5" font-weight="700">Prompt 3.3 &amp; 3.4 Conversational Booking</text>
+    <text x="635" y="244" fill="#1E293B" font-size="9">• Matches Zip Code / Service Type to Rep</text>
+    <text x="635" y="258" fill="#1E293B" font-size="9">• Injects Live Booking Link with Travel Buffer</text>
+    <text x="635" y="272" fill="#1E293B" font-size="9">• Auto-Follows Up at +4h &amp; +24h if Unbooked</text>
+    <text x="635" y="287" fill="#0284C7" font-size="8.5" font-weight="700">Converts Callers into Confirmed Calendar Slots</text>
+  </g>
+
+  <!-- Box R3: VIP Whisper Alert & Dept 02 Handoff -->
+  <g filter="url(#ch3m-shadow)">
+    <rect x="625" y="314" width="251" height="108" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="2" />
+    <rect x="625" y="314" width="251" height="24" rx="8" fill="#D97706" />
+    <rect x="625" y="328" width="251" height="10" fill="#D97706" />
+    <text x="635" y="330" fill="#FFFFFF" font-size="10" font-weight="700">[N] VIP WHISPER &amp; DEPT 02 HANDOFF</text>
+    <text x="635" y="352" fill="#0F172A" font-size="9.5" font-weight="700">Prompt 3.5 High-Value Escalation Alert</text>
+    <text x="635" y="368" fill="#1E293B" font-size="9">• Fires Instant Owner/Closer SMS if Score &gt;= 85</text>
+    <text x="635" y="382" fill="#1E293B" font-size="9">• Generates 5-Bullet Pre-Call Executive Brief</text>
+    <text x="635" y="396" fill="#1E293B" font-size="9">• Pushes Qualified Deal to Dept 02 Quoting</text>
+    <text x="635" y="412" fill="#D97706" font-size="8.5" font-weight="700">Zero High-Ticket Prospects Wait in Queue</text>
+  </g>
+
+  <!-- Bottom Legend Footer -->
+  <rect x="24" y="438" width="852" height="24" rx="5" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" />
+  <circle cx="42" cy="450" r="5" fill="#0F172A" />
+  <text x="52" y="453" fill="#1E293B" font-size="9.5" font-weight="600">I.N.S.T.A.N.T. Core Hub</text>
+  <circle cx="210" cy="450" r="5" fill="#0284C7" />
+  <text x="220" y="453" fill="#1E293B" font-size="9.5" font-weight="600">Multi-Channel Capture &amp; Calendar Sync</text>
+  <circle cx="465" cy="450" r="5" fill="#059669" />
+  <text x="475" y="453" fill="#1E293B" font-size="9.5" font-weight="600">60-Sec First Touch &amp; Qualification</text>
+  <circle cx="695" cy="450" r="5" fill="#D97706" />
+  <text x="705" y="453" fill="#1E293B" font-size="9.5" font-weight="600">VIP / Emergency Closer Alert</text>
+</svg>

@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ch4m-emerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="ch4m-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7" />
+    </marker>
+    <marker id="ch4m-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706" />
+    </marker>
+    <filter id="ch4m-shadow" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.10" />
+    </filter>
+  </defs>
+
+  <!-- Canvas & Frame -->
+  <rect x="0" y="0" width="900" height="480" fill="#FFFFFF" />
+  <rect x="8" y="8" width="884" height="464" rx="10" fill="none" stroke="#CBD5E1" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <rect x="8" y="8" width="884" height="46" rx="10" fill="#0F172A" />
+  <rect x="8" y="38" width="884" height="16" fill="#0F172A" />
+  <text x="26" y="31" fill="#FFFFFF" font-size="14" font-weight="700" letter-spacing="0.4">CHAPTER 4 SYSTEM MINDMAP — THE 3-OPTION INSTANT QUOTE &amp; 14-DAY NURTURE ENGINE</text>
+  <text x="26" y="46" fill="#64748B" font-size="10" font-weight="500">From Discovery Notes &amp; Price Matrix to Good-Better-Best Proposal, Amber Approval Gate &amp; 6-Touch Follow-Up Loop</text>
+  <rect x="730" y="18" width="146" height="24" rx="12" fill="#059669" />
+  <text x="803" y="34" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">DEPT 02 QUOTING OS</text>
+
+  <!-- Connectors -->
+  <path d="M 274 125 C 305 125, 305 195, 332 195" fill="none" stroke="#0284C7" stroke-width="2.2" marker-end="url(#ch4m-cyan)" />
+  <path d="M 274 285 C 305 285, 305 250, 332 250" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#ch4m-emerald)" />
+  <path d="M 568 190 C 598 190, 598 115, 625 115" fill="none" stroke="#D97706" stroke-width="2.2" marker-end="url(#ch4m-amber)" />
+  <path d="M 568 245 L 625 245" fill="none" stroke="#059669" stroke-width="2.2" marker-end="url(#ch4m-emerald)" />
+  <path d="M 568 295 C 598 295, 598 370, 625 370" fill="none" stroke="#0284C7" stroke-width="2.2" marker-end="url(#ch4m-cyan)" />
+
+  <!-- CENTRAL HUB: 3-OPTION QUOTE & NURTURE CORE -->
+  <g filter="url(#ch4m-shadow)">
+    <rect x="332" y="130" width="236" height="218" rx="12" fill="#0F172A" stroke="#059669" stroke-width="2.5" />
+    <rect x="348" y="142" width="204" height="22" rx="5" fill="#059669" />
+    <text x="450" y="157" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">GOOD-BETTER-BEST ENGINE</text>
+    <text x="450" y="181" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">3-Tier Proposal &amp;</text>
+    <text x="450" y="197" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">14-Day Nurture Hub</text>
+    <line x1="348" y1="207" x2="552" y2="207" stroke="#64748B" stroke-width="1" />
+
+    <!-- 3 Option Pills Inside Hub -->
+    <rect x="348" y="216" width="204" height="24" rx="4" fill="#1E293B" stroke="#0284C7" stroke-width="1" />
+    <text x="450" y="232" fill="#FFFFFF" font-size="9" font-weight="600" text-anchor="middle">Tier 1: Essential Scope (`1.0x Base`)</text>
+
+    <rect x="348" y="246" width="204" height="26" rx="4" fill="#059669" />
+    <text x="450" y="263" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">Tier 2: Complete Anchor (`1.35x` - 62% Pick)</text>
+
+    <rect x="348" y="278" width="204" height="24" rx="4" fill="#1E293B" stroke="#D97706" stroke-width="1" />
+    <text x="450" y="294" fill="#FFFFFF" font-size="9" font-weight="600" text-anchor="middle">Tier 3: Priority Turnkey VIP (`1.75x`)</text>
+
+    <text x="450" y="320" fill="#CBD5E1" font-size="9" text-anchor="middle">Prompts 4.1 &amp; 4.2 Assemble Executive SOW</text>
+    <text x="450" y="336" fill="#059669" font-size="9" font-weight="700" text-anchor="middle">Lifts Close Rate +35% &amp; AOV +18%</text>
+  </g>
+
+  <!-- Below Central Hub: Stop-on-Sign & Handoff Box -->
+  <rect x="332" y="362" width="236" height="62" rx="8" fill="#F8FAFC" stroke="#059669" stroke-width="1.5" />
+  <text x="450" y="380" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">AUTOMATIC STOP-LOGIC &amp; HANDOFF</text>
+  <text x="450" y="395" fill="#1E293B" font-size="9" text-anchor="middle">Halts sequence on `Reply` or `Deposit_Paid`</text>
+  <text x="450" y="411" fill="#059669" font-size="9" font-weight="700" text-anchor="middle">Fires Dept 03 Zero-Drop Onboarding</text>
+
+  <!-- LEFT TOP: FIELD / DISCOVERY INTAKE INPUTS -->
+  <g filter="url(#ch4m-shadow)">
+    <rect x="24" y="68" width="250" height="122" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="24" y="68" width="250" height="25" rx="8" fill="#0284C7" />
+    <rect x="24" y="83" width="250" height="10" fill="#0284C7" />
+    <text x="34" y="85" fill="#FFFFFF" font-size="10" font-weight="700">1. DISCOVERY &amp; FIELD INPUTS</text>
+    <text x="34" y="107" fill="#0F172A" font-size="9.5" font-weight="700">Raw Notes to Structured Scope</text>
+    <text x="34" y="123" fill="#1E293B" font-size="9">• 90-Sec Tech Voice Note / Call Transcript</text>
+    <text x="34" y="138" fill="#1E293B" font-size="9">• Dept 01 Qualified Deal JSON Payload</text>
+    <text x="34" y="153" fill="#1E293B" font-size="9">• Square Footage / Seat Count / Urgency</text>
+    <text x="34" y="168" fill="#1E293B" font-size="9">• Stated Prospect Pain Point &amp; Goal</text>
+    <text x="34" y="182" fill="#0284C7" font-size="8.5" font-weight="700">Zero Evening Kitchen-Table Typing</text>
+  </g>
+
+  <!-- LEFT BOTTOM: DETERMINISTIC PRICE MATRIX -->
+  <g filter="url(#ch4m-shadow)">
+    <rect x="24" y="210" width="250" height="138" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="24" y="210" width="250" height="25" rx="8" fill="#059669" />
+    <rect x="24" y="225" width="250" height="10" fill="#059669" />
+    <text x="34" y="227" fill="#FFFFFF" font-size="10" font-weight="700">2. DETERMINISTIC PRICE MATRIX</text>
+    <text x="34" y="249" fill="#0F172A" font-size="9.5" font-weight="700">Grounded SKU &amp; Multiplier Table</text>
+    <text x="34" y="265" fill="#1E293B" font-size="9">• Base SKU Rate + Labor Hours Table</text>
+    <text x="34" y="280" fill="#1E293B" font-size="9">• Complexity Tier (`1.0x`, `1.25x`, `1.50x`)</text>
+    <text x="34" y="295" fill="#1E293B" font-size="9">• Approved Add-On &amp; Warranty SKUs</text>
+    <text x="34" y="310" fill="#1E293B" font-size="9">• Hard Gross Margin Floor (`&gt;= 48%`)</text>
+    <text x="34" y="325" fill="#1E293B" font-size="9">• Max Allowed Discount Cap (`&lt;= 5%`)</text>
+    <text x="34" y="340" fill="#059669" font-size="8.5" font-weight="700">AI Never Guesses or Hallucinates Prices</text>
+  </g>
+
+  <!-- Left Footer Callout -->
+  <rect x="24" y="362" width="250" height="62" rx="8" fill="#0F172A" />
+  <text x="149" y="381" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">TURNAROUND COMPRESSION</text>
+  <text x="149" y="397" fill="#059669" font-size="9.5" font-weight="700" text-anchor="middle">From 3.5 Days -&gt; Under 15 Minutes</text>
+  <text x="149" y="412" fill="#CBD5E1" font-size="8.5" text-anchor="middle">Beats competitors while buyer intent is hot</text>
+
+  <!-- RIGHT TOP: AMBER-GATE OWNER MOBILE APPROVAL -->
+  <g filter="url(#ch4m-shadow)">
+    <rect x="625" y="66" width="251" height="106" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="2" />
+    <rect x="625" y="66" width="251" height="24" rx="8" fill="#D97706" />
+    <rect x="625" y="80" width="251" height="10" fill="#D97706" />
+    <text x="635" y="82" fill="#FFFFFF" font-size="10" font-weight="700">3. AMBER-GATE QUOTE APPROVAL</text>
+    <text x="635" y="104" fill="#0F172A" font-size="9.5" font-weight="700">60-Second Mobile Margin Check</text>
+    <text x="635" y="120" fill="#1E293B" font-size="9">• Pushes 3-Tier Summary + Margin % to Slack</text>
+    <text x="635" y="134" fill="#1E293B" font-size="9">• Owner taps `[Approve &amp; Dispatch]` in 15s</text>
+    <text x="635" y="148" fill="#1E293B" font-size="9">• Generates Interactive E-Sign + Deposit Link</text>
+    <text x="635" y="163" fill="#D97706" font-size="8.5" font-weight="700">100% Margin Control with 95% Less Typing</text>
+  </g>
+
+  <!-- RIGHT MIDDLE: 14-DAY MULTI-TOUCH NURTURE LOOP -->
+  <g filter="url(#ch4m-shadow)">
+    <rect x="625" y="188" width="251" height="118" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="625" y="188" width="251" height="24" rx="8" fill="#059669" />
+    <rect x="625" y="202" width="251" height="10" fill="#059669" />
+    <text x="635" y="204" fill="#FFFFFF" font-size="10" font-weight="700">4. 14-DAY 6-TOUCH NURTURE LOOP</text>
+    <text x="635" y="225" fill="#0F172A" font-size="9" font-weight="700">Prompt 4.3 Automated Value Cadence:</text>
+    <text x="635" y="240" fill="#1E293B" font-size="8.5">• Day 1: Quote PDF + SMS Heads-Up</text>
+    <text x="635" y="253" fill="#1E293B" font-size="8.5">• Day 2: Top 3 Process FAQ Clarifier</text>
+    <text x="635" y="266" fill="#1E293B" font-size="8.5">• Day 4: Matched Industry Case Study Proof</text>
+    <text x="635" y="279" fill="#1E293B" font-size="8.5">• Day 7 &amp; 10: Timeline Check &amp; Tier-1 Option</text>
+    <text x="635" y="292" fill="#1E293B" font-size="8.5">• Day 14: Polite Close-the-File Trigger</text>
+    <text x="635" y="302" fill="#059669" font-size="8" font-weight="700">Captures the 80% of Deals Closing on Touch 5+</text>
+  </g>
+
+  <!-- RIGHT BOTTOM: OBJECTION RE-QUOTING & REVIVAL -->
+  <g filter="url(#ch4m-shadow)">
+    <rect x="625" y="322" width="251" height="102" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="625" y="322" width="251" height="24" rx="8" fill="#0284C7" />
+    <rect x="625" y="336" width="251" height="10" fill="#0284C7" />
+    <text x="635" y="338" fill="#FFFFFF" font-size="10" font-weight="700">5. OBJECTION &amp; SCOPE RE-QUOTER</text>
+    <text x="635" y="359" fill="#0F172A" font-size="9.5" font-weight="700">Prompts 4.4 &amp; 4.5 Margin Preservation</text>
+    <text x="635" y="375" fill="#1E293B" font-size="9">• Never discounts price without trimming scope</text>
+    <text x="635" y="389" fill="#1E293B" font-size="9">• Pivots budget-constrained buyers to Tier 1</text>
+    <text x="635" y="403" fill="#1E293B" font-size="9">• Day-14 Breakup Note sparks 22% reply rate</text>
+    <text x="635" y="417" fill="#0284C7" font-size="8.5" font-weight="700">Protects Gross Margin Against Haggling</text>
+  </g>
+
+  <!-- Bottom Legend Footer -->
+  <rect x="24" y="438" width="852" height="24" rx="5" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" />
+  <circle cx="42" cy="450" r="5" fill="#0F172A" />
+  <text x="52" y="453" fill="#1E293B" font-size="9.5" font-weight="600">3-Option Quote Core</text>
+  <circle cx="195" cy="450" r="5" fill="#059669" />
+  <text x="205" y="453" fill="#1E293B" font-size="9.5" font-weight="600">Price Matrix &amp; 14-Day Nurture</text>
+  <circle cx="415" cy="450" r="5" fill="#D97706" />
+  <text x="425" y="453" fill="#1E293B" font-size="9.5" font-weight="600">Amber Gate (Owner 1-Click Sign-Off)</text>
+  <circle cx="665" cy="450" r="5" fill="#0284C7" />
+  <text x="675" y="453" fill="#1E293B" font-size="9.5" font-weight="600">Discovery Intake &amp; Scope Pivot</text>
+</svg>

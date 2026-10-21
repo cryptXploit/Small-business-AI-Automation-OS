@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ch3f-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0F172A" />
+    </marker>
+    <marker id="ch3f-emerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="ch3f-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7" />
+    </marker>
+    <marker id="ch3f-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706" />
+    </marker>
+    <filter id="ch3f-shadow" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0F172A" flood-opacity="0.09" />
+    </filter>
+  </defs>
+
+  <!-- Canvas & Frame -->
+  <rect x="0" y="0" width="900" height="480" fill="#FFFFFF" />
+  <rect x="8" y="8" width="884" height="464" rx="10" fill="none" stroke="#CBD5E1" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <rect x="8" y="8" width="884" height="46" rx="10" fill="#0F172A" />
+  <rect x="8" y="38" width="884" height="16" fill="#0F172A" />
+  <text x="26" y="31" fill="#FFFFFF" font-size="14" font-weight="700" letter-spacing="0.4">CHAPTER 3 DECISION TREE — 60-SECOND LEAD QUALIFICATION, SPAM FILTER &amp; BOOKING</text>
+  <text x="26" y="46" fill="#64748B" font-size="10" font-weight="500">End-to-End Deterministic Triage from Raw Inbound Inquiry to VIP Escalation, Standard Booking, or Polite Redirect</text>
+  <rect x="730" y="18" width="146" height="24" rx="12" fill="#0284C7" />
+  <text x="803" y="34" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">60-SECOND SLA</text>
+
+  <!-- STEP 1: INBOUND EVENT & E.164 NORMALIZATION -->
+  <g filter="url(#ch3f-shadow)">
+    <rect x="24" y="72" width="185" height="86" rx="8" fill="#0F172A" stroke="#059669" stroke-width="2" />
+    <text x="116" y="92" fill="#059669" font-size="9.5" font-weight="700" text-anchor="middle">STEP 1: [I &amp; N] CAPTURE</text>
+    <text x="116" y="110" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">Missed Call / Web Form /</text>
+    <text x="116" y="125" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">SMS / DM Arrives</text>
+    <text x="116" y="144" fill="#CBD5E1" font-size="8.5" text-anchor="middle">Format E.164 &amp; Match CRM (3s)</text>
+  </g>
+
+  <line x1="209" y1="115" x2="246" y2="115" stroke="#0284C7" stroke-width="2.2" marker-end="url(#ch3f-cyan)" />
+
+  <!-- GATE 1: SPAM, ROBOCALL & VENDOR SOLICITOR FILTER -->
+  <g filter="url(#ch3f-shadow)">
+    <rect x="252" y="72" width="196" height="86" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="252" y="72" width="196" height="22" rx="8" fill="#0284C7" />
+    <rect x="252" y="84" width="196" height="10" fill="#0284C7" />
+    <text x="350" y="87" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">GATE 1: [S] SPAM &amp; BOT FILTER</text>
+    <text x="350" y="108" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">Is Inquiry Genuine Customer</text>
+    <text x="350" y="122" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">Intent (`Prompt 3.1`)?</text>
+    <text x="350" y="142" fill="#64748B" font-size="8.5" text-anchor="middle">Checks SEO spam, robocalls, vendors</text>
+  </g>
+
+  <!-- Gate 1 NO (Spam) -> Archive Box (Below Gate 1 Left) -->
+  <line x1="350" y1="158" x2="350" y2="196" stroke="#64748B" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#ch3f-dark)" />
+  <rect x="310" y="166" width="80" height="15" rx="3" fill="#FFFFFF" stroke="#64748B" stroke-width="1" />
+  <text x="350" y="177" fill="#1E293B" font-size="8.5" font-weight="700" text-anchor="middle">SPAM / BOT</text>
+
+  <g filter="url(#ch3f-shadow)">
+    <rect x="24" y="202" width="424" height="56" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5" />
+    <text x="38" y="222" fill="#0F172A" font-size="9.5" font-weight="700">BRANCH A: SUPPRESS &amp; TAG `ARCHIVED_SOLICITOR` (0 SMS SENT)</text>
+    <text x="38" y="238" fill="#1E293B" font-size="9">Logs to silent suppression table; protects A2P 10DLC sender reputation &amp; saves rep time.</text>
+    <text x="38" y="251" fill="#64748B" font-size="8.5" font-weight="600">Never fire automated SMS replies to robocallers or cold B2B SEO spam forms.</text>
+  </g>
+
+  <!-- Gate 1 YES (Genuine) -> GATE 2 (Right Top) -->
+  <line x1="448" y1="115" x2="492" y2="115" stroke="#059669" stroke-width="2.2" marker-end="url(#ch3f-emerald)" />
+  <rect x="453" y="96" width="34" height="15" rx="3" fill="#059669" />
+  <text x="470" y="107" fill="#FFFFFF" font-size="8.5" font-weight="700" text-anchor="middle">REAL</text>
+
+  <!-- GATE 2: 60-SECOND FIRST TOUCH & GEO/BUDGET FIT -->
+  <g filter="url(#ch3f-shadow)">
+    <rect x="498" y="72" width="200" height="86" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="498" y="72" width="200" height="22" rx="8" fill="#059669" />
+    <rect x="498" y="84" width="200" height="10" fill="#059669" />
+    <text x="598" y="87" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">GATE 2: [T] 60s FIRST TOUCH</text>
+    <text x="598" y="108" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">Fire SMS/Email (`Prompts 3.2/3.3`)</text>
+    <text x="598" y="122" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">&amp; Verify Territory / Scope Fit</text>
+    <text x="598" y="142" fill="#059669" font-size="8.5" font-weight="700" text-anchor="middle">SLA Clock Stopped at &lt; 45 Seconds</text>
+  </g>
+
+  <!-- Gate 2 Out of Scope -> Polite Redirect (Far Right Top) -->
+  <line x1="698" y1="115" x2="728" y2="115" stroke="#0284C7" stroke-width="2" marker-end="url(#ch3f-cyan)" />
+  <g filter="url(#ch3f-shadow)">
+    <rect x="734" y="72" width="142" height="86" rx="8" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
+    <text x="805" y="91" fill="#0284C7" font-size="9" font-weight="700" text-anchor="middle">OUT OF TERRITORY</text>
+    <text x="805" y="108" fill="#0F172A" font-size="9" font-weight="700" text-anchor="middle">Polite Partner</text>
+    <text x="805" y="121" fill="#0F172A" font-size="9" font-weight="700" text-anchor="middle">Referral Script</text>
+    <text x="805" y="138" fill="#64748B" font-size="8.5" text-anchor="middle">Preserves 5-star brand</text>
+    <text x="805" y="150" fill="#64748B" font-size="8.5" text-anchor="middle">goodwill &amp; referral fee</text>
+  </g>
+
+  <!-- Gate 2 In-Scope -> GATE 3: COMPLETENESS & URGENCY TRIAGE (Downward) -->
+  <line x1="598" y1="158" x2="598" y2="196" stroke="#059669" stroke-width="2.2" marker-end="url(#ch3f-emerald)" />
+
+  <g filter="url(#ch3f-shadow)">
+    <rect x="468" y="202" width="408" height="74" rx="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" />
+    <rect x="468" y="202" width="408" height="22" rx="8" fill="#0F172A" />
+    <rect x="468" y="214" width="408" height="10" fill="#0F172A" />
+    <text x="672" y="217" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">GATE 3: QUALIFICATION SCORE &amp; DATA COMPLETENESS CHECK</text>
+    <text x="672" y="238" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">Evaluate Lead Score (`0–100`), Urgency Tier, &amp; Required Fields</text>
+    <text x="672" y="254" fill="#1E293B" font-size="9" text-anchor="middle">Routes into 3 Parallel Execution Tracks Below (`Incomplete` vs. `Standard` vs. `VIP/Emergency`)</text>
+    <text x="672" y="268" fill="#059669" font-size="8.5" font-weight="700" text-anchor="middle">All 3 Tracks Write Timestamped Telemetry to CRM (`[T] Tracking`)</text>
+  </g>
+
+  <!-- 3 Downward Arrows to Bottom 3 Outcome Cards -->
+  <path d="M 520 276 L 160 276 L 160 314" fill="none" stroke="#0284C7" stroke-width="2.2" marker-end="url(#ch3f-cyan)" />
+  <line x1="455" y1="276" x2="455" y2="314" stroke="#059669" stroke-width="2.2" marker-end="url(#ch3f-emerald)" />
+  <line x1="745" y1="276" x2="745" y2="314" stroke="#D97706" stroke-width="2.4" marker-end="url(#ch3f-amber)" />
+
+  <!-- BOTTOM CARD 1 (LEFT): INCOMPLETE DATA EXTRACTION -->
+  <g filter="url(#ch3f-shadow)">
+    <rect x="24" y="320" width="268" height="106" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="24" y="320" width="268" height="23" rx="8" fill="#0284C7" />
+    <rect x="24" y="333" width="268" height="10" fill="#0284C7" />
+    <text x="158" y="336" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">TRACK 1: MISSING INFO (`PROMPT 3.4`)</text>
+    <text x="36" y="358" fill="#0F172A" font-size="9.5" font-weight="700">Conversational Slot-Filling Loop</text>
+    <text x="36" y="374" fill="#1E293B" font-size="9">• Asks 1 missing field via SMS (e.g., Zip/Photo)</text>
+    <text x="36" y="388" fill="#1E293B" font-size="9">• Sends gentle +4h and +24h nudge if silent</text>
+    <text x="36" y="402" fill="#1E293B" font-size="9">• Updates CRM fields dynamically on reply</text>
+    <text x="36" y="417" fill="#0284C7" font-size="8.5" font-weight="700">Recovers 35%+ of half-completed inquiries</text>
+  </g>
+
+  <!-- BOTTOM CARD 2 (CENTER): STANDARD QUALIFIED BOOKING -->
+  <g filter="url(#ch3f-shadow)">
+    <rect x="308" y="320" width="284" height="106" rx="8" fill="#0F172A" stroke="#059669" stroke-width="2.2" />
+    <rect x="320" y="330" width="260" height="20" rx="4" fill="#059669" />
+    <text x="450" y="344" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">TRACK 2: STANDARD FIT (SCORE 50–84)</text>
+    <text x="320" y="366" fill="#FFFFFF" font-size="9.5" font-weight="700">[A] Direct Calendar &amp; Round-Robin Booking</text>
+    <text x="320" y="382" fill="#CBD5E1" font-size="9">• Injects rep/territory booking link with buffers</text>
+    <text x="320" y="396" fill="#CBD5E1" font-size="9">• Confirms slot via SMS + calendar invite</text>
+    <text x="320" y="410" fill="#CBD5E1" font-size="9">• Passes structured deal JSON to Dept 02</text>
+    <text x="320" y="421" fill="#059669" font-size="8.5" font-weight="700">Zero human touches required until appointment</text>
+  </g>
+
+  <!-- BOTTOM CARD 3 (RIGHT): VIP / EMERGENCY WHISPER ALERT -->
+  <g filter="url(#ch3f-shadow)">
+    <rect x="608" y="320" width="268" height="106" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="2.2" />
+    <rect x="608" y="320" width="268" height="23" rx="8" fill="#D97706" />
+    <rect x="608" y="333" width="268" height="10" fill="#D97706" />
+    <text x="742" y="336" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">TRACK 3: VIP / URGENT (SCORE &gt;= 85)</text>
+    <text x="620" y="358" fill="#0F172A" font-size="9.5" font-weight="700">[N] Instant Whisper Brief (`Prompt 3.5`)</text>
+    <text x="620" y="374" fill="#1E293B" font-size="9">• Sends 60s SMS hold message to customer</text>
+    <text x="620" y="388" fill="#1E293B" font-size="9">• Texts Owner/Closer 5-bullet deal brief +</text>
+    <text x="620" y="402" fill="#1E293B" font-size="9">  1-tap `tel:` dial link for live call takeover</text>
+    <text x="620" y="417" fill="#D97706" font-size="8.5" font-weight="700">Captures emergency &amp; high-ticket jobs first</text>
+  </g>
+
+  <!-- Bottom Footer -->
+  <rect x="24" y="440" width="852" height="24" rx="5" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" />
+  <text x="450" y="456" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">COMPLIANCE RULE: Every Outbound SMS Enforces A2P 10DLC Sender ID, Opt-In Verification &amp; Instant `STOP` Webhook Unsubscribe</text>
+</svg>

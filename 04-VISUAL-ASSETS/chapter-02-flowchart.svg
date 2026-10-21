@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ch2f-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0F172A" />
+    </marker>
+    <marker id="ch2f-emerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="ch2f-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7" />
+    </marker>
+    <marker id="ch2f-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706" />
+    </marker>
+    <filter id="ch2f-shadow" x="-5%" y="-5%" width="110%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0F172A" flood-opacity="0.09" />
+    </filter>
+  </defs>
+
+  <!-- Canvas & Frame -->
+  <rect x="0" y="0" width="900" height="480" fill="#FFFFFF" />
+  <rect x="8" y="8" width="884" height="464" rx="10" fill="none" stroke="#CBD5E1" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <rect x="8" y="8" width="884" height="46" rx="10" fill="#0F172A" />
+  <rect x="8" y="38" width="884" height="16" fill="#0F172A" />
+  <text x="26" y="31" fill="#FFFFFF" font-size="14" font-weight="700" letter-spacing="0.4">CHAPTER 2 DECISION TREE — 3-ZONE RISK ROUTING &amp; HUMAN APPROVAL GATE</text>
+  <text x="26" y="46" fill="#64748B" font-size="10" font-weight="500">Routing Every Webhook &amp; AI Output Through Green (Auto), Amber (1-Click Approve), or Red (Human Takeover)</text>
+  <rect x="730" y="18" width="146" height="24" rx="12" fill="#059669" />
+  <text x="803" y="34" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">3-ZONE ROUTER</text>
+
+  <!-- NODE 1: WEBHOOK TRIGGER & DEDUP -->
+  <g filter="url(#ch2f-shadow)">
+    <rect x="24" y="72" width="175" height="84" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="2" />
+    <text x="111" y="92" fill="#0284C7" font-size="9.5" font-weight="700" text-anchor="middle">STEP 1: [T] TRIGGER</text>
+    <text x="111" y="110" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">Inbound Webhook</text>
+    <text x="111" y="125" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">&amp; Idempotency Check</text>
+    <text x="111" y="143" fill="#CBD5E1" font-size="8.5" text-anchor="middle">Verify unique `event_hash`</text>
+  </g>
+
+  <line x1="199" y1="114" x2="236" y2="114" stroke="#0284C7" stroke-width="2.2" marker-end="url(#ch2f-cyan)" />
+
+  <!-- NODE 2: DETERMINISTIC PRE-FLIGHT FILTER -->
+  <g filter="url(#ch2f-shadow)">
+    <rect x="242" y="72" width="196" height="84" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <rect x="242" y="72" width="196" height="22" rx="8" fill="#0284C7" />
+    <rect x="242" y="84" width="196" height="10" fill="#0284C7" />
+    <text x="340" y="87" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">STEP 2: [R] CODE PRE-FILTER</text>
+    <text x="340" y="108" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">Legal / Emergency / Threat /</text>
+    <text x="340" y="122" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">Chargeback Keyword Detected?</text>
+    <text x="340" y="141" fill="#64748B" font-size="8.5" text-anchor="middle">Regex check before calling LLM</text>
+  </g>
+
+  <!-- Step 2 YES -> RED ZONE (Right Top) -->
+  <line x1="438" y1="114" x2="615" y2="114" stroke="#0F172A" stroke-width="2.2" marker-end="url(#ch2f-dark)" />
+  <rect x="466" y="96" width="120" height="16" rx="3" fill="#0F172A" />
+  <text x="526" y="107" fill="#FFFFFF" font-size="8.5" font-weight="700" text-anchor="middle">YES (CRITICAL RISK)</text>
+
+  <!-- RED ZONE BOX (TOP RIGHT) -->
+  <g filter="url(#ch2f-shadow)">
+    <rect x="622" y="68" width="254" height="102" rx="8" fill="#0F172A" stroke="#D97706" stroke-width="2.5" />
+    <rect x="634" y="78" width="230" height="20" rx="4" fill="#D97706" />
+    <text x="749" y="92" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">RED ZONE: HUMAN TAKEOVER</text>
+    <text x="636" y="114" fill="#FFFFFF" font-size="9.5" font-weight="700">Bypass AI Customer Reply Completely</text>
+    <text x="636" y="130" fill="#CBD5E1" font-size="9">• Lock automated outbound thread immediately</text>
+    <text x="636" y="145" fill="#CBD5E1" font-size="9">• Send instant Urgent SMS/Slack alert to Owner</text>
+    <text x="636" y="160" fill="#D97706" font-size="8.5" font-weight="700">Used for: Legal, Safety, VIP Disputes, &gt;$5k Custom</text>
+  </g>
+
+  <!-- Step 2 NO -> STEP 3 (Downward) -->
+  <line x1="340" y1="156" x2="340" y2="196" stroke="#059669" stroke-width="2.2" marker-end="url(#ch2f-emerald)" />
+  <rect x="302" y="166" width="76" height="16" rx="3" fill="#059669" />
+  <text x="340" y="177" fill="#FFFFFF" font-size="8.5" font-weight="700" text-anchor="middle">NO (SAFE)</text>
+
+  <!-- NODE 3: AI JSON PROCESSING & PRE-FLIGHT VALIDATOR -->
+  <g filter="url(#ch2f-shadow)">
+    <rect x="200" y="202" width="280" height="86" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2" />
+    <rect x="200" y="202" width="280" height="22" rx="8" fill="#059669" />
+    <rect x="200" y="214" width="280" height="10" fill="#059669" />
+    <text x="340" y="217" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">STEP 3: [A] GROUNDED AI + JSON VALIDATOR</text>
+    <text x="340" y="238" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">Inject Pricebook/SOP -&gt; Parse JSON Schema</text>
+    <text x="340" y="254" fill="#1E293B" font-size="9" text-anchor="middle">Verify: `json_valid == true` AND no banned terms</text>
+    <text x="340" y="270" fill="#0284C7" font-size="9" font-weight="700" text-anchor="middle">Evaluate: `confidence_score` &amp; `financial_exposure`</text>
+  </g>
+
+  <!-- Step 3 Schema Error -> Dead-Letter Fallback (Left of Step 3) -->
+  <line x1="200" y1="245" x2="170" y2="245" stroke="#D97706" stroke-width="2" marker-end="url(#ch2f-amber)" />
+  <g filter="url(#ch2f-shadow)">
+    <rect x="24" y="196" width="140" height="98" rx="8" fill="#F8FAFC" stroke="#D97706" stroke-width="1.8" />
+    <text x="94" y="215" fill="#D97706" font-size="9" font-weight="700" text-anchor="middle">FALLBACK QUEUE</text>
+    <text x="94" y="232" fill="#0F172A" font-size="9" font-weight="700" text-anchor="middle">Dead-Letter Handler</text>
+    <text x="94" y="248" fill="#1E293B" font-size="8.5" text-anchor="middle">On API timeout or</text>
+    <text x="94" y="261" fill="#1E293B" font-size="8.5" text-anchor="middle">JSON fail: send static</text>
+    <text x="94" y="274" fill="#1E293B" font-size="8.5" text-anchor="middle">safe receipt &amp; log</text>
+  </g>
+
+  <!-- Step 3 -> Gate 4 (Downward & Right Split) -->
+  <!-- Branch 1: High Confidence & Zero Financial Commitment -> GREEN ZONE (Bottom Left) -->
+  <line x1="270" y1="288" x2="270" y2="328" stroke="#059669" stroke-width="2.4" marker-end="url(#ch2f-emerald)" />
+  <rect x="195" y="297" width="150" height="16" rx="3" fill="#059669" />
+  <text x="270" y="308" fill="#FFFFFF" font-size="8.5" font-weight="700" text-anchor="middle">CONF &gt;= 0.90 &amp; $0 COMMIT</text>
+
+  <!-- GREEN ZONE BOX (BOTTOM LEFT) -->
+  <g filter="url(#ch2f-shadow)">
+    <rect x="24" y="334" width="405" height="94" rx="8" fill="#0F172A" stroke="#059669" stroke-width="2.2" />
+    <rect x="36" y="344" width="210" height="20" rx="4" fill="#059669" />
+    <text x="141" y="358" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">GREEN ZONE: AUTO-EXECUTE (24/7)</text>
+    <text x="36" y="378" fill="#FFFFFF" font-size="10" font-weight="700">Immediate Unattended Customer &amp; Internal Execution</text>
+    <text x="36" y="394" fill="#CBD5E1" font-size="9">• 60s Missed-Call / Web Form SMS Intake &amp; Calendar Link</text>
+    <text x="36" y="408" fill="#CBD5E1" font-size="9">• Tier-1 Grounded FAQ Replies, CRM Sync, Folder Setup, AR Reminders</text>
+    <text x="36" y="421" fill="#059669" font-size="8.5" font-weight="700">Logs full JSON input/output to immutable audit table (`0 human mins`)</text>
+  </g>
+
+  <!-- Branch 2: Custom Quote, Discount, or Conf 0.70-0.89 -> AMBER ZONE (Bottom Right) -->
+  <path d="M 480 245 L 555 245 L 555 328" fill="none" stroke="#D97706" stroke-width="2.4" marker-end="url(#ch2f-amber)" />
+  <rect x="488" y="224" width="148" height="16" rx="3" fill="#D97706" />
+  <text x="562" y="235" fill="#FFFFFF" font-size="8.5" font-weight="700" text-anchor="middle">PRICING / CONF 0.70–0.89</text>
+
+  <!-- AMBER ZONE BOX (BOTTOM RIGHT) -->
+  <g filter="url(#ch2f-shadow)">
+    <rect x="455" y="334" width="421" height="94" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="2.2" />
+    <rect x="455" y="334" width="421" height="24" rx="8" fill="#D97706" />
+    <rect x="455" y="348" width="421" height="10" fill="#D97706" />
+    <text x="665" y="350" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">AMBER ZONE: 1-CLICK HUMAN APPROVAL GATE (#D97706)</text>
+    <text x="469" y="374" fill="#0F172A" font-size="10" font-weight="700">AI Preps 95% of Draft -&gt; Pushes Slack / Email Approval Card</text>
+    <text x="469" y="390" fill="#1E293B" font-size="9">• Displays Customer Context + AI Draft + Margin Calculation</text>
+    <text x="469" y="405" fill="#1E293B" font-size="9">• Buttons: `[Approve &amp; Send]` | `[Edit Before Send]` | `[Escalate to Red]`</text>
+    <text x="469" y="420" fill="#D97706" font-size="8.5" font-weight="700">Used for: Custom Quotes, Change Orders, Credits &gt;$50, Sensitive Replies</text>
+  </g>
+
+  <!-- Bottom Footer -->
+  <rect x="24" y="440" width="852" height="24" rx="5" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" />
+  <text x="450" y="456" fill="#0F172A" font-size="9.5" font-weight="700" text-anchor="middle">T.R.A.V. SAFETY INVARIANT: AI NeverGuesses Prices or Legal Terms — Unsure Outputs Automatically Route to Amber or Fallback Queue</text>
+</svg>
