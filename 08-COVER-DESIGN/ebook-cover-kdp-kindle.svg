@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2560" width="1600" height="2560">
+  
+  <defs>
+    <linearGradient id="kdp_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="55%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="kdp_emerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <linearGradient id="kdp_cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="kdp_amber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <radialGradient id="kdp_glow" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.28" />
+      <stop offset="55%" stop-color="#0284C7" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.0" />
+    </radialGradient>
+    <pattern id="kdp_grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.8" stroke-opacity="0.45" />
+      <circle cx="40" cy="40" r="1.4" fill="#64748B" fill-opacity="0.45" />
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="2560" fill="url(#kdp_bg)" />
+  <rect width="1600" height="2560" fill="url(#kdp_grid)" />
+  <circle cx="800" cy="1180" r="760" fill="url(#kdp_glow)" />
+  <line x1="80" y1="180" x2="1520" y2="180" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="260" x2="1520" y2="260" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="340" x2="1520" y2="340" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="420" x2="1520" y2="420" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="500" x2="1520" y2="500" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="580" x2="1520" y2="580" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="660" x2="1520" y2="660" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="740" x2="1520" y2="740" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="820" x2="1520" y2="820" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="900" x2="1520" y2="900" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="980" x2="1520" y2="980" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1060" x2="1520" y2="1060" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1140" x2="1520" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1220" x2="1520" y2="1220" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1300" x2="1520" y2="1300" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1380" x2="1520" y2="1380" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1460" x2="1520" y2="1460" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1540" x2="1520" y2="1540" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1620" x2="1520" y2="1620" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1700" x2="1520" y2="1700" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1780" x2="1520" y2="1780" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1860" x2="1520" y2="1860" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="1940" x2="1520" y2="1940" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="2020" x2="1520" y2="2020" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="2100" x2="1520" y2="2100" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="2180" x2="1520" y2="2180" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="2260" x2="1520" y2="2260" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="2340" x2="1520" y2="2340" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="180" x2="80" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="160" y1="180" x2="160" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="240" y1="180" x2="240" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="320" y1="180" x2="320" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="400" y1="180" x2="400" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="480" y1="180" x2="480" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="560" y1="180" x2="560" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="640" y1="180" x2="640" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="720" y1="180" x2="720" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="800" y1="180" x2="800" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="880" y1="180" x2="880" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="960" y1="180" x2="960" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1040" y1="180" x2="1040" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1120" y1="180" x2="1120" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1200" y1="180" x2="1200" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1280" y1="180" x2="1280" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1360" y1="180" x2="1360" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1440" y1="180" x2="1440" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1520" y1="180" x2="1520" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+
+  <!-- Outer Architectural Frame -->
+  <rect x="64" y="64" width="1472" height="2432" rx="18" fill="none" stroke="#334155" stroke-width="3" />
+  <rect x="84" y="84" width="1432" height="2392" rx="12" fill="none" stroke="#059669" stroke-width="1.5" stroke-opacity="0.6" />
+
+  <!-- Top Edition Header Bar -->
+  <rect x="140" y="130" width="1320" height="76" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
+  <circle cx="185" cy="168" r="12" fill="#059669" />
+  <circle cx="220" cy="168" r="12" fill="#0284C7" />
+  <circle cx="255" cy="168" r="12" fill="#D97706" />
+  <text x="300" y="178" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="2">
+    2026 ENTERPRISE EDITION • ZERO EXTRA STAFF REQUIRED
+  </text>
+
+  <!-- Main Title Block -->
+  <text x="140" y="340" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="34" font-weight="700" letter-spacing="3">
+    SYSTEM ARCHITECTURE FOR 1–25 PERSON TEAMS
+  </text>
+  <text x="140" y="470" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="108" font-weight="900" letter-spacing="-1">
+    THE SMALL BUSINESS
+  </text>
+  <text x="140" y="600" fill="#34D399" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="114" font-weight="900" letter-spacing="-1">
+    AI AUTOMATION
+  </text>
+  <text x="140" y="730" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="108" font-weight="900" letter-spacing="-1">
+    OPERATING SYSTEM
+  </text>
+
+  <!-- Accent Divider -->
+  <rect x="140" y="785" width="460" height="10" rx="5" fill="url(#kdp_emerald)" />
+  <rect x="620" y="785" width="240" height="10" rx="5" fill="url(#kdp_cyan)" />
+  <rect x="880" y="785" width="120" height="10" rx="5" fill="url(#kdp_amber)" />
+
+  <!-- Subtitle -->
+  <text x="140" y="865" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="36" font-weight="500">
+    A Practical System to Automate Lead Capture, Customer Support,
+  </text>
+  <text x="140" y="918" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="36" font-weight="500">
+    Invoicing, Team Operations, and Weekly Owner Reporting
+  </text>
+
+  <!-- Centerpiece: 5-Department Operating System Blueprint Graphic -->
+  <rect x="140" y="990" width="1320" height="1060" rx="22" fill="#0F172A" stroke="#334155" stroke-width="3" />
+  <rect x="140" y="990" width="1320" height="68" rx="22" fill="#1E293B" />
+  <text x="185" y="1034" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">
+    T.R.A.V. GOVERNANCE ENGINE: TRIGGER -&gt; RULES -&gt; AI -&gt; VERIFICATION GATE
+  </text>
+
+  <!-- Central Hub Node -->
+  <circle cx="800" cy="1510" r="165" fill="#1E293B" stroke="#059669" stroke-width="6" />
+  <circle cx="800" cy="1510" r="135" fill="#0F172A" stroke="#0284C7" stroke-width="2" stroke-dasharray="8,6" />
+  <text x="800" y="1475" text-anchor="middle" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">CORE ENGINE</text>
+  <text x="800" y="1520" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="900">5-DEPT OS</text>
+  <text x="800" y="1560" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="21">50 PROMPTS • 12 SCRIPTS</text>
+
+  <!-- Connector Spokes -->
+  <line x1="800" y1="1345" x2="800" y2="1220" stroke="#059669" stroke-width="4" />
+  <line x1="650" y1="1430" x2="430" y2="1280" stroke="#0284C7" stroke-width="4" />
+  <line x1="950" y1="1430" x2="1170" y2="1280" stroke="#059669" stroke-width="4" />
+  <line x1="665" y1="1605" x2="430" y2="1770" stroke="#D97706" stroke-width="4" />
+  <line x1="935" y1="1605" x2="1170" y2="1770" stroke="#0284C7" stroke-width="4" />
+
+  <!-- Dept 01 Top Center Card -->
+  <rect x="530" y="1090" width="540" height="130" rx="14" fill="#1E293B" stroke="#059669" stroke-width="3" />
+  <text x="800" y="1140" text-anchor="middle" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="22" font-weight="700">DEPT 01 • SPEED-TO-LEAD (&lt;60s SLA)</text>
+  <text x="800" y="1182" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Omnichannel Intake &amp; Missed-Call SMS Bot</text>
+
+  <!-- Dept 02 Top Left Card -->
+  <rect x="180" y="1240" width="440" height="150" rx="14" fill="#1E293B" stroke="#0284C7" stroke-width="3" />
+  <text x="210" y="1290" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">DEPT 02 • SALES &amp; QUOTING</text>
+  <text x="210" y="1332" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Voice-to-3-Tier Proposals</text>
+  <text x="210" y="1368" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21">&amp; 14-Day Polite Follow-Up Loop</text>
+
+  <!-- Dept 03 Top Right Card -->
+  <rect x="980" y="1240" width="440" height="150" rx="14" fill="#1E293B" stroke="#059669" stroke-width="3" />
+  <text x="1010" y="1290" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">DEPT 03 • DELIVERY &amp; SUPPORT</text>
+  <text x="1010" y="1332" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Zero-Drop Onboarding, RAG</text>
+  <text x="1010" y="1368" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21">Support &amp; 5-Star Review Engine</text>
+
+  <!-- Dept 04 Bottom Left Card -->
+  <rect x="180" y="1700" width="440" height="150" rx="14" fill="#1E293B" stroke="#D97706" stroke-width="3" />
+  <text x="210" y="1750" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">DEPT 04 • FINANCE &amp; A/R</text>
+  <text x="210" y="1792" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Same-Day Invoicing, 5-Stage</text>
+  <text x="210" y="1828" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21">AR Chaser &amp; Receipt OCR</text>
+
+  <!-- Dept 05 Bottom Right Card -->
+  <rect x="980" y="1700" width="440" height="150" rx="14" fill="#1E293B" stroke="#0284C7" stroke-width="3" />
+  <text x="1010" y="1750" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">DEPT 05 • OWNER COMMAND</text>
+  <text x="1010" y="1792" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">7-Block Living SOPs &amp; Friday</text>
+  <text x="1010" y="1828" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21">15-Minute 12-KPI Scorecard</text>
+
+  <!-- Bottom Telemetry Strip Inside Diagram -->
+  <rect x="180" y="1905" width="1240" height="105" rx="12" fill="#1E293B" stroke="#334155" stroke-width="2" />
+  <text x="220" y="1950" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">GREEN GATE (75% AUTO)</text>
+  <text x="220" y="1985" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">24/7 Unattended Routine Execution</text>
+  <text x="660" y="1950" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">AMBER GATE (20% HITL)</text>
+  <text x="660" y="1985" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">AI Draft + 15s Human Approval</text>
+  <text x="1090" y="1950" fill="#F87171" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">RED GATE (5% CRISIS)</text>
+  <text x="1090" y="1985" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">Immediate Human Takeover</text>
+
+  <!-- Footer Author & Deliverable Pill Bar -->
+  <rect x="140" y="2120" width="1320" height="170" rx="16" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
+  <text x="800" y="2180" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">
+    INCLUDES 50 TESTED WORKFLOW PROMPTS • 12 EMERGENCY SCRIPTS • 90-DAY ROADMAP
+  </text>
+  <text x="800" y="2235" text-anchor="middle" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="600">
+    MAKE.COM • ZAPIER • N8N • OPENAI • CLAUDE • NOTION • QUICKBOOKS • STRIPE
+  </text>
+
+  <text x="800" y="2395" text-anchor="middle" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="3">
+    DIGITAL PUBLISHING STUDIO • ENTERPRISE OPERATIONS SERIES
+  </text>
+</svg>

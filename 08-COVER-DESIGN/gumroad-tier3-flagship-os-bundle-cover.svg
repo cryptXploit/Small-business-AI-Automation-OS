@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200">
+  
+  <defs>
+    <linearGradient id="t3_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="55%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="t3_emerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <linearGradient id="t3_cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="t3_amber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <radialGradient id="t3_glow" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.28" />
+      <stop offset="55%" stop-color="#0284C7" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.0" />
+    </radialGradient>
+    <pattern id="t3_grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.8" stroke-opacity="0.45" />
+      <circle cx="40" cy="40" r="1.4" fill="#64748B" fill-opacity="0.45" />
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#t3_bg)" />
+  <rect width="1600" height="1200" fill="url(#t3_grid)" />
+  <line x1="50" y1="60" x2="1550" y2="60" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="120" x2="1550" y2="120" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="180" x2="1550" y2="180" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="240" x2="1550" y2="240" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="300" x2="1550" y2="300" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="360" x2="1550" y2="360" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="420" x2="1550" y2="420" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="480" x2="1550" y2="480" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="540" x2="1550" y2="540" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="600" x2="1550" y2="600" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="660" x2="1550" y2="660" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="720" x2="1550" y2="720" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="780" x2="1550" y2="780" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="840" x2="1550" y2="840" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="900" x2="1550" y2="900" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="960" x2="1550" y2="960" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="1020" x2="1550" y2="1020" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="1080" x2="1550" y2="1080" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="1140" x2="1550" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="50" y1="60" x2="50" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="110" y1="60" x2="110" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="170" y1="60" x2="170" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="230" y1="60" x2="230" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="290" y1="60" x2="290" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="350" y1="60" x2="350" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="410" y1="60" x2="410" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="470" y1="60" x2="470" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="530" y1="60" x2="530" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="590" y1="60" x2="590" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="650" y1="60" x2="650" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="710" y1="60" x2="710" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="770" y1="60" x2="770" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="830" y1="60" x2="830" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="890" y1="60" x2="890" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="950" y1="60" x2="950" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1010" y1="60" x2="1010" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1070" y1="60" x2="1070" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1130" y1="60" x2="1130" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1190" y1="60" x2="1190" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1250" y1="60" x2="1250" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1310" y1="60" x2="1310" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1370" y1="60" x2="1370" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1430" y1="60" x2="1430" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1490" y1="60" x2="1490" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <line x1="1550" y1="60" x2="1550" y2="1140" stroke="#1E293B" stroke-width="1" opacity="0.5"/>
+  <circle cx="1150" cy="600" r="520" fill="url(#t3_glow)" />
+
+  <rect x="44" y="44" width="1512" height="1112" rx="18" fill="none" stroke="#334155" stroke-width="3" />
+  <rect x="60" y="60" width="1480" height="1080" rx="14" fill="none" stroke="#059669" stroke-width="1.5" stroke-opacity="0.7" />
+
+  <!-- Top Tier & Price Header -->
+  <rect x="90" y="95" width="920" height="64" rx="10" fill="#1E293B" stroke="#059669" stroke-width="2" />
+  <text x="120" y="136" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="23" font-weight="800" letter-spacing="1.5">
+    TIER 3 • FLAGSHIP COMPLETE OPERATING SYSTEM
+  </text>
+
+  <rect x="1040" y="95" width="470" height="64" rx="10" fill="#059669" />
+  <text x="1275" y="136" text-anchor="middle" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="900">
+    COMPLETE OS BUNDLE ($59)
+  </text>
+
+  <!-- Main Headlines -->
+  <text x="90" y="255" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="68" font-weight="900" letter-spacing="-1">
+    THE SMALL BUSINESS AI
+  </text>
+  <text x="90" y="340" fill="#059669" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="68" font-weight="900" letter-spacing="-1">
+    AUTOMATION OS BUNDLE
+  </text>
+  <text x="90" y="408" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="500">
+    Book + Workbooks + Pro Web App + 5-DB Notion OS + Excel Command Center + JSON Blueprints
+  </text>
+
+  <rect x="90" y="445" width="520" height="8" rx="4" fill="#059669" />
+  <rect x="630" y="445" width="220" height="8" rx="4" fill="#0284C7" />
+
+  <text x="90" y="530" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="22" font-weight="700" letter-spacing="1.5">
+    INCLUDED DELIVERABLES &amp; EXECUTION TOOLS:
+  </text>
+
+  <rect x="90" y="570" width="840" height="62" rx="10" fill="#1E293B" stroke="#059669" stroke-width="1.8" /><circle cx="126" cy="601" r="10" fill="#059669" /><text x="152" y="609" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700">Commercial Pro Web Companion App + License Key (SMALLBIZ-OS-PRO-2026)</text><rect x="90" y="648" width="840" height="62" rx="10" fill="#1E293B" stroke="#059669" stroke-width="1.8" /><circle cx="126" cy="679" r="10" fill="#059669" /><text x="152" y="687" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700">5-Database Minimalist Notion Small Business OS Kit + Formula 2.0 Pack</text><rect x="90" y="726" width="840" height="62" rx="10" fill="#1E293B" stroke="#059669" stroke-width="1.8" /><circle cx="126" cy="757" r="10" fill="#059669" /><text x="152" y="765" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700">8-Tab Formula-Driven Excel Command Center (.XLSX) With Native Charts</text><rect x="90" y="804" width="840" height="62" rx="10" fill="#1E293B" stroke="#059669" stroke-width="1.8" /><circle cx="126" cy="835" r="10" fill="#059669" /><text x="152" y="843" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700">Importable Make.com, Zapier &amp; n8n Automation Blueprints (.JSON)</text><rect x="90" y="882" width="840" height="62" rx="10" fill="#1E293B" stroke="#059669" stroke-width="1.8" /><circle cx="126" cy="913" r="10" fill="#059669" /><text x="152" y="921" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700">Complete Book (PDF/EPUB) + US Letter, A4 &amp; iPad Fillable Workbooks</text>
+  <rect x="970" y="490" width="540" height="160" rx="14" fill="#1E293B" stroke="#059669" stroke-width="2.5" /><text x="1005" y="535" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="19" font-weight="700">TOTAL OS ASSETS INCLUDED</text><text x="1005" y="592" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="44" font-weight="800">50 PROMPTS</text><text x="1005" y="628" fill="#059669" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">+ 12 Crisis Scripts + 5 Notion DBs + Pro App</text><rect x="970" y="675" width="540" height="160" rx="14" fill="#1E293B" stroke="#059669" stroke-width="2.5" /><text x="1005" y="720" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="19" font-weight="700">WEEKLY BANDWIDTH SAVED</text><text x="1005" y="777" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="44" font-weight="800">15–25 HRS</text><text x="1005" y="813" fill="#059669" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">Per Week Across All 5 Core Departments</text><rect x="970" y="860" width="540" height="160" rx="14" fill="#1E293B" stroke="#059669" stroke-width="2.5" /><text x="1005" y="905" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="19" font-weight="700">MEDIAN PAYBACK PERIOD</text><text x="1005" y="962" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="44" font-weight="800">&lt; 6 DAYS</text><text x="1005" y="998" fill="#059669" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">100% Offline Privacy • Zero Extra Hiring</text>
+
+  <!-- Bottom Bar -->
+  <rect x="90" y="1055" width="1420" height="62" rx="10" fill="#0F172A" stroke="#334155" stroke-width="2" />
+  <text x="800" y="1094" text-anchor="middle" fill="#CBD5E1" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">
+    THE SMALL BUSINESS AI AUTOMATION OPERATING SYSTEM • 2026 ENTERPRISE EDITION
+  </text>
+</svg>
