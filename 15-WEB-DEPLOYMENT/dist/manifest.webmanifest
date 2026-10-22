@@ -1,0 +1,22 @@
+{
+  "name": "The Small Business AI Automation Operating System (2026 Edition)",
+  "short_name": "SmallBiz AI OS",
+  "description": "Offline-capable 5-Department AI Automation Companion Web App, Prompt Vault, ROI Matrix & Design Studio.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#059669",
+  "icons": [
+    {
+      "src": "assets/ebook-cover-kdp-kindle.png",
+      "sizes": "1600x2560",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/00-ECOSYSTEM-MASTER-MAP-POSTER.png",
+      "sizes": "1600x1000",
+      "type": "image/png"
+    }
+  ]
+}

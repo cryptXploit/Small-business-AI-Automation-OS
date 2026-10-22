@@ -1,0 +1,5 @@
+# Cloudflare Pages & Netlify Clean Route Redirects
+/companion   /app/index.html   301
+/webapp      /app/index.html   301
+/customizer  /studio/index.html 301
+/free-audit  /downloads/Tier0-Free-5Day-Audit-Starter-Kit.zip 302

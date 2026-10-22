@@ -1,0 +1,70 @@
+{
+  "timestamp": "2026-10-22T19:17:01.316164+00:00",
+  "phase": "Phase 10 \u2014 Static Web Deployment, Live Demo Hub & Final v1.0.0 Production Release",
+  "html_routes": {
+    "dist/index.html": {
+      "bytes": 109556,
+      "kb": 106.99,
+      "checked_imgs": 2,
+      "checked_hrefs": 9,
+      "lexical_violations": 0
+    },
+    "dist/404.html": {
+      "bytes": 3200,
+      "kb": 3.12,
+      "checked_imgs": 0,
+      "checked_hrefs": 4,
+      "lexical_violations": 0
+    },
+    "dist/app/index.html": {
+      "bytes": 713478,
+      "kb": 696.76,
+      "checked_imgs": 0,
+      "checked_hrefs": 3,
+      "lexical_violations": 0
+    },
+    "dist/studio/index.html": {
+      "bytes": 87290,
+      "kb": 85.24,
+      "checked_imgs": 0,
+      "checked_hrefs": 3,
+      "lexical_violations": 0
+    }
+  },
+  "assets": {
+    "ebook-cover-kdp-kindle.png": 1322001,
+    "gumroad-tier0-free-audit-cover.png": 775930,
+    "gumroad-tier2-workbook-atlas-cover.png": 785928,
+    "gumroad-tier3-flagship-os-bundle-cover.png": 781794,
+    "gumroad-tier4-living-vault-membership-cover.png": 783027,
+    "00-ECOSYSTEM-MASTER-MAP-POSTER.png": 242690,
+    "cheat-sheet-ch01.png": 195617
+  },
+  "downloads": {
+    "tier0-free-sample-chapter01-and-audit.pdf": 1294805,
+    "chapter-01-workbook.pdf": 863021,
+    "sheet1-automation-roi-and-leak-calculator.csv": 5056,
+    "00-ECOSYSTEM-MASTER-MAP-POSTER.png": 242690,
+    "cheat-sheet-ch01.png": 195617,
+    "Tier0-Free-5Day-Audit-Starter-Kit.zip": 3278732
+  },
+  "configs": {
+    "dist/manifest.webmanifest": 654,
+    "vercel.json": 1123,
+    "dist/sitemap.xml": 898,
+    "dist/robots.txt": 160,
+    "dist/_headers": 344,
+    "dist/_redirects": 228,
+    "netlify.toml": 758,
+    "deploy-github-pages.yml": 838,
+    "STATIC-WEB-DEPLOYMENT-AND-LAUNCH-GUIDE.md_words": 2332,
+    "SmallBiz-AI-OS-Cloudflare-Netlify-Dist.zip": {
+      "bytes": 10659003,
+      "mb": 10.17,
+      "files": 22
+    }
+  },
+  "total_errors": 0,
+  "errors": [],
+  "status": "PASS"
+}

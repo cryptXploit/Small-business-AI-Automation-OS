@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "name": "smallbiz-ai-automation-os",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/companion",
+      "destination": "/app/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/customizer",
+      "destination": "/studio/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/free-audit",
+      "destination": "/downloads/Tier0-Free-5Day-Audit-Starter-Kit.zip",
+      "permanent": false
+    }
+  ]
+}

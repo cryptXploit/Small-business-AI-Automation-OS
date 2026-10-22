@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive Cover, SOP Binder & Social Graphic Customizer Studio — Small Business AI Automation OS</title>
+  <style>
+    :root {
+      --primary: #0F172A;
+      --primary-alt: #1E293B;
+      --accent: #059669;
+      --secondary: #0284C7;
+      --warning: #D97706;
+      --text: #1E293B;
+      --muted: #64748B;
+      --bg: #F1F5F9;
+      --card: #FFFFFF;
+      --border: #CBD5E1;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 0.9rem 1.5rem;
+      border-bottom: 3px solid var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    header h1 { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; }
+    header .sub { font-size: 0.78rem; color: #94A3B8; font-family: var(--font-mono); }
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 430px 1fr;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      flex: 1;
+      max-width: 1720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    @media (max-width: 1100px) { .studio-grid { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+      overflow-y: auto;
+      max-height: calc(100vh - 95px);
+    }
+    .panel h2 {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      border-bottom: 2px solid #E2E8F0;
+      padding-bottom: 0.45rem;
+      margin: 1rem 0 0.75rem;
+    }
+    .panel h2:first-child { margin-top: 0; }
+    .field { margin-bottom: 0.75rem; }
+    .field label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .field input[type="text"], .field select, .field textarea {
+      width: 100%;
+      padding: 0.5rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.84rem;
+      font-family: var(--font-sans);
+      color: var(--primary);
+      background: #F8FAFC;
+    }
+    .field input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .color-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .color-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem;
+      text-align: center;
+    }
+    .color-box label { font-size: 0.7rem; font-weight: 700; display: block; margin-bottom: 0.2rem; }
+    .color-box input[type="color"] { width: 100%; height: 28px; border: none; cursor: pointer; background: none; }
+    .preset-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: 0.15s ease;
+    }
+    .btn-emerald { background: var(--accent); color: #FFFFFF; }
+    .btn-emerald:hover { background: #047857; }
+    .btn-cyan { background: var(--secondary); color: #FFFFFF; }
+    .btn-outline { background: #F8FAFC; color: var(--primary); border-color: var(--border); font-size: 0.75rem; padding: 0.4rem 0.6rem; }
+    .btn-outline:hover { background: #E2E8F0; }
+    .canvas-stage {
+      background: #0B1120;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem;
+      min-height: 680px;
+    }
+    .stage-toolbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid #1E293B;
+      color: #CBD5E1;
+      font-size: 0.82rem;
+    }
+    #svgPreviewContainer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 1.25rem 0;
+      overflow: auto;
+    }
+    #svgPreviewContainer svg {
+      max-height: 70vh;
+      max-width: 100%;
+      height: auto;
+      width: auto;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65);
+      border-radius: 4px;
+    }
+    .stage-footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid #1E293B;
+      color: #94A3B8;
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+
+<div id="deployStudioTopBar" style="background:#020617;border-bottom:1px solid #1E293B;padding:8px 20px;display:flex;align-items:center;justify-content:space-between;font-family:system-ui,-apple-system,sans-serif;font-size:13px;color:#CBD5E1;z-index:9999;">
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+    <a href="../index.html" style="color:#34D399;text-decoration:none;font-weight:700;">← Back to Storefront &amp; Download Hub</a>
+    <span style="color:#475569;">|</span>
+    <a href="../app/index.html" style="color:#38BDF8;text-decoration:none;font-weight:600;">Launch Interactive SaaS-Lite Companion App →</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span style="background:rgba(2,132,199,0.18);border:1px solid #0284C7;color:#BAE6FD;padding:2px 8px;border-radius:4px;font-family:monospace;font-size:11px;">80 QUICK-LOAD PRESETS • PNG &amp; SVG EXPORT</span>
+    <a href="../downloads/Tier0-Free-5Day-Audit-Starter-Kit.zip" download style="color:#FBBF24;text-decoration:none;font-weight:700;">Download Free Starter Kit (.ZIP)</a>
+  </div>
+</div>
+
+  <header>
+    <div>
+      <h1>EXECUTIVE COVER, SOP BINDER &amp; SOCIAL GRAPHIC CUSTOMIZER STUDIO</h1>
+      <div class="sub">100% Offline Vector SVG &amp; High-Resolution HTML5 Canvas PNG Render Engine • Zero Cloud Dependencies</div>
+    </div>
+    <div style="display:flex; gap:0.6rem;">
+      <button type="button" class="btn btn-emerald" onclick="exportHighResPng()">Download High-Res .PNG</button>
+      <button type="button" class="btn btn-cyan" onclick="exportCleanSvg()">Download Vector .SVG</button>
+    </div>
+  </header>
+
+  <main class="studio-grid">
+    <!-- Left Controls Panel -->
+    <aside class="panel">
+      <h2>1. Select Canvas Format &amp; Dimension Preset</h2>
+      <div class="field">
+        <label for="tplSelect">Target Graphic Format</label>
+        <select id="tplSelect" onchange="handleTemplateChange()">
+          <option value="kindle">1. Kindle / Digital Book Cover (1600 × 2560 px)</option>
+          <option value="binder">2. Internal Team SOP Binder Cover (1600 × 2200 px)</option>
+          <option value="gumroad">3. Gumroad / Course Bundle Banner (1600 × 1200 px)</option>
+          <option value="linkedin">4. LinkedIn / Executive Social Launch Card (1200 × 630 px)</option>
+          <option value="square">5. 5-Dept Architecture Square Card (1080 × 1080 px)</option>
+        </select>
+      </div>
+
+      <h2>2. Executive Theme Color Presets</h2>
+      <div class="preset-bar">
+        <button type="button" class="btn btn-outline" onclick="applyColorPreset('emerald')">Executive Emerald &amp; Slate</button>
+        <button type="button" class="btn btn-outline" onclick="applyColorPreset('cobalt')">Enterprise Cobalt &amp; Cyan</button>
+        <button type="button" class="btn btn-outline" onclick="applyColorPreset('amber')">Industrial Gold &amp; Carbon</button>
+        <button type="button" class="btn btn-outline" onclick="applyColorPreset('clinical')">Clinical Teal &amp; Navy</button>
+        <button type="button" class="btn btn-outline" onclick="applyColorPreset('crimson')">Executive Burgundy &amp; Slate</button>
+        <button type="button" class="btn btn-outline" onclick="resetStudioDefaults()">Reset Factory Defaults</button>
+      </div>
+
+      <div class="color-row">
+        <div class="color-box">
+          <label for="colPrimary">Canvas BG</label>
+          <input type="color" id="colPrimary" value="#0F172A" oninput="renderStudioSvg()" />
+        </div>
+        <div class="color-box">
+          <label for="colAccent">Primary Accent</label>
+          <input type="color" id="colAccent" value="#059669" oninput="renderStudioSvg()" />
+        </div>
+        <div class="color-box">
+          <label for="colSecondary">System Cyan</label>
+          <input type="color" id="colSecondary" value="#0284C7" oninput="renderStudioSvg()" />
+        </div>
+        <div class="color-box">
+          <label for="colWarn">Badge / Gate</label>
+          <input type="color" id="colWarn" value="#D97706" oninput="renderStudioSvg()" />
+        </div>
+      </div>
+
+      <h2>3. Live Typography &amp; White-Label Copy</h2>
+      <div class="field">
+        <label for="inpEyebrow">Top Series / Edition Eyebrow Badge</label>
+        <input type="text" id="inpEyebrow" value="2026 ENTERPRISE EDITION • OPERATIONS MANUAL" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpTitleLine1">Headline Line 1</label>
+        <input type="text" id="inpTitleLine1" value="THE SMALL BUSINESS" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpTitleLine2">Headline Line 2 (Highlighted Accent)</label>
+        <input type="text" id="inpTitleLine2" value="AI AUTOMATION" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpTitleLine3">Headline Line 3</label>
+        <input type="text" id="inpTitleLine3" value="OPERATING SYSTEM" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpSubtitle">Subtitle / Department Scope Statement</label>
+        <textarea id="inpSubtitle" rows="2" oninput="renderStudioSvg()">Automate Lead Capture, Customer Support, Invoicing, Team SOPs &amp; Weekly Owner Reporting Without Hiring Extra Staff</textarea>
+      </div>
+      <div class="field">
+        <label for="inpPill1">Metric Pill 1</label>
+        <input type="text" id="inpPill1" value="50 TESTED AI PROMPTS" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpPill2">Metric Pill 2</label>
+        <input type="text" id="inpPill2" value="12 RED-GATE SCRIPTS" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpPill3">Metric Pill 3</label>
+        <input type="text" id="inpPill3" value="T.R.A.V. SAFETY GATE" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpAuthor">Company / Author / Department Footer</label>
+        <input type="text" id="inpAuthor" value="DIGITAL PUBLISHING STUDIO • INTERNAL OPERATIONS SUITE" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpTitleScale">Headline Font Scale (%) <span id="lblTitleScale">100%</span></label>
+        <input type="range" id="inpTitleScale" min="75" max="125" value="100" oninput="renderStudioSvg()" />
+      </div>
+
+      <h2>4. Local Company Logo / Founder Photo Upload</h2>
+      <div class="field">
+        <label for="inpLogoFile">Upload PNG/JPG/SVG Logo or Headshot (100% Local FileReader)</label>
+        <input type="file" id="inpLogoFile" accept="image/*" onchange="handleLogoUpload(event)" />
+      </div>
+      <div class="field">
+        <label for="inpLogoSize">Uploaded Image Width (px) <span id="lblLogoSize">180 px</span></label>
+        <input type="range" id="inpLogoSize" min="60" max="420" value="180" oninput="renderStudioSvg()" />
+      </div>
+      <div class="field">
+        <label for="inpLogoY">Uploaded Image Vertical Offset (%) <span id="lblLogoY">82%</span></label>
+        <input type="range" id="inpLogoY" min="8" max="92" value="82" oninput="renderStudioSvg()" />
+      </div>
+      <button type="button" class="btn btn-outline" style="width:100%;" onclick="clearUploadedLogo()">Remove Uploaded Image</button>
+    </aside>
+
+    <!-- Right Live Canvas Stage -->
+    <section class="canvas-stage">
+      <div class="stage-toolbar">
+        <div>
+          <strong id="stageDimLabel" style="color:#34D399;">Active Canvas: 1600 × 2560 px (Kindle / eBook 1.6:1 Aspect)</strong>
+          <span style="margin-left:0.75rem; color:#94A3B8;">Live Vector DOM Preview</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button type="button" class="btn btn-emerald" onclick="exportHighResPng()">Export Exact-Pixel .PNG</button>
+          <button type="button" class="btn btn-cyan" onclick="exportCleanSvg()">Export Vector .SVG</button>
+        </div>
+      </div>
+
+      <div id="svgPreviewContainer"></div>
+
+      <div class="stage-footer">
+        <span id="exportStatusMsg">Status: Ready • Modify any control on the left to update the vector canvas in real time.</span>
+        <span>Theme: Executive Emerald &amp; Slate (#0F172A / #059669 / #0284C7)</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Offscreen HTML5 Canvas for Exact-Dimension PNG Rendering -->
+  <canvas id="offscreenExportCanvas" style="display:none;"></canvas>
+
+  <script>
+    const TEMPLATE_SPECS = {
+      kindle:   { w: 1600, h: 2560, name: "Kindle / Digital Book Cover (1600 × 2560 px)" },
+      binder:   { w: 1600, h: 2200, name: "Internal Team SOP Binder Cover (1600 × 2200 px)" },
+      gumroad:  { w: 1600, h: 1200, name: "Gumroad / Course Bundle Banner (1600 × 1200 px)" },
+      linkedin: { w: 1200, h: 630,  name: "LinkedIn / Social Launch Graphic (1200 × 630 px)" },
+      square:   { w: 1080, h: 1080, name: "5-Dept Workflow Social Square Card (1080 × 1080 px)" }
+    };
+
+    const COLOR_PRESETS = {
+      emerald:  { primary: "#0F172A", accent: "#059669", secondary: "#0284C7", warn: "#D97706" },
+      cobalt:   { primary: "#0B132B", accent: "#2563EB", secondary: "#06B6D4", warn: "#F59E0B" },
+      amber:    { primary: "#18181B", accent: "#D97706", secondary: "#0284C7", warn: "#10B981" },
+      clinical: { primary: "#0F2942", accent: "#0D9488", secondary: "#38BDF8", warn: "#F59E0B" },
+      crimson:  { primary: "#1F122B", accent: "#E11D48", secondary: "#0284C7", warn: "#D97706" }
+    };
+
+    let uploadedLogoDataUrl = null;
+
+    function escXml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function applyColorPreset(presetKey) {
+      const p = COLOR_PRESETS[presetKey] || COLOR_PRESETS.emerald;
+      document.getElementById("colPrimary").value = p.primary;
+      document.getElementById("colAccent").value = p.accent;
+      document.getElementById("colSecondary").value = p.secondary;
+      document.getElementById("colWarn").value = p.warn;
+      renderStudioSvg();
+    }
+
+    function handleTemplateChange() {
+      const tpl = document.getElementById("tplSelect").value;
+      if (tpl === "binder") {
+        document.getElementById("inpEyebrow").value = "INTERNAL STANDARD OPERATING PROCEDURES • CONFIDENTIAL";
+        document.getElementById("inpTitleLine1").value = "COMPANY AI & SOP";
+        document.getElementById("inpTitleLine2").value = "OPERATIONS BINDER";
+        document.getElementById("inpTitleLine3").value = "5-DEPARTMENT PLAYBOOK";
+      } else if (tpl === "kindle") {
+        document.getElementById("inpEyebrow").value = "2026 ENTERPRISE EDITION • OPERATIONS MANUAL";
+        document.getElementById("inpTitleLine1").value = "THE SMALL BUSINESS";
+        document.getElementById("inpTitleLine2").value = "AI AUTOMATION";
+        document.getElementById("inpTitleLine3").value = "OPERATING SYSTEM";
+      }
+      renderStudioSvg();
+    }
+
+    function handleLogoUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        uploadedLogoDataUrl = e.target.result;
+        document.getElementById("exportStatusMsg").textContent = "Status: Local image embedded (" + file.name + ")";
+        renderStudioSvg();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearUploadedLogo() {
+      uploadedLogoDataUrl = null;
+      document.getElementById("inpLogoFile").value = "";
+      document.getElementById("exportStatusMsg").textContent = "Status: Uploaded image cleared.";
+      renderStudioSvg();
+    }
+
+    function resetStudioDefaults() {
+      document.getElementById("tplSelect").value = "kindle";
+      applyColorPreset("emerald");
+      document.getElementById("inpEyebrow").value = "2026 ENTERPRISE EDITION • OPERATIONS MANUAL";
+      document.getElementById("inpTitleLine1").value = "THE SMALL BUSINESS";
+      document.getElementById("inpTitleLine2").value = "AI AUTOMATION";
+      document.getElementById("inpTitleLine3").value = "OPERATING SYSTEM";
+      document.getElementById("inpSubtitle").value = "Automate Lead Capture, Customer Support, Invoicing, Team SOPs & Weekly Owner Reporting Without Hiring Extra Staff";
+      document.getElementById("inpPill1").value = "50 TESTED AI PROMPTS";
+      document.getElementById("inpPill2").value = "12 RED-GATE SCRIPTS";
+      document.getElementById("inpPill3").value = "T.R.A.V. SAFETY GATE";
+      document.getElementById("inpAuthor").value = "DIGITAL PUBLISHING STUDIO • INTERNAL OPERATIONS SUITE";
+      document.getElementById("inpTitleScale").value = 100;
+      clearUploadedLogo();
+      renderStudioSvg();
+    }
+
+    function wrapSubtitleLines(text, maxChars) {
+      const words = String(text || "").split(/\s+/);
+      const lines = [];
+      let current = "";
+      words.forEach(w => {
+        if ((current + " " + w).trim().length > maxChars) {
+          if (current) lines.push(current.trim());
+          current = w;
+        } else {
+          current = (current + " " + w).trim();
+        }
+      });
+      if (current) lines.push(current.trim());
+      return lines.slice(0, 3);
+    }
+
+    function buildCurrentSvgMarkup() {
+      const tplKey = document.getElementById("tplSelect").value;
+      const spec = TEMPLATE_SPECS[tplKey] || TEMPLATE_SPECS.kindle;
+      const W = spec.w;
+      const H = spec.h;
+
+      const cPrimary = document.getElementById("colPrimary").value;
+      const cAccent = document.getElementById("colAccent").value;
+      const cSecondary = document.getElementById("colSecondary").value;
+      const cWarn = document.getElementById("colWarn").value;
+
+      const eyebrow = escXml(document.getElementById("inpEyebrow").value);
+      const t1 = escXml(document.getElementById("inpTitleLine1").value);
+      const t2 = escXml(document.getElementById("inpTitleLine2").value);
+      const t3 = escXml(document.getElementById("inpTitleLine3").value);
+      const rawSub = document.getElementById("inpSubtitle").value;
+      const p1 = escXml(document.getElementById("inpPill1").value);
+      const p2 = escXml(document.getElementById("inpPill2").value);
+      const p3 = escXml(document.getElementById("inpPill3").value);
+      const author = escXml(document.getElementById("inpAuthor").value);
+
+      const scale = (parseFloat(document.getElementById("inpTitleScale").value) || 100) / 100.0;
+      const logoSize = parseFloat(document.getElementById("inpLogoSize").value) || 180;
+      const logoYpct = (parseFloat(document.getElementById("inpLogoY").value) || 82) / 100.0;
+
+      document.getElementById("lblTitleScale").textContent = Math.round(scale * 100) + "%";
+      document.getElementById("lblLogoSize").textContent = logoSize + " px";
+      document.getElementById("lblLogoY").textContent = Math.round(logoYpct * 100) + "%";
+      document.getElementById("stageDimLabel").textContent = "Active Canvas: " + spec.name;
+
+      const isWide = (W / H) > 1.25;
+      const baseTitlePt = isWide ? Math.round(H * 0.095 * scale) : Math.round(W * 0.068 * scale);
+      const lineStep = Math.round(baseTitlePt * 1.18);
+      const subFont = isWide ? Math.round(H * 0.032) : Math.round(W * 0.024);
+      const subLines = wrapSubtitleLines(rawSub, isWide ? 72 : 54);
+
+      const padX = Math.round(W * 0.075);
+      const topBarY = Math.round(H * 0.065);
+      const titleStartY = isWide ? Math.round(H * 0.27) : Math.round(H * 0.21);
+      const subStartY = titleStartY + lineStep * 2 + Math.round(H * 0.065);
+      const diagY = isWide ? Math.round(H * 0.56) : Math.round(H * 0.50);
+      const diagH = isWide ? Math.round(H * 0.22) : Math.round(H * 0.25);
+      const pillY = diagY + diagH + Math.round(H * 0.035);
+      const footerY = Math.round(H * 0.94);
+
+      const subTspans = subLines.map((ln, idx) =>
+        `<tspan x="${W / 2}" dy="${idx === 0 ? 0 : Math.round(subFont * 1.38)}">${escXml(ln)}</tspan>`
+      ).join("");
+
+      const boxW = W - padX * 2;
+      const nodeW = Math.round((boxW - 80) / 5);
+      const deptLabels = ["01 LEADS (<60s)", "02 3-TIER QUOTE", "03 SUPPORT & OPS", "04 INVOICE & AR", "05 OWNER PULSE"];
+      const deptNodes = deptLabels.map((lbl, i) => {
+        const nx = padX + 20 + i * (nodeW + 10);
+        const ny = diagY + Math.round(diagH * 0.26);
+        const nh = Math.round(diagH * 0.52);
+        const fillCol = i % 2 === 0 ? cAccent : cSecondary;
+        return `
+          <rect x="${nx}" y="${ny}" width="${nodeW}" height="${nh}" rx="10" fill="#0F172A" stroke="${fillCol}" stroke-width="3" />
+          <rect x="${nx}" y="${ny}" width="${nodeW}" height="10" rx="4" fill="${fillCol}" />
+          <text x="${nx + nodeW / 2}" y="${ny + Math.round(nh * 0.58)}" fill="#FFFFFF" font-family="Inter, Segoe UI, sans-serif" font-size="${Math.max(13, Math.round(W * 0.0135))}" font-weight="800" text-anchor="middle">${lbl}</text>
+        `;
+      }).join("");
+
+      const pillW = Math.round((boxW - 40) / 3);
+      const pillH = Math.max(38, Math.round(H * 0.038));
+      const pillsMarkup = [
+        { txt: p1, col: cAccent },
+        { txt: p2, col: cSecondary },
+        { txt: p3, col: cWarn }
+      ].map((pObj, idx) => {
+        const px = padX + idx * (pillW + 20);
+        return `
+          <rect x="${px}" y="${pillY}" width="${pillW}" height="${pillH}" rx="${Math.round(pillH / 2)}" fill="#1E293B" stroke="${pObj.col}" stroke-width="2.5" />
+          <text x="${px + pillW / 2}" y="${pillY + Math.round(pillH * 0.64)}" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="${Math.max(13, Math.round(W * 0.014))}" font-weight="700" text-anchor="middle">${pObj.txt}</text>
+        `;
+      }).join("");
+
+      let logoMarkup = "";
+      if (uploadedLogoDataUrl) {
+        const lx = Math.round((W - logoSize) / 2);
+        const ly = Math.round(H * logoYpct - logoSize / 2);
+        logoMarkup = `
+          <g>
+            <rect x="${lx - 10}" y="${ly - 10}" width="${logoSize + 20}" height="${logoSize + 20}" rx="14" fill="#0F172A" stroke="${cAccent}" stroke-width="3" />
+            <image href="${uploadedLogoDataUrl}" x="${lx}" y="${ly}" width="${logoSize}" height="${logoSize}" preserveAspectRatio="xMidYMid meet" />
+          </g>
+        `;
+      }
+
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
+        <defs>
+          <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${cPrimary}" />
+            <stop offset="60%" stop-color="#1E293B" />
+            <stop offset="100%" stop-color="${cPrimary}" />
+          </linearGradient>
+          <pattern id="execGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#334155" stroke-width="1" stroke-opacity="0.32" />
+          </pattern>
+        </defs>
+
+        <!-- Background Canvas & Grid -->
+        <rect width="${W}" height="${H}" fill="url(#bgGrad)" />
+        <rect width="${W}" height="${H}" fill="url(#execGrid)" />
+
+        <!-- Top & Bottom Accent Bars -->
+        <rect x="0" y="0" width="${W}" height="18" fill="${cAccent}" />
+        <rect x="0" y="${H - 18}" width="${W}" height="18" fill="${cSecondary}" />
+        <rect x="${padX - 24}" y="42" width="${W - (padX - 24) * 2}" height="${H - 84}" rx="18" fill="none" stroke="#334155" stroke-width="2" />
+
+        <!-- Top Eyebrow Pill -->
+        <rect x="${padX}" y="${topBarY}" width="${boxW}" height="${Math.max(44, Math.round(H * 0.036))}" rx="10" fill="#1E293B" stroke="${cAccent}" stroke-width="2" />
+        <text x="${W / 2}" y="${topBarY + Math.max(29, Math.round(H * 0.024))}" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="${Math.max(14, Math.round(W * 0.016))}" font-weight="800" text-anchor="middle" letter-spacing="2">${eyebrow}</text>
+
+        <!-- 3-Line Main Headline -->
+        <text x="${W / 2}" y="${titleStartY}" fill="#FFFFFF" font-family="Inter, Segoe UI, sans-serif" font-size="${baseTitlePt}" font-weight="900" text-anchor="middle" letter-spacing="-1">${t1}</text>
+        <text x="${W / 2}" y="${titleStartY + lineStep}" fill="${cAccent}" font-family="Inter, Segoe UI, sans-serif" font-size="${baseTitlePt}" font-weight="900" text-anchor="middle" letter-spacing="-1">${t2}</text>
+        <text x="${W / 2}" y="${titleStartY + lineStep * 2}" fill="#38BDF8" font-family="Inter, Segoe UI, sans-serif" font-size="${baseTitlePt}" font-weight="900" text-anchor="middle" letter-spacing="-1">${t3}</text>
+
+        <!-- Wrapped Subtitle -->
+        <text x="${W / 2}" y="${subStartY}" fill="#CBD5E1" font-family="Inter, Segoe UI, sans-serif" font-size="${subFont}" font-weight="500" text-anchor="middle">${subTspans}</text>
+
+        <!-- 5-Department Architecture Centerpiece Box -->
+        <rect x="${padX}" y="${diagY}" width="${boxW}" height="${diagH}" rx="16" fill="#1E293B" fill-opacity="0.88" stroke="${cSecondary}" stroke-width="2.5" />
+        <text x="${W / 2}" y="${diagY + Math.max(26, Math.round(diagH * 0.16))}" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="${Math.max(13, Math.round(W * 0.015))}" font-weight="800" text-anchor="middle" letter-spacing="1.5">T.R.A.V. HUMAN-IN-THE-LOOP 5-DEPARTMENT ARCHITECTURE</text>
+        ${deptNodes}
+
+        <!-- 3 Metric Callout Pills -->
+        ${pillsMarkup}
+
+        <!-- Optional Uploaded Logo / Headshot -->
+        ${logoMarkup}
+
+        <!-- Footer Attribution Bar -->
+        <text x="${W / 2}" y="${footerY}" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="${Math.max(13, Math.round(W * 0.015))}" font-weight="700" text-anchor="middle" letter-spacing="2">${author}</text>
+      </svg>`;
+    }
+
+    function renderStudioSvg() {
+      const container = document.getElementById("svgPreviewContainer");
+      container.innerHTML = buildCurrentSvgMarkup();
+    }
+
+    function exportCleanSvg() {
+      const tplKey = document.getElementById("tplSelect").value;
+      const svgMarkup = buildCurrentSvgMarkup();
+      const blob = new Blob([svgMarkup], { type: "image/svg+xml;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "custom-" + tplKey + "-graphic.svg";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      document.getElementById("exportStatusMsg").textContent = "Status: Exported vector file custom-" + tplKey + "-graphic.svg";
+    }
+
+    function exportHighResPng() {
+      const tplKey = document.getElementById("tplSelect").value;
+      const spec = TEMPLATE_SPECS[tplKey] || TEMPLATE_SPECS.kindle;
+      const svgMarkup = buildCurrentSvgMarkup();
+      const canvas = document.getElementById("offscreenExportCanvas");
+      canvas.width = spec.w;
+      canvas.height = spec.h;
+      const ctx = canvas.getContext("2d");
+
+      const img = new Image();
+      const svgBlob = new Blob([svgMarkup], { type: "image/svg+xml;charset=utf-8" });
+      const url = URL.createObjectURL(svgBlob);
+
+      img.onload = function() {
+        ctx.clearRect(0, 0, spec.w, spec.h);
+        ctx.drawImage(img, 0, 0, spec.w, spec.h);
+        URL.revokeObjectURL(url);
+        canvas.toBlob(function(pngBlob) {
+          const pngUrl = URL.createObjectURL(pngBlob);
+          const a = document.createElement("a");
+          a.href = pngUrl;
+          a.download = "custom-" + tplKey + "-" + spec.w + "x" + spec.h + ".png";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(pngUrl);
+          document.getElementById("exportStatusMsg").textContent =
+            "Status: Exported high-res PNG (" + spec.w + "×" + spec.h + " px)";
+        }, "image/png");
+      };
+      img.src = url;
+    }
+
+    const STUDIO_COPY_PRESETS = [
+      {
+        id: "preset_ch01_audit",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 01 — The 5-Department AI Operating Audit & T-R-A-V Charter",
+        tpl: "binder",
+        theme: "emerald",
+        eyebrow: "CHAPTER 01 • EXECUTIVE OPERATIONS BINDER (2026 EDITION)",
+        h1: "THE 5-DEPARTMENT AI",
+        h2: "OPERATING AUDIT &",
+        h3: "T-R-A-V ARCHITECTURE",
+        sub: "Eliminating the 15-Hour Weekly Owner Bottleneck with Deterministic Rules, Grounded Prompts, and Green/Amber/Red Governance Gates.",
+        p1: "5 CORE DEPARTMENTS",
+        p2: "T-R-A-V PIPELINE",
+        p3: "15+ HRS/WK SAVED",
+        footer: "DEPARTMENT 01–05 MASTER OPERATING CHARTER • INTERNAL SOP MANUAL"
+      },
+      {
+        id: "preset_ch02_safety",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 02 — AI Safety, Privacy & Brand-Voice Firewall Manual",
+        tpl: "binder",
+        theme: "cobalt",
+        eyebrow: "CHAPTER 02 • GOVERNANCE & PRIVACY FIREWALL BINDER",
+        h1: "AI SAFETY, PRIVACY",
+        h2: "& BRAND-VOICE",
+        h3: "GOVERNANCE MANUAL",
+        sub: "Zero-Hallucination Prompt Contracts, Pre-AI PII Redaction Filters, Locked Price Truth Tables, and Instant Kill-Switch Protocols.",
+        p1: "0% HALLUCINATION",
+        p2: "PII REDACTION GATE",
+        p3: "1-CLICK KILL SWITCH",
+        footer: "COMPLIANCE & BRAND INTEGRITY STANDARD • INTERNAL TEAM SOP"
+      },
+      {
+        id: "preset_ch03_lead",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 03 — 60-Second Speed-to-Lead & Missed-Call Recovery SOP",
+        tpl: "binder",
+        theme: "emerald",
+        eyebrow: "CHAPTER 03 • REVENUE CAPTURE & INTAKE PLAYBOOK",
+        h1: "THE 60-SECOND",
+        h2: "SPEED-TO-LEAD &",
+        h3: "INTAKE CONCIERGE",
+        sub: "24/7 Omnichannel Lead Capture, 15-Second Missed-Call SMS Text-Back, Non-Intrusive B.A.N.T.-Lite Triage, and Direct Calendar Booking.",
+        p1: "≤ 60S RESPONSE SLA",
+        p2: "15S MISSED-CALL SMS",
+        p3: "85%+ RECOVERY RATE",
+        footer: "DEPARTMENT 01: LEAD CAPTURE & INTAKE • FRONT-DESK & AI SOP"
+      },
+      {
+        id: "preset_ch04_quoting",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 04 — Voice-to-3-Option Quoting & 14-Day Follow-Up Engine",
+        tpl: "binder",
+        theme: "gold",
+        eyebrow: "CHAPTER 04 • SALES QUALIFICATION & ESTIMATING SOP",
+        h1: "VOICE-TO-QUOTE &",
+        h2: "3-OPTION PROPOSAL",
+        h3: "CLOSING ENGINE",
+        sub: "Turn 90-Second Field Voice Memos into Good-Better-Best Proposals in Under 15 Minutes with a 6-Touch, 14-Day Value-Add Nurture Sequence.",
+        p1: "< 15M QUOTE SLA",
+        p2: "GOOD-BETTER-BEST",
+        p3: "35%+ CLOSE RATE",
+        footer: "DEPARTMENT 02: SALES & ESTIMATING • FIELD & INSIDE SALES SOP"
+      },
+      {
+        id: "preset_ch05_onboarding",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 05 — Zero-Friction Client Onboarding & Intake Chaser",
+        tpl: "binder",
+        theme: "teal",
+        eyebrow: "CHAPTER 05 • FULFILLMENT & CLIENT ONBOARDING SOP",
+        h1: "ZERO-FRICTION",
+        h2: "60-SECOND CLIENT",
+        h3: "ONBOARDING ENGINE",
+        sub: "Automated Payment-to-Kickoff Provisioning, Polite Missing-Asset Chasers, and Proactive Scope-Creep Change-Order Protection.",
+        p1: "60S WELCOME PACK",
+        p2: "< 24H KICKOFF SLA",
+        p3: "ZERO SCOPE CREEP",
+        footer: "DEPARTMENT 03A: CLIENT ONBOARDING & DELIVERY • PM SOP MANUAL"
+      },
+      {
+        id: "preset_ch06_support",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 06 — 24/7 AI Support Shield & Grounded RAG Triage",
+        tpl: "binder",
+        theme: "cobalt",
+        eyebrow: "CHAPTER 06 • CUSTOMER SUPPORT & ESCALATION SOP",
+        h1: "THE 24/7 AI",
+        h2: "CUSTOMER SUPPORT",
+        h3: "TRIAGE SHIELD",
+        sub: "Grounded Truth-Table RAG Answers, Live Order/Appointment Lookups, Sentiment Scoring, and 15-Minute Red-Zone Human Takeover.",
+        p1: "65%+ TIER-1 AUTO",
+        p2: "< 45S FIRST REPLY",
+        p3: "SENTIMENT GUARD",
+        footer: "DEPARTMENT 03B: CUSTOMER SUPPORT & TRIAGE • CX TEAM SOP"
+      },
+      {
+        id: "preset_ch07_retention",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 07 — 5-Star Review Engine, NPS Sentiment Gate & Win-Back",
+        tpl: "binder",
+        theme: "emerald",
+        eyebrow: "CHAPTER 07 • REPUTATION, RETENTION & LTV PLAYBOOK",
+        h1: "AUTOMATED 5-STAR",
+        h2: "REVIEW, REFERRAL &",
+        h3: "WIN-BACK ENGINE",
+        sub: "Peak-Happiness NPS Sentiment Gating, Public Google Review Routing, Private Detractor Recovery, and 90/180/365-Day Reactivation.",
+        p1: "NPS 9–10 PUBLIC GATE",
+        p2: "15%+ REVIEW RATE",
+        p3: "90-DAY WIN-BACK",
+        footer: "DEPARTMENT 03C: RETENTION & REPUTATION • GROWTH SOP MANUAL"
+      },
+      {
+        id: "preset_ch08_finance",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 08 — Same-Day Invoicing, 5-Stage AR Chaser & Cashflow Pulse",
+        tpl: "binder",
+        theme: "gold",
+        eyebrow: "CHAPTER 08 • FINANCE, RECEIVABLES & CASHFLOW SOP",
+        h1: "SAME-DAY INVOICING",
+        h2: "& 5-STAGE AR",
+        h3: "CASHFLOW ENGINE",
+        sub: "Automated Job-Completion Billing, Dispute-Aware Polite-to-Firm Payment Reminders, Receipt OCR Categorization, and 13-Week Cash Pulse.",
+        p1: "SAME-DAY BILLING",
+        p2: "DSO ≤ 16 DAYS",
+        p3: "13-WEEK CASH PULSE",
+        footer: "DEPARTMENT 04: INVOICING & RECEIVABLES • BOOKKEEPING SOP"
+      },
+      {
+        id: "preset_ch09_sops",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 09 — Screen-Recording-to-SOP Generator & 7-Day Onboarding",
+        tpl: "binder",
+        theme: "teal",
+        eyebrow: "CHAPTER 09 • TEAM DELEGATION & TRAINING PLAYBOOK",
+        h1: "THE SELF-UPDATING",
+        h2: "TEAM SOP & 7-DAY",
+        h3: "ONBOARDING ENGINE",
+        sub: "Convert 5-Minute Loom Screen Recordings into Numbered Checklists, Role Playbooks, and Interactive Day 1–7 New-Hire Certification Quizzes.",
+        p1: "5M LOOM TO SOP",
+        p2: "7-DAY RAMP CURRICULUM",
+        p3: "85%+ QUIZ PASS BAR",
+        footer: "DEPARTMENT 05A: TEAM SOPS & TRAINING • HR & OPS MANUAL"
+      },
+      {
+        id: "preset_ch10_command",
+        category: "Chapter & SOP Binder Presets",
+        label: "Ch 10 — Friday 3:00 PM Owner Scorecard & 90-Day Roadmap",
+        tpl: "binder",
+        theme: "burgundy",
+        eyebrow: "CHAPTER 10 • EXECUTIVE COMMAND & GOVERNANCE MANUAL",
+        h1: "THE FRIDAY 3:00 PM",
+        h2: "OWNER COMMAND",
+        h3: "SCORECARD & BRIEF",
+        sub: "Run a High-Margin, AI-Augmented Small Business in 15 Minutes Every Friday with 12 Departmental KPIs and a Quarterly Governance Audit.",
+        p1: "12 CORE WEEKLY KPIS",
+        p2: "15M FRIDAY REVIEW",
+        p3: "90-DAY ROLLOUT MAP",
+        footer: "DEPARTMENT 05B: EXECUTIVE COMMAND • FOUNDER & GM MANUAL"
+      },
+      {
+        id: "preset_ind_hvac",
+        category: "Industry White-Label Presets",
+        label: "Industry 01 — HVAC, Plumbing, Electrical & Home Services",
+        tpl: "binder",
+        theme: "emerald",
+        eyebrow: "APEX COMFORT HVAC & PLUMBING • FIELD & DISPATCH OS",
+        h1: "HOME SERVICES AI",
+        h2: "DISPATCH, QUOTING",
+        h3: "& OPERATIONS OS",
+        sub: "15-Second Missed-Call SMS Recovery, Emergency Gas/Spark Red-Zone Routing, 3-Option Field Estimates, and Same-Day Service Invoicing.",
+        p1: "15S MISSED-CALL SMS",
+        p2: "3-OPTION FIELD QUOTES",
+        p3: "4.9★ GOOGLE RATING",
+        footer: "WHITE-LABELED INTERNAL OPERATIONS MANUAL • HOME SERVICES EDITION"
+      },
+      {
+        id: "preset_ind_dental",
+        category: "Industry White-Label Presets",
+        label: "Industry 02 — Dental, MedSpa, Chiropractic & Outpatient Clinics",
+        tpl: "binder",
+        theme: "teal",
+        eyebrow: "BRIGHTSMILE DENTAL & MEDSPA • FRONT-DESK CONCIERGE OS",
+        h1: "PATIENT INTAKE,",
+        h2: "RECALL & CLINICAL",
+        h3: "FRONT-DESK AI OS",
+        sub: "Zero-PHI Appointment Triage, Clinical Emergency Red-Gate Escalation, Automated Hygiene/Treatment Recall, and 5-Star Patient Reviews.",
+        p1: "ZERO-PHI FIREWALL",
+        p2: "60S PATIENT TRIAGE",
+        p3: "6-MONTH RECALL ENGINE",
+        footer: "WHITE-LABELED FRONT-DESK & PRACTICE OPERATIONS MANUAL"
+      },
+      {
+        id: "preset_ind_agency",
+        category: "Industry White-Label Presets",
+        label: "Industry 03 — Marketing, Web, Creative & B2B Consulting Agencies",
+        tpl: "binder",
+        theme: "cobalt",
+        eyebrow: "VANGUARD DIGITAL AGENCY • CLIENT DELIVERY & PM OS",
+        h1: "AGENCY PROPOSAL,",
+        h2: "60S ONBOARDING &",
+        h3: "SCOPE-GUARD OS",
+        sub: "Discovery-Call-to-3-Tier Retainer Proposals, 60-Second Client Onboarding Provisioning, Asset Chasers, and Change-Order Protection.",
+        p1: "3-TIER RETAINERS",
+        p2: "60S CLIENT KICKOFF",
+        p3: "SCOPE-CREEP SHIELD",
+        footer: "WHITE-LABELED AGENCY OPERATIONS & ACCOUNT MANAGEMENT MANUAL"
+      },
+      {
+        id: "preset_ind_legal",
+        category: "Industry White-Label Presets",
+        label: "Industry 04 — CPA, Bookkeeping, Legal & Advisory Practices",
+        tpl: "binder",
+        theme: "burgundy",
+        eyebrow: "STERLING ADVISORY & CPA GROUP • PRACTICE AUTOMATION OS",
+        h1: "ADVISORY INTAKE,",
+        h2: "DOCUMENT CHASER &",
+        h3: "BILLING AUTOMATION",
+        sub: "Conflict-Checked Prospect Intake, Automated Tax/Legal Document Collection Chasers, Engagement Letter Routing, and AR Control.",
+        p1: "CONFLICT-CHECK GATE",
+        p2: "AUTO DOC CHASERS",
+        p3: "DSO ≤ 12 DAYS",
+        footer: "WHITE-LABELED PROFESSIONAL SERVICES OPERATIONS BINDER"
+      },
+      {
+        id: "preset_ind_ecom",
+        category: "Industry White-Label Presets",
+        label: "Industry 05 — Specialty E-Commerce, Wholesale & Local Retail",
+        tpl: "binder",
+        theme: "gold",
+        eyebrow: "HERITAGE ROASTERS & GOODS • OMNICHANNEL CX & OPS OS",
+        h1: "OMNICHANNEL ORDER",
+        h2: "SUPPORT, VIP LTV &",
+        h3: "REORDER ENGINE",
+        sub: "24/7 WISMO Order-Status Resolution, Return/Exchange Policy Guardrails, VIP Post-Purchase Review Flows, and 60-Day Replenishment.",
+        p1: "72% WISMO DEFLECTION",
+        p2: "VIP REVIEW FUNNEL",
+        p3: "60-DAY REPLENISHMENT",
+        footer: "WHITE-LABELED COMMERCE FULFILLMENT & CX OPERATIONS BINDER"
+      },
+      {
+        id: "preset_mkt_gumroad",
+        category: "Storefront & Social Campaign Presets",
+        label: "Storefront 01 — Gumroad / LemonSqueezy Complete OS Bundle Banner",
+        tpl: "gumroad",
+        theme: "emerald",
+        eyebrow: "COMPLETE 5-TIER DIGITAL PUBLISHING & AUTOMATION SYSTEM",
+        h1: "THE SMALL BUSINESS",
+        h2: "AI AUTOMATION",
+        h3: "OPERATING SYSTEM",
+        sub: "10-Chapter Blueprint + 50 Copy-Paste Prompt Contracts + 12 Emergency Scripts + Offline Web App + 5 Notion Databases + 8-Tab Excel Matrix.",
+        p1: "50 PROMPT CONTRACTS",
+        p2: "OFFLINE SAAS WEB APP",
+        p3: "8-TAB EXCEL MATRIX",
+        footer: "INSTANT DIGITAL DOWNLOAD • 100% OFFLINE & ZERO-CLICHÉ ENGINEERED"
+      },
+      {
+        id: "preset_mkt_linkedin",
+        category: "Storefront & Social Campaign Presets",
+        label: "Social 01 — LinkedIn / Executive Launch Announcement Banner",
+        tpl: "linkedin",
+        theme: "cobalt",
+        eyebrow: "NEW RELEASE • THE 2026 SMALL BUSINESS AI OPERATING MANUAL",
+        h1: "STOP BUYING AI TOYS.",
+        h2: "INSTALL AN OPERATING",
+        h3: "SYSTEM THAT PAYS.",
+        sub: "How 1-to-50 Employee Businesses Reclaim 15+ Hours/Week and Capture $25K–$150K+ in Recovered Annual Value Using T-R-A-V Governance.",
+        p1: "60S SPEED-TO-LEAD",
+        p2: "GREEN/AMBER/RED GATES",
+        p3: "90-DAY ROLLOUT MAP",
+        footer: "THE SMALL BUSINESS AI AUTOMATION OPERATING SYSTEM • 2026 EDITION"
+      },
+      {
+        id: "preset_mkt_square",
+        category: "Storefront & Social Campaign Presets",
+        label: "Social 02 — Instagram / Slack 5-Department Architecture Square Card",
+        tpl: "square",
+        theme: "emerald",
+        eyebrow: "5-DEPARTMENT SMALL BUSINESS AUTOMATION ENGINE",
+        h1: "CAPTURE. QUOTE.",
+        h2: "DELIVER. COLLECT.",
+        h3: "DELEGATE IN 15M.",
+        sub: "Every Workflow Protected by Deterministic Math Rules, Locked Price Truth Tables, and 15-Second Slack Amber Approval Cards.",
+        p1: "5 CORE DEPARTMENTS",
+        p2: "50 PROMPT CONTRACTS",
+        p3: "12 EMERGENCY SCRIPTS",
+        footer: "SMALLBIZ AI AUTOMATION OS • EXECUTIVE VISUAL SHORTCUT ATLAS"
+      },
+      {"id": "preset_prompt_1_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 1.1 — 5-Department Operating Audit (Workflow Contract #1)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 1.1 • CHAPTER 01 (Dept 01–05 Audit)", "h1": "PROMPT 1.1 WORKFLOW", "h2": "5-DEPARTMENT OPERATING A", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Department Operating Audit — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 1.1", "p2": "SLA: 15+ HRS/WK SAVED", "p3": "KPI: >= 300% ROI", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 01 PROMPT 1.1 REFERENCE CARD"},
+      {"id": "preset_prompt_1_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 1.2 — 5-Department Operating Audit (Workflow Contract #2)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 1.2 • CHAPTER 01 (Dept 01–05 Audit)", "h1": "PROMPT 1.2 WORKFLOW", "h2": "5-DEPARTMENT OPERATING A", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Department Operating Audit — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 1.2", "p2": "SLA: 15+ HRS/WK SAVED", "p3": "KPI: >= 300% ROI", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 01 PROMPT 1.2 REFERENCE CARD"},
+      {"id": "preset_prompt_1_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 1.3 — 5-Department Operating Audit (Workflow Contract #3)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 1.3 • CHAPTER 01 (Dept 01–05 Audit)", "h1": "PROMPT 1.3 WORKFLOW", "h2": "5-DEPARTMENT OPERATING A", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Department Operating Audit — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 1.3", "p2": "SLA: 15+ HRS/WK SAVED", "p3": "KPI: >= 300% ROI", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 01 PROMPT 1.3 REFERENCE CARD"},
+      {"id": "preset_prompt_1_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 1.4 — 5-Department Operating Audit (Workflow Contract #4)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 1.4 • CHAPTER 01 (Dept 01–05 Audit)", "h1": "PROMPT 1.4 WORKFLOW", "h2": "5-DEPARTMENT OPERATING A", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Department Operating Audit — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 1.4", "p2": "SLA: 15+ HRS/WK SAVED", "p3": "KPI: >= 300% ROI", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 01 PROMPT 1.4 REFERENCE CARD"},
+      {"id": "preset_prompt_1_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 1.5 — 5-Department Operating Audit (Workflow Contract #5)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 1.5 • CHAPTER 01 (Dept 01–05 Audit)", "h1": "PROMPT 1.5 WORKFLOW", "h2": "5-DEPARTMENT OPERATING A", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Department Operating Audit — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 1.5", "p2": "SLA: 15+ HRS/WK SAVED", "p3": "KPI: >= 300% ROI", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 01 PROMPT 1.5 REFERENCE CARD"},
+      {"id": "preset_prompt_2_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 2.1 — AI Safety & Privacy Firewall (Workflow Contract #1)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 2.1 • CHAPTER 02 (All 5 Depts)", "h1": "PROMPT 2.1 WORKFLOW", "h2": "AI SAFETY & PRIVACY FIRE", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for AI Safety & Privacy Firewall — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 2.1", "p2": "SLA: 0% HALLUCINATION", "p3": "KPI: 100% REDACTION", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 02 PROMPT 2.1 REFERENCE CARD"},
+      {"id": "preset_prompt_2_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 2.2 — AI Safety & Privacy Firewall (Workflow Contract #2)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 2.2 • CHAPTER 02 (All 5 Depts)", "h1": "PROMPT 2.2 WORKFLOW", "h2": "AI SAFETY & PRIVACY FIRE", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for AI Safety & Privacy Firewall — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 2.2", "p2": "SLA: 0% HALLUCINATION", "p3": "KPI: 100% REDACTION", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 02 PROMPT 2.2 REFERENCE CARD"},
+      {"id": "preset_prompt_2_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 2.3 — AI Safety & Privacy Firewall (Workflow Contract #3)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 2.3 • CHAPTER 02 (All 5 Depts)", "h1": "PROMPT 2.3 WORKFLOW", "h2": "AI SAFETY & PRIVACY FIRE", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for AI Safety & Privacy Firewall — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 2.3", "p2": "SLA: 0% HALLUCINATION", "p3": "KPI: 100% REDACTION", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 02 PROMPT 2.3 REFERENCE CARD"},
+      {"id": "preset_prompt_2_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 2.4 — AI Safety & Privacy Firewall (Workflow Contract #4)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 2.4 • CHAPTER 02 (All 5 Depts)", "h1": "PROMPT 2.4 WORKFLOW", "h2": "AI SAFETY & PRIVACY FIRE", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for AI Safety & Privacy Firewall — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 2.4", "p2": "SLA: 0% HALLUCINATION", "p3": "KPI: 100% REDACTION", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 02 PROMPT 2.4 REFERENCE CARD"},
+      {"id": "preset_prompt_2_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 2.5 — AI Safety & Privacy Firewall (Workflow Contract #5)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 2.5 • CHAPTER 02 (All 5 Depts)", "h1": "PROMPT 2.5 WORKFLOW", "h2": "AI SAFETY & PRIVACY FIRE", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for AI Safety & Privacy Firewall — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 2.5", "p2": "SLA: 0% HALLUCINATION", "p3": "KPI: 100% REDACTION", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 02 PROMPT 2.5 REFERENCE CARD"},
+      {"id": "preset_prompt_3_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 3.1 — 60-Second Speed-to-Lead (Workflow Contract #1)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 3.1 • CHAPTER 03 (Dept 01 Intake)", "h1": "PROMPT 3.1 WORKFLOW", "h2": "60-SECOND SPEED-TO-LEAD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Speed-to-Lead — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 3.1", "p2": "SLA: <= 60S MEDIAN REPL", "p3": "KPI: >= 85% RECOVERY", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 03 PROMPT 3.1 REFERENCE CARD"},
+      {"id": "preset_prompt_3_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 3.2 — 60-Second Speed-to-Lead (Workflow Contract #2)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 3.2 • CHAPTER 03 (Dept 01 Intake)", "h1": "PROMPT 3.2 WORKFLOW", "h2": "60-SECOND SPEED-TO-LEAD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Speed-to-Lead — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 3.2", "p2": "SLA: <= 60S MEDIAN REPL", "p3": "KPI: >= 85% RECOVERY", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 03 PROMPT 3.2 REFERENCE CARD"},
+      {"id": "preset_prompt_3_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 3.3 — 60-Second Speed-to-Lead (Workflow Contract #3)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 3.3 • CHAPTER 03 (Dept 01 Intake)", "h1": "PROMPT 3.3 WORKFLOW", "h2": "60-SECOND SPEED-TO-LEAD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Speed-to-Lead — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 3.3", "p2": "SLA: <= 60S MEDIAN REPL", "p3": "KPI: >= 85% RECOVERY", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 03 PROMPT 3.3 REFERENCE CARD"},
+      {"id": "preset_prompt_3_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 3.4 — 60-Second Speed-to-Lead (Workflow Contract #4)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 3.4 • CHAPTER 03 (Dept 01 Intake)", "h1": "PROMPT 3.4 WORKFLOW", "h2": "60-SECOND SPEED-TO-LEAD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Speed-to-Lead — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 3.4", "p2": "SLA: <= 60S MEDIAN REPL", "p3": "KPI: >= 85% RECOVERY", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 03 PROMPT 3.4 REFERENCE CARD"},
+      {"id": "preset_prompt_3_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 3.5 — 60-Second Speed-to-Lead (Workflow Contract #5)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 3.5 • CHAPTER 03 (Dept 01 Intake)", "h1": "PROMPT 3.5 WORKFLOW", "h2": "60-SECOND SPEED-TO-LEAD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Speed-to-Lead — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 3.5", "p2": "SLA: <= 60S MEDIAN REPL", "p3": "KPI: >= 85% RECOVERY", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 03 PROMPT 3.5 REFERENCE CARD"},
+      {"id": "preset_prompt_4_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 4.1 — Voice-to-3-Option Quoting (Workflow Contract #1)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 4.1 • CHAPTER 04 (Dept 02 Sales)", "h1": "PROMPT 4.1 WORKFLOW", "h2": "VOICE-TO-3-OPTION QUOTIN", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Voice-to-3-Option Quoting — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 4.1", "p2": "SLA: <= 15M PROPOSAL SL", "p3": "KPI: >= 35% CLOSE RAT", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 04 PROMPT 4.1 REFERENCE CARD"},
+      {"id": "preset_prompt_4_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 4.2 — Voice-to-3-Option Quoting (Workflow Contract #2)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 4.2 • CHAPTER 04 (Dept 02 Sales)", "h1": "PROMPT 4.2 WORKFLOW", "h2": "VOICE-TO-3-OPTION QUOTIN", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Voice-to-3-Option Quoting — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 4.2", "p2": "SLA: <= 15M PROPOSAL SL", "p3": "KPI: >= 35% CLOSE RAT", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 04 PROMPT 4.2 REFERENCE CARD"},
+      {"id": "preset_prompt_4_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 4.3 — Voice-to-3-Option Quoting (Workflow Contract #3)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 4.3 • CHAPTER 04 (Dept 02 Sales)", "h1": "PROMPT 4.3 WORKFLOW", "h2": "VOICE-TO-3-OPTION QUOTIN", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Voice-to-3-Option Quoting — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 4.3", "p2": "SLA: <= 15M PROPOSAL SL", "p3": "KPI: >= 35% CLOSE RAT", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 04 PROMPT 4.3 REFERENCE CARD"},
+      {"id": "preset_prompt_4_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 4.4 — Voice-to-3-Option Quoting (Workflow Contract #4)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 4.4 • CHAPTER 04 (Dept 02 Sales)", "h1": "PROMPT 4.4 WORKFLOW", "h2": "VOICE-TO-3-OPTION QUOTIN", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Voice-to-3-Option Quoting — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 4.4", "p2": "SLA: <= 15M PROPOSAL SL", "p3": "KPI: >= 35% CLOSE RAT", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 04 PROMPT 4.4 REFERENCE CARD"},
+      {"id": "preset_prompt_4_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 4.5 — Voice-to-3-Option Quoting (Workflow Contract #5)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 4.5 • CHAPTER 04 (Dept 02 Sales)", "h1": "PROMPT 4.5 WORKFLOW", "h2": "VOICE-TO-3-OPTION QUOTIN", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Voice-to-3-Option Quoting — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 4.5", "p2": "SLA: <= 15M PROPOSAL SL", "p3": "KPI: >= 35% CLOSE RAT", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 04 PROMPT 4.5 REFERENCE CARD"},
+      {"id": "preset_prompt_5_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 5.1 — 60-Second Client Onboarding (Workflow Contract #1)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 5.1 • CHAPTER 05 (Dept 03A Delivery)", "h1": "PROMPT 5.1 WORKFLOW", "h2": "60-SECOND CLIENT ONBOARD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Client Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 5.1", "p2": "SLA: <= 60S WELCOME PAC", "p3": "KPI: < 24H KICKOFF", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 05 PROMPT 5.1 REFERENCE CARD"},
+      {"id": "preset_prompt_5_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 5.2 — 60-Second Client Onboarding (Workflow Contract #2)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 5.2 • CHAPTER 05 (Dept 03A Delivery)", "h1": "PROMPT 5.2 WORKFLOW", "h2": "60-SECOND CLIENT ONBOARD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Client Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 5.2", "p2": "SLA: <= 60S WELCOME PAC", "p3": "KPI: < 24H KICKOFF", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 05 PROMPT 5.2 REFERENCE CARD"},
+      {"id": "preset_prompt_5_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 5.3 — 60-Second Client Onboarding (Workflow Contract #3)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 5.3 • CHAPTER 05 (Dept 03A Delivery)", "h1": "PROMPT 5.3 WORKFLOW", "h2": "60-SECOND CLIENT ONBOARD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Client Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 5.3", "p2": "SLA: <= 60S WELCOME PAC", "p3": "KPI: < 24H KICKOFF", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 05 PROMPT 5.3 REFERENCE CARD"},
+      {"id": "preset_prompt_5_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 5.4 — 60-Second Client Onboarding (Workflow Contract #4)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 5.4 • CHAPTER 05 (Dept 03A Delivery)", "h1": "PROMPT 5.4 WORKFLOW", "h2": "60-SECOND CLIENT ONBOARD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Client Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 5.4", "p2": "SLA: <= 60S WELCOME PAC", "p3": "KPI: < 24H KICKOFF", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 05 PROMPT 5.4 REFERENCE CARD"},
+      {"id": "preset_prompt_5_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 5.5 — 60-Second Client Onboarding (Workflow Contract #5)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 5.5 • CHAPTER 05 (Dept 03A Delivery)", "h1": "PROMPT 5.5 WORKFLOW", "h2": "60-SECOND CLIENT ONBOARD", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 60-Second Client Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 5.5", "p2": "SLA: <= 60S WELCOME PAC", "p3": "KPI: < 24H KICKOFF", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 05 PROMPT 5.5 REFERENCE CARD"},
+      {"id": "preset_prompt_6_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 6.1 — 24/7 AI Support Triage Shield (Workflow Contract #1)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 6.1 • CHAPTER 06 (Dept 03B Support)", "h1": "PROMPT 6.1 WORKFLOW", "h2": "24/7 AI SUPPORT TRIAGE S", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 24/7 AI Support Triage Shield — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 6.1", "p2": "SLA: < 45S FIRST REPLY", "p3": "KPI: >= 60% DEFLECTIO", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 06 PROMPT 6.1 REFERENCE CARD"},
+      {"id": "preset_prompt_6_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 6.2 — 24/7 AI Support Triage Shield (Workflow Contract #2)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 6.2 • CHAPTER 06 (Dept 03B Support)", "h1": "PROMPT 6.2 WORKFLOW", "h2": "24/7 AI SUPPORT TRIAGE S", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 24/7 AI Support Triage Shield — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 6.2", "p2": "SLA: < 45S FIRST REPLY", "p3": "KPI: >= 60% DEFLECTIO", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 06 PROMPT 6.2 REFERENCE CARD"},
+      {"id": "preset_prompt_6_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 6.3 — 24/7 AI Support Triage Shield (Workflow Contract #3)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 6.3 • CHAPTER 06 (Dept 03B Support)", "h1": "PROMPT 6.3 WORKFLOW", "h2": "24/7 AI SUPPORT TRIAGE S", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 24/7 AI Support Triage Shield — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 6.3", "p2": "SLA: < 45S FIRST REPLY", "p3": "KPI: >= 60% DEFLECTIO", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 06 PROMPT 6.3 REFERENCE CARD"},
+      {"id": "preset_prompt_6_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 6.4 — 24/7 AI Support Triage Shield (Workflow Contract #4)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 6.4 • CHAPTER 06 (Dept 03B Support)", "h1": "PROMPT 6.4 WORKFLOW", "h2": "24/7 AI SUPPORT TRIAGE S", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 24/7 AI Support Triage Shield — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 6.4", "p2": "SLA: < 45S FIRST REPLY", "p3": "KPI: >= 60% DEFLECTIO", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 06 PROMPT 6.4 REFERENCE CARD"},
+      {"id": "preset_prompt_6_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 6.5 — 24/7 AI Support Triage Shield (Workflow Contract #5)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 6.5 • CHAPTER 06 (Dept 03B Support)", "h1": "PROMPT 6.5 WORKFLOW", "h2": "24/7 AI SUPPORT TRIAGE S", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 24/7 AI Support Triage Shield — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 6.5", "p2": "SLA: < 45S FIRST REPLY", "p3": "KPI: >= 60% DEFLECTIO", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 06 PROMPT 6.5 REFERENCE CARD"},
+      {"id": "preset_prompt_7_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 7.1 — 5-Star Review & Win-Back Engine (Workflow Contract #1)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 7.1 • CHAPTER 07 (Dept 03C Growth)", "h1": "PROMPT 7.1 WORKFLOW", "h2": "5-STAR REVIEW & WIN-BACK", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Star Review & Win-Back Engine — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 7.1", "p2": "SLA: NPS 9-10 PUBLIC GA", "p3": "KPI: >= 15% REVIEW RA", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 07 PROMPT 7.1 REFERENCE CARD"},
+      {"id": "preset_prompt_7_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 7.2 — 5-Star Review & Win-Back Engine (Workflow Contract #2)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 7.2 • CHAPTER 07 (Dept 03C Growth)", "h1": "PROMPT 7.2 WORKFLOW", "h2": "5-STAR REVIEW & WIN-BACK", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Star Review & Win-Back Engine — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 7.2", "p2": "SLA: NPS 9-10 PUBLIC GA", "p3": "KPI: >= 15% REVIEW RA", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 07 PROMPT 7.2 REFERENCE CARD"},
+      {"id": "preset_prompt_7_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 7.3 — 5-Star Review & Win-Back Engine (Workflow Contract #3)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 7.3 • CHAPTER 07 (Dept 03C Growth)", "h1": "PROMPT 7.3 WORKFLOW", "h2": "5-STAR REVIEW & WIN-BACK", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Star Review & Win-Back Engine — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 7.3", "p2": "SLA: NPS 9-10 PUBLIC GA", "p3": "KPI: >= 15% REVIEW RA", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 07 PROMPT 7.3 REFERENCE CARD"},
+      {"id": "preset_prompt_7_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 7.4 — 5-Star Review & Win-Back Engine (Workflow Contract #4)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 7.4 • CHAPTER 07 (Dept 03C Growth)", "h1": "PROMPT 7.4 WORKFLOW", "h2": "5-STAR REVIEW & WIN-BACK", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Star Review & Win-Back Engine — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 7.4", "p2": "SLA: NPS 9-10 PUBLIC GA", "p3": "KPI: >= 15% REVIEW RA", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 07 PROMPT 7.4 REFERENCE CARD"},
+      {"id": "preset_prompt_7_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 7.5 — 5-Star Review & Win-Back Engine (Workflow Contract #5)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 7.5 • CHAPTER 07 (Dept 03C Growth)", "h1": "PROMPT 7.5 WORKFLOW", "h2": "5-STAR REVIEW & WIN-BACK", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for 5-Star Review & Win-Back Engine — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 7.5", "p2": "SLA: NPS 9-10 PUBLIC GA", "p3": "KPI: >= 15% REVIEW RA", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 07 PROMPT 7.5 REFERENCE CARD"},
+      {"id": "preset_prompt_8_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 8.1 — Same-Day Billing & 5-Stage AR (Workflow Contract #1)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 8.1 • CHAPTER 08 (Dept 04 Finance)", "h1": "PROMPT 8.1 WORKFLOW", "h2": "SAME-DAY BILLING & 5-STA", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Same-Day Billing & 5-Stage AR — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 8.1", "p2": "SLA: SAME-DAY INVOICE", "p3": "KPI: DSO <= 16 DAYS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 08 PROMPT 8.1 REFERENCE CARD"},
+      {"id": "preset_prompt_8_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 8.2 — Same-Day Billing & 5-Stage AR (Workflow Contract #2)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 8.2 • CHAPTER 08 (Dept 04 Finance)", "h1": "PROMPT 8.2 WORKFLOW", "h2": "SAME-DAY BILLING & 5-STA", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Same-Day Billing & 5-Stage AR — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 8.2", "p2": "SLA: SAME-DAY INVOICE", "p3": "KPI: DSO <= 16 DAYS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 08 PROMPT 8.2 REFERENCE CARD"},
+      {"id": "preset_prompt_8_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 8.3 — Same-Day Billing & 5-Stage AR (Workflow Contract #3)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 8.3 • CHAPTER 08 (Dept 04 Finance)", "h1": "PROMPT 8.3 WORKFLOW", "h2": "SAME-DAY BILLING & 5-STA", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Same-Day Billing & 5-Stage AR — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 8.3", "p2": "SLA: SAME-DAY INVOICE", "p3": "KPI: DSO <= 16 DAYS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 08 PROMPT 8.3 REFERENCE CARD"},
+      {"id": "preset_prompt_8_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 8.4 — Same-Day Billing & 5-Stage AR (Workflow Contract #4)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 8.4 • CHAPTER 08 (Dept 04 Finance)", "h1": "PROMPT 8.4 WORKFLOW", "h2": "SAME-DAY BILLING & 5-STA", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Same-Day Billing & 5-Stage AR — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 8.4", "p2": "SLA: SAME-DAY INVOICE", "p3": "KPI: DSO <= 16 DAYS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 08 PROMPT 8.4 REFERENCE CARD"},
+      {"id": "preset_prompt_8_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 8.5 — Same-Day Billing & 5-Stage AR (Workflow Contract #5)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 8.5 • CHAPTER 08 (Dept 04 Finance)", "h1": "PROMPT 8.5 WORKFLOW", "h2": "SAME-DAY BILLING & 5-STA", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Same-Day Billing & 5-Stage AR — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 8.5", "p2": "SLA: SAME-DAY INVOICE", "p3": "KPI: DSO <= 16 DAYS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 08 PROMPT 8.5 REFERENCE CARD"},
+      {"id": "preset_prompt_9_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 9.1 — Loom-to-SOP & 7-Day Onboarding (Workflow Contract #1)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 9.1 • CHAPTER 09 (Dept 05A SOPs)", "h1": "PROMPT 9.1 WORKFLOW", "h2": "LOOM-TO-SOP & 7-DAY ONBO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Loom-to-SOP & 7-Day Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 9.1", "p2": "SLA: 5M LOOM TO SOP", "p3": "KPI: >= 85% QUIZ SCOR", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 09 PROMPT 9.1 REFERENCE CARD"},
+      {"id": "preset_prompt_9_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 9.2 — Loom-to-SOP & 7-Day Onboarding (Workflow Contract #2)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 9.2 • CHAPTER 09 (Dept 05A SOPs)", "h1": "PROMPT 9.2 WORKFLOW", "h2": "LOOM-TO-SOP & 7-DAY ONBO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Loom-to-SOP & 7-Day Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 9.2", "p2": "SLA: 5M LOOM TO SOP", "p3": "KPI: >= 85% QUIZ SCOR", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 09 PROMPT 9.2 REFERENCE CARD"},
+      {"id": "preset_prompt_9_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 9.3 — Loom-to-SOP & 7-Day Onboarding (Workflow Contract #3)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 9.3 • CHAPTER 09 (Dept 05A SOPs)", "h1": "PROMPT 9.3 WORKFLOW", "h2": "LOOM-TO-SOP & 7-DAY ONBO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Loom-to-SOP & 7-Day Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 9.3", "p2": "SLA: 5M LOOM TO SOP", "p3": "KPI: >= 85% QUIZ SCOR", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 09 PROMPT 9.3 REFERENCE CARD"},
+      {"id": "preset_prompt_9_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 9.4 — Loom-to-SOP & 7-Day Onboarding (Workflow Contract #4)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 9.4 • CHAPTER 09 (Dept 05A SOPs)", "h1": "PROMPT 9.4 WORKFLOW", "h2": "LOOM-TO-SOP & 7-DAY ONBO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Loom-to-SOP & 7-Day Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 9.4", "p2": "SLA: 5M LOOM TO SOP", "p3": "KPI: >= 85% QUIZ SCOR", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 09 PROMPT 9.4 REFERENCE CARD"},
+      {"id": "preset_prompt_9_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 9.5 — Loom-to-SOP & 7-Day Onboarding (Workflow Contract #5)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 9.5 • CHAPTER 09 (Dept 05A SOPs)", "h1": "PROMPT 9.5 WORKFLOW", "h2": "LOOM-TO-SOP & 7-DAY ONBO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Loom-to-SOP & 7-Day Onboarding — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 9.5", "p2": "SLA: 5M LOOM TO SOP", "p3": "KPI: >= 85% QUIZ SCOR", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 09 PROMPT 9.5 REFERENCE CARD"},
+      {"id": "preset_prompt_10_1", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 10.1 — Friday 3:00 PM Owner Scorecard (Workflow Contract #1)", "tpl": "square", "theme": "cobalt", "eyebrow": "PROMPT CONTRACT 10.1 • CHAPTER 10 (Dept 05B Command)", "h1": "PROMPT 10.1 WORKFLOW", "h2": "FRIDAY 3:00 PM OWNER SCO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Friday 3:00 PM Owner Scorecard — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 10.1", "p2": "SLA: 15M FRIDAY REVIEW", "p3": "KPI: 12 WEEKLY KPIS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 10 PROMPT 10.1 REFERENCE CARD"},
+      {"id": "preset_prompt_10_2", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 10.2 — Friday 3:00 PM Owner Scorecard (Workflow Contract #2)", "tpl": "square", "theme": "gold", "eyebrow": "PROMPT CONTRACT 10.2 • CHAPTER 10 (Dept 05B Command)", "h1": "PROMPT 10.2 WORKFLOW", "h2": "FRIDAY 3:00 PM OWNER SCO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Friday 3:00 PM Owner Scorecard — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 10.2", "p2": "SLA: 15M FRIDAY REVIEW", "p3": "KPI: 12 WEEKLY KPIS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 10 PROMPT 10.2 REFERENCE CARD"},
+      {"id": "preset_prompt_10_3", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 10.3 — Friday 3:00 PM Owner Scorecard (Workflow Contract #3)", "tpl": "square", "theme": "teal", "eyebrow": "PROMPT CONTRACT 10.3 • CHAPTER 10 (Dept 05B Command)", "h1": "PROMPT 10.3 WORKFLOW", "h2": "FRIDAY 3:00 PM OWNER SCO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Friday 3:00 PM Owner Scorecard — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 10.3", "p2": "SLA: 15M FRIDAY REVIEW", "p3": "KPI: 12 WEEKLY KPIS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 10 PROMPT 10.3 REFERENCE CARD"},
+      {"id": "preset_prompt_10_4", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 10.4 — Friday 3:00 PM Owner Scorecard (Workflow Contract #4)", "tpl": "square", "theme": "burgundy", "eyebrow": "PROMPT CONTRACT 10.4 • CHAPTER 10 (Dept 05B Command)", "h1": "PROMPT 10.4 WORKFLOW", "h2": "FRIDAY 3:00 PM OWNER SCO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Friday 3:00 PM Owner Scorecard — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 10.4", "p2": "SLA: 15M FRIDAY REVIEW", "p3": "KPI: 12 WEEKLY KPIS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 10 PROMPT 10.4 REFERENCE CARD"},
+      {"id": "preset_prompt_10_5", "category": "Prompt Contract Card Presets (50 Prompts)", "label": "Prompt 10.5 — Friday 3:00 PM Owner Scorecard (Workflow Contract #5)", "tpl": "square", "theme": "emerald", "eyebrow": "PROMPT CONTRACT 10.5 • CHAPTER 10 (Dept 05B Command)", "h1": "PROMPT 10.5 WORKFLOW", "h2": "FRIDAY 3:00 PM OWNER SCO", "h3": "T-R-A-V PROMPT CONTRACT", "sub": "7-Part Grounded Prompt Contract for Friday 3:00 PM Owner Scorecard — Includes Role, Inputs, Truth-Table Rules, JSON Schema, and Gate.", "p1": "PROMPT 10.5", "p2": "SLA: 15M FRIDAY REVIEW", "p3": "KPI: 12 WEEKLY KPIS", "footer": "SMALLBIZ AI AUTOMATION OS • CHAPTER 10 PROMPT 10.5 REFERENCE CARD"},
+      {"id": "preset_emg_script_01", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #01 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #01 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #01", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #01 BINDER TAB"},
+      {"id": "preset_emg_script_02", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #02 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #02 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #02", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #02 BINDER TAB"},
+      {"id": "preset_emg_script_03", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #03 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #03 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #03", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #03 BINDER TAB"},
+      {"id": "preset_emg_script_04", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #04 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #04 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #04", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #04 BINDER TAB"},
+      {"id": "preset_emg_script_05", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #05 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #05 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #05", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #05 BINDER TAB"},
+      {"id": "preset_emg_script_06", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #06 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #06 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #06", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #06 BINDER TAB"},
+      {"id": "preset_emg_script_07", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #07 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #07 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #07", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #07 BINDER TAB"},
+      {"id": "preset_emg_script_08", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #08 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #08 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #08", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #08 BINDER TAB"},
+      {"id": "preset_emg_script_09", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #09 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #09 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #09", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #09 BINDER TAB"},
+      {"id": "preset_emg_script_10", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #10 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #10 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #10", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #10 BINDER TAB"},
+      {"id": "preset_emg_script_11", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #11 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #11 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #11", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #11 BINDER TAB"},
+      {"id": "preset_emg_script_12", "category": "Emergency Script Binder Dividers (12 Scripts)", "label": "Emergency Script #12 — Red-Zone Human Takeover & Outage Protocol", "tpl": "binder", "theme": "burgundy", "eyebrow": "EMERGENCY SCRIPT #12 • RED-GATE HUMAN TAKEOVER PROTOCOL", "h1": "EMERGENCY SCRIPT #12", "h2": "RED-ZONE HUMAN", "h3": "TAKEOVER PLAYBOOK", "sub": "Immediate Bot-Mute Switch, 5-Bullet Context Handoff, Word-for-Word De-Escalation Script, and Root-Cause Post-Mortem Log.", "p1": "BOT MUTE: ACTIVE", "p2": "< 15M HUMAN SLA", "p3": "ZERO HALLUCINATION", "footer": "SMALLBIZ AI AUTOMATION OS • EMERGENCY SCRIPT #12 BINDER TAB"}
+    ];
+
+    function initPresetSelector() {
+      const container = document.getElementById("sidebar");
+      const firstSection = container.querySelector(".panel-section");
+      const presetSection = document.createElement("div");
+      presetSection.className = "panel-section";
+      presetSection.innerHTML =
+        '<h2>0. Quick-Load Chapter, Industry, Prompt &amp; Script Preset (80 Templates)</h2>' +
+        '<label for="quickPresetSelect">Load Pre-Written White-Label Copy &amp; Theme</label>' +
+        '<select id="quickPresetSelect">' +
+        '<option value="">— Keep Current Custom Text —</option>' +
+        STUDIO_COPY_PRESETS.map(function(p) {
+          return '<option value="' + p.id + '">[' + p.category.split(" ")[0] + '] ' + p.label + '</option>';
+        }).join("") +
+        '</select>';
+      container.insertBefore(presetSection, firstSection);
+
+      document.getElementById("quickPresetSelect").addEventListener("change", function(e) {
+        const val = e.target.value;
+        if (!val) return;
+        const found = STUDIO_COPY_PRESETS.find(function(item) { return item.id === val; });
+        if (!found) return;
+        document.getElementById("tplSelect").value = found.tpl;
+        document.getElementById("inpEyebrow").value = found.eyebrow;
+        document.getElementById("inpLine1").value = found.h1;
+        document.getElementById("inpLine2").value = found.h2;
+        document.getElementById("inpLine3").value = found.h3;
+        document.getElementById("inpSubtitle").value = found.sub;
+        document.getElementById("inpPill1").value = found.p1;
+        document.getElementById("inpPill2").value = found.p2;
+        document.getElementById("inpPill3").value = found.p3;
+        document.getElementById("inpFooter").value = found.footer;
+        setTheme(found.theme);
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", function() {
+      initPresetSelector();
+      renderStudioSvg();
+    });
+  </script>
+</body>
+</html>
