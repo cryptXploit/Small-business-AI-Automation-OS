@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Small Business AI Automation Operating System — Official 2026 Enterprise Edition</title>
+  <meta name="description" content="A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff." />
+  <style>
+    :root {
+      --primary: #0F172A;
+      --primary-alt: #1E293B;
+      --accent: #059669;
+      --accent-hover: #047857;
+      --accent-soft: #ECFDF5;
+      --secondary: #0284C7;
+      --secondary-soft: #F0F9FF;
+      --warning: #D97706;
+      --warning-soft: #FFFBEB;
+      --text: #1E293B;
+      --muted: #64748B;
+      --border: #CBD5E1;
+      --surface: #F8FAFC;
+      --bg: #FFFFFF;
+      --radius: 12px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* Sticky Top Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--accent);
+      padding: 0.85rem 1.5rem;
+    }
+
+    .nav-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: #34D399;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.35rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.18s ease;
+      font-family: inherit;
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.95rem;
+      font-size: 0.82rem;
+    }
+
+    .btn-emerald {
+      background: var(--accent);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+    }
+    .btn-emerald:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-cyan {
+      background: var(--secondary);
+      color: #FFFFFF;
+    }
+    .btn-cyan:hover {
+      background: #0369A1;
+    }
+
+    .btn-amber {
+      background: var(--warning);
+      color: #FFFFFF;
+    }
+    .btn-amber:hover {
+      background: #B45309;
+    }
+
+    .btn-outline-light {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: #FFFFFF;
+    }
+
+    .btn-outline-dark {
+      background: #FFFFFF;
+      color: var(--primary);
+      border-color: var(--border);
+    }
+    .btn-outline-dark:hover {
+      background: var(--surface);
+      border-color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 75% 25%, rgba(5, 150, 105, 0.22), transparent 45%),
+                  linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F172A 100%);
+      color: #FFFFFF;
+      padding: 4.5rem 1.5rem 4rem;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(5, 150, 105, 0.2);
+      color: #34D399;
+      border: 1px solid #059669;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero h1 {
+      font-size: 2.85rem;
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span.accent {
+      color: #34D399;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #CBD5E1;
+      margin-bottom: 1.6rem;
+      max-width: 720px;
+    }
+
+    .proof-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.85rem;
+    }
+
+    .proof-pill {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid #334155;
+      color: #F8FAFC;
+      padding: 0.38rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    .proof-pill strong {
+      color: #34D399;
+    }
+
+    .hero-card {
+      background: rgba(15, 23, 42, 0.92);
+      border: 2px solid #059669;
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 4.25rem 1.5rem;
+    }
+
+    .section-alt {
+      background: var(--surface);
+      border-top: 1px solid #E2E8F0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .section-dark {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 2.75rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.65rem;
+    }
+
+    .section-dark .section-header h2 {
+      color: #FFFFFF;
+    }
+
+    .section-header p {
+      font-size: 1.02rem;
+      color: var(--muted);
+    }
+
+    .section-dark .section-header p {
+      color: #CBD5E1;
+    }
+
+    /* Grid Utilities */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 1080px) {
+      .grid-5 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* Interactive Calculator Styles */
+    .calc-group {
+      margin-bottom: 1rem;
+    }
+
+    .calc-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .calc-val {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: var(--secondary-soft);
+      color: var(--secondary);
+      padding: 0.12rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 800;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+
+    .result-banner {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 6px solid var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .result-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .result-box .lbl {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .result-box .val {
+      font-size: 1.55rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--primary);
+      margin-top: 0.2rem;
+    }
+
+    /* Chapter Explorer Tabs */
+    .chapter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      justify-content: center;
+    }
+
+    .ch-tab {
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.84rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .ch-tab:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .ch-tab.active {
+      background: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+
+    /* Pricing Matrix Cards */
+    .tier-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .tier-card.featured {
+      border: 3px solid var(--accent);
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(5, 150, 105, 0.18);
+    }
+
+    .featured-ribbon {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.2rem 0.75rem;
+      border-radius: 99px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .tier-price {
+      font-size: 2.15rem;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--primary);
+      margin: 0.6rem 0 0.2rem;
+    }
+
+    .tier-list {
+      list-style: none;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.83rem;
+    }
+
+    .tier-list li {
+      margin-bottom: 0.55rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .tier-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    /* Comparison Table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      background: var(--bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .comp-table th {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 0.85rem;
+      text-align: left;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .comp-table td {
+      padding: 0.75rem 0.85rem;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .comp-table tr:nth-child(even) td {
+      background: #F8FAFC;
+    }
+
+    /* FAQ Accordion */
+    .faq-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 1.1rem 1.25rem;
+      background: transparent;
+      border: none;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+    }
+
+    .faq-a {
+      padding: 0 1.25rem 1.15rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      display: none;
+      border-top: 1px solid #F1F5F9;
+      padding-top: 0.85rem;
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    pre.code-preview {
+      background: #0F172A;
+      color: #F8FAFC;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      max-height: 320px;
+      border: 1px solid #334155;
+    }
+
+    footer {
+      background: #0F172A;
+      color: #94A3B8;
+      padding: 3rem 1.5rem;
+      border-top: 3px solid var(--accent);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Executive Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#top" class="nav-brand">
+        <span class="nav-logo">OS</span>
+        <span>SmallBiz AI Automation OS</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#five-depts">5-Department Engine</a>
+        <a href="#roi-calculator">Live ROI Calculator</a>
+        <a href="#curriculum">10-Chapter Blueprint</a>
+        <a href="#prompt-sampler">50-Prompt Sampler</a>
+        <a href="#pricing">5-Tier Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div style="display:flex; gap:0.5rem;">
+        <a href="#pricing" class="btn btn-sm btn-outline-light">Free Audit Kit ($0)</a>
+        <a href="#pricing" class="btn btn-sm btn-emerald">Get Flagship OS ($59)</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">2026 Enterprise Edition • For 1–25 Person Small Businesses</span>
+          <h1>
+            The Small Business <span class="accent">AI Automation</span> Operating System
+          </h1>
+          <p class="hero-sub">
+            A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff.
+          </p>
+
+          <div class="proof-pills">
+            <span class="proof-pill"><strong>111,905+</strong> Manuscript Words</span>
+            <span class="proof-pill"><strong>50</strong> Tested AI Workflow Prompts</span>
+            <span class="proof-pill"><strong>12</strong> Emergency Crisis Scripts</span>
+            <span class="proof-pill"><strong>20</strong> Vector System Diagrams</span>
+            <span class="proof-pill"><strong>10</strong> Fillable PDF Workbooks</span>
+            <span class="proof-pill"><strong>100% Offline</strong> SaaS-Lite Web App</span>
+            <span class="proof-pill"><strong>5-DB</strong> Minimalist Notion OS Kit</span>
+          </div>
+
+          <div style="display:flex; gap:0.85rem; flex-wrap:wrap;">
+            <a href="#pricing" class="btn btn-emerald">Get Flagship OS Bundle — $59</a>
+            <a href="#pricing" class="btn btn-outline-light">Download Free 5-Day Audit Kit — $0</a>
+          </div>
+        </div>
+
+        <!-- Right Hero Card: Executive Telemetry Summary -->
+        <div class="hero-card">
+          <div style="font-family:var(--font-mono); font-size:0.76rem; color:#34D399; font-weight:700; margin-bottom:0.4rem;">
+            T.R.A.V. HUMAN-IN-THE-LOOP GOVERNANCE ARCHITECTURE
+          </div>
+          <h3 style="font-size:1.3rem; margin-bottom:0.85rem; color:#FFFFFF;">
+            Built for Real Operations—Not Unchecked Chatbot Hype
+          </h3>
+          <p style="font-size:0.88rem; color:#CBD5E1; margin-bottom:1.1rem;">
+            Every workflow in this Operating System separates deterministic pricing math from AI language drafting using our 3-Tier Risk Gate:
+          </p>
+          <div style="background:#1E293B; border-left:4px solid #059669; padding:0.75rem 0.9rem; border-radius:6px; margin-bottom:0.65rem;">
+            <div style="font-size:0.8rem; font-weight:800; color:#34D399;">GREEN GATE (75% OF TASK VOLUME — UNATTENDED 24/7)</div>
+            <div style="font-size:0.78rem; color:#CBD5E1;">60-second missed-call SMS text-back, CRM normalization, portal provisioning, Tier-1 grounded FAQs, and Day +1 invoice nudges.</div>
+          </div>
+          <div style="background:#1E293B; border-left:4px solid #D97706; padding:0.75rem 0.9rem; border-radius:6px; margin-bottom:0.65rem;">
+            <div style="font-size:0.8rem; font-weight:800; color:#FBBF24;">AMBER GATE (20% OF VOLUME — 15-SECOND APPROVAL)</div>
+            <div style="font-size:0.78rem; color:#CBD5E1;">AI prepares 95% of 3-tier quotes (&gt;=$2,500), credit memos, and SOP updates, pausing in Slack for a 1-click thumb approval.</div>
+          </div>
+          <div style="background:#1E293B; border-left:4px solid #EF4444; padding:0.75rem 0.9rem; border-radius:6px;">
+            <div style="font-size:0.8rem; font-weight:800; color:#F87171;">RED GATE (5% OF VOLUME — IMMEDIATE CONTAINMENT)</div>
+            <div style="font-size:0.78rem; color:#CBD5E1;">Sentiment &lt;= 2/5, legal/clinical keywords, or chargebacks immediately lock automation and trigger the 12 Emergency Scripts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: The 5-Department Small Business Engine -->
+  <section id="five-depts" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow" style="background:var(--accent-soft); color:var(--accent);">THE 5-DEPARTMENT ENGINE</span>
+        <h2>Eliminate Manual Friction Across Every Core Department</h2>
+        <p>Whether you run a local medical/dental clinic, an HVAC/plumbing trade contractor, a B2B agency, or an e-commerce brand, your business runs on five interconnected pipelines.</p>
+      </div>
+
+      <div class="grid-5">
+        <div class="card" style="border-top:4px solid var(--accent);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--accent);">DEPT 01 • CH 3</div>
+          <h3 style="font-size:1.05rem; margin:0.35rem 0 0.5rem; color:var(--primary);">60-Second Lead Capture</h3>
+          <p style="font-size:0.83rem; color:var(--muted);">Omnichannel webhook intake across web forms, missed calls, WhatsApp, and social DMs with instant SMS concierge booking.</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--secondary);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--secondary);">DEPT 02 • CH 4</div>
+          <h3 style="font-size:1.05rem; margin:0.35rem 0 0.5rem; color:var(--primary);">3-Tier Sales &amp; Quoting</h3>
+          <p style="font-size:0.83rem; color:var(--muted);">Convert 90-second post-visit voice notes into Good-Better-Best proposals backed by a 14-day polite-persistence follow-up loop.</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--accent);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--accent);">DEPT 03 • CH 5–7</div>
+          <h3 style="font-size:1.05rem; margin:0.35rem 0 0.5rem; color:var(--primary);">Onboarding, Support &amp; Reviews</h3>
+          <p style="font-size:0.83rem; color:var(--muted);">Zero-drop payment-to-portal provisioning, grounded RAG customer support, sentiment-gated 5-star Google reviews, and 90d recalls.</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--warning);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--warning);">DEPT 04 • CH 8</div>
+          <h3 style="font-size:1.05rem; margin:0.35rem 0 0.5rem; color:var(--primary);">Invoicing, AR &amp; Receipt OCR</h3>
+          <p style="font-size:0.83rem; color:var(--muted);">Same-day itemized invoice creation, 5-stage overdue payment chaser ladder, receipt vision OCR, and 5% vendor price-creep alerts.</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--secondary);">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--secondary);">DEPT 05 • CH 9–10</div>
+          <h3 style="font-size:1.05rem; margin:0.35rem 0 0.5rem; color:var(--primary);">Living SOPs &amp; Owner Pulse</h3>
+          <p style="font-size:0.83rem; color:var(--muted);">Turn 3-minute Loom recordings into 7-block SOPs, delegate by voice, and review all 12 Core Owner KPIs every Friday in 15 minutes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Live Interactive ROI & Lead-Leak Calculator -->
+  <section id="roi-calculator" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow" style="background:var(--secondary-soft); color:var(--secondary);">INTERACTIVE FINANCIAL DIAGNOSTIC</span>
+        <h2>Calculate Your Annual Cost of Manual Friction (CMF) in 30 Seconds</h2>
+        <p>Adjust the sliders below to see how much manual admin hours and delayed lead responses are costing your business right now—and how fast the Flagship OS pays for itself.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Calculator Inputs -->
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+            <h3 style="font-size:1.05rem; color:var(--primary);">1. Your Business Baseline</h3>
+            <div style="display:flex; gap:0.4rem;">
+              <button type="button" class="btn btn-sm btn-outline-dark" onclick="setMarketingPreset('solo')">Solo/Micro</button>
+              <button type="button" class="btn btn-sm btn-outline-dark" onclick="setMarketingPreset('clinic')">Clinic/Trade</button>
+              <button type="button" class="btn btn-sm btn-outline-dark" onclick="setMarketingPreset('agency')">Multi-Crew</button>
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label class="calc-label" for="mTeamSize">Team Size (1–25 Staff) <span id="vTeamSize" class="calc-val">8 Staff</span></label>
+            <input type="range" id="mTeamSize" min="1" max="25" step="1" value="8" oninput="updateMarketingRoi()" />
+          </div>
+
+          <div class="calc-group">
+            <label class="calc-label" for="mHourlyCost">Blended Hourly Labor Cost ($/hr Owner + Admin) <span id="vHourlyCost" class="calc-val">$58/hr</span></label>
+            <input type="range" id="mHourlyCost" min="20" max="200" step="2" value="58" oninput="updateMarketingRoi()" />
+          </div>
+
+          <div class="calc-group">
+            <label class="calc-label" for="mWeeklyHours">Weekly Manual Admin &amp; Copy-Paste Hours <span id="vWeeklyHours" class="calc-val">24 hrs/wk</span></label>
+            <input type="range" id="mWeeklyHours" min="4" max="80" step="1" value="24" oninput="updateMarketingRoi()" />
+          </div>
+
+          <div class="calc-group">
+            <label class="calc-label" for="mMonthlyLeads">Monthly Inbound Leads (All Channels) <span id="vMonthlyLeads" class="calc-val">110 leads/mo</span></label>
+            <input type="range" id="mMonthlyLeads" min="10" max="800" step="5" value="110" oninput="updateMarketingRoi()" />
+          </div>
+
+          <div class="calc-group">
+            <label class="calc-label" for="mDelayedPct">% Leads Delayed &gt;5 Mins or Missed Calls <span id="vDelayedPct" class="calc-val">35%</span></label>
+            <input type="range" id="mDelayedPct" min="5" max="85" step="1" value="35" oninput="updateMarketingRoi()" />
+          </div>
+
+          <div class="grid-2" style="gap:0.85rem;">
+            <div class="calc-group" style="margin-bottom:0;">
+              <label class="calc-label" for="mCloseRate">Net Close Rate (%) <span id="vCloseRate" class="calc-val">16%</span></label>
+              <input type="range" id="mCloseRate" min="5" max="50" step="1" value="16" oninput="updateMarketingRoi()" />
+            </div>
+            <div class="calc-group" style="margin-bottom:0;">
+              <label class="calc-label" for="mCustomerVal">Avg Customer Value ($)</label>
+              <input type="number" id="mCustomerVal" class="form-input" value="1850" min="100" max="50000" step="50" oninput="updateMarketingRoi()" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculator Live Outputs -->
+        <div class="card">
+          <h3 style="font-size:1.05rem; color:var(--primary); margin-bottom:1rem;">2. Your Projected 12-Month Automation Return</h3>
+
+          <div class="result-banner">
+            <div style="font-size:0.76rem; font-family:var(--font-mono); color:#94A3B8; text-transform:uppercase;">
+              Total Annual Cost of Manual Friction (Annual CMF)
+            </div>
+            <div id="outMktCmf" style="font-size:2.35rem; font-weight:900; font-family:var(--font-mono); color:#34D399;">
+              $196,650/yr
+            </div>
+            <div id="outMktBreakdown" style="font-size:0.82rem; color:#CBD5E1; margin-top:0.2rem;">
+              Includes $72,384/yr Labor Waste + $124,266/yr Leaked Lead Revenue
+            </div>
+          </div>
+
+          <div class="result-grid">
+            <div class="result-box">
+              <div class="lbl">Weekly Hours Recovered (70%)</div>
+              <div id="outMktHours" class="val" style="color:var(--accent);">16.8 hrs/wk</div>
+              <div style="font-size:0.76rem; color:var(--muted);">874 hours/year returned to team</div>
+            </div>
+            <div class="result-box">
+              <div class="lbl">Leaked Lead Revenue Rescued (65%)</div>
+              <div id="outMktLeadRescue" class="val" style="color:var(--secondary);">$80,773/yr</div>
+              <div style="font-size:0.76rem; color:var(--muted);">Via 60-Second SMS &amp; Email Router</div>
+            </div>
+            <div class="result-box">
+              <div class="lbl">Total First-Year Net Value (65%)</div>
+              <div id="outMktNetValue" class="val" style="color:var(--primary);">$127,822/yr</div>
+              <div style="font-size:0.76rem; color:var(--muted);">Conservative first-year capture</div>
+            </div>
+            <div class="result-box" style="background:var(--accent-soft); border-color:#A7F3D0;">
+              <div class="lbl" style="color:var(--accent-hover);">Recommended Edition &amp; Payback</div>
+              <div id="outMktPayback" class="val" style="color:var(--accent-hover); font-size:1.3rem;">Tier 3 ($59) • &lt; 4 Hours</div>
+              <div style="font-size:0.76rem; color:var(--accent-hover); font-weight:600;">One-Time Investment • Zero Extra Staff</div>
+            </div>
+          </div>
+
+          <a href="#pricing" class="btn btn-emerald" style="width:100%;">
+            Get Instant Access to the Flagship OS Bundle ($59)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Interactive 10-Chapter Curriculum Explorer -->
+  <section id="curriculum" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow" style="background:var(--accent-soft); color:var(--accent);">COMPLETE 10-CHAPTER ARCHITECTURE</span>
+        <h2>Explore Every Chapter, Framework, Case Study &amp; Action Workbook</h2>
+        <p>Click any chapter tab below to inspect the exact engineering framework, real-world small business case study, and copy-paste prompts inside.</p>
+      </div>
+
+      <div id="chapterTabsBar" class="chapter-tabs"></div>
+
+      <div class="card" style="border-left:6px solid var(--accent);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.65rem;">
+          <span id="chViewDept" style="font-family:var(--font-mono); font-size:0.8rem; font-weight:800; color:var(--accent);"></span>
+          <span style="font-family:var(--font-mono); font-size:0.78rem; background:var(--surface); padding:0.2rem 0.6rem; border-radius:6px; border:1px solid var(--border);">
+            Includes 2 Vector Diagrams + 5 Prompts + 1 Fillable Workbook
+          </span>
+        </div>
+        <h3 id="chViewTitle" style="font-size:1.45rem; color:var(--primary); margin-bottom:0.65rem;"></h3>
+        <p id="chViewSummary" style="font-size:0.95rem; color:var(--text); margin-bottom:1.25rem;"></p>
+
+        <div class="grid-3">
+          <div style="background:var(--surface); padding:1rem; border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:0.74rem; font-weight:800; text-transform:uppercase; color:var(--secondary); margin-bottom:0.3rem;">Core Engineering Framework</div>
+            <div id="chViewFramework" style="font-size:0.86rem; font-weight:600;"></div>
+          </div>
+          <div style="background:var(--accent-soft); padding:1rem; border-radius:8px; border:1px solid #A7F3D0;">
+            <div style="font-size:0.74rem; font-weight:800; text-transform:uppercase; color:var(--accent-hover); margin-bottom:0.3rem;">Verified SMB Case Study</div>
+            <div id="chViewCaseStudy" style="font-size:0.86rem; font-weight:600;"></div>
+          </div>
+          <div style="background:var(--warning-soft); padding:1rem; border-radius:8px; border:1px solid #FDE68A;">
+            <div style="font-size:0.74rem; font-weight:800; text-transform:uppercase; color:#92400E; margin-bottom:0.3rem;">Companion Workbook &amp; Prompts</div>
+            <div id="chViewWorksheet" style="font-size:0.84rem; font-weight:700; margin-bottom:0.25rem;"></div>
+            <div id="chViewPrompts" style="font-size:0.8rem; color:var(--muted);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Interactive Prompt Vault Sampler -->
+  <section id="prompt-sampler" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">DETERMINISTIC PROMPT CONTRACTS</span>
+        <h2>Preview 10 of the 50 Tested AI Workflow Prompts Inside the Vault</h2>
+        <p>Every prompt is structured with explicit System Role, Grounded Variables, Hard Negative Guardrails, and Strict JSON Output Schemas.</p>
+      </div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-bottom:1.5rem;" id="samplerButtonsBar"></div>
+
+      <div class="grid-2">
+        <div class="card" style="background:#1E293B; border-color:#334155; color:#FFFFFF;">
+          <div style="font-family:var(--font-mono); font-size:0.78rem; color:#34D399; font-weight:700;" id="smpMeta"></div>
+          <h3 style="font-size:1.15rem; margin:0.3rem 0 0.75rem; color:#FFFFFF;" id="smpTitle"></h3>
+          <div style="font-size:0.76rem; font-weight:700; color:#94A3B8; margin-bottom:0.35rem;">SYSTEM &amp; USER PROMPT CONTRACT:</div>
+          <pre id="smpTemplateBox" class="code-preview"></pre>
+        </div>
+        <div class="card" style="background:#1E293B; border-color:#334155; color:#FFFFFF;">
+          <div style="font-size:0.76rem; font-weight:700; color:#38BDF8; margin-bottom:0.35rem;">VERIFIED SAMPLE OUTPUT &amp; JSON PAYLOAD:</div>
+          <pre id="smpSampleBox" class="code-preview" style="max-height:395px;"></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: 5-Tier Commercial Pricing Matrix -->
+  <section id="pricing" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow" style="background:var(--accent-soft); color:var(--accent);">CHOOSE YOUR OPERATING SYSTEM EDITION</span>
+        <h2>5 Commercial Editions Tailored to Your Stage of Growth</h2>
+        <p>Start with the Free 5-Day Audit Starter Kit or get instant offline + Notion + Excel access with the Flagship $59 Bundle.</p>
+      </div>
+
+      <div class="grid-5" style="margin-bottom:3rem;">
+        <!-- Tier 0 -->
+        <div class="tier-card">
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--secondary);">TIER 0 • STARTER KIT</div>
+            <h3 style="font-size:1.05rem; margin-top:0.25rem;">Free 5-Day Audit Kit</h3>
+            <div class="tier-price">$0</div>
+            <div style="font-size:0.76rem; color:var(--muted);">Instant ZIP Download</div>
+            <ul class="tier-list">
+              <li>Chapter 1 + Audit Workbook PDF (32 Pages, 64 Fillable Fields)</li>
+              <li>Offline Web App (Free Diagnostic Mode)</li>
+              <li>5-Dept ROI &amp; Lead-Leak CSV Calculator</li>
+              <li>Prompts 1.1–1.5 + Emergency Script 01</li>
+            </ul>
+          </div>
+          <a href="../09-EXPORTS/HYBRID-BUNDLE/Tier0-Free-5Day-Audit-Starter-Kit.zip" class="btn btn-outline-dark" style="width:100%; font-size:0.82rem;">Download Free Kit ($0)</a>
+        </div>
+
+        <!-- Tier 1 -->
+        <div class="tier-card">
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--muted);">TIER 1 • RETAIL BOOK</div>
+            <h3 style="font-size:1.05rem; margin-top:0.25rem;">Kindle &amp; KDP Print</h3>
+            <div class="tier-price">$9.99</div>
+            <div style="font-size:0.76rem; color:var(--muted);">eBook ($16.99 Print 6"×9")</div>
+            <ul class="tier-list">
+              <li>Complete 10-Chapter Manuscript (111,905+ Words)</li>
+              <li>Reflowable EPUB 3.0 &amp; 242-Page Print Edition</li>
+              <li>All 50 Prompts &amp; 12 Emergency Scripts in Text</li>
+              <li>All 20 Chapter Architecture Diagrams</li>
+            </ul>
+          </div>
+          <a href="../09-EXPORTS/HYBRID-BUNDLE/Tier1-KDP-and-D2D-Retail-Book-Pack.zip" class="btn btn-outline-dark" style="width:100%; font-size:0.82rem;">Get Retail Book Pack</a>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier-card">
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--secondary);">TIER 2 • WORKBOOK SUITE</div>
+            <h3 style="font-size:1.05rem; margin-top:0.25rem;">Interactive Workbooks &amp; Tablet Planner</h3>
+            <div class="tier-price">$29</div>
+            <div style="font-size:0.76rem; color:var(--muted);">One-Time Direct License</div>
+            <ul class="tier-list">
+              <li>Everything in Tier 1 (Master PDF + EPUB 3.0)</li>
+              <li>80-Page US Letter Fillable Workbook (160 Fields)</li>
+              <li>76-Page ISO A4 Fillable Workbook (152 Fields)</li>
+              <li>47-Page iPad / GoodNotes horizontal Planner</li>
+              <li>62-Item Prompt &amp; SOP CSV Vault</li>
+            </ul>
+          </div>
+          <a href="../09-EXPORTS/HYBRID-BUNDLE/Tier2-Interactive-Workbook-and-Atlas-Edition-29.zip" class="btn btn-cyan" style="width:100%; font-size:0.82rem;">Get Workbook Edition ($29)</a>
+        </div>
+
+        <!-- Tier 3 (Featured) -->
+        <div class="tier-card featured">
+          <span class="featured-ribbon">MOST POPULAR • FLAGSHIP OS</span>
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--accent);">TIER 3 • COMPLETE OS</div>
+            <h3 style="font-size:1.05rem; margin-top:0.25rem;">Complete SmallBiz AI Automation OS</h3>
+            <div class="tier-price" style="color:var(--accent);">$59</div>
+            <div style="font-size:0.76rem; color:var(--muted);">One-Time Commercial License</div>
+            <ul class="tier-list">
+              <li><strong>Everything in Tier 2 Included</strong></li>
+              <li><strong>Pro Web Companion App</strong> + License Key (<code>SMALLBIZ-OS-PRO-2026</code>)</li>
+              <li><strong>5-Database Minimalist Notion OS Kit</strong> + Formula 2.0 Pack</li>
+              <li><strong>8-Tab Charted Excel Command Center</strong> + JSON Blueprints</li>
+            </ul>
+          </div>
+          <a href="../09-EXPORTS/HYBRID-BUNDLE/Tier3-Complete-SmallBiz-AI-Automation-OS-Flagship-59.zip" class="btn btn-emerald" style="width:100%; font-size:0.84rem;">Get Flagship OS ($59)</a>
+        </div>
+
+        <!-- Tier 4 -->
+        <div class="tier-card">
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--warning);">TIER 4 • LIVING VAULT</div>
+            <h3 style="font-size:1.05rem; margin-top:0.25rem;">Living Automation Vault &amp; Office Suite</h3>
+            <div class="tier-price">$12<span style="font-size:0.95rem;">/mo</span></div>
+            <div style="font-size:0.76rem; color:var(--muted);">Or $59/yr VIP Annual Access</div>
+            <ul class="tier-list">
+              <li><strong>Everything in Tier 3 Included</strong></li>
+              <li>Monthly Industry Drop #01 (4 Verticals + 8 Prompts)</li>
+              <li>Editable Word (.DOCX) SOPs &amp; Slide Decks (.PPTX)</li>
+              <li>Quarterly New Make/n8n/Zapier Blueprints</li>
+            </ul>
+          </div>
+          <a href="../09-EXPORTS/HYBRID-BUNDLE/Tier4-Living-Automation-Vault-Membership-Drop01.zip" class="btn btn-amber" style="width:100%; font-size:0.82rem;">Join Living Vault</a>
+        </div>
+      </div>
+
+      <!-- Feature Comparison Matrix Table -->
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Deliverable / Component</th>
+            <th>Tier 0 ($0)</th>
+            <th>Tier 1 ($9.99)</th>
+            <th>Tier 2 ($29)</th>
+            <th>Tier 3 Flagship ($59)</th>
+            <th>Tier 4 Vault ($12/mo)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chapter 1 + Fillable Audit Workbook + ROI CSV</strong></td>
+            <td>Included</td>
+            <td>Included</td>
+            <td>Included</td>
+            <td><strong>Included</strong></td>
+            <td><strong>Included</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Complete 10-Chapter Book (179p PDF + EPUB 3.0 + 242p Print)</strong></td>
+            <td>Ch 1 Sample</td>
+            <td>Included</td>
+            <td>Included</td>
+            <td><strong>Included</strong></td>
+            <td><strong>Included</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Fillable Action Workbooks (US Letter 80p + ISO A4 76p + iPad 47p)</strong></td>
+            <td>Ch 1 Only</td>
+            <td>—</td>
+            <td>Included (406 Fields)</td>
+            <td><strong>Included (406 Fields)</strong></td>
+            <td><strong>Included (406 Fields)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Offline SaaS-Lite Web App (50 Prompts, 12 Scripts &amp; 6 Calculators)</strong></td>
+            <td>Diagnostic Mode</td>
+            <td>—</td>
+            <td>Diagnostic Mode</td>
+            <td><strong>Pro Edition Activated</strong></td>
+            <td><strong>Pro Edition Activated</strong></td>
+          </tr>
+          <tr>
+            <td><strong>5-Database Minimalist Notion OS Kit + Notion Formula 2.0 Guide</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td>62-Item CSV Only</td>
+            <td><strong>All 5 Databases + Guide</strong></td>
+            <td><strong>All 5 Databases + Guide</strong></td>
+          </tr>
+          <tr>
+            <td><strong>4-Industry Vertical Pack (Drop #01) + Editable Office Suite (.DOCX/.PPTX)</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><strong>Included + Monthly Drops</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 6: 12-Question FAQ & 30-Day Guarantee -->
+  <section id="faq" class="section">
+    <div class="container" style="max-width:940px;">
+      <div class="section-header">
+        <span class="eyebrow" style="background:var(--accent-soft); color:var(--accent);">FREQUENTLY ASKED QUESTIONS</span>
+        <h2>Answers for Pragmatic Small Business Owners</h2>
+        <p>Everything you need to know before deploying The Small Business AI Automation Operating System.</p>
+      </div>
+
+      <div id="faqContainer">
+        <div class="faq-item open">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>1. Do I need a software developer or coding experience to deploy these workflows?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            No. Every workflow in this Operating System is engineered for visual no-code platforms (Make.com, Zapier, and n8n) using copy-paste JSON schemas and plain-English prompts. If you can copy and paste a spreadsheet column and connect a Google Sheet or QuickBooks account, you can deploy your first 60-second lead router in under 60 minutes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>2. How does the T.R.A.V. Architecture prevent AI from hallucinating prices or making bad promises?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Chapter 2 establishes a strict separation between deterministic math and language generation. The AI is never allowed to calculate prices, taxes, or discounts on its own; instead, a lookup table injects locked SKU rows into the prompt at <code>temperature: 0.0–0.1</code>, and any quote above your threshold pauses at an Amber Gate in Slack for a 15-second human approval click.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>3. Does the Interactive Web Companion App require a monthly subscription or send my financial data to the cloud?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Zero subscription and zero cloud transmission. <code>smallbiz-automation-os-app.html</code> is a 100% self-contained offline HTML5 application that runs locally inside your browser (Chrome, Edge, Safari, Firefox) from your hard drive or USB stick. All your KPI snapshots and calculator inputs stay inside your browser's local storage and export to local CSV/JSON files.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>4. How much does the third-party software stack (Make, OpenAI, Twilio) cost per month to run?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            For a typical 5-to-15 person business processing 100–250 leads and 50–100 invoices per month, total API and no-code tool costs average $45 to $185 per month total—while recovering $5,000 to $15,000+ per month in rescued leads and administrative bandwidth.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>5. Which industries is this Operating System built for?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Every chapter includes multi-industry implementations across four core small business verticals: (1) Medical, Dental, Physical Therapy &amp; Wellness Clinics, (2) HVAC, Plumbing, Electrical, Roofing &amp; Home Service Contractors, (3) B2B Agencies, CPA Firms, Legal &amp; Consultancies, and (4) Specialty Retail &amp; D2C E-Commerce brands.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>6. How do I activate the Pro Web App with my Tier 3 or Tier 4 bundle?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Open <code>07-INTERACTIVE-TOOLS/PRO-ACCESS-LICENSE-KEY.txt</code> inside your bundle, copy the code <code>SMALLBIZ-OS-PRO-2026</code>, click "Activate Pro Access" in the top bar of the web app, and paste the code. All 50 Prompts, 12 Emergency Scripts, and 6 calculators activate immediately.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>7. Are the PDF workbooks fillable on my computer and iPad, or do I have to print them?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Both! We include interactive AcroForm-enabled PDFs for US Letter (8.5"×11", 160 fillable fields), International ISO A4 (210×297mm, 152 fillable fields), and a dedicated horizontal Tablet Planner (11"×8.5", 94 fillable fields) built for iPad GoodNotes, Notability, reMarkable, and desktop Adobe/Edge readers.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>8. Will my existing staff resist these automations out of fear of layoffs?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Chapter 1 includes <code>Prompt 1.5</code> (the "Zero-Layoff Automation Compact" internal memo) and a proven rollout script that frames automation around eliminating evening/weekend data-entry drudgery so staff can focus on high-value customer care and higher compensation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>9. What happens if an automation hits an API outage or an angry customer texts in?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Prompt 2.5 monitors a Dead-Letter Queue (DLQ) that automatically routes failed webhooks to a backup Google Sheet and alerts your team via Slack/SMS. If an angry customer messages in (<code>Sentiment &lt;= 2</code>), the Red Gate halts all automated sequences immediately and gives you 12 copy-paste Emergency Scripts to resolve the situation personally.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>10. Can I use the Notion OS Kit on a free Notion account?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Yes. All 5 CSV databases and Notion Formula 2.0 properties run 100% natively on Notion's Free plan as well as Plus/Business plans with zero paid third-party Notion plugins required.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>11. How long does the full rollout take if I only have 3 hours a week to work on systems?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Chapter 10 structures the deployment into a realistic 90-Day Phased Roadmap (3 hours/week): Phase I (Days 1–30) launches your 60-second lead router and same-day invoicing; Phase II (Days 31–60) deploys 3-tier quotes, onboarding, and RAG support; Phase III (Days 61–90) adds receipt OCR, living SOPs, and your 15-minute Friday KPI Scorecard.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span>12. What is your 30-Day Implementation Satisfaction Guarantee?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-a">
+            Run the Chapter 1 Audit and deploy a single workflow from Chapter 3 or Chapter 8 within 30 days. If the system does not visibly identify at least $25,000 in recoverable annual friction or save you at least 5 hours a week, reply to your receipt email within 30 days for a courteous 100% refund.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <strong style="color:#FFFFFF;">The Small Business AI Automation Operating System (2026 Enterprise Edition)</strong><br />
+        <span>Digital Publishing Studio • 100% Offline-Ready &amp; Privacy-First Operations Architecture</span>
+      </div>
+      <div>
+        <a href="#top" style="color:#34D399; text-decoration:none; font-weight:700;">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CHAPTERS_DATA = [
+  {
+    "num": 1,
+    "dept": "Dept 05: Strategy & All 5 Depts",
+    "title": "Chapter 1: The Small Business Automation Audit — Finding Your $50,000+ Manual Bottlenecks",
+    "framework": "5-Department Small Business Engine & P.A.C.E. Prioritization Matrix (Pain, Annual Hours, Cashflow, Ease)",
+    "case_study": "Apex Comfort HVAC & Plumbing (11 Staff, $1.45M Revenue) — Audited $302,266/yr in Annual Cost of Manual Friction (CMF) and recovered 18.5 hrs/wk in 30 days.",
+    "worksheet": "Worksheet 01: 5-Day Time & Task Log, Lead-Leak Calculator & P.A.C.E. Matrix",
+    "prompts": "Prompts 1.1 – 1.5 (Time-Log Synthesizer, Lead-Leak Diagnostic, SaaS Stack Auditor, T.R.A.V. Mapper, Zero-Layoff Team Memo)",
+    "summary": "Replaces random software experimentation with a rigorous 5-day operational diagnostic. Quantifies your exact Labor Tax (L_tax), Speed-to-Lead Revenue Leak (R_leak), and Receivables Cashflow Drag (C_drag) so you automate your highest-ROI bottleneck in Week 1."
+  },
+  {
+    "num": 2,
+    "dept": "Dept 05: Systems & Safety Governance",
+    "title": "Chapter 2: The Human-in-the-Loop Architecture — Designing Safe, Zero-Hallucination Workflows",
+    "framework": "T.R.A.V. 4-Stage Safety Contract (Trigger -> Rules -> AI -> Verification) & Green / Amber / Red Governance Zones",
+    "case_study": "BrightSmile Dental & Orthodontics (9 Staff, $1.18M Revenue) — Eliminated insurance quoting errors while automating 78% of routine front-desk patient inquiries.",
+    "worksheet": "Worksheet 02: Workflow Risk Classifier, Grounded Truth-Table Builder & Kill-Switch Checklist",
+    "prompts": "Prompts 2.1 – 2.5 (Risk Classifier, Closed-World JSON Compiler, 15s Slack Approval Card Formatter, Regex PII Redactor, DLQ Outage Monitor)",
+    "summary": "Establishes closed-world truth tables, deterministic pre-AI regex filters, temperature 0.0-0.1 JSON schema contracts, and 15-second Slack/Teams Amber Approval Cards so your AI never invents prices, discounts, or legal commitments."
+  },
+  {
+    "num": 3,
+    "dept": "Dept 01: Lead Capture & Speed-to-Lead",
+    "title": "Chapter 3: The 60-Second Lead Capture & Speed-to-Lead Engine (Web, Phone, SMS & Social)",
+    "framework": "I.N.S.T.A.N.T. 60-Second Omnichannel Router & Non-Intrusive B.A.N.T.-Lite Lead Scorer",
+    "case_study": "MetroShield Roofing & Exteriors (14 Staff, $2.1M Revenue) — Cut median response time from 4.2 hours to 38 seconds and rescued $38,400/mo in previously missed calls.",
+    "worksheet": "Worksheet 03: Omnichannel Intake Audit, A2P 10DLC SMS Compliance & Missed-Call Text-Back Script Builder",
+    "prompts": "Prompts 3.1 – 3.5 (Omnichannel Lead Enricher, 60s SMS/Email Concierge, Missed-Call Whisper Text-Back Bot, 2-Way SMS Booker, 30m Pre-Call Rep Brief)",
+    "summary": "Captures web forms, missed phone calls, voicemails, Facebook/IG Lead Ads, WhatsApp, and Google Business messages into a single normalized webhook router that responds and books appointments in under 60 seconds 24/7."
+  },
+  {
+    "num": 4,
+    "dept": "Dept 02: Sales Qualification & Quoting",
+    "title": "Chapter 4: Automated Sales Qualification, 3-Option Quotes & The 14-Day Follow-Up Loop",
+    "framework": "Voice-to-3-Tier Good-Better-Best Proposal Engine & The 6-Touch Polite-Persistence State Machine",
+    "case_study": "Vanguard Commercial Cleaning (19 Staff, $1.65M Revenue) — Compressed proposal turnaround from 72 hours to 14 minutes and lifted 14-day quote close rate from 24% to 39%.",
+    "worksheet": "Worksheet 04: Deterministic SKU Pricebook Matrix, 3-Tier Proposal Template & 14-Day Follow-Up Cadence",
+    "prompts": "Prompts 4.1 – 4.5 (Field Voice Memo to 3-Tier Proposal, Executive ROI Cover Letter, 14-Day Follow-Up Sequence, Margin-Safe Objection Counter, 90-Day Closed-Lost Recycler)",
+    "summary": "Allows field estimators, clinicians, and consultants to record a 90-second voice note after a site visit and automatically assemble a locked Good-Better-Best proposal PDF with automated follow-up nudges that halt the instant the client signs."
+  },
+  {
+    "num": 5,
+    "dept": "Dept 03: Client Onboarding & Fulfillment",
+    "title": "Chapter 5: Frictionless Client Onboarding & Service Delivery Automation",
+    "framework": "The 5-Stage Zero-Drop Handoff Architecture (Payment -> Provisioning -> Dynamic Intake -> Internal Brief -> Milestone Pulse)",
+    "case_study": "Apex Digital Marketing Agency (12 Staff, $1.52M Revenue) — Cut client onboarding cycle time from 9.4 days to 11 hours and reduced Day-90 churn by 64%.",
+    "worksheet": "Worksheet 05: Payment-to-Portal Provisioning Map, Conditional Intake Validator & Scope-Boundary Tracker",
+    "prompts": "Prompts 5.1 – 5.5 (Sales-to-Fulfillment Handoff Compiler, Welcome & Milestone Writer, Incomplete Intake Validator, Stalled Onboarding Chaser, Scope-Creep Detector)",
+    "summary": "Wires Stripe, Square, and QuickBooks payment webhooks directly to cloud folder creation, project board provisioning, pre-filled intake forms, and proactive milestone status updates."
+  },
+  {
+    "num": 6,
+    "dept": "Dept 03: Customer Support Triage",
+    "title": "Chapter 6: 24/7 AI Customer Support & Smart Escalation (Zero-Hallucination Helpdesk)",
+    "framework": "The 3-Tier Support Shield (Tier 1 Green RAG Auto-Resolve, Tier 2 Amber Draft, Tier 3 Red Human Takeover)",
+    "case_study": "Pure Botanica Skincare & Wellness D2C (8 Staff, $1.35M Revenue) — Deflected 68% of routine WISMO and FAQ tickets in under 45 seconds while maintaining 4.92/5 CSAT.",
+    "worksheet": "Worksheet 06: Top-25 FAQ Truth-Table Builder, Sentiment Routing Matrix & Red-Gate Regex Filter",
+    "prompts": "Prompts 6.1 – 6.5 (Ticket Sentiment/Intent Classifier, Grounded RAG Responder, Live Order/Appointment API Formatter, Angry Customer Red-Gate Brief, Weekly KB Gap Patcher)",
+    "summary": "Turns your verified policies, hours, warranties, and live order/scheduling APIs into a grounded 24/7 helpdesk that resolves routine inquiries instantly and escalates frustrated customers (`Sentiment <= 2`) to a human immediately."
+  },
+  {
+    "num": 7,
+    "dept": "Dept 03: Reputation, Reviews & Retention",
+    "title": "Chapter 7: The Reputation, Review & Repeat-Sales Flywheel",
+    "framework": "The R.E.V.I.E.W. Sentiment-Gated Reputation Engine & The 30/60/90/180-Day Dormant Win-Back Matrix",
+    "case_study": "Precision Auto Care & Tire (10 Staff, $1.28M Revenue) — Grew verified 5-star Google reviews from 42 to 218 in 6 months and generated $94,000 in dormant recall bookings.",
+    "worksheet": "Worksheet 07: Golden-Moment Sentiment Gate Setup, GBP SEO Response Library & Win-Back Cohort Planner",
+    "prompts": "Prompts 7.1 – 7.5 (Post-Visit Sentiment Gate Classifier, Frictionless 5-Star Google Review Generator, Public Review SEO Responder, 60/90/180d Win-Back Writer, VIP Churn Predictor)",
+    "summary": "Sends a 1-click satisfaction check at the peak moment of customer gratitude—routing 4-5 star advocates directly to your Google Business Profile review page while intercepting 1-3 star detractors into private executive resolution."
+  },
+  {
+    "num": 8,
+    "dept": "Dept 04: Invoicing, Receivables & AP",
+    "title": "Chapter 8: Automated Invoicing, Payment Chasers, Expense OCR & Cashflow Control",
+    "framework": "Same-Day Milestone Billing, The 5-Stage Polite-to-Firm AR Chaser State Machine & 3-Way AP Price-Creep Guard",
+    "case_study": "HarborView Electrical Contractors (16 Staff, $2.35M Revenue) — Reduced average Days Sales Outstanding (DSO) from 44 days to 13 days, activating $142,000 in working capital.",
+    "worksheet": "Worksheet 08: Same-Day Billing Trigger Map, 5-Stage Payment Chaser Templates & Vendor Price-Creep Audit Sheet",
+    "prompts": "Prompts 8.1 – 8.5 (Job Notes to Itemized Invoice Formatter, 5-Stage AR Payment Chaser, Vendor Bill & Receipt OCR Extractor, 5% Price-Creep Auditor, Monthly Pre-Close Anomaly Builder)",
+    "summary": "Eliminates Friday night billing backlogs and awkward collection calls by dispatching itemized invoices on job completion, automating polite-to-firm overdue payment reminders, and auditing every supplier bill for unannounced price hikes."
+  },
+  {
+    "num": 9,
+    "dept": "Dept 05: Team SOPs & Delegation",
+    "title": "Chapter 9: The Self-Running Team — Automating SOP Creation, Onboarding, and Task Delegation",
+    "framework": "The 7-Block Living SOP Compiler, 60-Second Voice-to-Task Delegation Engine & Internal Ask-the-SOP Bot",
+    "case_study": "NorthStar Tax & Advisory CPA (13 Staff, $1.78M Revenue) — Documented 40 core firm SOPs in 3 weeks from 4-minute Loom recordings and cut new-hire ramp time by 55%.",
+    "worksheet": "Worksheet 09: Top-20 SOP Priority Matrix, 7-Block SOP Template & 7-Day New-Hire Onboarding Curriculum",
+    "prompts": "Prompts 9.1 – 9.5 (Loom Transcript to 7-Block SOP Compiler, Voice-to-Task Delegation Brief, Meeting Action-Item Tracker, Internal Ask-the-SOP Bot, 7-Day New-Hire Quiz Builder)",
+    "summary": "Ends the 'Ask the Owner Everything' bottleneck by converting 3-minute screen recordings into structured 7-block checklists with binary Definitions of Done and a grounded Slack bot that answers staff procedural questions 24/7."
+  },
+  {
+    "num": 10,
+    "dept": "Dept 05: Executive Command & 90-Day Rollout",
+    "title": "Chapter 10: The 15-Minute Friday Owner Scorecard & Your 90-Day Phased Rollout Roadmap",
+    "framework": "The 12-Metric Friday 3:00 PM Executive Pulse, 90-Day Phased Rollout Schedule & Quarterly Security/Drift Governance",
+    "case_study": "Summit Peak Physical Therapy (15 Staff, $1.92M Revenue) — Reduced founder weekly working hours from 58 hrs to 36 hrs while increasing net operating margin from 14% to 24%.",
+    "worksheet": "Worksheet 10: 12-KPI Friday Scorecard Configuration, 90-Day Sprint Exit-Gate Checklist & Quarterly Security Audit",
+    "prompts": "Prompts 10.1 – 10.5 (Friday 3:00 PM KPI Synthesizer, 90-Day Rollout Customizer, Monthly Tool-Stack & Labor ROI Auditor, Quarterly Drift & Security Reviewer, Monday 15m All-Hands Brief)",
+    "summary": "Consolidates all 5 departments into an automated Friday 3:00 PM executive brief, pairs it with a week-by-week 90-day implementation schedule, and locks in quarterly API security and prompt-drift governance."
+  }
+];
+    const FEATURED_PROMPTS = [
+  {
+    "id": "Prompt 1.1",
+    "chapter": 1,
+    "title": "5-Day Time & Task Log Synthesizer & Cost of Manual Friction (CMF) Calculator",
+    "dept": "Executive / All 5 Depts",
+    "zone": "Amber",
+    "trigger": "Completion of 7-day staff time-tracking audit",
+    "stack": "Make / Sheets / Notion / OpenAI",
+    "template": "### SYSTEM ROLE\nYou are a Senior Chief Operating Officer and Small Business Automation Architect specializing in 1-to-25 person enterprises. Your job is to audit raw 5-day time logs, classify every repetitive manual activity into the 5-Department Small Business Engine, and compute an audited Cost of Manual Friction (CMF) financial model.\n\n### BUSINESS CONTEXT & INPUT VARIABLES\n- Business Name: [BUSINESS_NAME]\n- Industry Vertical: [INDUSTRY_VERTICAL]\n- Team Headcount: [TEAM_HEADCOUNT]\n- Annual Gross Revenue: [ANNUAL_GROSS_REVENUE]\n- Owner Effective Hourly Rate: [OWNER_HOURLY_RATE]\n- Staff Burdened Hourly Rate: [STAFF_BURDENED_HOURLY_RATE]\n- Monthly Missed/Delayed Leads (>60m response): [MONTHLY_MISSED_OR_DELAYED_LEADS]\n- Net Recoverable Close Rate: [NET_RECOVERABLE_CLOSE_RATE]\n- Average Customer First-Year LTV: [AVERAGE_CUSTOMER_LTV]\n- Monthly Overdue Receivables / Unbilled Scope: [MONTHLY_OVERDUE_RECEIVABLES]\n- Receivables Write-Off & Drag Rate: [WRITEOFF_DRAG_RATE]\n\n### RAW 5-DAY TASK LOG\n[RAW_5_DAY_TASK_NOTES]\n\n### EXECUTION RULES & GUARDRAILS\n1. Group and deduplicate all raw log entries into the exact 5 Studio Departments:\n   - Dept 01: Lead Capture & Speed-to-Lead Intake\n   - Dept 02: Sales Qualification, Estimating & Follow-Up\n   - Dept 03: Customer Onboarding, Fulfillment & Support Triage\n   - Dept 04: Invoicing, Receivables & Back-Office Administration\n   - Dept 05: Team SOPs, Delegation & Weekly Executive Reporting\n2. Calculate Weekly Hours for each task using: (Weekly Frequency * Minutes per Event) / 60. Round to 2 decimal places.\n3. Compute Component 1 (Annual Manual Labor Tax), Component 2 (Annual Speed-to-Lead Revenue Leak), Component 3 (Annual Receivables & Billing Loss), and Total Annual CMF using the exact studio formula:\n   Annual CMF = (Weekly Manual Hours * Blended Hourly Rate * 52) + (Monthly Missed/Delayed Leads * Net Close Rate * Avg Customer LTV * 12) + (Monthly Overdue Invoices * Write-Off Rate * 12).\n4. Never invent numbers outside the provided inputs; if a task duration is a range (e.g., \"10-15 mins\"), use the midpoint (12.5 mins) and state the assumption explicitly.\n5. Do not use generic corporate filler or banned AI clichés. Output strictly in the schema below.\n\n### REQUIRED OUTPUT SCHEMA\n1. **Normalized 5-Department Task Inventory Table** (Columns: `Task_ID`, `Dept_Code`, `Standardized_Workflow_Name`, `Role`, `Freq_Wk`, `Mins_Event`, `Weekly_Hours`, `Annual_Labor_Cost`, `Recommended_TRAV_Gate`).\n2. **Departmental Bandwidth Roll-Up Table** (Columns: `Department`, `Owner_Hours_Wk`, `Staff_Hours_Wk`, `Total_Hours_Wk`, `Pct_of_Total_Load`, `Annual_Dept_Payroll_Drag`).\n3. **Audited Annual Cost of Manual Friction (CMF) Financial Statement** (Showing Component 1, Component 2, Component 3, Total Annual CMF, CMF as % of Gross Revenue, and Conservative 65% First-Year Recovery Target).",
+    "sample": "**1. Normalized 5-Department Task Inventory Table (`Apex Comfort HVAC — 11 Staff`)**\n\n| Task_ID | Dept_Code | Standardized_Workflow_Name | Role | Freq_Wk | Mins_Event | Weekly_Hours | Annual_Labor_Cost | Recommended_TRAV_Gate |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| `T-01` | `Dept 01` | Voicemail Transcription & Missed-Call Callback | Owner | 24x | 7.5m | 3.00 hrs | $17,940.00 | `Green Auto` (SMS Concierge) |\n| `T-02` | `Dept 01` | Web Form Copy-Paste to Dispatch CRM | Admin | 20x | 6.0m | 2.00 hrs | $3,328.00 | `Green Auto` (Webhook Sync) |\n| `T-03` | `Dept 02` | Evening 3-Tier Equipment Estimate Drafting | Owner | 11x | 28.0m | 5.13 hrs | $30,677.40 | `Amber Draft` (1-Click Approve) |\n| `T-04` | `Dept 02` | Manual Unopened Quote Follow-Up Chasers | Owner | 15x | 8.0m | 2.00 hrs | $11,960.00 | `Green Auto` (14-Day Loop) |\n| `T-05` | `Dept 03` | Warranty Regis"
+  },
+  {
+    "id": "Prompt 2.3",
+    "chapter": 2,
+    "title": "Human-in-the-Loop Slack/Email One-Click Approval Card Formatter",
+    "dept": "Systems / QA",
+    "zone": "Red",
+    "trigger": "LLM response returned prior to external action",
+    "stack": "Make / n8n / OpenAI / Claude",
+    "template": "### SYSTEM ROLE\nYou are a Mobile UX Operations Designer for time-starved small business owners. You format Amber-Zone human-in-the-loop review items into ultra-clear Slack Block Kit JSON payloads and mobile HTML email cards designed for 15-second thumb approval.\n\n### INPUT VARIABLES\n- Event ID: [EVENT_ID]\n- Customer Name & Contact: [CUSTOMER_NAME_AND_CONTACT]\n- Inbound Request Summary: [INBOUND_REQUEST_SUMMARY]\n- Financial & Margin Metrics: [FINANCIAL_AND_MARGIN_METRICS]\n- Proposed AI Draft Message: [AI_DRAFT_MESSAGE]\n- Action URLs:\n  - Approve & Send Webhook: [APPROVE_WEBHOOK_URL]\n  - Edit in CRM Deep Link: [EDIT_CRM_URL]\n  - Escalate to Red Zone Link: [ESCALATE_RED_URL]\n\n### EXECUTION RULES & GUARDRAILS\n1. Highlight the Why-Amber trigger reason and the Gross Margin % in bold at the very top of the card so the owner never has to hunt for numbers.\n2. Display the exact verbatim text of `[AI_DRAFT_MESSAGE]` inside a clearly delineated quote block.\n3. Include three interactive action buttons:\n   - Primary Green Button: `Approve & Send Now (1-Click)`\n   - Secondary Neutral Button: `Edit Draft in CRM`\n   - Warning Red Button: `Hold & Call Customer`\n4. Output both a valid Slack Block Kit JSON payload and a clean plain-text/Markdown SMS/Email fallback card.\n\n### REQUIRED OUTPUT SCHEMA\n1. **Slack Block Kit JSON Payload** (`blocks` array ready for Slack Incoming Webhook / `chat.postMessage`).\n2. **Mobile SMS / Email Fallback Approval Card**.",
+    "sample": "> {\n>   \"blocks\": [\n>     {\n>       \"type\": \"header\",\n>       \"text\": { \"type\": \"plain_text\", \"text\": \"AMBER GATE APPROVAL REQUIRED — 3-Tier Quote #evt_90841\" }\n>     },\n>     {\n>       \"type\": \"section\",\n>       \"fields\": [\n>         { \"type\": \"mrkdwn\", \"text\": \"*Customer:*\\nDavid Miller (+1-512-555-0142)\" },\n>         { \"type\": \"mrkdwn\", \"text\": \"*Amber Reason:*\\nCustom 3-Tier Quote ($3,850 Anchor)\" },\n>         { \"type\": \"mrkdwn\", \"text\": \"*Gross Margin Check:*\\n54.2% (PASS — Floor >= 48.0%)\" },\n>         { \"type\": \"mrkdwn\", \"text\": \"*Confidence Score:*\\n0.95 (Grounded in SKU Matrix)\" }\n>       ]\n>     },\n>     {\n>       \"type\": \"section\",\n>       \"text\": {\n>         \"type\": \"mrkdwn\",\n>         \"text\": \"*Proposed Customer Message & Quote Link:*\\n> Hi David, great speaking with you! I have prepared your 3 options for the 4-Ton Heat Pump replacement: (1) Essential: $3,100, (2) Complete "
+  },
+  {
+    "id": "Prompt 3.3",
+    "chapter": 3,
+    "title": "Missed-Call Text-Back Conversational Intake & Booking Assistant",
+    "dept": "Sales / Front Desk",
+    "zone": "Green",
+    "trigger": "call.missed` or `voicemail.completed` webhook",
+    "stack": "Twilio / RingCentral / Whisper",
+    "template": "### SYSTEM ROLE\nYou are the 30-Second Missed-Call SMS Concierge for [BUSINESS_NAME] (`temperature: 0.1`). When a phone call goes unanswered while the team is helping other clients, you immediately text the caller, determine whether they left a voicemail or hung up, and guide them into a booked slot in 2 thumb-taps.\n\n### INPUT VARIABLES\n- Business Name: [BUSINESS_NAME]\n- Caller Phone: [CALLER_PHONE_E164]\n- Voicemail Transcript (or NONE_HANGUP): [VOICEMAIL_TRANSCRIPT_IF_ANY]\n- 3 Primary Service Options: [THREE_NUMBERED_SERVICE_OPTIONS]\n- Calendar Booking Links by Option: [CALENDAR_BOOKING_LINKS_BY_OPTION]\n\n### EXECUTION RULES & GUARDRAILS\n1. IF `[VOICEMAIL_TRANSCRIPT_IF_ANY]` IS `\"NONE_HANGUP\"` (Caller hung up without leaving a message):\n   - Write `turn_1_sms` apologizing for missing their call while on the other line and presenting `[THREE_NUMBERED_SERVICE_OPTIONS]` as a quick `Reply 1, 2, or 3` menu.\n2. IF `[VOICEMAIL_TRANSCRIPT_IF_ANY]` CONTAINS A MESSAGE:\n   - Write `turn_1_sms` acknowledging the exact detail from their voicemail and providing the matching booking link from `[CALENDAR_BOOKING_LINKS_BY_OPTION]` immediately.\n3. Also generate `turn_2_reply_branches` showing the exact automated SMS reply for when the caller texts back `1`, `2`, or `3`.\n4. Keep every SMS under 260 characters. Include zero banned AI clichés.\n\n### REQUIRED OUTPUT SCHEMA\nOutput a valid JSON object with keys: `caller_left_voicemail` (boolean), `extracted_voicemail_intent` (string|null), `turn_1_sms` (string), and `turn_2_reply_branches` (object with keys `\"reply_1\"`, `\"reply_2\"`, `\"reply_3\"`).",
+    "sample": "{\n  \"caller_left_voicemail\": false,\n  \"extracted_voicemail_intent\": null,\n  \"turn_1_sms\": \"Hi! This is the front desk at Sterling & Vance Property Law. Sorry we missed your call while in a client signing! Are you calling about: (1) Residential Closing/Conveyancing, (2) Commercial Lease/Purchase, or (3) Title Dispute? Reply 1, 2, or 3 and we'll help right now!\",\n  \"turn_2_reply_branches\": {\n    \"reply_1\": \"Got it—Residential Closing! What property zip code and target closing date are you working with? You can also grab a 15-min Attorney Intake Call for today or tomorrow right here: https://cal.com/sterlingvance/residential\",\n    \"reply_2\": \"Got it—Commercial Property! I have flagged our Senior Commercial Partner. What is the property city and transaction timeline? Grab a priority consult slot here or reply with a good time to call: https://cal.com/sterlingvance/commercial\",\n    \"reply_3\":"
+  },
+  {
+    "id": "Prompt 4.1",
+    "chapter": 4,
+    "title": "Intake-to-Scope Estimator & Good-Better-Best (3-Tier) Quote Builder",
+    "dept": "Sales / Estimating",
+    "zone": "Amber",
+    "trigger": "Voice memo uploaded after site visit/consult",
+    "stack": "Whisper / PandaDoc / QBO",
+    "template": "### SYSTEM ROLE\nYou are a Senior Commercial Estimator and Pricing Architect for [BUSINESS_NAME] (`temperature: 0.1`). You translate raw site/discovery notes and locked Price Matrix calculations into a structured 3-Option (Good-Better-Best) Quote JSON payload without altering any pre-calculated dollar figures.\n\n### INPUT VARIABLES\n- Business Name: [BUSINESS_NAME]\n- Client Name & Organization: [CLIENT_NAME_AND_COMPANY]\n- Minimum Gross Margin Floor: [MIN_GROSS_MARGIN_FLOOR_PCT]\n- Pre-Calculated Price Matrix Numbers (Read-Only Truth):\n[PRE_CALCULATED_PRICE_MATRIX_JSON]\n- Raw Discovery / Walkthrough Voice Transcript:\n[DISCOVERY_VOICE_TRANSCRIPT]\n\n### EXECUTION RULES & GUARDRAILS\n1. NEVER modify, round, or recalculate the dollar prices or margin percentages provided in `[PRE_CALCULATED_PRICE_MATRIX_JSON]`. Copy those exact figures into the output JSON.\n2. Extract the client's #1 stated pain point and #1 desired operational outcome from `[DISCOVERY_VOICE_TRANSCRIPT]`.\n3. Structure three distinct option tiers:\n   - `tier_1_essential`: Core scope solving the immediate baseline need (`1.0x`).\n   - `tier_2_complete_anchor`: Marked `\"is_recommended_anchor\": true`. Includes Tier 1 + the specific preventative/warranty/optimization add-ons from the matrix that solve their core pain point.\n   - `tier_3_priority_vip`: Includes Tier 2 + expedited SLA, premium warranty, and turnkey management.\n4. Explicitly list 3 `scope_exclusions_and_assumptions` to prevent scope creep after signing.\n5. Verify whether all 3 tiers meet `[MIN_GROSS_MARGIN_FLOOR_PCT]` and set `\"margin_guardrail_passed\": true/false`.\n\n### REQUIRED OUTPUT SCHEMA\nOutput a single valid JSON object with keys: `client_pain_summary` (string), `margin_guardrail_passed` (boolean), `options` (object containing `tier_1_essential`, `tier_2_complete_anchor`, `tier_3_priority_vip` — each with `option_title`, `price_usd`, `billing_cadence`, `gross_margin_pct`, `deliverable_bullets`, and `best_for_statement`), `scope_exclusions_and_assumptions` (array of strings), and `trav_zone` (`\"AMBER\"`).",
+    "sample": "{\n  \"client_pain_summary\": \"14,000 sq ft orthopedic medical clinic frustrated with previous janitorial vendor missing terminal exam-room sanitization and leaving streaks on lobby glass before 7:30 AM patient arrivals.\",\n  \"margin_guardrail_passed\": true,\n  \"options\": {\n    \"tier_1_essential\": {\n      \"option_title\": \"Option 1: Essential 5-Night Clinical Sanitization\",\n      \"price_usd\": 2450.00,\n      \"billing_cadence\": \"per month\",\n      \"gross_margin_pct\": 50.4,\n      \"deliverable_bullets\": [\n        \"5x/week evening sanitization of 14 exam rooms, 4 restrooms, and main reception lobby (14,000 sq ft)\",\n        \"EPA hospital-grade disinfectant wipe-down of all high-touch clinical surfaces\",\n        \"Daily trash removal, HEPA vacuuming, and hard-floor damp mopping\",\n        \"Digital photo-verified lockup checklist sent at 10:30 PM nightly\"\n      ],\n      \"best_for_statement\": \"Best for ba"
+  },
+  {
+    "id": "Prompt 5.1",
+    "chapter": 5,
+    "title": "Sales-to-Fulfillment Handoff Synthesizer & Internal Delivery Brief Generator",
+    "dept": "Onboarding / Ops",
+    "zone": "Green",
+    "trigger": "checkout.session.completed` or `invoice.paid",
+    "stack": "Stripe / QBO / Notion / Gmail",
+    "template": "### SYSTEM PROMPT\nYou are an enterprise Chief Operating Officer and Fulfillment Systems Architect for a small business. Your job is to transform messy sales discovery notes, a signed Statement of Work (SOW), and a verified customer intake form into a zero-ambiguity Internal Delivery Brief and an actionable task provisioning array for the fulfillment team.\n\nSTRICT OPERATIONAL GUARDRAILS:\n1. GROUNDED FACTS ONLY: Never invent technical specifications, credentials, measurements, or deliverables that are not explicitly present in [DEAL_SOW_JSON], [RAW_SALES_NOTES], or [VERIFIED_INTAKE_DATA].\n2. HIGHLIGHT SALES COMMITMENTS: Extract every specific verbal or written promise from [RAW_SALES_NOTES] (e.g., deadline sensitivities, communication preferences, past bad experiences with competitors) so the delivery team honors them.\n3. PROTECT SCOPE BOUNDARIES: Clearly list the explicit SOW exclusions so technicians, designers, or clinicians do not accidentally perform unbilled work.\n4. OUTPUT STRICT JSON: Return ONLY a valid JSON object matching the required schema.\n\n### USER PROMPT\nSynthesize the following onboarding inputs into an Internal Delivery Brief and task board provisioning payload:\n\n1. SIGNED SOW & DEAL METADATA:\n[DEAL_SOW_JSON]\n\n2. RAW SALES DISCOVERY NOTES & CALL TRANSCRIPT SUMMARY:\n[RAW_SALES_NOTES]\n\n3. VERIFIED CUSTOMER INTAKE FORM & UPLOADED ASSETS:\n[VERIFIED_INTAKE_DATA]\n\n4. STANDARD TEAM ROLES & MILESTONE CADENCE:\n[ASSIGNED_TEAM_ROLES]\n\nReturn a JSON object with this exact structure:\n{\n  \"deal_id\": \"string\",\n  \"client_summary\": {\n    \"client_name\": \"string\",\n    \"package_tier\": \"string\",\n    \"assigned_lead\": \"string\",\n    \"target_kickoff_date\": \"YYYY-MM-DD\",\n    \"target_completion_date\": \"YYYY-MM-DD\"\n  },\n  \"executive_delivery_brief\": {\n    \"plain_english_objective\": \"2-sentence summary of what success looks like for this customer\",\n    \"quantified_definition_of_done\": [\"array of specific measurable deliverables from the SOW\"],\n    \"verified_technical_specs_and_logistics\": [\"array of verified specs, site constraints, or system logins\"],\n    \"critical_sales_promises_and_sensitivities\": [\"array of specific promises or red flags from sales notes\"],\n    \"explicit_sow_exclusions\": [\"array of items strictly out of scope\"]\n  },\n  \"task_board_provisioning\": [\n    {\n      \"task_order\": 1,\n      \"task_title\": \"string\",\n      \"assigned_role\": \"string\",\n      \"due_offset_days_from_kickoff\": 0,\n      \"acceptance_criteria\": \"string\"\n    }\n  ],\n  \"slack_team_announcement_markdown\": \"Formatted Slack/Teams message for #fulfillment-ops announcing the ready-to-start project\"\n}",
+    "sample": "{\n      \"deal_id\": \"DL-9042\",\n      \"client_summary\": {\n        \"client_name\": \"Dr. Marcus Vance — Vance Orthodontic Studio\",\n        \"package_tier\": \"Pro Growth Website & Local Booking Engine ($6,800)\",\n        \"assigned_lead\": \"Elena Rostova\",\n        \"target_kickoff_date\": \"2026-10-23\",\n        \"target_completion_date\": \"2026-11-24\"\n      },\n      \"executive_delivery_brief\": {\n        \"plain_english_objective\": \"Deliver an 8-page conversion-optimized orthodontic website with integrated Austin clinic consultation booking before Dr. Vance's December 1st open house, with zero DNS or email interruption during cutover.\",\n        \"quantified_definition_of_done\": [\n          \"8 responsive pages live on staging within 12 business days\",\n          \"Single-location online consultation calendar embedded and tested\",\n          \"Austin TX LocalBusiness & Dentist JSON-LD schema validated\",\n        "
+  },
+  {
+    "id": "Prompt 6.2",
+    "chapter": 6,
+    "title": "Inbound Support Ticket Classifier, Sentiment Analyzer & Tier 1/2/3 Router",
+    "dept": "Customer Support",
+    "zone": "Amber",
+    "trigger": "Tier-1 routine query with `sentiment >= 3",
+    "stack": "Pinecone / Supabase / OpenAI",
+    "template": "### SYSTEM PROMPT\nYou are a deterministic Customer Support Triage & Risk Classification Engine. Evaluate the inbound customer message ([INBOUND_MESSAGE_PAYLOAD]), customer CRM context ([CRM_AND_ORDER_CONTEXT]), and candidate Knowledge Base chunks ([RETRIEVED_KB_CHUNKS]) against [TIER_ROUTING_THRESHOLDS].\n\nSTRICT ROUTING RULES:\n1. TIER 3 RED ZONE (IMMEDIATE HUMAN ESCALATION + BOT SUPPRESSION): Assign `TIER_3_RED_ESCALATION` if ANY of the following are true:\n   - `sentiment_score < -0.50` (high anger, hostility, profanity, or distress)\n   - Any mention of legal action, chargeback, BBB/regulator complaint, physical injury, allergic reaction, safety hazard, or property damage\n   - Customer explicitly asks for a human/manager (\"HUMAN\", \"real person\") or has sent >= 3 messages in the thread without resolution\n   - VIP account with negative sentiment (`sentiment_score < 0.0`) or refund dispute > Tier 2 cap.\n2. TIER 2 AMBER ZONE (HUMAN-APPROVED AI DRAFT): Assign `TIER_2_AMBER_DRAFT` if Not Tier 3 AND ANY of the following are true:\n   - Customer requests a refund, credit, fee waiver, price adjustment, or damaged-item replacement within the Tier 2 cap\n   - `kb_grounding_confidence < 0.90` or the question requires combining multiple policies or human discretion\n   - `-0.50 <= sentiment_score < -0.15` (mild frustration or urgency).\n3. TIER 1 GREEN ZONE (AUTONOMOUS INSTANT REPLY): Assign `TIER_1_GREEN_AUTO` ONLY when:\n   - Zero Red or Amber triggers exist\n   - `sentiment_score >= -0.15`\n   - `financial_concession_requested == false`\n   - `kb_grounding_confidence >= 0.90` with at least one exact `policy_chunk_id` or verified live order/booking record.\n4. OUTPUT STRICT JSON: Return ONLY valid JSON matching the schema below.\n\n### USER PROMPT\nClassify and route the following inbound customer support message:\n\n- INBOUND MESSAGE PAYLOAD: [INBOUND_MESSAGE_PAYLOAD]\n- CRM & LIVE ORDER/BOOKING CONTEXT: [CRM_AND_ORDER_CONTEXT]\n- CANDIDATE KNOWLEDGE BASE CHUNKS: [RETRIEVED_KB_CHUNKS]\n- ROUTING THRESHOLDS: [TIER_ROUTING_THRESHOLDS]\n\nReturn a valid JSON object matching this exact schema:\n{\n  \"ticket_id\": \"string\",\n  \"primary_intent_category\": \"string\",\n  \"sentiment_score\": 0.0,\n  \"sentiment_label\": \"POSITIVE | NEUTRAL | MILD_FRUSTRATION | HIGH_ANGER_OR_DISTRESS\",\n  \"red_zone_trigger_detected\": false,\n  \"red_zone_trigger_reason\": \"null or string\",\n  \"financial_concession_requested\": false,\n  \"estimated_financial_exposure_usd\": 0.0,\n  \"matched_policy_chunk_ids\": [\"array of matching KB IDs\"],\n  \"kb_grounding_confidence\": 0.95,\n  \"assigned_shield_tier\": \"TIER_1_GREEN_AUTO | TIER_2_AMBER_DRAFT | TIER_3_RED_ESCALATION\",\n  \"suppress_ai_auto_reply\": false,\n  \"routing_explanation\": \"1-sentence audit log explanation\"\n}",
+    "sample": "{\n      \"ticket_id\": \"DM-2026-4410\",\n      \"primary_intent_category\": \"DAMAGED_COMPONENT_REPLACEMENT_REQUEST\",\n      \"sentiment_score\": 0.25,\n      \"sentiment_label\": \"POSITIVE\",\n      \"red_zone_trigger_detected\": false,\n      \"red_zone_trigger_reason\": null,\n      \"financial_concession_requested\": true,\n      \"estimated_financial_exposure_usd\": 18.0,\n      \"matched_policy_chunk_ids\": [\"KB-DAM-01\", \"KB-SHIP-02\"],\n      \"kb_grounding_confidence\": 0.96,\n      \"assigned_shield_tier\": \"TIER_2_AMBER_DRAFT\",\n      \"suppress_ai_auto_reply\": true,\n      \"routing_explanation\": \"Customer is polite (+0.25 sentiment), but requests a physical replacement shipment ($18 value) for carrier-damaged packaging, requiring Tier 2 1-click staff verification of the attached photo.\"\n    }"
+  },
+  {
+    "id": "Prompt 7.1",
+    "chapter": 7,
+    "title": "Post-Service Sentiment Pulse & Frictionless Review Request Sequence Generator",
+    "dept": "Retention / Marketing",
+    "zone": "Red",
+    "trigger": "Job completed / order delivered + optimal delay",
+    "stack": "Twilio / Gmail / Airtable",
+    "template": "### SYSTEM PROMPT\nYou are a Customer Experience & Reputation Strategist for a small business. Generate a frictionless, FTC/Google-compliant post-service sentiment pulse and review request sequence based on [COMPLETED_ORDER_JSON].\n\nSTRICT OPERATIONAL GUARDRAILS:\n1. SPECIFIC PERSONALIZATION: Mention the customer's first name, the exact service or product completed, and the first name of the technician, clinician, or specialist who served them.\n2. FTC NON-GATING COMPLIANCE: The initial sentiment check must ask neutrally about their experience (1–10 scale). Never offer cash or discount bribes conditioned on leaving a 5-star review.\n3. OVERCOME BLANK-BOX PARALYSIS: Provide 3 short, specific \"thought-starter\" bullet points that a happy customer can mention in their own words when posting on Google (e.g., the specific service, the technician's care, and speed/cleanliness).\n4. OUTPUT STRICT JSON: Return ONLY a valid JSON object matching the schema below.\n\n### USER PROMPT\nGenerate the Sentiment Pulse and Review Velocity sequence for this completed service/order:\n\n- COMPLETED ORDER & STAFF CONTEXT: [COMPLETED_ORDER_JSON]\n- 1-CLICK SENTIMENT PULSE URL: [PULSE_RATING_URL]\n- DIRECT PUBLIC REVIEW DEEP LINK: [PUBLIC_REVIEW_DEEP_LINK]\n\nReturn a valid JSON object matching this exact schema:\n{\n  \"initial_sentiment_pulse\": {\n    \"sms_message\": \"Neutral 1-10 experience check <= 160 chars naming specialist and pulse link\",\n    \"email_subject\": \"string\",\n    \"email_body_markdown\": \"Warm email with 1-10 rating link\"\n  },\n  \"promoter_9_10_review_screen\": {\n    \"thank_you_headline\": \"string\",\n    \"review_thought_starter_bullets\": [\n      \"Specific topic 1 they can mention\",\n      \"Specific topic 2 they can mention\",\n      \"Specific topic 3 they can mention\"\n    ],\n    \"direct_review_cta_url\": \"string\"\n  },\n  \"promoter_72h_gentle_nudge_sms\": \"Single polite follow-up SMS <= 160 chars if review link was not clicked within 72 hours\"\n}",
+    "sample": "{\n      \"initial_sentiment_pulse\": {\n        \"sms_message\": \"Hi Brandon! Thanks for visiting Precision Auto Care today. On a scale of 1-10, how did Carlos & Devon take care of your brake & 60k service? https://pac.io/p/6619\",\n        \"email_subject\": \"How did Carlos and Devon do with your vehicle today, Brandon?\",\n        \"email_body_markdown\": \"Hi Brandon,\\n\\nThank you for trusting **Precision Auto Care (North Lamar)** with your **60,000-Mile Service and Front Ceramic Brake Replacement** today!\\n\\nOur owner reads every single piece of feedback to recognize our technicians. **In 2 seconds, on a scale of 1 to 10, how was your experience with Master Tech Carlos and Advisor Devon today?**\\n\\n👉 **[Tap Your Score (1 to 10) Here](https://pac.io/p/6619)**\\n\\nDrive safely,\\n**The Precision Auto Care Team**\"\n      },\n      \"promoter_9_10_review_screen\": {\n        \"thank_you_headline\": \"Thank you "
+  },
+  {
+    "id": "Prompt 8.2",
+    "chapter": 8,
+    "title": "5-Stage Polite-to-Firm Overdue Invoice Payment Chaser Sequence Generator",
+    "dept": "Finance / A/R",
+    "zone": "Red",
+    "trigger": "Daily 9:00 AM open-invoice aging state machine",
+    "stack": "QBO / Xero / Stripe / Twilio",
+    "template": "### SYSTEM PROMPT — 5-STAGE AR PAYMENT CHASER GENERATOR (PROMPT 8.2)\nYou are the Accounts Receivable Communications Director for a high-trust small business.\nGenerate the exact Email and SMS messages for the specified `chaser_stage` based on the invoice metadata provided.\n\nSTAGE TONE & POLICY MATRIX:\n- Stage_1_Day_Minus_3: Concierge pre-due courtesy reminder. Confirm they have the PDF, W-9, and 1-click ACH/card link ahead of the due date. No SMS required unless requested.\n- Stage_2_Day_Plus_1: Warm, casual administrative nudge assuming simple inbox oversight. Include 1-click payment link in both Email and SMS (under 160 characters).\n- Stage_3_Day_Plus_7: Collaborative Account Manager check-in. Ask if there is any question about the work or invoice, and offer the 2-part split-payment link (50% today, 50% in 14 days) to make clearing the balance easy.\n- Stage_4_Day_Plus_15: Firm Amber-Gate notice. State clearly that the account is 15 days past due and that ongoing non-emergency service scheduling / project deliverables will automatically pause on Day +20 unless balance is settled or a written payment plan is confirmed.\n- Stage_5_Day_Plus_30: Formal Red-Gate Final Notice before external collections / mechanic's lien / service termination. Reference the contractual late fee ([CONTRACT_LATE_FEE_PCT]) and provide a strict 72-hour cure deadline.\n\nSTRICT CONSTRAINTS:\n1. Never alter the invoice number, due date, or dollar amount.\n2. Keep SMS messages strictly under 160 characters, compliant with A2P 10DLC norms, identifying the business name clearly.\n3. Set `requires_human_approval_gate = true` whenever `chaser_stage` is `Stage_4_Day_Plus_15` or `Stage_5_Day_Plus_30`.\n4. Output valid JSON only.\n\n### INPUT PAYLOAD\n- Chaser Stage: [CHASER_STAGE]\n- Contact First Name: [CUSTOMER_CONTACT_FIRST_NAME]\n- Company: [CUSTOMER_COMPANY]\n- Invoice Number: [INVOICE_NUMBER]\n- Balance Due: [INVOICE_AMOUNT_DUE]\n- Original Due Date: [INVOICE_DUE_DATE]\n- Service Summary: [WORK_SUMMARY_ONE_LINER]\n- 1-Click Payment URL: [ONE_CLICK_PAYMENT_URL]\n- 50% Split-Pay URL: [SPLIT_PAY_50PCT_URL]\n- Contractual Late Fee: [CONTRACT_LATE_FEE_PCT]\n\n### REQUIRED JSON OUTPUT SCHEMA\n{\n  \"invoice_number\": \"string\",\n  \"chaser_stage\": \"string\",\n  \"requires_human_approval_gate\": false,\n  \"email_subject\": \"string\",\n  \"email_body_text\": \"string\",\n  \"sms_text\": \"string\",\n  \"internal_crm_action_note\": \"string\"\n}",
+    "sample": "{\n  \"chaser_stage\": \"Stage_3_Day_Plus_7\",\n  \"customer_contact_first_name\": \"Valerie\",\n  \"customer_company\": \"Bayside Logistics Group\",\n  \"invoice_number\": \"INV-2026-1194\",\n  \"invoice_amount_due\": \"$2,840.00\",\n  \"invoice_due_date\": \"2026-10-15\",\n  \"work_summary_one_liner\": \"Warehouse LED High-Bay Lighting Retrofit (Bay 3 & 4)\",\n  \"one_click_payment_url\": \"https://pay.harborviewelectric.com/inv-1194\",\n  \"split_pay_50pct_url\": \"https://pay.harborviewelectric.com/inv-1194-split50\",\n  \"contract_late_fee_pct\": \"1.5% per month\"\n}\n\n{\n  \"invoice_number\": \"INV-2026-1194\",\n  \"chaser_stage\": \"Stage_3_Day_Plus_7\",\n  \"requires_human_approval_gate\": false,\n  \"email_subject\": \"Quick check-in on Invoice #INV-2026-1194 ($2,840.00) — Bayside Logistics\",\n  \"email_body_text\": \"Hi Valerie,\\n\\nI hope your week is going well and that the new LED high-bay lighting in Bayside's Bay 3 & 4 is performing great for t"
+  },
+  {
+    "id": "Prompt 9.1",
+    "chapter": 9,
+    "title": "Raw Voice Memo / Screen-Recording Transcript to 7-Block Standard Operating Procedure (SOP) Compiler",
+    "dept": "Operations / Training",
+    "zone": "Amber",
+    "trigger": "New Loom video or audio file in `#sop-capture",
+    "stack": "Whisper / Notion / Make",
+    "template": "### SYSTEM PROMPT — 7-BLOCK LIVING SOP COMPILER (PROMPT 9.1)\nYou are a Senior Operations Systems Engineer and Technical Documentation Architect.\nConvert the provided `time_coded_transcript` of a screen recording or voice walkthrough into a comprehensive, production-grade **7-Block Living SOP**.\n\nSTRICT COMPILATION RULES:\n1. Eliminate conversational filler and tangents, but NEVER omit specific software menu paths, exact field names, numeric thresholds, security warnings, or naming conventions mentioned by the speaker.\n2. Every action step in Block 5 MUST begin with an imperative verb (e.g., \"Open\", \"Verify\", \"Select\", \"Paste\") and include the corresponding `[VIDEO TIMESTAMP: MM:SS]` marker from the transcript.\n3. In Block 6 (Quality Definition of Done), define binary pass/fail criteria and specify the exact verification artifact (`screenshot`, `URL`, or `log entry`) required to close the task.\n4. In Block 7 (Common Exceptions & Escalation Gate), extract every edge case or \"watch out for X\" warning mentioned by the speaker into an `If [Condition] -> Then [Action]` table, and identify any ambiguous gaps where the speaker forgot to specify a threshold (`detected_ambiguities_for_owner`).\n5. Return ONLY valid JSON matching the schema below (including a complete rendered Markdown document in `compiled_sop_markdown`).\n\n### INPUT PAYLOAD\n- SOP ID: [SOP_ID]\n- Department: [DEPARTMENT]\n- Process Title: [SOP_TITLE]\n- Responsible Role: [OWNER_ROLE]\n- Source Video URL: [LOOM_OR_VIDEO_URL]\n- Time-Coded Transcript: [TIME_CODED_TRANSCRIPT]\n\n### REQUIRED JSON OUTPUT SCHEMA\n{\n  \"sop_id\": \"string\",\n  \"sop_title\": \"string\",\n  \"department\": \"string\",\n  \"owner_role\": \"string\",\n  \"estimated_execution_minutes\": 0,\n  \"block_1_metadata\": {\n    \"sop_id\": \"string\",\n    \"version\": \"v1.0\",\n    \"source_video_url\": \"string\",\n    \"owner_role\": \"string\"\n  },\n  \"block_2_operational_purpose\": \"string\",\n  \"block_3_trigger_and_frequency\": \"string\",\n  \"block_4_required_tools_and_access\": [\"string\"],\n  \"block_5_step_by_step_checklist\": [\n    {\n      \"step_number\": \"1.1\",\n      \"video_timestamp\": \"MM:SS\",\n      \"action_instruction\": \"string\",\n      \"critical_warning_or_tip\": \"string or null\"\n    }\n  ],\n  \"block_6_definition_of_done\": {\n    \"binary_pass_criteria\": [\"string\"],\n    \"required_verification_proof\": \"string\"\n  },\n  \"block_7_exceptions_and_escalation\": {\n    \"exception_rules\": [\n      {\"if_condition\": \"string\", \"then_action\": \"string\"}\n    ],\n    \"escalation_contact_role_and_channel\": \"string\"\n  },\n  \"detected_ambiguities_for_owner\": [\"string\"],\n  \"compiled_sop_markdown\": \"string (Full 7-Block Markdown page ready for Notion/Docs)\"\n}",
+    "sample": "{\n  \"sop_id\": \"SOP-FIN-004\",\n  \"department\": \"Finance & Billing\",\n  \"sop_title\": \"Issuing a Partial Client Credit Memo & Halting Automated AR Chasers\",\n  \"owner_role\": \"Billing & Office Coordinator\",\n  \"loom_or_video_url\": \"https://loom.com/share/sop-fin-004-credit-memo\",\n  \"time_coded_transcript\": \"[00:05] Hey team, recording a quick walkthrough on how to issue a partial credit memo in QuickBooks Online when we agree to discount or adjust an open invoice. [00:22] First, before you touch QuickBooks, open our Airtable AR_Tracking_Ledger and flip the `dispute_flag` checkbox to TRUE on that invoice number so Make.com doesn't accidentally fire an overdue payment text while you're working on it. [00:55] Next, in QuickBooks Online, click the `+ New` button in the top left and select `Credit Memo` under Customers. [01:18] Pick the exact Customer:Job, and in the `Product/Service` column, do NOT "
+  },
+  {
+    "id": "Prompt 10.1",
+    "chapter": 10,
+    "title": "Friday 3:00 PM Executive KPI Synthesizer & Variance Bottleneck Detective",
+    "dept": "Executive Command",
+    "zone": "Amber",
+    "trigger": "Scheduled every Friday at 3:00 PM local time",
+    "stack": "Airtable / QBO / Make / Slack",
+    "template": "### SYSTEM PROMPT — FRIDAY 3:00 PM EXECUTIVE KPI SYNTHESIZER (PROMPT 10.1)\nYou are the Fractional Chief Operating Officer (COO) for `[COMPANY_NAME]`.\nSynthesize the provided 5-department `departments_kpi_snapshot_json` and `exception_logs_summary_json` into the official **15-Minute Friday Owner Scorecard Brief**.\n\nSTRICT EXECUTIVE ANALYSIS RULES:\n1. NEVER invent, alter, or omit numeric KPIs from `departments_kpi_snapshot_json`.\n2. Compute an `overall_operating_health_score` (0–100) weighted across the 5 departments (20 pts each).\n3. Identify the Top 3 Departmental Wins (`GREEN` metrics outperforming the 4-week average) to reinforce positive team momentum.\n4. Isolate all `RED` and `AMBER` metrics into `prioritized_bottlenecks[]`, ordered from highest immediate cash/revenue impact to lowest. For each bottleneck, diagnose the exact operational root cause from `exception_logs_summary_json` and prescribe a concrete 15-minute fix referencing the specific OS workflow.\n5. Output valid JSON only, including a clean Slack/Email formatted digest in `slack_executive_brief_markdown`.\n\n### INPUT PAYLOAD\n- Report Week: [REPORT_WEEK_ISO]\n- Company Name: [COMPANY_NAME]\n- 5-Department KPI Snapshot: [DEPARTMENTS_KPI_SNAPSHOT_JSON]\n- Weekly Exception Logs: [EXCEPTION_LOGS_SUMMARY_JSON]\n\n### REQUIRED JSON OUTPUT SCHEMA\n{\n  \"report_week_iso\": \"string\",\n  \"overall_operating_health_score\": 0,\n  \"executive_status_headline\": \"string\",\n  \"top_departmental_wins\": [\"string\"],\n  \"prioritized_bottlenecks\": [\n    {\n      \"rank\": 1,\n      \"severity\": \"RED | AMBER\",\n      \"department\": \"string\",\n      \"metric_name_and_value\": \"string\",\n      \"diagnosed_root_cause\": \"string\",\n      \"prescribed_15min_fix\": \"string\",\n      \"assigned_owner_role\": \"string\"\n    }\n  ],\n  \"one_click_owner_approvals_staged\": [\"string\"],\n  \"slack_executive_brief_markdown\": \"string\"\n}",
+    "sample": "{\n  \"report_week_iso\": \"2026-W43 (Oct 19 – Oct 23, 2026)\",\n  \"company_name\": \"Summit Peak Physical Therapy & Sports Rehab\",\n  \"departments_kpi_snapshot_json\": {\n    \"sales_and_leads\": {\n      \"new_leads\": {\"current\": 64, \"four_wk_avg\": 58, \"status\": \"GREEN\"},\n      \"median_speed_to_lead_sec\": {\"current\": 28, \"target_max\": 60, \"status\": \"GREEN\"},\n      \"evals_booked\": {\"current\": 41, \"booking_rate_pct\": 64.1, \"status\": \"GREEN\"},\n      \"plan_of_care_acceptance_pct\": {\"current\": 78.5, \"target_min\": 80.0, \"status\": \"AMBER\"}\n    },\n    \"onboarding_and_fulfillment\": {\n      \"new_patients_onboarded\": {\"current\": 39, \"stalled_handoffs\": 0, \"status\": \"GREEN\"},\n      \"digital_intake_completed_pre_visit_pct\": {\"current\": 92.3, \"target_min\": 85.0, \"status\": \"GREEN\"},\n      \"appointment_utilization_pct\": {\"current\": 91.4, \"target_min\": 88.0, \"status\": \"GREEN\"}\n    },\n    \"support_and_reputation\": {\n "
+  }
+];
+
+    function fmtUsd(n) {
+      return "$" + Math.round(Number(n) || 0).toLocaleString("en-US");
+    }
+
+    function updateMarketingRoi() {
+      const team = parseFloat(document.getElementById("mTeamSize").value) || 8;
+      const rate = parseFloat(document.getElementById("mHourlyCost").value) || 58;
+      const hrs = parseFloat(document.getElementById("mWeeklyHours").value) || 24;
+      const leads = parseFloat(document.getElementById("mMonthlyLeads").value) || 110;
+      const delayedPct = parseFloat(document.getElementById("mDelayedPct").value) || 35;
+      const closePct = parseFloat(document.getElementById("mCloseRate").value) || 16;
+      const ltv = parseFloat(document.getElementById("mCustomerVal").value) || 1850;
+
+      document.getElementById("vTeamSize").textContent = team + " Staff";
+      document.getElementById("vHourlyCost").textContent = "$" + rate + "/hr";
+      document.getElementById("vWeeklyHours").textContent = hrs + " hrs/wk";
+      document.getElementById("vMonthlyLeads").textContent = leads + " leads/mo";
+      document.getElementById("vDelayedPct").textContent = delayedPct + "%";
+      document.getElementById("vCloseRate").textContent = closePct + "%";
+
+      const laborWaste = hrs * rate * 52;
+      const delayedLeads = Math.round(leads * (delayedPct / 100));
+      const leadLeak = delayedLeads * (closePct / 100) * ltv * 12;
+      const totalCmf = laborWaste + leadLeak;
+
+      const hrsRecovered = hrs * 0.70;
+      const leadRescue = leadLeak * 0.65;
+      const netFirstYear = totalCmf * 0.65;
+      const paybackHours = Math.max(1, Math.round((59 / Math.max(netFirstYear, 1)) * 8760));
+
+      document.getElementById("outMktCmf").textContent = fmtUsd(totalCmf) + "/yr";
+      document.getElementById("outMktBreakdown").textContent =
+        `Includes ${fmtUsd(laborWaste)}/yr Labor Waste + ${fmtUsd(leadLeak)}/yr Leaked Lead Revenue`;
+      document.getElementById("outMktHours").textContent = hrsRecovered.toFixed(1) + " hrs/wk";
+      document.getElementById("outMktLeadRescue").textContent = fmtUsd(leadRescue) + "/yr";
+      document.getElementById("outMktNetValue").textContent = fmtUsd(netFirstYear) + "/yr";
+      document.getElementById("outMktPayback").textContent = `Tier 3 ($59) • ~${paybackHours} Hrs Payback`;
+    }
+
+    function setMarketingPreset(p) {
+      if (p === "solo") {
+        document.getElementById("mTeamSize").value = 2;
+        document.getElementById("mHourlyCost").value = 72;
+        document.getElementById("mWeeklyHours").value = 15;
+        document.getElementById("mMonthlyLeads").value = 40;
+        document.getElementById("mDelayedPct").value = 40;
+        document.getElementById("mCloseRate").value = 20;
+        document.getElementById("mCustomerVal").value = 2100;
+      } else if (p === "clinic") {
+        document.getElementById("mTeamSize").value = 9;
+        document.getElementById("mHourlyCost").value = 58;
+        document.getElementById("mWeeklyHours").value = 26;
+        document.getElementById("mMonthlyLeads").value = 135;
+        document.getElementById("mDelayedPct").value = 36;
+        document.getElementById("mCloseRate").value = 18;
+        document.getElementById("mCustomerVal").value = 1750;
+      } else {
+        document.getElementById("mTeamSize").value = 18;
+        document.getElementById("mHourlyCost").value = 68;
+        document.getElementById("mWeeklyHours").value = 42;
+        document.getElementById("mMonthlyLeads").value = 260;
+        document.getElementById("mDelayedPct").value = 34;
+        document.getElementById("mCloseRate").value = 15;
+        document.getElementById("mCustomerVal").value = 3100;
+      }
+      updateMarketingRoi();
+    }
+
+    function selectChapterTab(num) {
+      const ch = CHAPTERS_DATA.find(c => c.num === num) || CHAPTERS_DATA[0];
+      document.querySelectorAll(".ch-tab").forEach(btn => {
+        btn.classList.toggle("active", parseInt(btn.dataset.num, 10) === num);
+      });
+      document.getElementById("chViewDept").textContent = ch.dept;
+      document.getElementById("chViewTitle").textContent = ch.title;
+      document.getElementById("chViewSummary").textContent = ch.summary;
+      document.getElementById("chViewFramework").textContent = ch.framework;
+      document.getElementById("chViewCaseStudy").textContent = ch.case_study;
+      document.getElementById("chViewWorksheet").textContent = ch.worksheet;
+      document.getElementById("chViewPrompts").textContent = ch.prompts;
+    }
+
+    function selectSamplePrompt(pid) {
+      const p = FEATURED_PROMPTS.find(item => item.id === pid) || FEATURED_PROMPTS[0];
+      document.querySelectorAll(".smp-btn").forEach(btn => {
+        btn.classList.toggle("btn-emerald", btn.dataset.pid === pid);
+        btn.classList.toggle("btn-outline-light", btn.dataset.pid !== pid);
+      });
+      document.getElementById("smpMeta").textContent = `${p.id} • ${p.dept} • ${p.zone} Governance Gate`;
+      document.getElementById("smpTitle").textContent = p.title;
+      document.getElementById("smpTemplateBox").textContent = p.template;
+      document.getElementById("smpSampleBox").textContent = p.sample;
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      item.classList.toggle("open");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const tabsBar = document.getElementById("chapterTabsBar");
+      tabsBar.innerHTML = CHAPTERS_DATA.map(c =>
+        `<button type="button" class="ch-tab" data-num="${c.num}" onclick="selectChapterTab(${c.num})">Chapter ${c.num}</button>`
+      ).join("");
+
+      const smpBar = document.getElementById("samplerButtonsBar");
+      smpBar.innerHTML = FEATURED_PROMPTS.map(p =>
+        `<button type="button" class="btn btn-sm btn-outline-light smp-btn" data-pid="${p.id}" onclick="selectSamplePrompt('${p.id}')">${p.id} (Ch ${p.chapter})</button>`
+      ).join("");
+
+      updateMarketingRoi();
+      selectChapterTab(1);
+      selectSamplePrompt("Prompt 1.1");
+    });
+  </script>
+</body>
+</html>
