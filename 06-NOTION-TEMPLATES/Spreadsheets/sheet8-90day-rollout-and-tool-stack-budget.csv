@@ -1,0 +1,14 @@
+Rollout Week,Sprint Phase,Primary Milestone & Chapter Deployed,Setup Hours Invested,Weekly Hours Saved,Net Weekly Hours Gained,Weekly Financial Gain ($),Weekly Tool Cost ($),Net Weekly ROI ($),Cumulative Net ROI ($)
+Week 01,Sprint 1 (Days 1-30),Ch 1: 5-Day CMF Audit & P.A.C.E. Priority Matrix,4.0,3.0,=E5-D5,260,28,=G5-H5,=I5
+Week 02,Sprint 1 (Days 1-30),"Ch 2: T.R.A.V. Safety Gate, Truth Tables & Kill Switches",3.5,5.5,=E6-D6,480,28,=G6-H6,=J5+I6
+Week 03,Sprint 1 (Days 1-30),Ch 3: 60-Second Web & Social Speed-to-Lead Router,4.0,9.5,=E7-D7,1650,32,=G7-H7,=J6+I7
+Week 04,Sprint 1 (Days 1-30),Ch 3: Missed-Call Text-Back & Pre-Call Rep Briefs,2.5,12.0,=E8-D8,2250,32,=G8-H8,=J7+I8
+Week 05,Sprint 2 (Days 31-60),Ch 4: Voice-to-3-Tier Good-Better-Best Proposal Engine,3.5,15.0,=E9-D9,2850,35,=G9-H9,=J8+I9
+Week 06,Sprint 2 (Days 31-60),Ch 4: 14-Day 6-Touch Polite-Persistence Follow-Up Loop,2.0,17.5,=E10-D10,3300,35,=G10-H10,=J9+I10
+Week 07,Sprint 2 (Days 31-60),Ch 5: Zero-Drop Payment-to-Onboarding Provisioner,3.0,19.5,=E11-D11,3650,35,=G11-H11,=J10+I11
+Week 08,Sprint 2 (Days 31-60),Ch 6 & 7: 3-Tier Support Shield & 5-Star Review Gate,3.5,22.0,=E12-D12,4150,38,=G12-H12,=J11+I12
+Week 09,Sprint 3 (Days 61-90),Ch 8: Same-Day Milestone Invoicing & 5-Stage AR Chasers,3.0,24.0,=E13-D13,4650,38,=G13-H13,=J12+I13
+Week 10,Sprint 3 (Days 61-90),Ch 8: Supplier Bill OCR & 5% Price-Creep Guard,2.0,25.5,=E14-D14,4950,38,=G14-H14,=J13+I14
+Week 11,Sprint 3 (Days 61-90),Ch 9: 7-Block Living SOP Vault & Ask-the-SOP Slack Bot,2.5,27.0,=E15-D15,5250,38,=G15-H15,=J14+I15
+Week 12,Sprint 3 (Days 61-90),Ch 10: Friday 3:00 PM 12-KPI Scorecard & Security Lock,1.5,28.5,=E16-D16,5600,38,=G16-H16,=J15+I16
+90-DAY TOTAL,All 3 Sprints,Complete 90-Day Operating System Rollout Summary,=SUM(D5:D16),=SUM(E5:E16),=SUM(F5:F16),=SUM(G5:G16),=SUM(H5:H16),=SUM(I5:I16),=J16

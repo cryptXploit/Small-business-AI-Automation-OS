@@ -1,0 +1,287 @@
+{
+  "schema_version": "2026.1.0-MAKE-N8N-ZAPIER-UNIVERSAL",
+  "blueprint_id": "BP-02-SUPPORT-SHIELD-RAG-ROUTER",
+  "name": "Department 03: 24/7 AI Customer Support Triage, Grounded RAG & Amber/Red Escalation Gate",
+  "project": "The Small Business AI Automation Operating System (2026 Enterprise Edition)",
+  "chapter_reference": "Chapter 6 (Prompts 6.1, 6.2, 6.3, 6.4, 6.5)",
+  "department": "03 - Customer Support, Fulfillment & Retention",
+  "sla_benchmark": ">= 60% Tier-1 auto-resolution in < 45 seconds; < 15m human takeover on Red Gate",
+  "trav_governance_architecture": {
+    "stage_1_trigger": "Webhook / Scheduled Cron Trigger with deterministic event_id idempotency check",
+    "stage_2_rules": "Pre-AI Regex Red-Gate Filter + E.164/Email Validator + Locked Truth-Table Lookup",
+    "stage_3_ai": {
+      "provider": "OpenAI (gpt-4o-mini / gpt-4o) or Anthropic (claude-3-5-sonnet)",
+      "temperature": 0.0,
+      "response_format": "json_object",
+      "system_prompt": "You are the Tier-1 Grounded Support Concierge for {{COMPANY_NAME}}. Using ONLY the verified policy clauses in {{KB_TRUTH_TABLE_JSON}} and live order/appointment telemetry in {{LIVE_STATUS_API_JSON}}, classify sentiment (1-5), evaluate kb_confidence (0.0-1.0), assign triage_gate (GREEN | AMBER | RED), and draft a helpful response at temperature 0.0. If the answer is not explicitly in the KB, set triage_gate to AMBER."
+    },
+    "stage_4_verification": {
+      "green": "Sentiment >= 3 AND KB Match Confidence >= 0.88 AND $0 concession -> Auto-send grounded reply",
+      "amber": "Sentiment == 3 AND courtesy credit <= $100 -> Post 1-click Amber Approval Card in #amber-support",
+      "red": "Sentiment <= 2 OR Red-Zone Regex Match OR dispute > $100 -> Mute bot & page manager in #red-alerts"
+    },
+    "pre_ai_red_gate_regex": "(?i)\\b(lawyer|attorney|chargeback|bbb|fraud|scam|injured|damage|furious|cancel contract|1 star)\\b",
+    "kill_switch_registry_row": "06-NOTION-TEMPLATES/02-Automation-Workflows-and-Health-Registry.csv -> BP-02-SUPPORT-SHIELD-RAG-ROUTER"
+  },
+  "environment_variables_required": [
+    "COMPANY_NAME",
+    "OPENAI_API_KEY",
+    "NOTION_INTEGRATION_SECRET",
+    "NOTION_DB01_LEADS_ID",
+    "NOTION_DB02_WORKFLOW_REGISTRY_ID",
+    "SLACK_AMBER_WEBHOOK_URL",
+    "SLACK_RED_ALERTS_WEBHOOK_URL",
+    "TWILIO_ACCOUNT_SID",
+    "TWILIO_AUTH_TOKEN",
+    "TWILIO_FROM_NUMBER_E164"
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "node_name": "01_Inbound_Trigger_And_Idempotency_Guard",
+      "make_module": "gateway:CustomWebHook",
+      "n8n_node": "n8n-nodes-base.webhook",
+      "zapier_step": "Webhooks by Zapier — Catch Hook",
+      "configuration": {
+        "method": "POST",
+        "require_hmac_header": "X-Studio-Webhook-Signature",
+        "deduplicate_on_field": "event_id",
+        "sample_payload": {
+          "event_id": "evt_sup_20261023_042",
+          "ticket_channel": "support_email_inbox",
+          "customer_email": "marcus.vance@example.com",
+          "customer_ltv_usd": 2450.0,
+          "order_or_visit_id": "ORD-88412",
+          "inbound_subject": "Question about rescheduling my Tuesday morning appointment",
+          "inbound_body": "Hi team, something came up at work on Tuesday morning. Can I move my 9:00 AM appointment to Thursday afternoon without a fee?"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "node_name": "02_Pre_AI_PII_Redactor_And_Red_Zone_Regex_Gate",
+      "make_module": "util:TextParserReplace",
+      "n8n_node": "n8n-nodes-base.code",
+      "zapier_step": "Code by Zapier — Run Python/JS",
+      "configuration": {
+        "mask_credit_cards_regex": "\\b(?:\\d[ -]*?){13,16}\\b -> [REDACTED_CARD]",
+        "mask_ssn_regex": "\\b\\d{3}-\\d{2}-\\d{4}\\b -> [REDACTED_GOV_ID]",
+        "red_zone_abort_regex": "(?i)\\b(lawyer|attorney|chargeback|bbb|fraud|scam|injured|damage|furious|cancel contract|1 star)\\b",
+        "on_red_zone_match": "Route immediately to Node 06 (Red-Gate Human Alert & Bot Mute)"
+      }
+    },
+    {
+      "id": 3,
+      "node_name": "03_Deterministic_Truth_Table_And_CRM_Lookup",
+      "make_module": "notion:SearchObjects",
+      "n8n_node": "n8n-nodes-base.notion",
+      "zapier_step": "Notion — Find Database Item",
+      "configuration": {
+        "target_database": "06-NOTION-TEMPLATES/ (Databases 01, 03, 05)",
+        "strict_math_rule": "Calculate all prices, discounts, taxes, and overdue day counts in deterministic code prior to Node 04."
+      }
+    },
+    {
+      "id": 4,
+      "node_name": "04_Grounded_LLM_JSON_Compiler",
+      "make_module": "openai-gpt-3:CreateCompletion",
+      "n8n_node": "@n8n/n8n-nodes-langchain.openAi",
+      "zapier_step": "OpenAI (ChatGPT) — Conversation with JSON Mode",
+      "configuration": {
+        "model": "gpt-4o-mini",
+        "temperature": 0.0,
+        "max_tokens": 900,
+        "response_format": {
+          "type": "json_object"
+        },
+        "system_prompt": "You are the Tier-1 Grounded Support Concierge for {{COMPANY_NAME}}. Using ONLY the verified policy clauses in {{KB_TRUTH_TABLE_JSON}} and live order/appointment telemetry in {{LIVE_STATUS_API_JSON}}, classify sentiment (1-5), evaluate kb_confidence (0.0-1.0), assign triage_gate (GREEN | AMBER | RED), and draft a helpful response at temperature 0.0. If the answer is not explicitly in the KB, set triage_gate to AMBER.",
+        "required_output_keys": [
+          "assigned_gate",
+          "confidence_score",
+          "customer_sms_draft",
+          "customer_email_subject",
+          "customer_email_markdown",
+          "internal_slack_summary",
+          "audit_log_note"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "node_name": "05_TRAV_Governance_Router_Green_Amber_Red",
+      "make_module": "builtin:BasicRouter",
+      "n8n_node": "n8n-nodes-base.switch",
+      "zapier_step": "Paths by Zapier",
+      "routes": [
+        {
+          "route_name": "Branch_A_Green_Unattended_Dispatch",
+          "filter_condition": "assigned_gate == 'GREEN' AND confidence_score >= 0.88",
+          "actions": [
+            "Send SMS via Twilio / OpenPhone (if sms_opt_in_verified == true)",
+            "Send Email via Gmail / Microsoft 365",
+            "Update Notion Database status to 'Auto-Executed (Green)'"
+          ]
+        },
+        {
+          "route_name": "Branch_B_Amber_15Second_Slack_Approval",
+          "filter_condition": "assigned_gate == 'AMBER'",
+          "actions": [
+            "Post interactive Block Kit Approval Card to #amber-approvals in Slack ([Approve & Send] | [Edit] | [Hold])",
+            "Log pending state in Notion Database 02"
+          ]
+        },
+        {
+          "route_name": "Branch_C_Red_Immediate_Human_Takeover",
+          "filter_condition": "assigned_gate == 'RED' OR pre_ai_regex_triggered == true",
+          "actions": [
+            "Set bot_muted = true on customer record",
+            "Post urgent 5-bullet context brief + Emergency Script draft to #red-alerts",
+            "Send SMS alert to on-duty human manager"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "node_name": "06_Dead_Letter_Queue_And_Outage_Fallback_Handler",
+      "make_module": "builtin:ErrorHandlerCommit",
+      "n8n_node": "n8n-nodes-base.errorTrigger",
+      "zapier_step": "Zapier Manager — Error Handler",
+      "configuration": {
+        "retry_policy": "3 retries with exponential backoff (15s, 60s, 300s)",
+        "dlq_fallback_table": "06-NOTION-TEMPLATES/02-Automation-Workflows-and-Health-Registry.csv",
+        "emergency_script_reference": "Activate matching Emergency Script (01–12) if API outage exceeds 15 minutes."
+      }
+    }
+  ],
+  "slack_block_kit_approval_card_template": {
+    "channel": "#amber-approvals",
+    "text": "AMBER GATE REVIEW REQUIRED — BP-02-SUPPORT-SHIELD-RAG-ROUTER",
+    "blocks": [
+      {
+        "type": "header",
+        "text": {
+          "type": "plain_text",
+          "text": "AMBER GATE APPROVAL: BP-02-SUPPORT-SHIELD-RAG-ROUTER"
+        }
+      },
+      {
+        "type": "section",
+        "fields": [
+          {
+            "type": "mrkdwn",
+            "text": "*Department:*\n03 - Customer Support, Fulfillment & Retention"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Target SLA:*\n>= 60% Tier-1 auto-resolution in < 45 seconds; < 15m human takeover on Red Gate"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Assigned Gate:*\n`AMBER (15-Second Human Check)`"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Event ID:*\n`{{1.event_id}}`"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*AI Grounded Draft Preview:*\n```{{4.customer_email_markdown}}```"
+        }
+      },
+      {
+        "type": "actions",
+        "elements": [
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Approve & Dispatch Now"
+            },
+            "style": "primary",
+            "action_id": "amber_approve_dispatch",
+            "value": "{{1.event_id}}"
+          },
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Edit Before Sending"
+            },
+            "action_id": "amber_edit_draft",
+            "value": "{{1.event_id}}"
+          },
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Escalate to Red Gate"
+            },
+            "style": "danger",
+            "action_id": "amber_escalate_red",
+            "value": "{{1.event_id}}"
+          }
+        ]
+      }
+    ]
+  },
+  "platform_import_and_field_mapping_guide": {
+    "make_com_instructions": {
+      "step_1": "Create a new Scenario in Make.com -> Click More (...) in the bottom toolbar -> Select 'Import Blueprint' or add the 6 modules listed in the nodes[] array.",
+      "step_2": "In Module 01 (Custom WebHook), copy the generated HTTPS URL and paste it into your form provider, phone system, or billing webhook settings.",
+      "step_3": "In Module 04 (OpenAI Create a Chat Completion), set Model = gpt-4o-mini, Temperature = 0.0, Response Format = JSON Object, and paste trav_governance_architecture.stage_3_ai.system_prompt.",
+      "step_4": "In Module 05 (Router), configure the 3 filter conditions matching Branch_A_Green, Branch_B_Amber, and Branch_C_Red."
+    },
+    "n8n_instructions": {
+      "step_1": "In n8n (Self-Hosted or Cloud), click Workflows -> Add Workflow -> Import from File or configure the 6 n8n_node types in sequence.",
+      "step_2": "Use a Code (JavaScript/Python) node at Step 02 to execute mask_credit_cards_regex, mask_ssn_regex, and red_zone_abort_regex before calling OpenAI.",
+      "step_3": "Connect an Error Trigger node at Step 06 pointing to your Notion Database 02 Dead-Letter Queue table."
+    },
+    "zapier_instructions": {
+      "step_1": "Create a 6-step Zap starting with 'Webhooks by Zapier (Catch Hook)' followed by 'Code by Zapier (Run Python)' for PII masking and Red-Gate regex verification.",
+      "step_2": "Use 'Paths by Zapier' at Step 05 to split execution into Green (Auto-Send), Amber (Slack Block Kit Approval), and Red (Pager/Manager Alert)."
+    }
+  },
+  "verified_synthetic_test_suite": {
+    "green_zone_test_case": {
+      "test_name": "BP-02-SUPPORT-SHIELD-RAG-ROUTER_SYNTHETIC_GREEN_01",
+      "description": "Routine in-policy payload with high KB confidence and zero Red-Zone keywords.",
+      "input_override": {
+        "sentiment_score": 5,
+        "kb_confidence": 0.96,
+        "contains_red_keyword": false,
+        "financial_variance_usd": 0.0
+      },
+      "expected_router_branch": "Branch_A_Green_Unattended_Dispatch",
+      "expected_sla_seconds": 18
+    },
+    "amber_zone_test_case": {
+      "test_name": "BP-02-SUPPORT-SHIELD-RAG-ROUTER_SYNTHETIC_AMBER_02",
+      "description": "High-value or edge-case payload requiring a 15-second human manager click in Slack #amber-approvals.",
+      "input_override": {
+        "sentiment_score": 3,
+        "kb_confidence": 0.79,
+        "contains_red_keyword": false,
+        "financial_variance_usd": 85.0
+      },
+      "expected_router_branch": "Branch_B_Amber_15Second_Slack_Approval",
+      "expected_sla_seconds": 45
+    },
+    "red_zone_test_case": {
+      "test_name": "BP-02-SUPPORT-SHIELD-RAG-ROUTER_SYNTHETIC_RED_03",
+      "description": "Payload containing a Red-Zone trigger keyword or severe dispute that immediately halts AI execution and alerts a human lead.",
+      "input_override": {
+        "sentiment_score": 1,
+        "kb_confidence": 0.4,
+        "contains_red_keyword": true,
+        "financial_variance_usd": 650.0
+      },
+      "expected_router_branch": "Branch_C_Red_Immediate_Human_Takeover",
+      "expected_sla_seconds": 5
+    }
+  }
+}

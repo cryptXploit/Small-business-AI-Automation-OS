@@ -1,0 +1,295 @@
+{
+  "schema_version": "2026.1.0-MAKE-N8N-ZAPIER-UNIVERSAL",
+  "blueprint_id": "BP-03-VOICE-TO-3TIER-QUOTE-AND-NURTURE",
+  "name": "Department 02: Voice-to-3-Option (Good-Better-Best) Quote Compiler & 14-Day Follow-Up State Machine",
+  "project": "The Small Business AI Automation Operating System (2026 Enterprise Edition)",
+  "chapter_reference": "Chapter 4 (Prompts 4.1, 4.2, 4.3, 4.4, 4.5)",
+  "department": "02 - Sales Qualification & Quoting",
+  "sla_benchmark": "Proposal dispatched within 15 minutes of site visit; >= 35% 14-day close rate",
+  "trav_governance_architecture": {
+    "stage_1_trigger": "Webhook / Scheduled Cron Trigger with deterministic event_id idempotency check",
+    "stage_2_rules": "Pre-AI Regex Red-Gate Filter + E.164/Email Validator + Locked Truth-Table Lookup",
+    "stage_3_ai": {
+      "provider": "OpenAI (gpt-4o-mini / gpt-4o) or Anthropic (claude-3-5-sonnet)",
+      "temperature": 0.0,
+      "response_format": "json_object",
+      "system_prompt": "You are the Senior Proposal Architect for {{COMPANY_NAME}}. Combine the estimator's post-visit voice transcript with the locked unit prices in {{LOCKED_SKU_PRICEBOOK_JSON}} to generate a 3-Option Good-Better-Best proposal (Option A Essential, Option B Recommended, Option C VIP Turnkey) plus a 6-touch 14-day follow-up schedule at temperature 0.1. Copy all dollar figures verbatim from the deterministic price calculation node."
+    },
+    "stage_4_verification": {
+      "green": "Standard diagnostic/maintenance quote < $1,500 using locked SKU rows -> Dispatch after estimator preview",
+      "amber": "Custom multi-tier proposal >= $1,500 or discount > 5% -> Mandatory 15-second Slack Amber Approval click",
+      "red": "Custom engineering/legal indemnification or margin < 42% floor -> Escalate to Owner in #red-alerts"
+    },
+    "pre_ai_red_gate_regex": "(?i)\\b(liquidated damages|penalty clause|unlimited liability|custom warranty override|below cost)\\b",
+    "kill_switch_registry_row": "06-NOTION-TEMPLATES/02-Automation-Workflows-and-Health-Registry.csv -> BP-03-VOICE-TO-3TIER-QUOTE-AND-NURTURE"
+  },
+  "environment_variables_required": [
+    "COMPANY_NAME",
+    "OPENAI_API_KEY",
+    "NOTION_INTEGRATION_SECRET",
+    "NOTION_DB01_LEADS_ID",
+    "NOTION_DB02_WORKFLOW_REGISTRY_ID",
+    "SLACK_AMBER_WEBHOOK_URL",
+    "SLACK_RED_ALERTS_WEBHOOK_URL",
+    "TWILIO_ACCOUNT_SID",
+    "TWILIO_AUTH_TOKEN",
+    "TWILIO_FROM_NUMBER_E164"
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "node_name": "01_Inbound_Trigger_And_Idempotency_Guard",
+      "make_module": "gateway:CustomWebHook",
+      "n8n_node": "n8n-nodes-base.webhook",
+      "zapier_step": "Webhooks by Zapier — Catch Hook",
+      "configuration": {
+        "method": "POST",
+        "require_hmac_header": "X-Studio-Webhook-Signature",
+        "deduplicate_on_field": "event_id",
+        "sample_payload": {
+          "event_id": "evt_quote_20261023_019",
+          "estimator_name": "David Morales",
+          "client_name": "Oakridge Dental Group",
+          "client_email": "ops@oakridgedental.example.com",
+          "voice_memo_transcript": "Completed walkthrough at Oakridge Dental. Needs quarterly commercial maintenance on 3 rooftop units plus smart thermostat upgrade.",
+          "selected_sku_codes": [
+            "SKU-104",
+            "SKU-107"
+          ],
+          "deterministic_totals_usd": {
+            "option_a": 1450.0,
+            "option_b": 2250.0,
+            "option_c": 3400.0
+          },
+          "gross_margin_pct": 0.56
+        }
+      }
+    },
+    {
+      "id": 2,
+      "node_name": "02_Pre_AI_PII_Redactor_And_Red_Zone_Regex_Gate",
+      "make_module": "util:TextParserReplace",
+      "n8n_node": "n8n-nodes-base.code",
+      "zapier_step": "Code by Zapier — Run Python/JS",
+      "configuration": {
+        "mask_credit_cards_regex": "\\b(?:\\d[ -]*?){13,16}\\b -> [REDACTED_CARD]",
+        "mask_ssn_regex": "\\b\\d{3}-\\d{2}-\\d{4}\\b -> [REDACTED_GOV_ID]",
+        "red_zone_abort_regex": "(?i)\\b(liquidated damages|penalty clause|unlimited liability|custom warranty override|below cost)\\b",
+        "on_red_zone_match": "Route immediately to Node 06 (Red-Gate Human Alert & Bot Mute)"
+      }
+    },
+    {
+      "id": 3,
+      "node_name": "03_Deterministic_Truth_Table_And_CRM_Lookup",
+      "make_module": "notion:SearchObjects",
+      "n8n_node": "n8n-nodes-base.notion",
+      "zapier_step": "Notion — Find Database Item",
+      "configuration": {
+        "target_database": "06-NOTION-TEMPLATES/ (Databases 01, 03, 05)",
+        "strict_math_rule": "Calculate all prices, discounts, taxes, and overdue day counts in deterministic code prior to Node 04."
+      }
+    },
+    {
+      "id": 4,
+      "node_name": "04_Grounded_LLM_JSON_Compiler",
+      "make_module": "openai-gpt-3:CreateCompletion",
+      "n8n_node": "@n8n/n8n-nodes-langchain.openAi",
+      "zapier_step": "OpenAI (ChatGPT) — Conversation with JSON Mode",
+      "configuration": {
+        "model": "gpt-4o-mini",
+        "temperature": 0.0,
+        "max_tokens": 900,
+        "response_format": {
+          "type": "json_object"
+        },
+        "system_prompt": "You are the Senior Proposal Architect for {{COMPANY_NAME}}. Combine the estimator's post-visit voice transcript with the locked unit prices in {{LOCKED_SKU_PRICEBOOK_JSON}} to generate a 3-Option Good-Better-Best proposal (Option A Essential, Option B Recommended, Option C VIP Turnkey) plus a 6-touch 14-day follow-up schedule at temperature 0.1. Copy all dollar figures verbatim from the deterministic price calculation node.",
+        "required_output_keys": [
+          "assigned_gate",
+          "confidence_score",
+          "customer_sms_draft",
+          "customer_email_subject",
+          "customer_email_markdown",
+          "internal_slack_summary",
+          "audit_log_note"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "node_name": "05_TRAV_Governance_Router_Green_Amber_Red",
+      "make_module": "builtin:BasicRouter",
+      "n8n_node": "n8n-nodes-base.switch",
+      "zapier_step": "Paths by Zapier",
+      "routes": [
+        {
+          "route_name": "Branch_A_Green_Unattended_Dispatch",
+          "filter_condition": "assigned_gate == 'GREEN' AND confidence_score >= 0.88",
+          "actions": [
+            "Send SMS via Twilio / OpenPhone (if sms_opt_in_verified == true)",
+            "Send Email via Gmail / Microsoft 365",
+            "Update Notion Database status to 'Auto-Executed (Green)'"
+          ]
+        },
+        {
+          "route_name": "Branch_B_Amber_15Second_Slack_Approval",
+          "filter_condition": "assigned_gate == 'AMBER'",
+          "actions": [
+            "Post interactive Block Kit Approval Card to #amber-approvals in Slack ([Approve & Send] | [Edit] | [Hold])",
+            "Log pending state in Notion Database 02"
+          ]
+        },
+        {
+          "route_name": "Branch_C_Red_Immediate_Human_Takeover",
+          "filter_condition": "assigned_gate == 'RED' OR pre_ai_regex_triggered == true",
+          "actions": [
+            "Set bot_muted = true on customer record",
+            "Post urgent 5-bullet context brief + Emergency Script draft to #red-alerts",
+            "Send SMS alert to on-duty human manager"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "node_name": "06_Dead_Letter_Queue_And_Outage_Fallback_Handler",
+      "make_module": "builtin:ErrorHandlerCommit",
+      "n8n_node": "n8n-nodes-base.errorTrigger",
+      "zapier_step": "Zapier Manager — Error Handler",
+      "configuration": {
+        "retry_policy": "3 retries with exponential backoff (15s, 60s, 300s)",
+        "dlq_fallback_table": "06-NOTION-TEMPLATES/02-Automation-Workflows-and-Health-Registry.csv",
+        "emergency_script_reference": "Activate matching Emergency Script (01–12) if API outage exceeds 15 minutes."
+      }
+    }
+  ],
+  "slack_block_kit_approval_card_template": {
+    "channel": "#amber-approvals",
+    "text": "AMBER GATE REVIEW REQUIRED — BP-03-VOICE-TO-3TIER-QUOTE-AND-NURTURE",
+    "blocks": [
+      {
+        "type": "header",
+        "text": {
+          "type": "plain_text",
+          "text": "AMBER GATE APPROVAL: BP-03-VOICE-TO-3TIER-QUOTE-AND-NURTURE"
+        }
+      },
+      {
+        "type": "section",
+        "fields": [
+          {
+            "type": "mrkdwn",
+            "text": "*Department:*\n02 - Sales Qualification & Quoting"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Target SLA:*\nProposal dispatched within 15 minutes of site visit; >= 35% 14-day close rate"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Assigned Gate:*\n`AMBER (15-Second Human Check)`"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Event ID:*\n`{{1.event_id}}`"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*AI Grounded Draft Preview:*\n```{{4.customer_email_markdown}}```"
+        }
+      },
+      {
+        "type": "actions",
+        "elements": [
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Approve & Dispatch Now"
+            },
+            "style": "primary",
+            "action_id": "amber_approve_dispatch",
+            "value": "{{1.event_id}}"
+          },
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Edit Before Sending"
+            },
+            "action_id": "amber_edit_draft",
+            "value": "{{1.event_id}}"
+          },
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Escalate to Red Gate"
+            },
+            "style": "danger",
+            "action_id": "amber_escalate_red",
+            "value": "{{1.event_id}}"
+          }
+        ]
+      }
+    ]
+  },
+  "platform_import_and_field_mapping_guide": {
+    "make_com_instructions": {
+      "step_1": "Create a new Scenario in Make.com -> Click More (...) in the bottom toolbar -> Select 'Import Blueprint' or add the 6 modules listed in the nodes[] array.",
+      "step_2": "In Module 01 (Custom WebHook), copy the generated HTTPS URL and paste it into your form provider, phone system, or billing webhook settings.",
+      "step_3": "In Module 04 (OpenAI Create a Chat Completion), set Model = gpt-4o-mini, Temperature = 0.0, Response Format = JSON Object, and paste trav_governance_architecture.stage_3_ai.system_prompt.",
+      "step_4": "In Module 05 (Router), configure the 3 filter conditions matching Branch_A_Green, Branch_B_Amber, and Branch_C_Red."
+    },
+    "n8n_instructions": {
+      "step_1": "In n8n (Self-Hosted or Cloud), click Workflows -> Add Workflow -> Import from File or configure the 6 n8n_node types in sequence.",
+      "step_2": "Use a Code (JavaScript/Python) node at Step 02 to execute mask_credit_cards_regex, mask_ssn_regex, and red_zone_abort_regex before calling OpenAI.",
+      "step_3": "Connect an Error Trigger node at Step 06 pointing to your Notion Database 02 Dead-Letter Queue table."
+    },
+    "zapier_instructions": {
+      "step_1": "Create a 6-step Zap starting with 'Webhooks by Zapier (Catch Hook)' followed by 'Code by Zapier (Run Python)' for PII masking and Red-Gate regex verification.",
+      "step_2": "Use 'Paths by Zapier' at Step 05 to split execution into Green (Auto-Send), Amber (Slack Block Kit Approval), and Red (Pager/Manager Alert)."
+    }
+  },
+  "verified_synthetic_test_suite": {
+    "green_zone_test_case": {
+      "test_name": "BP-03-VOICE-TO-3TIER-QUOTE-AND-NURTURE_SYNTHETIC_GREEN_01",
+      "description": "Routine in-policy payload with high KB confidence and zero Red-Zone keywords.",
+      "input_override": {
+        "sentiment_score": 5,
+        "kb_confidence": 0.96,
+        "contains_red_keyword": false,
+        "financial_variance_usd": 0.0
+      },
+      "expected_router_branch": "Branch_A_Green_Unattended_Dispatch",
+      "expected_sla_seconds": 18
+    },
+    "amber_zone_test_case": {
+      "test_name": "BP-03-VOICE-TO-3TIER-QUOTE-AND-NURTURE_SYNTHETIC_AMBER_02",
+      "description": "High-value or edge-case payload requiring a 15-second human manager click in Slack #amber-approvals.",
+      "input_override": {
+        "sentiment_score": 3,
+        "kb_confidence": 0.79,
+        "contains_red_keyword": false,
+        "financial_variance_usd": 85.0
+      },
+      "expected_router_branch": "Branch_B_Amber_15Second_Slack_Approval",
+      "expected_sla_seconds": 45
+    },
+    "red_zone_test_case": {
+      "test_name": "BP-03-VOICE-TO-3TIER-QUOTE-AND-NURTURE_SYNTHETIC_RED_03",
+      "description": "Payload containing a Red-Zone trigger keyword or severe dispute that immediately halts AI execution and alerts a human lead.",
+      "input_override": {
+        "sentiment_score": 1,
+        "kb_confidence": 0.4,
+        "contains_red_keyword": true,
+        "financial_variance_usd": 650.0
+      },
+      "expected_router_branch": "Branch_C_Red_Immediate_Human_Takeover",
+      "expected_sla_seconds": 5
+    }
+  }
+}

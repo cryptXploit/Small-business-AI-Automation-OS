@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <linearGradient id="bgCh03" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bgCh03)" />
+  <rect x="0" y="0" width="1600" height="12" fill="#059669" />
+  <rect x="0" y="988" width="1600" height="12" fill="#0284C7" />
+
+  <!-- Top Header Card -->
+  <rect x="36" y="28" width="1528" height="114" rx="14" fill="#1E293B" stroke="#059669" stroke-width="2.5" />
+  <text x="64" y="62" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="800" letter-spacing="1.5">ONE-PAGE EXECUTIVE CHEAT SHEET • CHAPTER 03 OF 10 • DEPT 01 • LEAD CAPTURE &amp; SPEED-TO-LEAD</text>
+  <text x="64" y="100" fill="#FFFFFF" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="900">Chapter 3: The 60-Second Lead Capture &amp; Speed-to-Lead Engine</text>
+  <text x="64" y="128" fill="#CBD5E1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="500">Omnichannel Web, Phone, Missed-Call SMS, and Social Lead Routing 24/7</text>
+
+  <rect x="1310" y="46" width="230" height="78" rx="10" fill="#0F172A" stroke="#0284C7" stroke-width="2" />
+  <text x="1425" y="78" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="16" font-weight="800" text-anchor="middle">WORKSHEET 03</text>
+  <text x="1425" y="104" fill="#FFFFFF" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Prompts 3.1 – 3.5</text>
+
+  <!-- Row 1: Core Engineering Framework, Formula & SLA Target -->
+  <rect x="36" y="160" width="750" height="130" rx="12" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
+  <text x="60" y="190" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800">1. CORE NAMED ENGINEERING FRAMEWORK</text>
+  <text x="60" y="222" fill="#FFFFFF" font-family="Inter, Segoe UI, sans-serif" font-size="16" font-weight="800">I.N.S.T.A.N.T. 60-Second Router &amp; Non-Intrusive B.A.N.T.-Lite Lead Scorer</text>
+  <text x="60" y="256" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="13" font-weight="700">SLA BENCHMARK: Median Speed-to-Lead &lt;= 60 seconds; Missed-Call Text-Back &lt;= 15 seconds; Recovery &gt;= 85%</text>
+
+  <rect x="814" y="160" width="750" height="130" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
+  <text x="838" y="190" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800">2. DETERMINISTIC FINANCIAL &amp; OPERATIONAL FORMULA</text>
+  <rect x="838" y="206" width="702" height="64" rx="8" fill="#0F172A" stroke="#334155" />
+  <text x="1189" y="244" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800" text-anchor="middle">Rescued Lead Revenue = Delayed Leads/Mo × (60s Close% - Baseline Close%) × Avg LTV × 12</text>
+
+  <!-- Row 2: T.R.A.V. Green / Amber / Red Governance Zones -->
+  <rect x="36" y="308" width="1528" height="156" rx="12" fill="#0F172A" stroke="#334155" stroke-width="2" />
+  <text x="60" y="338" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800">3. CHAPTER 03 T.R.A.V. HUMAN-IN-THE-LOOP GOVERNANCE RULES (GREEN / AMBER / RED ZONES)</text>
+
+  <rect x="60" y="354" width="480" height="92" rx="10" fill="#1E293B" stroke="#059669" stroke-width="2.5" />
+  <text x="80" y="382" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800">GREEN ZONE (UNATTENDED 24/7 AUTO)</text>
+  <text x="80" y="412" fill="#E2E8F0" font-family="Inter, Segoe UI, sans-serif" font-size="13">In-territory routine service/consultation inquiries receive instant SMS + booking link.</text>
+
+  <rect x="560" y="354" width="480" height="92" rx="10" fill="#1E293B" stroke="#D97706" stroke-width="2.5" />
+  <text x="580" y="382" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800">AMBER ZONE (15s SLACK APPROVAL CLICK)</text>
+  <text x="580" y="412" fill="#E2E8F0" font-family="Inter, Segoe UI, sans-serif" font-size="13">High-ticket commercial or multi-site inquiries trigger an instant rep brief in #inbound-leads.</text>
+
+  <rect x="1060" y="354" width="480" height="92" rx="10" fill="#1E293B" stroke="#EF4444" stroke-width="2.5" />
+  <text x="1080" y="382" fill="#F87171" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800">RED ZONE (BOT MUTE &amp; HUMAN TAKEOVER)</text>
+  <text x="1080" y="412" fill="#E2E8F0" font-family="Inter, Segoe UI, sans-serif" font-size="13">Emergency hazards (gas leak, sparking, acute clinical pain) bypass AI and alert on-call lead.</text>
+
+  <!-- Row 3: Left = 5 Prompts Index | Right = Top 3 Implementation Actions -->
+  <rect x="36" y="482" width="750" height="260" rx="12" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
+  <text x="60" y="512" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800">4. CHAPTER 03 DETERMINISTIC AI PROMPT VAULT (PROMPTS 3.1 – 3.5)</text>
+  
+        <rect x="60" y="528" width="700" height="30" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+        <text x="76" y="548" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="13" font-weight="700">Prompt 3.1: Omnichannel Lead Normalizer &amp; B.A.N.T.-Lite Scorer</text>
+        
+        <rect x="60" y="566" width="700" height="30" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+        <text x="76" y="586" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="13" font-weight="700">Prompt 3.2: 60-Second Personalized SMS &amp; Email Concierge</text>
+        
+        <rect x="60" y="604" width="700" height="30" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+        <text x="76" y="624" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="13" font-weight="700">Prompt 3.3: Missed-Call Whisper Transcript &amp; Text-Back Bot</text>
+        
+        <rect x="60" y="642" width="700" height="30" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+        <text x="76" y="662" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="13" font-weight="700">Prompt 3.4: Conversational 2-Way SMS Calendar Booker</text>
+        
+        <rect x="60" y="680" width="700" height="30" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1.2" />
+        <text x="76" y="700" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="13" font-weight="700">Prompt 3.5: 30-Minute Pre-Call Sales Rep Executive Brief</text>
+        
+
+  <rect x="814" y="482" width="750" height="260" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
+  <text x="838" y="512" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="800">5. TOP 3 IMPLEMENTATION ACTION STEPS THIS WEEK</text>
+  
+        <rect x="820" y="532" width="720" height="46" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1.5" />
+        <text x="838" y="560" fill="#E2E8F0" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="600">1. Connect website forms, OpenPhone/Twilio missed calls, and Meta Lead Ads to Blueprint 01.</text>
+        
+        <rect x="820" y="588" width="720" height="46" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1.5" />
+        <text x="838" y="616" fill="#E2E8F0" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="600">2. Configure E.164 phone normalization and postal-code territory verification in Node 02.</text>
+        
+        <rect x="820" y="644" width="720" height="46" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1.5" />
+        <text x="838" y="672" fill="#E2E8F0" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="600">3. Enable 30-minute pre-call rep briefings so reps enter every consultation prepared.</text>
+        
+
+  <!-- Row 4: Friday Owner Scorecard KPI Target & Kill-Switch Footer -->
+  <rect x="36" y="762" width="1528" height="202" rx="14" fill="#1E293B" stroke="#059669" stroke-width="2.5" />
+  <text x="64" y="796" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="800">6. FRIDAY 3:00 PM OWNER SCORECARD TARGET &amp; COMPANION TOOLS</text>
+
+  <rect x="64" y="814" width="920" height="64" rx="10" fill="#0F172A" stroke="#059669" stroke-width="2" />
+  <text x="88" y="852" fill="#FFFFFF" font-family="Inter, Segoe UI, sans-serif" font-size="18" font-weight="800">Friday KPIs 01–03: Qualified Leads, Speed-to-Lead &lt;= 60s, Missed-Call Recovery &gt;= 85%</text>
+
+  <rect x="1008" y="814" width="528" height="64" rx="10" fill="#0F172A" stroke="#0284C7" stroke-width="2" />
+  <text x="1272" y="842" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="13" font-weight="800" text-anchor="middle">COMPANION ASSETS IN YOUR BUNDLE</text>
+  <text x="1272" y="864" fill="#CBD5E1" font-family="Inter, Segoe UI, sans-serif" font-size="12" text-anchor="middle">Worksheet 03 • Mindmap &amp; Flowchart 03 • Notion OS Kit</text>
+
+  <rect x="64" y="894" width="1472" height="50" rx="8" fill="#0F172A" stroke="#334155" />
+  <text x="88" y="924" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="700">60-SECOND KILL SWITCH RULE: If any schema error or unexpected customer reply occurs, pause workflow in Notion DB 02 &amp; activate Emergency Script.</text>
+</svg>

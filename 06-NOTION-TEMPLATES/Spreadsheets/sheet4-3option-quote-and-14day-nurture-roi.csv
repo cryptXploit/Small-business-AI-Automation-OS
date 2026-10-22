@@ -1,0 +1,10 @@
+SKU Code,Service / Package Name,Option A Essential ($),Option B Recommended ($),Option C VIP ($),Monthly Quotes Sent,Baseline Close %,14-Day Loop Close %,Blended Ticket ($),Monthly Incremental Revenue ($)
+SKU-101,Residential Diagnostic & Tune-Up Package,295,495,795,18,0.25,0.4,"=ROUND((C5*0.25)+(D5*0.55)+(E5*0.20), 0)","=ROUND(F5*(H5-G5)*I5, 0)"
+SKU-102,System Replacement / Core Installation,3400,4850,6900,8,0.22,0.36,"=ROUND((C6*0.25)+(D6*0.55)+(E6*0.20), 0)","=ROUND(F6*(H6-G6)*I6, 0)"
+SKU-103,Preventive Annual Maintenance Membership,240,390,590,24,0.3,0.48,"=ROUND((C7*0.25)+(D7*0.55)+(E7*0.20), 0)","=ROUND(F7*(H7-G7)*I7, 0)"
+SKU-104,Commercial Quarterly Service Contract,1450,2250,3400,6,0.2,0.35,"=ROUND((C8*0.25)+(D8*0.55)+(E8*0.20), 0)","=ROUND(F8*(H8-G8)*I8, 0)"
+SKU-105,New Client Comprehensive Onboarding Audit,650,1150,1850,12,0.28,0.42,"=ROUND((C9*0.25)+(D9*0.55)+(E9*0.20), 0)","=ROUND(F9*(H9-G9)*I9, 0)"
+SKU-106,Monthly Retainer / Managed Service Tier,1200,1950,2950,7,0.24,0.38,"=ROUND((C10*0.25)+(D10*0.55)+(E10*0.20), 0)","=ROUND(F10*(H10-G10)*I10, 0)"
+SKU-107,Emergency Priority Same-Day Turnkey,850,1350,1950,9,0.35,0.52,"=ROUND((C11*0.25)+(D11*0.55)+(E11*0.20), 0)","=ROUND(F11*(H11-G11)*I11, 0)"
+SKU-108,Multi-Site / Fleet Compliance Package,2600,3900,5400,4,0.18,0.32,"=ROUND((C12*0.25)+(D12*0.55)+(E12*0.20), 0)","=ROUND(F12*(H12-G12)*I12, 0)"
+TOTAL / AVG,Monthly & Annual Proposal Lift Summary,"=ROUND(AVERAGE(C5:C12), 0)","=ROUND(AVERAGE(D5:D12), 0)","=ROUND(AVERAGE(E5:E12), 0)",=SUM(F5:F12),=AVERAGE(G5:G12),=AVERAGE(H5:H12),"=ROUND(AVERAGE(I5:I12), 0)",=SUM(J5:J12)

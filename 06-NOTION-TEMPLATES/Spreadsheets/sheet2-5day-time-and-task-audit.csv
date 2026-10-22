@@ -1,0 +1,27 @@
+Task ID,Department,Recurring Manual Task Description,Role Performing,Hourly Cost ($),Freq / Week,Mins / Occurrence,Weekly Hours,Annual Hours,Annual Labor Cost ($),P.A.C.E. Score (1-20),Governance Gate
+T-01,Dept 01,Copy web form leads into CRM & send intro email,Front Desk,32,35,6,"=ROUND((F5*G5)/60, 2)","=ROUND(H5*52, 1)","=ROUND(I5*E5, 0)",19,GREEN
+T-02,Dept 01,Return missed phone calls & transcribe voicemails,Front Desk,32,28,8,"=ROUND((F6*G6)/60, 2)","=ROUND(H6*52, 1)","=ROUND(I6*E6, 0)",20,GREEN
+T-03,Dept 01,Reply to Facebook/IG & Google Business messages,Marketing Admin,38,22,7,"=ROUND((F7*G7)/60, 2)","=ROUND(H7*52, 1)","=ROUND(I7*E7, 0)",18,GREEN
+T-04,Dept 01,Send calendar links & chase appointment confirmations,Front Desk,32,30,5,"=ROUND((F8*G8)/60, 2)","=ROUND(H8*52, 1)","=ROUND(I8*E8, 0)",18,GREEN
+T-05,Dept 01,Research prospect company/address before sales call,Sales Rep,58,15,12,"=ROUND((F9*G9)/60, 2)","=ROUND(H9*52, 1)","=ROUND(I9*E9, 0)",16,GREEN
+T-06,Dept 02,Type post-visit notes into 3-option quote template,Estimator,68,14,25,"=ROUND((F10*G10)/60, 2)","=ROUND(H10*52, 1)","=ROUND(I10*E10, 0)",20,AMBER
+T-07,Dept 02,Look up SKU unit prices & check margin thresholds,Estimator,68,14,10,"=ROUND((F11*G11)/60, 2)","=ROUND(H11*52, 1)","=ROUND(I11*E11, 0)",18,AMBER
+T-08,Dept 02,"Send Day-2, Day-5, and Day-10 quote follow-up emails",Sales Rep,58,25,6,"=ROUND((F12*G12)/60, 2)","=ROUND(H12*52, 1)","=ROUND(I12*E12, 0)",19,GREEN
+T-09,Dept 02,Update CRM deal stages after client signs or declines,Sales Admin,36,18,5,"=ROUND((F13*G13)/60, 2)","=ROUND(H13*52, 1)","=ROUND(I13*E13, 0)",15,GREEN
+T-10,Dept 02,Re-engage 90-day closed-lost estimates for seasonal work,Sales Rep,58,10,9,"=ROUND((F14*G14)/60, 2)","=ROUND(H14*52, 1)","=ROUND(I14*E14, 0)",15,GREEN
+T-11,Dept 03,Create client Google Drive folder & project board after payment,Ops Coordinator,42,10,18,"=ROUND((F15*G15)/60, 2)","=ROUND(H15*52, 1)","=ROUND(I15*E15, 0)",19,GREEN
+T-12,Dept 03,Send welcome packet & custom intake questionnaire,Ops Coordinator,42,10,12,"=ROUND((F16*G16)/60, 2)","=ROUND(H16*52, 1)","=ROUND(I16*E16, 0)",18,GREEN
+T-13,Dept 03,Chase clients for missing onboarding documents/photos,Ops Coordinator,42,16,10,"=ROUND((F17*G17)/60, 2)","=ROUND(H17*52, 1)","=ROUND(I17*E17, 0)",17,GREEN
+T-14,Dept 03,"Answer Tier-1 FAQ tickets (hours, WISMO, rescheduling)",Support Rep,34,45,5,"=ROUND((F18*G18)/60, 2)","=ROUND(H18*52, 1)","=ROUND(I18*E18, 0)",20,GREEN
+T-15,Dept 03,Triage angry/urgent customer complaints to manager,Support Lead,48,4,20,"=ROUND((F19*G19)/60, 2)","=ROUND(H19*52, 1)","=ROUND(I19*E19, 0)",17,RED
+T-16,Dept 03,Send post-service satisfaction check & Google review link,Front Desk,32,22,4,"=ROUND((F20*G20)/60, 2)","=ROUND(H20*52, 1)","=ROUND(I20*E20, 0)",19,GREEN
+T-17,Dept 03,Draft SEO-friendly replies to public Google reviews,Owner / Manager,85,6,10,"=ROUND((F21*G21)/60, 2)","=ROUND(H21*52, 1)","=ROUND(I21*E21, 0)",16,GREEN
+T-18,Dept 03,Export 60/90/180-day dormant client list & send recall,Marketing Admin,38,8,15,"=ROUND((F22*G22)/60, 2)","=ROUND(H22*52, 1)","=ROUND(I22*E22, 0)",17,GREEN
+T-19,Dept 04,Convert technician/project completion notes into invoice,Billing Clerk,40,20,12,"=ROUND((F23*G23)/60, 2)","=ROUND(H23*52, 1)","=ROUND(I23*E23, 0)",19,GREEN
+T-20,Dept 04,Check overdue invoices & send polite payment reminders,Billing Clerk,40,18,8,"=ROUND((F24*G24)/60, 2)","=ROUND(H24*52, 1)","=ROUND(I24*E24, 0)",19,AMBER
+T-21,Dept 04,Key vendor receipts & PDF bills into QuickBooks/Xero,Bookkeeper,46,30,6,"=ROUND((F25*G25)/60, 2)","=ROUND(H25*52, 1)","=ROUND(I25*E25, 0)",18,GREEN
+T-22,Dept 04,Compare supplier invoice unit prices against contract rates,Owner / Manager,85,8,15,"=ROUND((F26*G26)/60, 2)","=ROUND(H26*52, 1)","=ROUND(I26*E26, 0)",17,AMBER
+T-23,Dept 05,Write step-by-step SOP checklists for recurring processes,Owner / Manager,85,3,45,"=ROUND((F27*G27)/60, 2)","=ROUND(H27*52, 1)","=ROUND(I27*E27, 0)",18,AMBER
+T-24,Dept 05,Answer repetitive staff procedural questions in Slack,Owner / Manager,85,20,6,"=ROUND((F28*G28)/60, 2)","=ROUND(H28*52, 1)","=ROUND(I28*E28, 0)",18,GREEN
+T-25,Dept 05,Pull Friday KPI numbers across 4 apps for weekly review,Owner / Manager,85,1,95,"=ROUND((F29*G29)/60, 2)","=ROUND(H29*52, 1)","=ROUND(I29*E29, 0)",20,GREEN
+TOTAL,All 5 Depts,Total Audited Weekly & Annual Manual Task Friction,All Staff,"=ROUND(AVERAGE(E5:E29), 2)",=SUM(F5:F29),"=ROUND(AVERAGE(G5:G29), 1)",=SUM(H5:H29),=SUM(I5:I29),=SUM(J5:J29),"=ROUND(AVERAGE(K5:K29), 1)",75% GREEN
