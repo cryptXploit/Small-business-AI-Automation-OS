@@ -1,0 +1,47 @@
+================================================================================
+THE SMALL BUSINESS AI AUTOMATION OPERATING SYSTEM (2026 ENTERPRISE EDITION)
+OFFICIAL COMMERCIAL PRO EDITION ACCESS LICENSE KEY (TIERS 3 & 4)
+================================================================================
+
+OFFICIAL PRO EDITION ACCESS CODE:
+SMALLBIZ-OS-PRO-2026
+
+--------------------------------------------------------------------------------
+1. ZERO-INSTALL OFFLINE LAUNCH INSTRUCTIONS (DESKTOP & MOBILE)
+--------------------------------------------------------------------------------
+The Interactive Companion Suite (`07-INTERACTIVE-TOOLS/smallbiz-automation-os-app.html`)
+is engineered as a 100% self-contained, single-file HTML5 + ES6 application.
+It requires ZERO internet connection, ZERO external server dependencies, and
+transmits ZERO business or financial data to any external cloud server.
+
+Step 1: Locate `07-INTERACTIVE-TOOLS/smallbiz-automation-os-app.html` on your
+        computer, tablet, or USB drive.
+Step 2: Double-click the file to open it directly in Google Chrome, Microsoft
+        Edge, Apple Safari, Brave, or Mozilla Firefox.
+Step 3: Click the emerald "Activate Pro Access" button in the top-right
+        executive command bar (or on the diagnostic banner).
+Step 4: Enter the official access code:
+        SMALLBIZ-OS-PRO-2026
+Step 5: Click "Activate Pro Access". Your browser will store your activation
+        flag in local browser storage (`smallbiz_os_pro_active`) and enable:
+        - All 50 Tested AI Workflow Prompts (`Prompt 1.1` through `Prompt 10.5`)
+        - All 12 Emergency Business Operations Scripts (`Emergency Script 01` – `12`)
+        - All 6 Interactive Calculators, Simulators, and Weekly KPI Scorecards
+
+--------------------------------------------------------------------------------
+2. DATA PRIVACY & LOCALSTORAGE BACKUP INSTRUCTIONS
+--------------------------------------------------------------------------------
+All calculator inputs, T.R.A.V. governance logs, 90-Day Rollout checkboxes, and
+Friday Owner KPI Scorecard snapshots are saved locally inside your browser's
+`localStorage` vault.
+
+To back up or transfer your operational history to another computer:
+1. Open Module 6 ("6. Friday Owner KPI Scorecard").
+2. Click "Export Backup JSON" to download `smallbiz-automation-os-backup.json`
+   to your local company drive or cloud folder.
+3. On any secondary computer or browser, click "Import JSON" and select your
+   saved `.json` file to restore your entire workspace state immediately.
+4. Use "Export Audit CSV", "Export Channel Simulation CSV", or "Export
+   Scorecard CSV" at any time to open your metrics in Microsoft Excel or
+   Google Sheets.
+================================================================================
