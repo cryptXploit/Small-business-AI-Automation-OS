@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow10f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#64748B"/>
+    </marker>
+    <marker id="arrowGreen10f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#059669"/>
+    </marker>
+    <marker id="arrowAmber10f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#D97706"/>
+    </marker>
+    <filter id="shadow10f" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- White Canvas -->
+  <rect width="900" height="480" fill="#FFFFFF"/>
+
+  <!-- Top Banner -->
+  <rect x="0" y="0" width="900" height="52" fill="#0F172A"/>
+  <text x="24" y="23" fill="#FFFFFF" font-size="13.5" font-weight="700">CHAPTER 10 DECISION TREE — WEEKLY KPI VARIANCE TRIAGE &amp; 90-DAY PHASED ROLLOUT</text>
+  <text x="24" y="40" fill="#64748B" font-size="10.5">Friday 3:00 PM Automated KPI Aggregation, Red/Amber/Green Action Routing &amp; 30-60-90 Day Implementation Gates</text>
+  <rect x="726" y="13" width="150" height="26" rx="13" fill="#059669"/>
+  <text x="801" y="30" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">OWNER COMMAND LOOP</text>
+
+  <!-- ==================== TOP SECTION: FRIDAY 3:00 PM SCORECARD TRIAGE ==================== -->
+  <rect x="20" y="64" width="860" height="206" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="20" y="64" width="860" height="24" rx="6" fill="#0F172A"/>
+  <text x="34" y="80" fill="#FFFFFF" font-size="10" font-weight="700">PART A: FRIDAY 3:00 PM AUTOMATED EXECUTIVE PULSE &amp; MONDAY HUDDLE ACTION ROUTER (PROMPTS 10.1 &amp; 10.5)</text>
+
+  <!-- Step 1: Friday Cron Trigger -->
+  <g filter="url(#shadow10f)">
+    <rect x="34" y="104" width="168" height="84" rx="8" fill="#0F172A"/>
+    <text x="118" y="125" fill="#38BDF8" font-size="9" font-weight="700" text-anchor="middle">FRIDAY 3:00 PM CRON</text>
+    <text x="118" y="143" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">Pull 12 Core KPIs</text>
+    <text x="118" y="160" fill="#E2E8F0" font-size="9" text-anchor="middle">CRM • QBO/Stripe • Helpdesk</text>
+    <text x="118" y="175" fill="#10B981" font-size="9" font-weight="600" text-anchor="middle">+ Workflow Exception Logs</text>
+  </g>
+  <line x1="202" y1="146" x2="234" y2="146" stroke="#64748B" stroke-width="2" marker-end="url(#arrow10f)"/>
+
+  <!-- Step 2: AI KPI Variance Detective (Prompt 10.1) -->
+  <g filter="url(#shadow10f)">
+    <rect x="240" y="100" width="204" height="92" rx="10" fill="#FFFFFF" stroke="#0284C7" stroke-width="2.5"/>
+    <rect x="240" y="100" width="204" height="22" rx="6" fill="#0284C7"/>
+    <text x="342" y="115" fill="#FFFFFF" font-size="9" font-weight="700" text-anchor="middle">VARIANCE GATE (PROMPT 10.1)</text>
+    <text x="342" y="138" fill="#0F172A" font-size="10.5" font-weight="700" text-anchor="middle">Evaluate 12 KPIs vs.</text>
+    <text x="342" y="154" fill="#0F172A" font-size="10.5" font-weight="700" text-anchor="middle">Target Thresholds</text>
+    <text x="342" y="174" fill="#64748B" font-size="9" text-anchor="middle">Compare vs. 4-Week Rolling Avg</text>
+  </g>
+
+  <!-- Branch 1: GREEN KPIs -->
+  <path d="M 444 122 L 494 122" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#arrowGreen10f)"/>
+  <g filter="url(#shadow10f)">
+    <rect x="500" y="96" width="364" height="46" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+    <text x="514" y="115" fill="#059669" font-size="9.5" font-weight="700">GREEN ZONE (ON TARGET):</text>
+    <text x="648" y="115" fill="#0F172A" font-size="9.5" font-weight="600">Maintain Autopilot &amp; Recognize Team Win</text>
+    <text x="514" y="132" fill="#1E293B" font-size="9">Log hours/cash saved into Monthly ROI Auditor (Prompt 10.3)</text>
+  </g>
+
+  <!-- Branch 2: AMBER KPIs -->
+  <path d="M 444 152 L 494 152" stroke="#D97706" stroke-width="2" fill="none" marker-end="url(#arrowAmber10f)"/>
+  <g filter="url(#shadow10f)">
+    <rect x="500" y="150" width="364" height="50" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+    <text x="514" y="169" fill="#D97706" font-size="9.5" font-weight="700">AMBER ZONE (10%–20% DRIFT):</text>
+    <text x="668" y="169" fill="#0F172A" font-size="9.5" font-weight="600">Assign 1 Fix in Monday Huddle (10.5)</text>
+    <text x="514" y="186" fill="#1E293B" font-size="9">e.g., Tune quote follow-up copy, update KB chunk, or chase Day +15 AR</text>
+  </g>
+
+  <!-- Branch 3: RED KPIs -->
+  <path d="M 342 192 L 342 232 L 494 232" stroke="#0F172A" stroke-width="2" fill="none" marker-end="url(#arrow10f)"/>
+  <g filter="url(#shadow10f)">
+    <rect x="500" y="208" width="364" height="50" rx="6" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+    <text x="514" y="227" fill="#0F172A" font-size="9.5" font-weight="700">RED ZONE (&gt;20% MISS / BROKEN HOOK):</text>
+    <text x="706" y="227" fill="#0284C7" font-size="9.5" font-weight="700">Immediate Root-Cause Fix</text>
+    <text x="514" y="244" fill="#1E293B" font-size="9">Inspect Dead-Letter Queue, verify webhook token, &amp; deploy Emergency Script</text>
+  </g>
+
+  <!-- ==================== BOTTOM SECTION: 90-DAY PHASED ROLLOUT ROADMAP ==================== -->
+  <rect x="20" y="284" width="860" height="178" rx="8" fill="#F8FAFC" stroke="#0284C7" stroke-width="2"/>
+  <rect x="20" y="284" width="860" height="26" rx="6" fill="#0284C7"/>
+  <text x="450" y="301" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">PART B: THE 90-DAY PHASED AUTOMATION ROLLOUT ROADMAP — ZERO-OVERWHELM SEQUENCING (PROMPT 10.2)</text>
+
+  <!-- Phase I: Days 1-30 -->
+  <g filter="url(#shadow10f)">
+    <rect x="36" y="324" width="256" height="122" rx="8" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+    <rect x="36" y="324" width="256" height="24" rx="6" fill="#059669"/>
+    <text x="164" y="340" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">PHASE I: DAYS 1–30 (REVENUE DEFENSE)</text>
+    <text x="48" y="362" fill="#1E293B" font-size="9.5" font-weight="600">• Wk 1: 5-Day Audit &amp; T.R.A.V. Safety Gate</text>
+    <text x="48" y="378" fill="#1E293B" font-size="9.5">• Wk 2: 60-Second Lead Router (Dept 01)</text>
+    <text x="48" y="394" fill="#1E293B" font-size="9.5">• Wk 3: Missed-Call SMS Concierge</text>
+    <text x="48" y="410" fill="#1E293B" font-size="9.5">• Wk 4: 3-Tier Quotes &amp; 14d Follow-Up</text>
+    <text x="48" y="432" fill="#059669" font-size="9" font-weight="700">Gate 1 Goal: +25%–40% Lead Conversion</text>
+  </g>
+  <line x1="292" y1="385" x2="316" y2="385" stroke="#059669" stroke-width="2.5" marker-end="url(#arrowGreen10f)"/>
+
+  <!-- Phase II: Days 31-60 -->
+  <g filter="url(#shadow10f)">
+    <rect x="322" y="324" width="256" height="122" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+    <rect x="322" y="324" width="256" height="24" rx="6" fill="#0284C7"/>
+    <text x="450" y="340" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">PHASE II: DAYS 31–60 (CX &amp; CASHFLOW)</text>
+    <text x="334" y="362" fill="#1E293B" font-size="9.5" font-weight="600">• Wk 5: Zero-Drop Onboarding Handoff</text>
+    <text x="334" y="378" fill="#1E293B" font-size="9.5">• Wk 6: 3-Tier AI Support Shield (65% Auto)</text>
+    <text x="334" y="394" fill="#1E293B" font-size="9.5">• Wk 7: R.E.V.I.E.W. &amp; 90d Win-Back Loop</text>
+    <text x="334" y="410" fill="#1E293B" font-size="9.5">• Wk 8: Milestone Billing &amp; 5-Stage Chaser</text>
+    <text x="334" y="432" fill="#0284C7" font-size="9" font-weight="700">Gate 2 Goal: DSO &lt; 15d &amp; 15+ Hrs Saved</text>
+  </g>
+  <line x1="578" y1="385" x2="602" y2="385" stroke="#0284C7" stroke-width="2.5" marker-end="url(#arrow10f)"/>
+
+  <!-- Phase III: Days 61-90 -->
+  <g filter="url(#shadow10f)">
+    <rect x="608" y="324" width="256" height="122" rx="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+    <rect x="608" y="324" width="256" height="24" rx="6" fill="#0F172A"/>
+    <text x="736" y="340" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">PHASE III: DAYS 61–90 (OWNER COMMAND)</text>
+    <text x="620" y="362" fill="#1E293B" font-size="9.5" font-weight="600">• Wk 9: Vendor OCR &amp; 5-Day Month Close</text>
+    <text x="620" y="378" fill="#1E293B" font-size="9.5">• Wk 10: Voice-to-SOP Vault &amp; Staff Q&amp;A Bot</text>
+    <text x="620" y="394" fill="#1E293B" font-size="9.5">• Wk 11: 7-Day New-Hire Certification</text>
+    <text x="620" y="410" fill="#1E293B" font-size="9.5">• Wk 12: Friday 3:00 PM Owner Scorecard</text>
+    <text x="620" y="432" fill="#059669" font-size="9" font-weight="700">Gate 3 Goal: 20–30 Owner Hrs Reclaimed</text>
+  </g>
+</svg>
