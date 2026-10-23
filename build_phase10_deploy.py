@@ -419,32 +419,32 @@ Allow: /studio/
 Allow: /assets/
 Allow: /downloads/
 
-Sitemap: https://smallbiz-automation-os.example.com/sitemap.xml
+Sitemap: https://cryptxploit.github.io/Small-business-AI-Automation-OS/sitemap.xml
 """
     (DIST_DIR / "robots.txt").write_text(robots_txt, encoding="utf-8")
 
     sitemap_xml = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://smallbiz-automation-os.example.com/</loc>
+    <loc>https://cryptxploit.github.io/Small-business-AI-Automation-OS/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://smallbiz-automation-os.example.com/app/</loc>
+    <loc>https://cryptxploit.github.io/Small-business-AI-Automation-OS/app/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://smallbiz-automation-os.example.com/studio/</loc>
+    <loc>https://cryptxploit.github.io/Small-business-AI-Automation-OS/studio/</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://smallbiz-automation-os.example.com/downloads/Tier0-Free-5Day-Audit-Starter-Kit.zip</loc>
+    <loc>https://cryptxploit.github.io/Small-business-AI-Automation-OS/downloads/Tier0-Free-5Day-Audit-Starter-Kit.zip</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -603,6 +603,9 @@ jobs:
         uses: actions/deploy-pages@v4
 """
     (DEPLOY_DIR / "deploy-github-pages.yml").write_text(gh_pages_yml, encoding="utf-8")
+    gh_wf_dir = ROOT / ".github" / "workflows"
+    gh_wf_dir.mkdir(parents=True, exist_ok=True)
+    (gh_wf_dir / "deploy-github-pages.yml").write_text(gh_pages_yml, encoding="utf-8")
 
     return {
         "vercel_json": (DEPLOY_DIR / "vercel.json").stat().st_size,

@@ -260,6 +260,8 @@ def main():
         state = json.loads(state_path.read_text(encoding="utf-8"))
         state["current_phase"] = "PHASE_10_COMPLETE_WEB_DEPLOYMENT_AND_V1_RELEASE_LOCKED"
         state["release_tag"] = "v1.0.0-production"
+        state["github_remote_url"] = "https://github.com/cryptXploit/Small-business-AI-Automation-OS.git"
+        state["github_pages_url"] = "https://cryptxploit.github.io/Small-business-AI-Automation-OS/"
         state["last_updated"] = report["timestamp"]
         state["phase_10_web_deployment"] = {
             "dist_directory": "15-WEB-DEPLOYMENT/dist",

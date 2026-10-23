@@ -5,4 +5,4 @@ Allow: /studio/
 Allow: /assets/
 Allow: /downloads/
 
-Sitemap: https://smallbiz-automation-os.example.com/sitemap.xml
+Sitemap: https://cryptxploit.github.io/Small-business-AI-Automation-OS/sitemap.xml

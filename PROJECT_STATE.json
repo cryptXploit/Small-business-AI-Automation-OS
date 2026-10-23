@@ -818,7 +818,7 @@
   },
   "current_phase": "PHASE_10_COMPLETE_WEB_DEPLOYMENT_AND_V1_RELEASE_LOCKED",
   "release_tag": "v1.0.0-production",
-  "last_updated": "2026-10-22T19:17:01.316164+00:00",
+  "last_updated": "2026-10-23T08:04:10.292968+00:00",
   "phase_10_web_deployment": {
     "dist_directory": "15-WEB-DEPLOYMENT/dist",
     "drag_and_drop_zip": "15-WEB-DEPLOYMENT/SmallBiz-AI-OS-Cloudflare-Netlify-Dist.zip",
@@ -832,5 +832,7 @@
     "downloads_verified": 6,
     "guide_words": 2332,
     "qa_errors": 0
-  }
+  },
+  "github_remote_url": "https://github.com/cryptXploit/Small-business-AI-Automation-OS.git",
+  "github_pages_url": "https://cryptxploit.github.io/Small-business-AI-Automation-OS/"
 }
