@@ -1,0 +1,136 @@
+{
+  "timestamp": "2026-10-24T10:18:15.920707+00:00",
+  "phase": "Phase 11 \u2014 High-Retention Promotional Video Script, Subtitles & Visual B-Roll Kit",
+  "scripts": {
+    "02-Clean-Natural-Voiceover-For-ElevenLabs.txt": {
+      "spoken_words": 214,
+      "bytes": 1391,
+      "lexical_violations": 0
+    },
+    "01-Master-Promo-Script-and-Storyboard.md": {
+      "words": 1599,
+      "bytes": 10280
+    },
+    "03-Short-60s-Reels-TikTok-Cut-Script.txt": {
+      "words": 261,
+      "bytes": 1518
+    },
+    "04-Synced-Video-Subtitles.srt": {
+      "caption_blocks": 21,
+      "bytes": 2372
+    }
+  },
+  "scenes_16x9": {
+    "scene-01-hook-missed-call-leak.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 695646
+    },
+    "scene-02-human-router-bottleneck.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 723457
+    },
+    "scene-03-trav-safety-gate-architecture.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 700742
+    },
+    "scene-04-60s-speed-to-lead-router.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 664191
+    },
+    "scene-05-3option-quote-and-nurture.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 694773
+    },
+    "scene-06-3tier-support-and-reviews.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 674518
+    },
+    "scene-07-invoice-chaser-cashflow-dso.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 703000
+    },
+    "scene-08-friday-3pm-owner-scorecard.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 670331
+    },
+    "scene-09-offline-webapp-and-calculators.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 699861
+    },
+    "scene-10-excel-notion-and-office-suite.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 671273
+    },
+    "scene-11-full-flagship-bundle-showcase.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 697388
+    },
+    "scene-12-cta-free-audit-and-flagship-os.png": {
+      "width": 1920,
+      "height": 1080,
+      "bytes": 673792
+    }
+  },
+  "scenes_9x16": {
+    "reel-scene-01-hook.png": {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 768175
+    },
+    "reel-scene-02-bottleneck.png": {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 795018
+    },
+    "reel-scene-03-speed-to-lead.png": {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 745322
+    },
+    "reel-scene-04-cashflow-and-friday-kpi.png": {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 773270
+    },
+    "reel-scene-05-complete-os-stack.png": {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 783682
+    },
+    "reel-scene-06-cta-get-access.png": {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 745265
+    }
+  },
+  "broll_assets": {
+    "broll-01-owner-late-night-phone.jpg": 136655,
+    "broll-02-team-operations-desk.jpg": 252889,
+    "broll-03-analytics-dashboard-screen.jpg": 200348,
+    "broll-04-field-service-tablet-quote.jpg": 209870,
+    "broll-05-happy-client-handshake.jpg": 394169,
+    "broll-06-friday-executive-coffee.jpg": 196168,
+    "mockup-01-flagship-os-cover.png": 781794,
+    "mockup-02-ecosystem-master-poster.png": 242690,
+    "mockup-03-chapter01-cheat-sheet.png": 195617,
+    "mockup-04-tier2-workbook-atlas.png": 785928
+  },
+  "player_and_guide": {
+    "interactive-video-promo-player.html_bytes": 43699,
+    "VIDEO-EDITING-AND-VOICEOVER-PRODUCTION-GUIDE.md_words": 1675
+  },
+  "total_errors": 0,
+  "errors": [],
+  "status": "PASS"
+}

@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Promotional Video Player, Storyboard &amp; Teleprompter Studio | SmallBiz AI OS</title>
+  <style>
+    :root {
+      --primary: #0F172A;
+      --bg-dark: #020617;
+      --panel: #1E293B;
+      --border: #334155;
+      --accent: #059669;
+      --secondary: #0284C7;
+      --warning: #D97706;
+      --danger: #EF4444;
+      --text: #F8FAFC;
+      --muted: #94A3B8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg-dark);
+      color: var(--text);
+      font-family: 'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    header {
+      background: #0B1120;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-badge {
+      background: rgba(5, 150, 105, 0.2);
+      border: 1px solid var(--accent);
+      color: #34D399;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .brand h1 {
+      font-size: 18px;
+      margin: 0;
+      font-weight: 800;
+    }
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    button, .btn {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid #475569;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    button:hover, .btn:hover {
+      border-color: var(--accent);
+    }
+    .btn-emerald {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFFFFF;
+    }
+    .btn-cyan {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: #FFFFFF;
+    }
+    .btn-amber {
+      background: var(--warning);
+      border-color: var(--warning);
+      color: #FFFFFF;
+    }
+    .studio-grid {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 20px 24px 48px;
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 1150px) {
+      .studio-grid { grid-template-columns: 1fr; }
+    }
+    .player-card, .teleprompter-card {
+      background: #0F172A;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+    .stage-wrapper {
+      position: relative;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 480px;
+      padding: 16px;
+    }
+    #sceneImage {
+      width: 100%;
+      max-height: 560px;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid #1E293B;
+      transition: opacity 0.22s ease-in-out;
+    }
+    .caption-overlay {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      background: rgba(2, 6, 23, 0.9);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 10px 18px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 700;
+      color: #F8FAFC;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .controls-bar {
+      padding: 16px 20px;
+      background: #0B1120;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .timeline-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    #timeScrubber {
+      flex: 1;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .time-readout {
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      color: #34D399;
+      min-width: 115px;
+      text-align: right;
+    }
+    .scene-strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      padding: 16px 20px;
+      background: #0F172A;
+      border-top: 1px solid var(--border);
+    }
+    .scene-thumb {
+      background: #1E293B;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 6px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+    .scene-thumb.active {
+      border-color: var(--accent);
+      background: rgba(5, 150, 105, 0.15);
+    }
+    .scene-thumb img {
+      width: 100%;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .scene-thumb .st-num {
+      font-family: Consolas, monospace;
+      font-size: 11px;
+      color: #38BDF8;
+      font-weight: 700;
+    }
+    .scene-thumb .st-title {
+      font-size: 11px;
+      color: #E2E8F0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .teleprompter-header {
+      padding: 16px 20px;
+      background: #0B1120;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .teleprompter-body {
+      padding: 20px;
+      max-height: 520px;
+      overflow-y: auto;
+    }
+    .script-cue {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #1E293B;
+      background: #0B1120;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .script-cue.active {
+      border-color: var(--accent);
+      background: rgba(5, 150, 105, 0.14);
+    }
+    .script-cue-meta {
+      display: flex;
+      justify-content: space-between;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      color: #38BDF8;
+      margin-bottom: 6px;
+    }
+    .script-cue-vo {
+      font-size: 15px;
+      line-height: 1.55;
+      color: #F8FAFC;
+      font-weight: 600;
+    }
+    .script-cue-sfx {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      font-family: Consolas, monospace;
+    }
+    .copy-vault {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      background: #0B1120;
+    }
+    textarea.script-box {
+      width: 100%;
+      height: 135px;
+      background: #020617;
+      color: #E2E8F0;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="brand-badge">PHASE 11 • PROMO VIDEO STUDIO</span>
+      <h1>The Small Business AI Automation OS — 82s High-Retention Promo Player &amp; Teleprompter</h1>
+    </div>
+    <div class="top-actions">
+      <button id="btnMode16x9" class="btn-emerald" onclick="switchAspectMode('16x9')">16:9 Widescreen Master (12 Scenes • 1:22)</button>
+      <button id="btnMode9x16" onclick="switchAspectMode('9x16')">9:16 Vertical Reels/TikTok (6 Scenes • 0:58)</button>
+      <button id="btnVoiceToggle" class="btn-cyan" onclick="toggleBrowserSpeech()">Speak Voiceover Preview (TTS)</button>
+    </div>
+  </header>
+
+  <main class="studio-grid">
+    <!-- Left Column: Animated Storyboard Player + Scene Strip -->
+    <section class="player-card">
+      <div class="stage-wrapper">
+        <img id="sceneImage" src="visual-scenes-16x9/scene-01-hook-missed-call-leak.png" alt="Active Storyboard Scene" />
+        <div class="caption-overlay" id="liveCaptionBar">
+          [00:00 – 00:04] "Be honest—how many calls did your business miss this week while you were busy doing actual work?"
+        </div>
+      </div>
+
+      <div class="controls-bar">
+        <div class="timeline-row">
+          <button id="btnPlayPause" class="btn-emerald" onclick="togglePlayback()">▶ Play Promo (82s)</button>
+          <button onclick="restartPlayback()">↺ Restart</button>
+          <button onclick="stepScene(-1)">◀ Prev Scene</button>
+          <button onclick="stepScene(1)">Next Scene ▶</button>
+          <input type="range" id="timeScrubber" min="0" max="82" step="0.2" value="0" oninput="scrubToTime(this.value)" />
+          <span class="time-readout" id="timeReadout">00:00 / 01:22</span>
+        </div>
+      </div>
+
+      <div class="scene-strip" id="sceneThumbnailStrip"></div>
+    </section>
+
+    <!-- Right Column: Interactive Teleprompter & Copy-Paste Script Vault -->
+    <aside class="teleprompter-card">
+      <div class="teleprompter-header">
+        <div>
+          <strong style="font-size:15px;">Live Synchronized Voiceover Teleprompter</strong>
+          <div style="font-size:12px;color:var(--muted);">Click any scene cue below to jump directly to that timestamp</div>
+        </div>
+        <span id="activeSceneBadge" class="brand-badge">SCENE 01 / 12</span>
+      </div>
+
+      <div class="teleprompter-body" id="teleprompterList"></div>
+
+      <div class="copy-vault">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+          <strong style="font-size:13px;color:#34D399;">1-Click Copy Production Scripts &amp; Subtitles:</strong>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <button onclick="loadVaultText('elevenlabs')">ElevenLabs VO (82s)</button>
+            <button onclick="loadVaultText('reels')">Reels/TikTok Cut (58s)</button>
+            <button onclick="loadVaultText('srt')">Synced .SRT Subtitles</button>
+            <button class="btn-amber" onclick="copyCurrentVaultText()">Copy to Clipboard</button>
+          </div>
+        </div>
+        <textarea id="vaultTextarea" class="script-box" readonly></textarea>
+        <div id="copyStatusMsg" style="font-size:12px;color:#38BDF8;margin-top:6px;font-family:Consolas,monospace;">
+          Ready: 100% Natural Conversational English Voiceover Loaded.
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const SCENES_16X9 = [
+  {
+    "num": 1,
+    "filename": "scene-01-hook-missed-call-leak.png",
+    "svg_name": "scene-01-hook-missed-call-leak.svg",
+    "start_sec": 0,
+    "end_sec": 4,
+    "timecode": "00:00 – 00:04",
+    "phase_label": "01 • PATTERN-INTERRUPT HOOK",
+    "accent": "#EF4444",
+    "badge": "3 MISSED CALLS • 9:14 PM FRIDAY",
+    "headline_1": "EVERY MISSED CALL IS A",
+    "headline_2": "$1,200 JOB HANDED TO",
+    "headline_3": "YOUR COMPETITOR.",
+    "subtitle": "While you're on a job site or with a client, high-intent buyers don't leave voicemails—they call the next business on Google.",
+    "stat_left": [
+      "AVG SMALL BIZ LEAD LOSS",
+      "35% Missed Calls",
+      "#EF4444"
+    ],
+    "stat_mid": [
+      "COMPETITOR CALLBACK TIME",
+      "< 60 Seconds",
+      "#F59E0B"
+    ],
+    "stat_right": [
+      "FRIDAY NIGHT ADMIN LOAD",
+      "9:15 PM Invoicing",
+      "#38BDF8"
+    ],
+    "voiceover": "Be honest—how many calls did your business miss this week while you were busy doing actual work?",
+    "sfx_cue": "Phone vibration buzz + sharp low sub-bass impact + notification chime",
+    "broll_ref": "broll-01-owner-late-night-phone.jpg"
+  },
+  {
+    "num": 2,
+    "filename": "scene-02-human-router-bottleneck.png",
+    "svg_name": "scene-02-human-router-bottleneck.svg",
+    "start_sec": 4,
+    "end_sec": 15,
+    "timecode": "00:04 – 00:15",
+    "phase_label": "02 • QUANTIFIED AGITATION",
+    "accent": "#F59E0B",
+    "badge": "THE HUMAN ROUTER BOTTLENECK",
+    "headline_1": "YOU'RE LOSING 18 HOURS",
+    "headline_2": "A WEEK BEING THE",
+    "headline_3": "HUMAN ROUTER.",
+    "subtitle": "You aren't losing 35% of your leads because you're lazy. You're losing them because every text, quote, and invoice waits on you.",
+    "stat_left": [
+      "WEEKLY OWNER BOTTLENECK",
+      "15–25 Hrs/Wk Lost",
+      "#F59E0B"
+    ],
+    "stat_mid": [
+      "UNCHASED OPEN QUOTES",
+      "68% Die After Touch 1",
+      "#EF4444"
+    ],
+    "stat_right": [
+      "ANNUAL PROFIT LEAK",
+      "$25K – $150K+/Yr",
+      "#10B981"
+    ],
+    "voiceover": "Every missed call is a customer calling your competitor next. You're losing fifteen to twenty-five hours a week—and up to thirty-five percent of your leads—not because you're lazy, but because you're acting as the human router between every app, quote, and employee.",
+    "sfx_cue": "Rapid UI message pop cascade + clock ticking tension riser",
+    "broll_ref": "broll-02-team-operations-desk.jpg"
+  },
+  {
+    "num": 3,
+    "filename": "scene-03-trav-safety-gate-architecture.png",
+    "svg_name": "scene-03-trav-safety-gate-architecture.svg",
+    "start_sec": 15,
+    "end_sec": 25,
+    "timecode": "00:15 – 00:25",
+    "phase_label": "03 • THE T.R.A.V. FIREWALL PIVOT",
+    "accent": "#0284C7",
+    "badge": "TRIGGER -> RULES -> AI -> VERIFICATION",
+    "headline_1": "STOP USING FRAGILE",
+    "headline_2": "CHATBOTS. INSTALL",
+    "headline_3": "T.R.A.V. SAFETY GATES.",
+    "subtitle": "Random AI prompts invent fake discounts. Our Operating System locks prices in deterministic tables and holds edge cases at a 15-second Slack Amber Gate.",
+    "stat_left": [
+      "GREEN GATE (80%)",
+      "Routine Auto-Send",
+      "#10B981"
+    ],
+    "stat_mid": [
+      "AMBER GATE (15%)",
+      "15s Slack Approval",
+      "#F59E0B"
+    ],
+    "stat_right": [
+      "RED GATE (5%)",
+      "Human Takeover",
+      "#EF4444"
+    ],
+    "voiceover": "And pasting random prompts into ChatGPT doesn't fix it. Without strict rules, AI invents fake prices and embarrasses your brand. That's why we built The Small Business AI Automation Operating System around Human-in-the-Loop T-R-A-V safety gates.",
+    "sfx_cue": "Clean mechanical lock click + shield power-up whoosh",
+    "broll_ref": "broll-03-analytics-dashboard-screen.jpg"
+  },
+  {
+    "num": 4,
+    "filename": "scene-04-60s-speed-to-lead-router.png",
+    "svg_name": "scene-04-60s-speed-to-lead-router.svg",
+    "start_sec": 25,
+    "end_sec": 31,
+    "timecode": "00:25 – 00:31",
+    "phase_label": "04 • DEPT 01: SPEED-TO-LEAD",
+    "accent": "#059669",
+    "badge": "DEPARTMENT 01 • <= 60 SECOND SLA",
+    "headline_1": "15-SECOND MISSED-CALL",
+    "headline_2": "SMS RECOVERY &",
+    "headline_3": "CALENDAR BOOKING.",
+    "subtitle": "Captures web forms and missed calls 24/7, texts back in 15 seconds, verifies service zip codes, and books your calendar.",
+    "stat_left": [
+      "MISSED-CALL SMS SLA",
+      "<= 15 Seconds",
+      "#10B981"
+    ],
+    "stat_mid": [
+      "MEDIAN LEAD RESPONSE",
+      "38 Seconds",
+      "#38BDF8"
+    ],
+    "stat_right": [
+      "LEAD RECOVERY RATE",
+      "85%+ Captured",
+      "#F59E0B"
+    ],
+    "voiceover": "First, sixty-second Speed-to-Lead texts back missed calls in fifteen seconds and books your calendar.",
+    "sfx_cue": "Crisp iMessage send swoosh + calendar booked confirmation chime",
+    "broll_ref": "broll-01-owner-late-night-phone.jpg"
+  },
+  {
+    "num": 5,
+    "filename": "scene-05-3option-quote-and-nurture.png",
+    "svg_name": "scene-05-3option-quote-and-nurture.svg",
+    "start_sec": 31,
+    "end_sec": 37,
+    "timecode": "00:31 – 00:37",
+    "phase_label": "05 • DEPT 02: VOICE-TO-QUOTE",
+    "accent": "#0284C7",
+    "badge": "DEPARTMENT 02 • < 15 MINUTE PROPOSALS",
+    "headline_1": "90-SECOND VOICE MEMO",
+    "headline_2": "TO 3-OPTION QUOTE",
+    "headline_3": "& 14-DAY FOLLOW-UP.",
+    "subtitle": "Turn a quick voice note from your truck into a Good-Better-Best proposal with locked SKU margins and a 6-touch nurture loop.",
+    "stat_left": [
+      "OPTION A: ESSENTIAL",
+      "$1,450 (48% Margin)",
+      "#94A3B8"
+    ],
+    "stat_mid": [
+      "OPTION B: RECOMMENDED",
+      "$2,250 (56% Margin)",
+      "#10B981"
+    ],
+    "stat_right": [
+      "OPTION C: VIP TURNKEY",
+      "$3,400 (61% Margin)",
+      "#F59E0B"
+    ],
+    "voiceover": "Second, turn a ninety-second voice memo into a three-option quote with automatic fourteen-day follow-up.",
+    "sfx_cue": "Voice waveform pulse + three proposal cards snapping into place",
+    "broll_ref": "broll-04-field-service-tablet-quote.jpg"
+  },
+  {
+    "num": 6,
+    "filename": "scene-06-3tier-support-and-reviews.png",
+    "svg_name": "scene-06-3tier-support-and-reviews.svg",
+    "start_sec": 37,
+    "end_sec": 43,
+    "timecode": "00:37 – 00:43",
+    "phase_label": "06 • DEPT 03: SUPPORT & REVIEWS",
+    "accent": "#059669",
+    "badge": "DEPARTMENT 03 • 68% TIER-1 AUTO-RESOLUTION",
+    "headline_1": "24/7 SUPPORT SHIELD,",
+    "headline_2": "AMBER APPROVALS &",
+    "headline_3": "5-STAR REVIEW ENGINE.",
+    "subtitle": "Resolves routine status and reschedule questions in 45 seconds, gates credits in Slack, and routes happy clients to Google Reviews.",
+    "stat_left": [
+      "TIER-1 DEFLECTION",
+      "68.5% Auto-Resolved",
+      "#10B981"
+    ],
+    "stat_mid": [
+      "AMBER CREDIT CHECK",
+      "1-Click Slack Gate",
+      "#F59E0B"
+    ],
+    "stat_right": [
+      "NPS 9–10 ROUTING",
+      "5-Star Google Reviews",
+      "#38BDF8"
+    ],
+    "voiceover": "Third, a twenty-four-seven Support Shield resolves routine tickets and routes risky requests to your phone for one-click Amber approval.",
+    "sfx_cue": "Soft shield chime + 5-star review sparkle ding",
+    "broll_ref": "broll-05-happy-client-handshake.jpg"
+  },
+  {
+    "num": 7,
+    "filename": "scene-07-invoice-chaser-cashflow-dso.png",
+    "svg_name": "scene-07-invoice-chaser-cashflow-dso.svg",
+    "start_sec": 43,
+    "end_sec": 49,
+    "timecode": "00:43 – 00:49",
+    "phase_label": "07 • DEPT 04: CASHFLOW & AR",
+    "accent": "#D97706",
+    "badge": "DEPARTMENT 04 • DSO REDUCED FROM 34 TO 13 DAYS",
+    "headline_1": "SAME-DAY INVOICING",
+    "headline_2": "& 5-STAGE POLITE-TO-FIRM",
+    "headline_3": "PAYMENT CHASERS.",
+    "subtitle": "Dispatches invoices the minute a job finishes, pauses automatically if a support dispute is open, and collects overdue cash without awkward calls.",
+    "stat_left": [
+      "SAME-DAY BILLING",
+      "100% Automated",
+      "#10B981"
+    ],
+    "stat_mid": [
+      "DAYS SALES OUTSTANDING",
+      "13.4 Days Avg DSO",
+      "#38BDF8"
+    ],
+    "stat_right": [
+      "OVERDUE > 15 DAYS",
+      "Cut By 78%",
+      "#F59E0B"
+    ],
+    "voiceover": "Fourth, five-stage polite-to-firm invoice chasers collect overdue cash without awkward phone calls.",
+    "sfx_cue": "Stripe/QuickBooks cash register chime + upward graph sweep",
+    "broll_ref": "broll-03-analytics-dashboard-screen.jpg"
+  },
+  {
+    "num": 8,
+    "filename": "scene-08-friday-3pm-owner-scorecard.png",
+    "svg_name": "scene-08-friday-3pm-owner-scorecard.svg",
+    "start_sec": 49,
+    "end_sec": 55,
+    "timecode": "00:49 – 00:55",
+    "phase_label": "08 • DEPT 05: EXECUTIVE COMMAND",
+    "accent": "#059669",
+    "badge": "DEPARTMENT 05 • FRIDAY 3:00 PM BRIEF",
+    "headline_1": "RUN ALL 5 DEPARTMENTS",
+    "headline_2": "IN 15 MINUTES EVERY",
+    "headline_3": "FRIDAY AT 3:00 PM.",
+    "subtitle": "Receive a 1-page 12-KPI Executive Scorecard with Red/Amber/Green status, root-cause bottleneck analysis, and Monday's team agenda.",
+    "stat_left": [
+      "WEEKLY KPIS TRACKED",
+      "12 Core Metrics",
+      "#10B981"
+    ],
+    "stat_mid": [
+      "OWNER REVIEW TIME",
+      "15 Mins @ Friday 3PM",
+      "#38BDF8"
+    ],
+    "stat_right": [
+      "TEAM SOP QUIZZES",
+      "Loom-to-SOP in 5m",
+      "#F59E0B"
+    ],
+    "voiceover": "And fifth, every Friday at three PM, you get a one-page twelve-KPI Owner Scorecard so you can manage the whole business in fifteen minutes.",
+    "sfx_cue": "Executive dashboard reveal chord + clean checkmark ping",
+    "broll_ref": "broll-06-friday-executive-coffee.jpg"
+  },
+  {
+    "num": 9,
+    "filename": "scene-09-offline-webapp-and-calculators.png",
+    "svg_name": "scene-09-offline-webapp-and-calculators.svg",
+    "start_sec": 55,
+    "end_sec": 61,
+    "timecode": "00:55 – 01:01",
+    "phase_label": "09 • INTERACTIVE SAAS-LITE WEB APP",
+    "accent": "#0284C7",
+    "badge": "100% OFFLINE SINGLE-FILE WEB APPLICATION",
+    "headline_1": "INTERACTIVE ROI APP,",
+    "headline_2": "50 PROMPT CONTRACTS &",
+    "headline_3": "DESIGN STUDIO INCLUDED.",
+    "subtitle": "Runs 100% offline in any desktop browser—includes live profit-leak sliders, 90-day Kanban board, 1-click prompt builder, and cover studio.",
+    "stat_left": [
+      "TESTED AI PROMPTS",
+      "50 7-Part Contracts",
+      "#10B981"
+    ],
+    "stat_mid": [
+      "EMERGENCY SCRIPTS",
+      "12 Red-Gate Playbooks",
+      "#EF4444"
+    ],
+    "stat_right": [
+      "CLOUD SUBSCRIPTIONS",
+      "$0/Mo Required",
+      "#38BDF8"
+    ],
+    "voiceover": "This isn't just a book. You get the complete hundred-and-eleven-thousand-word operating manual, ten fillable workbooks, the twelve-page Visual Shortcut Atlas, our offline Web Companion App,",
+    "sfx_cue": "Interactive slider sweep + UI tab switch click",
+    "broll_ref": "mockup-02-ecosystem-master-poster.png"
+  },
+  {
+    "num": 10,
+    "filename": "scene-10-excel-notion-and-office-suite.png",
+    "svg_name": "scene-10-excel-notion-and-office-suite.svg",
+    "start_sec": 61,
+    "end_sec": 66,
+    "timecode": "01:01 – 01:06",
+    "phase_label": "10 • EXCEL, NOTION & OFFICE SUITE",
+    "accent": "#059669",
+    "badge": "340 LIVE EXCEL FORMULAS • 5 NOTION DATABASES",
+    "headline_1": "8-TAB EXCEL MATRIX,",
+    "headline_2": "5 NOTION DATABASES,",
+    "headline_3": "WORD SOPS & SLIDE DECKS.",
+    "subtitle": "Includes 340 live Excel formulas, 4 embedded financial charts, 7 editable Word SOP manuals, and 3 widescreen PowerPoint decks.",
+    "stat_left": [
+      "EXCEL COMMAND MATRIX",
+      "8 Tabs • 340 Formulas",
+      "#10B981"
+    ],
+    "stat_mid": [
+      "EDITABLE WORD SOPS",
+      "7 .DOCX Manuals",
+      "#38BDF8"
+    ],
+    "stat_right": [
+      "WIDESCREEN DECKS",
+      "3 .PPTX (32 Slides)",
+      "#F59E0B"
+    ],
+    "voiceover": "the eight-tab charted Excel Command Center, five Notion databases, editable Word SOPs, slide decks,",
+    "sfx_cue": "Crisp paper/spreadsheet cascade + data chart pop",
+    "broll_ref": "mockup-03-chapter01-cheat-sheet.png"
+  },
+  {
+    "num": 11,
+    "filename": "scene-11-full-flagship-bundle-showcase.png",
+    "svg_name": "scene-11-full-flagship-bundle-showcase.svg",
+    "start_sec": 66,
+    "end_sec": 72,
+    "timecode": "01:06 – 01:12",
+    "phase_label": "11 • MAKE / N8N / ZAPIER BLUEPRINTS",
+    "accent": "#D97706",
+    "badge": "5 READY-TO-IMPORT JSON WORKFLOW BLUEPRINTS",
+    "headline_1": "5 IMPORTABLE JSON",
+    "headline_2": "BLUEPRINTS FOR MAKE,",
+    "headline_3": "N8N & ZAPIER.",
+    "subtitle": "Import pre-wired 6-node workflows with Pre-AI PII regex scrubbers, Slack Block Kit approval cards, and synthetic test suites.",
+    "stat_left": [
+      "JSON BLUEPRINTS",
+      "5 Universal Workflows",
+      "#F59E0B"
+    ],
+    "stat_mid": [
+      "VISUAL SHORTCUT ATLAS",
+      "12-Page horizontal PDF",
+      "#10B981"
+    ],
+    "stat_right": [
+      "FLAGSHIP BUNDLE FILES",
+      "100 Verified Assets",
+      "#38BDF8"
+    ],
+    "voiceover": "and five ready-to-import Make, n8n, and Zapier automation blueprints.",
+    "sfx_cue": "Deep cinematic bass drop + full product stack lock-in",
+    "broll_ref": "mockup-01-flagship-os-cover.png"
+  },
+  {
+    "num": 12,
+    "filename": "scene-12-cta-free-audit-and-flagship-os.png",
+    "svg_name": "scene-12-cta-free-audit-and-flagship-os.svg",
+    "start_sec": 72,
+    "end_sec": 82,
+    "timecode": "01:12 – 01:22",
+    "phase_label": "12 • RISK-FREE DUAL CALL TO ACTION",
+    "accent": "#059669",
+    "badge": "START FREE ($0) OR INSTALL THE FULL OS ($59)",
+    "headline_1": "DOWNLOAD THE FREE",
+    "headline_2": "5-DAY AUDIT KIT OR GET",
+    "headline_3": "THE COMPLETE OS TODAY.",
+    "subtitle": "Click the link below to grab the Free 5-Day Audit Starter Kit ($0) or install the Complete Flagship Operating System ($59) and reclaim your week.",
+    "stat_left": [
+      "TIER 0 STARTER KIT",
+      "$0 Free Download",
+      "#38BDF8"
+    ],
+    "stat_mid": [
+      "TIER 3 FLAGSHIP OS",
+      "$59 One-Time (100 Files)",
+      "#10B981"
+    ],
+    "stat_right": [
+      "WEEKLY TIME RECLAIMED",
+      "15+ Hours Every Week",
+      "#F59E0B"
+    ],
+    "voiceover": "Click the link below to download the Free Five-Day Audit Starter Kit right now, or grab the Complete Flagship Operating System for fifty-nine dollars and take back your week.",
+    "sfx_cue": "Warm resolving synth chord + crisp button click",
+    "broll_ref": "mockup-04-tier2-workbook-atlas.png"
+  }
+];
+    const SCENES_9X16 = [
+  {
+    "num": 1,
+    "filename": "reel-scene-01-hook.png",
+    "svg_name": "reel-scene-01-hook.svg",
+    "timecode": "00:00 – 00:06",
+    "accent": "#EF4444",
+    "badge": "3 MISSED CALLS = $3,600 LOST",
+    "h1": "MISSED CALLS",
+    "h2": "ARE PAYING YOUR",
+    "h3": "COMPETITOR.",
+    "sub": "When you're on a job or with a client, buyers don't leave voicemails—they call the next business on Google.",
+    "kpi_title": "AVG SMALL BIZ LEAD LEAK",
+    "kpi_val": "35% Lost Leads",
+    "vo": "How many calls did your business miss this week while you were busy doing actual work? Every missed call is a customer calling your competitor next."
+  },
+  {
+    "num": 2,
+    "filename": "reel-scene-02-bottleneck.png",
+    "svg_name": "reel-scene-02-bottleneck.svg",
+    "timecode": "00:06 – 00:16",
+    "accent": "#F59E0B",
+    "badge": "STOP BEING THE HUMAN ROUTER",
+    "h1": "18 HRS/WEEK",
+    "h2": "TRAPPED IN",
+    "h3": "ADMIN CHAOS.",
+    "sub": "And random ChatGPT prompts only invent fake prices. You need deterministic T.R.A.V. Safety Gates.",
+    "kpi_title": "T-R-A-V GOVERNANCE",
+    "kpi_val": "Green • Amber • Red",
+    "vo": "You're losing eighteen hours a week acting as the human router between every app, quote, and employee. Instead of fragile chatbots, install our T-R-A-V Safety Gate Operating System."
+  },
+  {
+    "num": 3,
+    "filename": "reel-scene-03-speed-to-lead.png",
+    "svg_name": "reel-scene-03-speed-to-lead.svg",
+    "timecode": "00:16 – 00:28",
+    "accent": "#059669",
+    "badge": "60S LEAD ROUTER + 3-OPTION QUOTES",
+    "h1": "15S SMS REPLY",
+    "h2": "& 90S VOICE",
+    "h3": "TO 3-TIER QUOTE.",
+    "sub": "Auto-texts missed calls in 15 seconds, books your calendar, and turns a 90s voice note into a Good-Better-Best proposal.",
+    "kpi_title": "QUOTE CLOSE RATE",
+    "kpi_val": "35%+ In 14 Days",
+    "vo": "It texts back missed calls in fifteen seconds, turns a ninety-second voice note into a three-option proposal, and runs a fourteen-day follow-up loop automatically."
+  },
+  {
+    "num": 4,
+    "filename": "reel-scene-04-cashflow-and-friday-kpi.png",
+    "svg_name": "reel-scene-04-cashflow-and-friday-kpi.svg",
+    "timecode": "00:28 – 00:40",
+    "accent": "#0284C7",
+    "badge": "24/7 SUPPORT + FRIDAY 3PM BRIEF",
+    "h1": "SAME-DAY CASH",
+    "h2": "& 15-MINUTE",
+    "h3": "FRIDAY COMMAND.",
+    "sub": "68% Tier-1 support auto-resolution, 5-stage polite-to-firm invoice chasers, and a 12-KPI Friday 3:00 PM Owner Scorecard.",
+    "kpi_title": "AVERAGE DSO",
+    "kpi_val": "13.4 Days (Down 60%)",
+    "vo": "It resolves sixty-eight percent of support tickets, chases overdue invoices in five polite-to-firm stages, and hands you a twelve-KPI Owner Scorecard every Friday at three PM."
+  },
+  {
+    "num": 5,
+    "filename": "reel-scene-05-complete-os-stack.png",
+    "svg_name": "reel-scene-05-complete-os-stack.svg",
+    "timecode": "00:40 – 00:50",
+    "accent": "#D97706",
+    "badge": "100 PRODUCTION FILES INCLUDED",
+    "h1": "BOOK + WEB APP",
+    "h2": "+ 8-TAB EXCEL",
+    "h3": "+ 5 BLUEPRINTS.",
+    "sub": "10-Chapter Manual, 10 Fillable Workbooks, 12-Page Visual Atlas, Offline Web App, 8-Tab Excel Matrix, 5 Notion DBs & 5 JSON Blueprints.",
+    "kpi_title": "COMPLETE OS STACK",
+    "kpi_val": "50 Prompts • 12 Scripts",
+    "vo": "You get the full manual, ten fillable workbooks, the twelve-page Visual Atlas, our offline Web App, the eight-tab Excel Matrix, and five Make, n8n, and Zapier blueprints."
+  },
+  {
+    "num": 6,
+    "filename": "reel-scene-06-cta-get-access.png",
+    "svg_name": "reel-scene-06-cta-get-access.svg",
+    "timecode": "00:50 – 00:58",
+    "accent": "#059669",
+    "badge": "LINK IN BIO / DESCRIPTION BELOW",
+    "h1": "START FREE ($0)",
+    "h2": "OR GRAB THE",
+    "h3": "FULL OS ($59).",
+    "sub": "Tap the link below to download the Free 5-Day AI Audit Starter Kit ($0) or install the Complete Flagship OS ($59) today.",
+    "kpi_title": "INSTANT DOWNLOAD",
+    "kpi_val": "Reclaim 15+ Hrs/Wk",
+    "vo": "Tap the link below to grab the Free Five-Day Audit Starter Kit right now, or get the Complete Flagship Operating System for fifty-nine dollars."
+  }
+];
+    const VAULT_TEXTS = {
+      elevenlabs: "Be honest\u2014how many calls did your business miss this week while you were busy doing actual work?\n\nEvery missed call is a buyer calling your competitor next. You're losing eighteen hours a week and thirty-five percent of your leads\u2014not because you're lazy, but because you're acting as the human router between every app, quote, and employee.\n\nAnd random ChatGPT prompts don't fix it. Without strict rules, AI invents fake prices. That's why we built The Small Business AI Automation Operating System around T-R-A-V safety gates.\n\nFirst, Speed-to-Lead texts back missed calls in fifteen seconds and books your calendar.\n\nSecond, turn a ninety-second voice memo into a three-option quote with fourteen-day follow-up.\n\nThird, our Support Shield resolves routine tickets and holds risky credits for one-click Amber approval.\n\nFourth, polite-to-firm invoice chasers collect overdue cash automatically.\n\nAnd fifth, every Friday at three PM, a twelve-KPI Owner Scorecard lets you run the business in fifteen minutes.\n\nThis isn't just a book. You get the complete manual, ten workbooks, the Visual Shortcut Atlas, our offline Web App, the eight-tab Excel Matrix, five Notion databases, Word SOPs, slide decks, and five Make, n8n, and Zapier blueprints.\n\nClick the link below to grab the Free Audit Starter Kit now, or get the Complete Operating System for fifty-nine dollars.\n",
+      reels: "# 60-SECOND VERTICAL REELS / TIKTOK / YOUTUBE SHORTS VOICEOVER SCRIPT (9:16)\n# Target Duration: 55\u201358 Seconds | Pacing: 145 WPM Conversational Founder Tone\n\n[00:00 - 00:06 | REEL SCENE 01: HOOK]\nHow many calls did your business miss this week while you were busy doing actual work? Every missed call is a customer calling your competitor next.\n\n[00:06 - 00:16 | REEL SCENE 02: THE BOTTLENECK & T-R-A-V GATE]\nYou're losing eighteen hours a week acting as the human router between every app, quote, and employee. Instead of fragile chatbots, install our T-R-A-V Safety Gate Operating System.\n\n[00:16 - 00:28 | REEL SCENE 03: SPEED-TO-LEAD & 3-OPTION QUOTES]\nIt texts back missed calls in fifteen seconds, turns a ninety-second voice note into a three-option proposal, and runs a fourteen-day follow-up loop automatically.\n\n[00:28 - 00:40 | REEL SCENE 04: SUPPORT SHIELD, CASHFLOW & FRIDAY 3PM BRIEF]\nIt resolves sixty-eight percent of support tickets, chases overdue invoices in five polite-to-firm stages, and hands you a twelve-KPI Owner Scorecard every Friday at three PM.\n\n[00:40 - 00:50 | REEL SCENE 05: THE TANGIBLE STACK]\nYou get the full manual, ten fillable workbooks, the twelve-page Visual Atlas, our offline Web App, the eight-tab Excel Matrix, and five Make, n8n, and Zapier blueprints.\n\n[00:50 - 00:58 | REEL SCENE 06: DUAL CALL TO ACTION]\nTap the link below to grab the Free Five-Day Audit Starter Kit right now, or get the Complete Flagship Operating System for fifty-nine dollars.\n",
+      srt: "1\n00:00:00,000 --> 00:00:02,100\nBe honest\u2014how many calls did your business miss\n\n2\n00:00:02,100 --> 00:00:04,200\nthis week while you were busy doing actual work?\n\n3\n00:00:04,200 --> 00:00:07,200\nEvery missed call is a customer calling your competitor next.\n\n4\n00:00:07,200 --> 00:00:10,800\nYou're losing 15 to 25 hours a week\u2014and up to 35% of your leads\u2014\n\n5\n00:00:10,800 --> 00:00:15,000\nbecause you're acting as the human router between every app, quote, and employee.\n\n6\n00:00:15,000 --> 00:00:18,200\nAnd pasting random prompts into ChatGPT doesn't fix it.\n\n7\n00:00:18,200 --> 00:00:21,400\nWithout strict rules, AI invents fake prices and embarrasses your brand.\n\n8\n00:00:21,400 --> 00:00:25,000\nThat's why we built The Small Business AI Automation Operating System\naround Human-in-the-Loop T-R-A-V safety gates.\n\n9\n00:00:25,000 --> 00:00:31,000\nFirst: 60-second Speed-to-Lead texts back missed calls\nin 15 seconds and books your calendar.\n\n10\n00:00:31,000 --> 00:00:37,000\nSecond: turn a 90-second voice memo into a 3-option quote\nwith automatic 14-day follow-up.\n\n11\n00:00:37,000 --> 00:00:40,200\nThird: a 24/7 Support Shield resolves routine tickets\n\n12\n00:00:40,200 --> 00:00:43,000\nand routes risky requests to your phone for 1-click Amber approval.\n\n13\n00:00:43,000 --> 00:00:49,000\nFourth: 5-stage polite-to-firm invoice chasers\ncollect overdue cash without awkward phone calls.\n\n14\n00:00:49,000 --> 00:00:52,200\nAnd fifth: every Friday at 3:00 PM, you get a 1-page 12-KPI Owner Scorecard\n\n15\n00:00:52,200 --> 00:00:55,000\nso you can manage the whole business in 15 minutes.\n\n16\n00:00:55,000 --> 00:00:58,500\nThis isn't just a book. You get the 111,000-word operating manual,\n\n17\n00:00:58,500 --> 00:01:01,500\n10 fillable workbooks, the 12-page Visual Shortcut Atlas,\nand our offline Web Companion App.\n\n18\n00:01:01,500 --> 00:01:05,500\nPlus the 8-tab charted Excel Command Center,\n5 Notion databases, editable Word SOPs, and slide decks\u2014\n\n19\n00:01:05,500 --> 00:01:12,000\nand 5 ready-to-import Make, n8n, and Zapier automation blueprints.\n\n20\n00:01:12,000 --> 00:01:16,500\nClick the link below to download the Free 5-Day Audit Starter Kit right now,\n\n21\n00:01:16,500 --> 00:01:22,000\nor grab the Complete Flagship Operating System for $59\nand take back your week.\n"
+    };
+
+    let currentMode = "16x9";
+    let currentTime = 0;
+    let totalDuration = 82;
+    let isPlaying = false;
+    let timerHandle = null;
+    let speechEnabled = false;
+    let lastSpokenSceneIndex = -1;
+
+    function formatMMSS(sec) {
+      const s = Math.max(0, Math.floor(sec));
+      const m = Math.floor(s / 60);
+      const r = s % 60;
+      return String(m).padStart(2, "0") + ":" + String(r).padStart(2, "0");
+    }
+
+    function getActiveSceneIndex(sec) {
+      if (currentMode === "16x9") {
+        for (let i = 0; i < SCENES_16X9.length; i++) {
+          if (sec >= SCENES_16X9[i].start_sec && sec < SCENES_16X9[i].end_sec) return i;
+        }
+        return SCENES_16X9.length - 1;
+      } else {
+        const bounds = [0, 6, 16, 28, 40, 50, 58];
+        for (let i = 0; i < 6; i++) {
+          if (sec >= bounds[i] && sec < bounds[i + 1]) return i;
+        }
+        return 5;
+      }
+    }
+
+    function renderUIForTime(sec) {
+      const idx = getActiveSceneIndex(sec);
+      const imgEl = document.getElementById("sceneImage");
+      const capEl = document.getElementById("liveCaptionBar");
+      const badgeEl = document.getElementById("activeSceneBadge");
+      const readoutEl = document.getElementById("timeReadout");
+      const scrubber = document.getElementById("timeScrubber");
+
+      scrubber.value = sec;
+      readoutEl.textContent = formatMMSS(sec) + " / " + formatMMSS(totalDuration);
+
+      if (currentMode === "16x9") {
+        const sc = SCENES_16X9[idx];
+        const targetSrc = "visual-scenes-16x9/" + sc.filename;
+        if (!imgEl.src.endsWith(targetSrc)) imgEl.src = targetSrc;
+        capEl.textContent = "[" + sc.timecode + '] "' + sc.voiceover + '"';
+        badgeEl.textContent = "SCENE " + String(sc.num).padStart(2, "0") + " / 12";
+      } else {
+        const rl = SCENES_9X16[idx];
+        const targetSrc = "visual-scenes-9x16-reels/" + rl.filename;
+        if (!imgEl.src.endsWith(targetSrc)) imgEl.src = targetSrc;
+        capEl.textContent = "[" + rl.timecode + '] "' + rl.vo + '"';
+        badgeEl.textContent = "REEL 0" + rl.num + " / 06";
+      }
+
+      document.querySelectorAll(".scene-thumb").forEach((el, i) => {
+        el.classList.toggle("active", i === idx);
+      });
+      document.querySelectorAll(".script-cue").forEach((el, i) => {
+        el.classList.toggle("active", i === idx);
+      });
+
+      if (speechEnabled && isPlaying && idx !== lastSpokenSceneIndex && "speechSynthesis" in window) {
+        lastSpokenSceneIndex = idx;
+        window.speechSynthesis.cancel();
+        const utterText = currentMode === "16x9" ? SCENES_16X9[idx].voiceover : SCENES_9X16[idx].vo;
+        const utter = new SpeechSynthesisUtterance(utterText);
+        utter.rate = 1.04;
+        window.speechSynthesis.speak(utter);
+      }
+    }
+
+    function buildThumbnailsAndTeleprompter() {
+      const strip = document.getElementById("sceneThumbnailStrip");
+      const tele = document.getElementById("teleprompterList");
+      strip.innerHTML = "";
+      tele.innerHTML = "";
+
+      if (currentMode === "16x9") {
+        SCENES_16X9.forEach((sc, i) => {
+          const thumb = document.createElement("div");
+          thumb.className = "scene-thumb" + (i === 0 ? " active" : "");
+          thumb.onclick = () => scrubToTime(sc.start_sec);
+          thumb.innerHTML =
+            '<img src="visual-scenes-16x9/' + sc.filename + '" alt="Scene ' + sc.num + '" />' +
+            '<div class="st-num">S' + String(sc.num).padStart(2, "0") + " • " + sc.timecode + '</div>' +
+            '<div class="st-title">' + sc.headline_1 + '</div>';
+          strip.appendChild(thumb);
+
+          const cue = document.createElement("div");
+          cue.className = "script-cue" + (i === 0 ? " active" : "");
+          cue.onclick = () => scrubToTime(sc.start_sec);
+          cue.innerHTML =
+            '<div class="script-cue-meta"><span>SCENE ' + String(sc.num).padStart(2, "0") + ' • ' + sc.phase_label + '</span><span>' + sc.timecode + '</span></div>' +
+            '<div class="script-cue-vo">"' + sc.voiceover + '"</div>' +
+            '<div class="script-cue-sfx">SFX: ' + sc.sfx_cue + ' | B-Roll: ' + sc.broll_ref + '</div>';
+          tele.appendChild(cue);
+        });
+      } else {
+        const bounds = [0, 6, 16, 28, 40, 50];
+        SCENES_9X16.forEach((rl, i) => {
+          const thumb = document.createElement("div");
+          thumb.className = "scene-thumb" + (i === 0 ? " active" : "");
+          thumb.onclick = () => scrubToTime(bounds[i]);
+          thumb.innerHTML =
+            '<img src="visual-scenes-9x16-reels/' + rl.filename + '" alt="Reel ' + rl.num + '" />' +
+            '<div class="st-num">R0' + rl.num + " • " + rl.timecode + '</div>' +
+            '<div class="st-title">' + rl.h1 + '</div>';
+          strip.appendChild(thumb);
+
+          const cue = document.createElement("div");
+          cue.className = "script-cue" + (i === 0 ? " active" : "");
+          cue.onclick = () => scrubToTime(bounds[i]);
+          cue.innerHTML =
+            '<div class="script-cue-meta"><span>REEL SCENE 0' + rl.num + '</span><span>' + rl.timecode + '</span></div>' +
+            '<div class="script-cue-vo">"' + rl.vo + '"</div>';
+          tele.appendChild(cue);
+        });
+      }
+    }
+
+    function togglePlayback() {
+      const btn = document.getElementById("btnPlayPause");
+      if (isPlaying) {
+        isPlaying = false;
+        clearInterval(timerHandle);
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        btn.textContent = "▶ Resume Promo";
+      } else {
+        if (currentTime >= totalDuration) currentTime = 0;
+        isPlaying = true;
+        lastSpokenSceneIndex = -1;
+        btn.textContent = "⏸ Pause Promo";
+        renderUIForTime(currentTime);
+        timerHandle = setInterval(() => {
+          currentTime += 0.25;
+          if (currentTime >= totalDuration) {
+            currentTime = totalDuration;
+            togglePlayback();
+          }
+          renderUIForTime(currentTime);
+        }, 250);
+      }
+    }
+
+    function restartPlayback() {
+      if (isPlaying) togglePlayback();
+      currentTime = 0;
+      lastSpokenSceneIndex = -1;
+      renderUIForTime(0);
+    }
+
+    function scrubToTime(val) {
+      currentTime = parseFloat(val) || 0;
+      lastSpokenSceneIndex = -1;
+      renderUIForTime(currentTime);
+    }
+
+    function stepScene(delta) {
+      const idx = getActiveSceneIndex(currentTime);
+      if (currentMode === "16x9") {
+        const nextIdx = Math.max(0, Math.min(SCENES_16X9.length - 1, idx + delta));
+        scrubToTime(SCENES_16X9[nextIdx].start_sec);
+      } else {
+        const bounds = [0, 6, 16, 28, 40, 50];
+        const nextIdx = Math.max(0, Math.min(5, idx + delta));
+        scrubToTime(bounds[nextIdx]);
+      }
+    }
+
+    function switchAspectMode(mode) {
+      if (isPlaying) togglePlayback();
+      currentMode = mode;
+      totalDuration = mode === "16x9" ? 82 : 58;
+      currentTime = 0;
+      document.getElementById("timeScrubber").max = totalDuration;
+      document.getElementById("btnMode16x9").className = mode === "16x9" ? "btn-emerald" : "";
+      document.getElementById("btnMode9x16").className = mode === "9x16" ? "btn-emerald" : "";
+      buildThumbnailsAndTeleprompter();
+      renderUIForTime(0);
+    }
+
+    function toggleBrowserSpeech() {
+      speechEnabled = !speechEnabled;
+      const btn = document.getElementById("btnVoiceToggle");
+      btn.textContent = speechEnabled ? "🔊 Browser Voice Preview: ON" : "Speak Voiceover Preview (TTS)";
+      if (!speechEnabled && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    }
+
+    function loadVaultText(key) {
+      document.getElementById("vaultTextarea").value = VAULT_TEXTS[key] || "";
+      document.getElementById("copyStatusMsg").textContent = "Loaded: " + key.toUpperCase() + " production script.";
+    }
+
+    function copyCurrentVaultText() {
+      const box = document.getElementById("vaultTextarea");
+      box.select();
+      navigator.clipboard.writeText(box.value);
+      document.getElementById("copyStatusMsg").textContent = "Copied script to clipboard!";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      buildThumbnailsAndTeleprompter();
+      loadVaultText("elevenlabs");
+      renderUIForTime(0);
+    });
+  </script>
+</body>
+</html>

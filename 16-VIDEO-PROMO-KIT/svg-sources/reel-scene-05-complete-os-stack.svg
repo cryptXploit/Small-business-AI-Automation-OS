@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="vbg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <radialGradient id="vglow5" cx="50%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#vbg5)"/>
+  <rect width="1080" height="1920" fill="url(#vglow5)"/>
+
+  <!-- Safe-Zone Framing Guides -->
+  <rect x="64" y="120" width="952" height="1640" rx="28" fill="none" stroke="#334155" stroke-width="2"/>
+
+  <!-- Top Pill Header -->
+  <rect x="110" y="170" width="860" height="68" rx="34" fill="#0B1120" stroke="#D97706" stroke-width="2"/>
+  <text x="540" y="213" fill="#F8FAFC" font-family="Consolas, monospace" font-size="24" font-weight="700" text-anchor="middle">REEL SCENE 05/06 • 00:40 – 00:50</text>
+
+  <!-- Eyebrow Badge -->
+  <rect x="140" y="300" width="800" height="58" rx="14" fill="#D97706" fill-opacity="0.2" stroke="#D97706" stroke-width="2"/>
+  <text x="540" y="338" fill="#F8FAFC" font-family="Consolas, monospace" font-size="24" font-weight="700" text-anchor="middle">100 PRODUCTION FILES INCLUDED</text>
+
+  <!-- Big 3-Line Mobile Kinetic Headline -->
+  <text x="540" y="485" fill="#F8FAFC" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="78" font-weight="900" text-anchor="middle">BOOK + WEB APP</text>
+  <text x="540" y="585" fill="#D97706" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="78" font-weight="900" text-anchor="middle">+ 8-TAB EXCEL</text>
+  <text x="540" y="685" fill="#F8FAFC" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="78" font-weight="900" text-anchor="middle">+ 5 BLUEPRINTS.</text>
+
+  <!-- Subtitle Card -->
+  <rect x="110" y="750" width="860" height="180" rx="20" fill="#0B1120" stroke="#334155" stroke-width="2"/>
+  <text x="540" y="820" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" text-anchor="middle">10-Chapter Manual, 10 Fillable Workbooks, 12-Page Vi</text>
+  <text x="540" y="868" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" text-anchor="middle">sual Atlas, Offline Web App, 8-Tab Excel Matrix, 5 Notio</text>
+
+  <!-- Center Hero KPI Callout Box -->
+  <rect x="110" y="980" width="860" height="270" rx="24" fill="#0F172A" stroke="#D97706" stroke-width="3"/>
+  <text x="540" y="1065" fill="#94A3B8" font-family="Consolas, monospace" font-size="26" font-weight="700" text-anchor="middle">COMPLETE OS STACK</text>
+  <text x="540" y="1175" fill="#D97706" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="68" font-weight="900" text-anchor="middle">50 Prompts • 12 Scripts</text>
+
+  <!-- Captions / Subtitle Safe Zone Box -->
+  <rect x="110" y="1310" width="860" height="360" rx="24" fill="#020617" stroke="#475569" stroke-width="2"/>
+  <rect x="360" y="1340" width="360" height="44" rx="10" fill="#D97706"/>
+  <text x="540" y="1370" fill="#FFFFFF" font-family="Consolas, monospace" font-size="20" font-weight="700" text-anchor="middle">SYNCED REEL CAPTION</text>
+  <text x="540" y="1455" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle">&quot;You get the full manual, ten fillable workbook&quot;</text>
+  <text x="540" y="1510" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle">s, the twelve-page Visual Atlas, our offline Web</text>
+  <text x="540" y="1565" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle"> App, the eight-tab Excel Matrix, and five Make, n8</text>
+  <text x="540" y="1620" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle">n, and Zapier blueprints.</text>
+</svg>

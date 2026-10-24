@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="vbg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <radialGradient id="vglow6" cx="50%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#vbg6)"/>
+  <rect width="1080" height="1920" fill="url(#vglow6)"/>
+
+  <!-- Safe-Zone Framing Guides -->
+  <rect x="64" y="120" width="952" height="1640" rx="28" fill="none" stroke="#334155" stroke-width="2"/>
+
+  <!-- Top Pill Header -->
+  <rect x="110" y="170" width="860" height="68" rx="34" fill="#0B1120" stroke="#059669" stroke-width="2"/>
+  <text x="540" y="213" fill="#F8FAFC" font-family="Consolas, monospace" font-size="24" font-weight="700" text-anchor="middle">REEL SCENE 06/06 • 00:50 – 00:58</text>
+
+  <!-- Eyebrow Badge -->
+  <rect x="140" y="300" width="800" height="58" rx="14" fill="#059669" fill-opacity="0.2" stroke="#059669" stroke-width="2"/>
+  <text x="540" y="338" fill="#F8FAFC" font-family="Consolas, monospace" font-size="24" font-weight="700" text-anchor="middle">LINK IN BIO / DESCRIPTION BELOW</text>
+
+  <!-- Big 3-Line Mobile Kinetic Headline -->
+  <text x="540" y="485" fill="#F8FAFC" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="78" font-weight="900" text-anchor="middle">START FREE ($0)</text>
+  <text x="540" y="585" fill="#059669" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="78" font-weight="900" text-anchor="middle">OR GRAB THE</text>
+  <text x="540" y="685" fill="#F8FAFC" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="78" font-weight="900" text-anchor="middle">FULL OS ($59).</text>
+
+  <!-- Subtitle Card -->
+  <rect x="110" y="750" width="860" height="180" rx="20" fill="#0B1120" stroke="#334155" stroke-width="2"/>
+  <text x="540" y="820" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" text-anchor="middle">Tap the link below to download the Free 5-Day AI Aud</text>
+  <text x="540" y="868" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" text-anchor="middle">it Starter Kit ($0) or install the Complete Flagship OS </text>
+
+  <!-- Center Hero KPI Callout Box -->
+  <rect x="110" y="980" width="860" height="270" rx="24" fill="#0F172A" stroke="#059669" stroke-width="3"/>
+  <text x="540" y="1065" fill="#94A3B8" font-family="Consolas, monospace" font-size="26" font-weight="700" text-anchor="middle">INSTANT DOWNLOAD</text>
+  <text x="540" y="1175" fill="#059669" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="68" font-weight="900" text-anchor="middle">Reclaim 15+ Hrs/Wk</text>
+
+  <!-- Captions / Subtitle Safe Zone Box -->
+  <rect x="110" y="1310" width="860" height="360" rx="24" fill="#020617" stroke="#475569" stroke-width="2"/>
+  <rect x="360" y="1340" width="360" height="44" rx="10" fill="#059669"/>
+  <text x="540" y="1370" fill="#FFFFFF" font-family="Consolas, monospace" font-size="20" font-weight="700" text-anchor="middle">SYNCED REEL CAPTION</text>
+  <text x="540" y="1455" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle">&quot;Tap the link below to grab the Free Five-Day A&quot;</text>
+  <text x="540" y="1510" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle">udit Starter Kit right now, or get the Complete </text>
+  <text x="540" y="1565" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle">Flagship Operating System for fifty-nine dollars.</text>
+  <text x="540" y="1620" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle"></text>
+</svg>

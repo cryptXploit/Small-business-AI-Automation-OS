@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <radialGradient id="glow5" cx="78%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#bgGrad5)"/>
+  <rect width="1920" height="1080" fill="url(#glow5)"/>
+
+  <!-- Subtle Architectural Grid -->
+  <g stroke="#1E293B" stroke-width="1" opacity="0.55">
+    <line x1="0" y1="140" x2="1920" y2="140"/>
+    <line x1="0" y1="860" x2="1920" y2="860"/>
+    <line x1="110" y1="0" x2="110" y2="1080"/>
+    <line x1="1810" y1="0" x2="1810" y2="1080"/>
+    <line x1="1180" y1="140" x2="1180" y2="860" stroke-dasharray="8 8"/>
+  </g>
+
+  <!-- Top Broadcast Header Bar -->
+  <rect x="110" y="52" width="1700" height="64" rx="12" fill="#0B1120" stroke="#334155" stroke-width="1.5"/>
+  <rect x="128" y="68" width="290" height="32" rx="6" fill="#0284C7" fill-opacity="0.2" stroke="#0284C7" stroke-width="1.5"/>
+  <text x="273" y="90" fill="#F8FAFC" font-family="Consolas, monospace" font-size="15" font-weight="700" text-anchor="middle">05 • DEPT 02: VOICE-TO-QUOTE</text>
+  <text x="445" y="90" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">THE SMALL BUSINESS AI AUTOMATION OPERATING SYSTEM • PROMO SCENE 05/12</text>
+  <rect x="1610" y="68" width="180" height="32" rx="6" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="1700" y="90" fill="#38BDF8" font-family="Consolas, monospace" font-size="16" font-weight="700" text-anchor="middle">00:31 – 00:37</text>
+
+  <!-- Left Column: Kinetic Typography & Narrative Hook -->
+  <rect x="140" y="185" width="460" height="42" rx="21" fill="#0284C7" fill-opacity="0.16" stroke="#0284C7" stroke-width="1.5"/>
+  <text x="370" y="212" fill="#F8FAFC" font-family="Consolas, monospace" font-size="16" font-weight="700" text-anchor="middle">DEPARTMENT 02 • &lt; 15 MINUTE PROPOSALS</text>
+
+  <text x="140" y="310" fill="#F8FAFC" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="58" font-weight="900" letter-spacing="-0.5">90-SECOND VOICE MEMO</text>
+  <text x="140" y="382" fill="#0284C7" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="58" font-weight="900" letter-spacing="-0.5">TO 3-OPTION QUOTE</text>
+  <text x="140" y="454" fill="#F8FAFC" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="58" font-weight="900" letter-spacing="-0.5">&amp; 14-DAY FOLLOW-UP.</text>
+
+  <text x="140" y="520" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="500">Turn a quick voice note from your truck into a Good-Better-Best prop</text>
+  <text x="140" y="552" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="500">osal with locked SKU margins and a 6-touch nurture loop.</text>
+
+  <!-- 3 Telemetry Proof Cards -->
+  <g transform="translate(140, 610)">
+    <rect x="0" y="0" width="315" height="130" rx="14" fill="#0B1120" stroke="#94A3B8" stroke-width="2"/>
+    <text x="24" y="42" fill="#94A3B8" font-family="Consolas, monospace" font-size="14" font-weight="700">OPTION A: ESSENTIAL</text>
+    <text x="24" y="92" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">$1,450 (48% Margin)</text>
+
+    <rect x="335" y="0" width="315" height="130" rx="14" fill="#0B1120" stroke="#10B981" stroke-width="2"/>
+    <text x="359" y="42" fill="#94A3B8" font-family="Consolas, monospace" font-size="14" font-weight="700">OPTION B: RECOMMENDED</text>
+    <text x="359" y="92" fill="#10B981" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">$2,250 (56% Margin)</text>
+
+    <rect x="670" y="0" width="315" height="130" rx="14" fill="#0B1120" stroke="#F59E0B" stroke-width="2"/>
+    <text x="694" y="42" fill="#94A3B8" font-family="Consolas, monospace" font-size="14" font-weight="700">OPTION C: VIP TURNKEY</text>
+    <text x="694" y="92" fill="#F59E0B" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">$3,400 (61% Margin)</text>
+  </g>
+
+  <!-- Right Column: Visual Architecture & Live UI HUD Card -->
+  <g transform="translate(1215, 185)">
+    <rect x="0" y="0" width="565" height="555" rx="20" fill="#0B1120" stroke="#334155" stroke-width="2"/>
+    <rect x="0" y="0" width="565" height="54" rx="20" fill="#1E293B"/>
+    <circle cx="30" cy="27" r="8" fill="#EF4444"/>
+    <circle cx="56" cy="27" r="8" fill="#F59E0B"/>
+    <circle cx="82" cy="27" r="8" fill="#10B981"/>
+    <text x="295" y="33" fill="#E2E8F0" font-family="Consolas, monospace" font-size="15" font-weight="700" text-anchor="middle">T.R.A.V. LIVE TELEMETRY • SCENE 05</text>
+
+    <!-- Node 1: Trigger -->
+    <rect x="36" y="86" width="493" height="88" rx="12" fill="#0F172A" stroke="#0284C7" stroke-width="2"/>
+    <text x="60" y="120" fill="#38BDF8" font-family="Consolas, monospace" font-size="15" font-weight="700">STAGE 01 • DETERMINISTIC TRIGGER &amp; FILTER</text>
+    <text x="60" y="150" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700">OPTION A: ESSENTIAL: $1,450 (48% Margin)</text>
+
+    <!-- Node 2: Grounded AI + Truth Table -->
+    <rect x="36" y="198" width="493" height="88" rx="12" fill="#0F172A" stroke="#0284C7" stroke-width="2"/>
+    <text x="60" y="232" fill="#0284C7" font-family="Consolas, monospace" font-size="15" font-weight="700">STAGE 02 • LOCKED TRUTH TABLE &amp; JSON PROMPT</text>
+    <text x="60" y="262" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700">OPTION B: RECOMMENDED: $2,250 (56% Margin)</text>
+
+    <!-- Node 3: Verification Gate -->
+    <rect x="36" y="310" width="493" height="88" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="2"/>
+    <text x="60" y="344" fill="#34D399" font-family="Consolas, monospace" font-size="15" font-weight="700">STAGE 03 • HUMAN-IN-THE-LOOP VERIFICATION</text>
+    <text x="60" y="374" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700">OPTION C: VIP TURNKEY: $3,400 (61% Margin)</text>
+
+    <!-- Bottom Status Strip inside Right Card -->
+    <rect x="36" y="424" width="493" height="96" rx="12" fill="#1E293B" stroke="#0284C7" stroke-width="1.5"/>
+    <text x="60" y="460" fill="#94A3B8" font-family="Consolas, monospace" font-size="14" font-weight="700">ACTIVE PRODUCTION ASSET REFERENCE</text>
+    <text x="60" y="494" fill="#F8FAFC" font-family="Consolas, monospace" font-size="18" font-weight="700">broll-04-field-service-tablet-quote.jpg</text>
+  </g>
+
+  <!-- Bottom Broadcast Closed-Caption / Voiceover Teleprompter Bar -->
+  <rect x="110" y="885" width="1700" height="135" rx="16" fill="#020617" stroke="#0284C7" stroke-width="2"/>
+  <rect x="135" y="905" width="195" height="28" rx="6" fill="#0284C7"/>
+  <text x="232" y="925" fill="#FFFFFF" font-family="Consolas, monospace" font-size="14" font-weight="700" text-anchor="middle">SPOKEN VOICEOVER</text>
+  <text x="350" y="925" fill="#94A3B8" font-family="Consolas, monospace" font-size="14">SFX CUE: Voice waveform pulse + three proposal cards snapping into place</text>
+  <text x="135" y="968" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="700">&quot;Second, turn a ninety-second voice memo into a three-option quote with automatic fourteen-day follow-up.&quot;</text>
+  <text x="135" y="1000" fill="#34D399" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700"></text>
+</svg>
