@@ -1,7 +1,7 @@
 {
   "phase": 7,
   "status": "PASSED",
-  "timestamp": "2026-10-22T17:31:53.920693+00:00",
+  "timestamp": "2026-10-24T16:17:13.873262+00:00",
   "error_count": 0,
   "errors": [],
   "kdp_spine_calculation": {
@@ -69,17 +69,17 @@
   },
   "commercial_cover_suite": {
     "ebook-cover-kdp-kindle": {
-      "svg_bytes": 15135,
-      "svg_kb": 14.78,
-      "png_bytes": 1322001,
-      "png_kb": 1291.02,
+      "svg_bytes": 862224,
+      "svg_kb": 842.02,
+      "png_bytes": 2753947,
+      "png_kb": 2689.4,
       "png_dimensions": "1600x2560"
     },
     "kdp-paperback-full-wrap-cover": {
-      "svg_bytes": 25356,
-      "svg_kb": 24.76,
-      "png_bytes": 1221176,
-      "png_kb": 1192.55,
+      "svg_bytes": 1036701,
+      "svg_kb": 1012.4,
+      "png_bytes": 2413304,
+      "png_kb": 2356.74,
       "png_dimensions": "2559x1850"
     },
     "gumroad-tier0-free-audit-cover": {
@@ -111,15 +111,15 @@
       "png_dimensions": "1600x1200"
     },
     "08-COVER-DESIGN/kdp-paperback-full-wrap-cover.pdf": {
-      "bytes": 306842,
-      "size_kb": 299.65,
+      "bytes": 1011808,
+      "size_kb": 988.09,
       "pages": 1,
       "dimensions_pt": "920.88 x 666.00",
       "dimensions_in": "12.790 x 9.250"
     },
     "09-EXPORTS/PRINT/kdp-paperback-full-wrap-cover.pdf": {
-      "bytes": 306842,
-      "size_kb": 299.65,
+      "bytes": 1011808,
+      "size_kb": 988.09,
       "pages": 1,
       "dimensions_pt": "920.88 x 666.00",
       "dimensions_in": "12.790 x 9.250"

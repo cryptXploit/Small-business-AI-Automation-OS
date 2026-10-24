@@ -814,134 +814,78 @@ def generate_grid_defs(prefix: str) -> str:
 """
 
 
-def build_kindle_ebook_svg() -> str:
-    # 1600 x 2560
-    grid_lines = []
-    for y in range(180, 2420, 80):
-        grid_lines.append(f'<line x1="80" y1="{y}" x2="1520" y2="{y}" stroke="#1E293B" stroke-width="1" opacity="0.5"/>')
-    for x in range(80, 1560, 80):
-        grid_lines.append(f'<line x1="{x}" y1="180" x2="{x}" y2="2400" stroke="#1E293B" stroke-width="1" opacity="0.5"/>')
-    extra_mesh = "\n  ".join(grid_lines)
+def get_custom_cover_data_uris() -> tuple[str, str]:
+    """
+    Loads 08-COVER-DESIGN/omar-sunny-custom-front-cover.jpg, creates:
+    1. A 1600x2560 high-res Kindle cover JPEG (also saved to 08-COVER-DESIGN/ebook-cover-kdp-kindle.jpg)
+    2. A 1837x2775 high-res KDP 6x9 Front-Panel JPEG for the full-wrap cover
+    Returns (kindle_data_uri, wrap_front_data_uri).
+    """
+    import base64
+    import io
+    from PIL import Image, ImageFilter
 
+    src_path = COVER_DIR / "omar-sunny-custom-front-cover.jpg"
+    if not src_path.exists():
+        return "", ""
+
+    im = Image.open(src_path).convert("RGB")
+    top_bg = im.getpixel((10, 10))
+    bot_bg = im.getpixel((10, im.height - 10))
+
+    # 1. Build 1600x2560 Kindle cover without stretching typography
+    target_w, target_h = 1600, 2560
+    scaled_h = int(round(im.height * (target_w / im.width)))
+    im_scaled = im.resize((target_w, scaled_h), Image.Resampling.LANCZOS)
+    im_scaled = im_scaled.filter(ImageFilter.UnsharpMask(radius=1.2, percent=120, threshold=2))
+
+    canvas_kindle = Image.new("RGB", (target_w, target_h), top_bg)
+    pad_top = max(0, (target_h - scaled_h) // 2)
+    # Fill bottom half with bot_bg so seamless
+    bottom_fill = Image.new("RGB", (target_w, target_h - pad_top), bot_bg)
+    canvas_kindle.paste(bottom_fill, (0, pad_top))
+    canvas_kindle.paste(im_scaled, (0, pad_top))
+
+    kindle_jpg_path = COVER_DIR / "ebook-cover-kdp-kindle.jpg"
+    canvas_kindle.save(kindle_jpg_path, format="JPEG", quality=95, optimize=True)
+
+    buf_k = io.BytesIO()
+    canvas_kindle.save(buf_k, format="JPEG", quality=94)
+    kindle_uri = "data:image/jpeg;base64," + base64.b64encode(buf_k.getvalue()).decode("ascii")
+
+    # 2. Build 1837x2775 KDP Full-Wrap Front Cover Panel (6.125" x 9.25" @ 300 DPI = 1837.5 x 2775)
+    fw, fh = 1837, 2775
+    f_scaled_h = int(round(im.height * (fw / im.width)))
+    im_front = im.resize((fw, f_scaled_h), Image.Resampling.LANCZOS)
+    im_front = im_front.filter(ImageFilter.UnsharpMask(radius=1.2, percent=120, threshold=2))
+
+    canvas_front = Image.new("RGB", (fw, fh), top_bg)
+    f_pad_top = max(0, (fh - f_scaled_h) // 2)
+    f_bot_fill = Image.new("RGB", (fw, fh - f_pad_top), bot_bg)
+    canvas_front.paste(f_bot_fill, (0, f_pad_top))
+    canvas_front.paste(im_front, (0, f_pad_top))
+
+    buf_f = io.BytesIO()
+    canvas_front.save(buf_f, format="JPEG", quality=94)
+    front_uri = "data:image/jpeg;base64," + base64.b64encode(buf_f.getvalue()).decode("ascii")
+
+    return kindle_uri, front_uri
+
+
+def build_kindle_ebook_svg() -> str:
+    # 1600 x 2560 — Uses Omar Sunny's custom cover artwork full-bleed
+    kindle_uri, _ = get_custom_cover_data_uris()
+    image_layer = (
+        f'<image x="0" y="0" width="1600" height="2560" preserveAspectRatio="xMidYMid slice" href="{kindle_uri}" />'
+        if kindle_uri
+        else ""
+    )
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2560" width="1600" height="2560">
   {generate_grid_defs("kdp")}
-  <rect width="1600" height="2560" fill="url(#kdp_bg)" />
-  <rect width="1600" height="2560" fill="url(#kdp_grid)" />
-  <circle cx="800" cy="1180" r="760" fill="url(#kdp_glow)" />
-  {extra_mesh}
-
-  <!-- Outer Architectural Frame -->
-  <rect x="64" y="64" width="1472" height="2432" rx="18" fill="none" stroke="#334155" stroke-width="3" />
-  <rect x="84" y="84" width="1432" height="2392" rx="12" fill="none" stroke="#059669" stroke-width="1.5" stroke-opacity="0.6" />
-
-  <!-- Top Edition Header Bar -->
-  <rect x="140" y="130" width="1320" height="76" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
-  <circle cx="185" cy="168" r="12" fill="#059669" />
-  <circle cx="220" cy="168" r="12" fill="#0284C7" />
-  <circle cx="255" cy="168" r="12" fill="#D97706" />
-  <text x="300" y="178" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="2">
-    2026 ENTERPRISE EDITION • ZERO EXTRA STAFF REQUIRED
-  </text>
-
-  <!-- Main Title Block -->
-  <text x="140" y="340" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="34" font-weight="700" letter-spacing="3">
-    SYSTEM ARCHITECTURE FOR 1–25 PERSON TEAMS
-  </text>
-  <text x="140" y="470" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="108" font-weight="900" letter-spacing="-1">
-    THE SMALL BUSINESS
-  </text>
-  <text x="140" y="600" fill="#34D399" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="114" font-weight="900" letter-spacing="-1">
-    AI AUTOMATION
-  </text>
-  <text x="140" y="730" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="108" font-weight="900" letter-spacing="-1">
-    OPERATING SYSTEM
-  </text>
-
-  <!-- Accent Divider -->
-  <rect x="140" y="785" width="460" height="10" rx="5" fill="url(#kdp_emerald)" />
-  <rect x="620" y="785" width="240" height="10" rx="5" fill="url(#kdp_cyan)" />
-  <rect x="880" y="785" width="120" height="10" rx="5" fill="url(#kdp_amber)" />
-
-  <!-- Subtitle -->
-  <text x="140" y="865" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="36" font-weight="500">
-    A Practical System to Automate Lead Capture, Customer Support,
-  </text>
-  <text x="140" y="918" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="36" font-weight="500">
-    Invoicing, Team Operations, and Weekly Owner Reporting
-  </text>
-
-  <!-- Centerpiece: 5-Department Operating System Blueprint Graphic -->
-  <rect x="140" y="990" width="1320" height="1060" rx="22" fill="#0F172A" stroke="#334155" stroke-width="3" />
-  <rect x="140" y="990" width="1320" height="68" rx="22" fill="#1E293B" />
-  <text x="185" y="1034" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">
-    T.R.A.V. GOVERNANCE ENGINE: TRIGGER -&gt; RULES -&gt; AI -&gt; VERIFICATION GATE
-  </text>
-
-  <!-- Central Hub Node -->
-  <circle cx="800" cy="1510" r="165" fill="#1E293B" stroke="#059669" stroke-width="6" />
-  <circle cx="800" cy="1510" r="135" fill="#0F172A" stroke="#0284C7" stroke-width="2" stroke-dasharray="8,6" />
-  <text x="800" y="1475" text-anchor="middle" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">CORE ENGINE</text>
-  <text x="800" y="1520" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="900">5-DEPT OS</text>
-  <text x="800" y="1560" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="21">50 PROMPTS • 12 SCRIPTS</text>
-
-  <!-- Connector Spokes -->
-  <line x1="800" y1="1345" x2="800" y2="1220" stroke="#059669" stroke-width="4" />
-  <line x1="650" y1="1430" x2="430" y2="1280" stroke="#0284C7" stroke-width="4" />
-  <line x1="950" y1="1430" x2="1170" y2="1280" stroke="#059669" stroke-width="4" />
-  <line x1="665" y1="1605" x2="430" y2="1770" stroke="#D97706" stroke-width="4" />
-  <line x1="935" y1="1605" x2="1170" y2="1770" stroke="#0284C7" stroke-width="4" />
-
-  <!-- Dept 01 Top Center Card -->
-  <rect x="530" y="1090" width="540" height="130" rx="14" fill="#1E293B" stroke="#059669" stroke-width="3" />
-  <text x="800" y="1140" text-anchor="middle" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="22" font-weight="700">DEPT 01 • SPEED-TO-LEAD (&lt;60s SLA)</text>
-  <text x="800" y="1182" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Omnichannel Intake &amp; Missed-Call SMS Bot</text>
-
-  <!-- Dept 02 Top Left Card -->
-  <rect x="180" y="1240" width="440" height="150" rx="14" fill="#1E293B" stroke="#0284C7" stroke-width="3" />
-  <text x="210" y="1290" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">DEPT 02 • SALES &amp; QUOTING</text>
-  <text x="210" y="1332" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Voice-to-3-Tier Proposals</text>
-  <text x="210" y="1368" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21">&amp; 14-Day Polite Follow-Up Loop</text>
-
-  <!-- Dept 03 Top Right Card -->
-  <rect x="980" y="1240" width="440" height="150" rx="14" fill="#1E293B" stroke="#059669" stroke-width="3" />
-  <text x="1010" y="1290" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">DEPT 03 • DELIVERY &amp; SUPPORT</text>
-  <text x="1010" y="1332" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Zero-Drop Onboarding, RAG</text>
-  <text x="1010" y="1368" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21">Support &amp; 5-Star Review Engine</text>
-
-  <!-- Dept 04 Bottom Left Card -->
-  <rect x="180" y="1700" width="440" height="150" rx="14" fill="#1E293B" stroke="#D97706" stroke-width="3" />
-  <text x="210" y="1750" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">DEPT 04 • FINANCE &amp; A/R</text>
-  <text x="210" y="1792" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Same-Day Invoicing, 5-Stage</text>
-  <text x="210" y="1828" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21">AR Chaser &amp; Receipt OCR</text>
-
-  <!-- Dept 05 Bottom Right Card -->
-  <rect x="980" y="1700" width="440" height="150" rx="14" fill="#1E293B" stroke="#0284C7" stroke-width="3" />
-  <text x="1010" y="1750" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="21" font-weight="700">DEPT 05 • OWNER COMMAND</text>
-  <text x="1010" y="1792" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">7-Block Living SOPs &amp; Friday</text>
-  <text x="1010" y="1828" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21">15-Minute 12-KPI Scorecard</text>
-
-  <!-- Bottom Telemetry Strip Inside Diagram -->
-  <rect x="180" y="1905" width="1240" height="105" rx="12" fill="#1E293B" stroke="#334155" stroke-width="2" />
-  <text x="220" y="1950" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">GREEN GATE (75% AUTO)</text>
-  <text x="220" y="1985" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">24/7 Unattended Routine Execution</text>
-  <text x="660" y="1950" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">AMBER GATE (20% HITL)</text>
-  <text x="660" y="1985" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">AI Draft + 15s Human Approval</text>
-  <text x="1090" y="1950" fill="#F87171" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">RED GATE (5% CRISIS)</text>
-  <text x="1090" y="1985" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">Immediate Human Takeover</text>
-
-  <!-- Footer Author & Deliverable Pill Bar -->
-  <rect x="140" y="2120" width="1320" height="170" rx="16" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
-  <text x="800" y="2180" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">
-    INCLUDES 50 TESTED WORKFLOW PROMPTS • 12 EMERGENCY SCRIPTS • 90-DAY ROADMAP
-  </text>
-  <text x="800" y="2235" text-anchor="middle" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="600">
-    MAKE.COM • ZAPIER • N8N • OPENAI • CLAUDE • NOTION • QUICKBOOKS • STRIPE
-  </text>
-
-  <text x="800" y="2395" text-anchor="middle" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="3">
-    DIGITAL PUBLISHING STUDIO • ENTERPRISE OPERATIONS SERIES
-  </text>
+  <rect width="1600" height="2560" fill="#0F172A" />
+  <rect width="1600" height="2560" fill="url(#kdp_bg)" stroke="#059669" stroke-width="1" />
+  {image_layer}
 </svg>
 """
 
@@ -954,10 +898,16 @@ def build_kdp_full_wrap_svg(page_count: int = 242) -> str:
     # Front Cover Trim: 2001.0..3801.0 px (6.000")
     # Right Bleed: 3801.0..3838.0 px (0.125")
     spine_in = round(page_count * 0.002252, 3)
+    _, front_uri = get_custom_cover_data_uris()
+    front_image_tag = (
+        f'<image x="2001" y="0" width="1837" height="2775" preserveAspectRatio="none" href="{front_uri}" />'
+        if front_uri
+        else ""
+    )
     mesh = []
     for y in range(120, 2680, 90):
-        mesh.append(f'<line x1="60" y1="{y}" x2="3778" y2="{y}" stroke="#1E293B" stroke-width="1" opacity="0.45"/>')
-    for x in range(60, 3780, 90):
+        mesh.append(f'<line x1="60" y1="{y}" x2="1800" y2="{y}" stroke="#1E293B" stroke-width="1" opacity="0.45"/>')
+    for x in range(60, 1800, 90):
         mesh.append(f'<line x1="{x}" y1="120" x2="{x}" y2="2655" stroke="#1E293B" stroke-width="1" opacity="0.45"/>')
     mesh_str = "\n  ".join(mesh)
 
@@ -965,230 +915,153 @@ def build_kdp_full_wrap_svg(page_count: int = 242) -> str:
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3838 2775" width="3838" height="2775">
   {generate_grid_defs("wrap")}
   <!-- Full Bleed Background (12.795" x 9.250") -->
-  <rect width="3838" height="2775" fill="url(#wrap_bg)" />
-  <rect width="3838" height="2775" fill="url(#wrap_grid)" />
+  <rect width="3838" height="2775" fill="#101829" />
+  <rect x="0" y="0" width="2001" height="2775" fill="url(#wrap_bg)" />
+  <rect x="0" y="0" width="2001" height="2775" fill="url(#wrap_grid)" />
   {mesh_str}
 
-  <circle cx="2900" cy="1380" r="820" fill="url(#wrap_glow)" />
   <circle cx="940" cy="1380" r="720" fill="url(#wrap_glow)" />
 
   <!-- ===================================================================== -->
   <!-- BACK COVER SAFE ZONE (X: 140 to 1730, Y: 140 to 2635)                 -->
   <!-- ===================================================================== -->
-  <rect x="115" y="115" width="1645" height="2545" rx="18" fill="#0F172A" fill-opacity="0.78" stroke="#334155" stroke-width="3" />
+  <rect x="115" y="115" width="1645" height="2545" rx="18" fill="#0F172A" fill-opacity="0.88" stroke="#334155" stroke-width="3" />
 
-  <rect x="170" y="175" width="1535" height="72" rx="10" fill="#1E293B" stroke="#059669" stroke-width="2" />
-  <text x="210" y="221" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">
+  <rect x="170" y="170" width="1535" height="70" rx="10" fill="#1E293B" stroke="#059669" stroke-width="2" />
+  <text x="210" y="214" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">
     STOP DROWNING IN MANUAL BUSYWORK. INSTALL YOUR BUSINESS OPERATING SYSTEM.
   </text>
 
-  <text x="170" y="330" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">
+  <text x="170" y="315" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="800">
     Recover 15+ Hours Every Week Without Hiring Extra Admin Staff
   </text>
-  <text x="170" y="405" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28">
+  <text x="170" y="382" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26">
     Most 1-to-25 person businesses lose 20% to 35% of their potential net profit to the three silent killers of
   </text>
-  <text x="170" y="448" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28">
+  <text x="170" y="422" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26">
     small business growth: missed after-hours leads, manual copy-pasting between disconnected software apps,
   </text>
-  <text x="170" y="491" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28">
+  <text x="170" y="462" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26">
     and overdue invoices sitting uncollected for 40+ days.
   </text>
-  <text x="170" y="555" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="600">
+  <text x="170" y="520" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="600">
     The Small Business AI Automation Operating System gives founders, clinic directors, trade contractors,
   </text>
-  <text x="170" y="598" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="600">
+  <text x="170" y="560" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="600">
     and B2B agency leaders a deterministic, zero-hallucination blueprint to automate all 5 core departments:
   </text>
 
-  <!-- 5 Department Feature Cards on Back Cover -->
-  <rect x="170" y="655" width="1535" height="175" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
-  <text x="210" y="708" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">
+  <!-- 5 Department Feature Cards on Back Cover (Compact Y: 605 to 1535) -->
+  <rect x="170" y="605" width="1535" height="165" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
+  <text x="210" y="654" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">
     1. THE T.R.A.V. HUMAN-IN-THE-LOOP SAFETY ARCHITECTURE (CHAPTERS 1–2)
   </text>
-  <text x="210" y="752" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25">
+  <text x="210" y="695" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
     Eliminate AI pricing errors with closed-world truth tables, deterministic pre-AI regex guardrails,
   </text>
-  <text x="210" y="790" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
+  <text x="210" y="732" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23">
     and 15-second Slack/Teams Amber Approval Cards for custom quotes and sensitive client replies.
   </text>
 
-  <rect x="170" y="855" width="1535" height="175" rx="12" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
-  <text x="210" y="908" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">
+  <rect x="170" y="790" width="1535" height="165" rx="12" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
+  <text x="210" y="839" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">
     2. 60-SECOND SPEED-TO-LEAD &amp; 3-TIER QUOTE ENGINE (CHAPTERS 3–4)
   </text>
-  <text x="210" y="952" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25">
+  <text x="210" y="880" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
     Capture web forms, missed calls, and DMs in under 60 seconds, convert field voice memos into
   </text>
-  <text x="210" y="990" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
+  <text x="210" y="917" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23">
     Good-Better-Best proposals, and run the 14-day polite-persistence follow-up loop automatically.
   </text>
 
-  <rect x="170" y="1055" width="1535" height="175" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
-  <text x="210" y="1108" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">
+  <rect x="170" y="975" width="1535" height="165" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
+  <text x="210" y="1024" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">
     3. ZERO-DROP ONBOARDING, RAG SUPPORT &amp; 5-STAR REVIEWS (CHAPTERS 5–7)
   </text>
-  <text x="210" y="1152" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25">
+  <text x="210" y="1065" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
     Provision client portals the second a deposit clears, resolve 60%+ of routine Tier-1 tickets from
   </text>
-  <text x="210" y="1190" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
+  <text x="210" y="1102" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23">
     your verified knowledge base, and route happy customers to Google reviews while intercepting detractors.
   </text>
 
-  <rect x="170" y="1255" width="1535" height="175" rx="12" fill="#1E293B" stroke="#D97706" stroke-width="2" />
-  <text x="210" y="1308" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">
+  <rect x="170" y="1160" width="1535" height="165" rx="12" fill="#1E293B" stroke="#D97706" stroke-width="2" />
+  <text x="210" y="1209" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">
     4. AUTOMATED INVOICING, 5-STAGE A/R CHASER &amp; RECEIPT OCR (CHAPTER 8)
   </text>
-  <text x="210" y="1352" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25">
+  <text x="210" y="1250" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
     Compress Days Sales Outstanding (DSO) from 42 days to 12 days with instant milestone billing,
   </text>
-  <text x="210" y="1390" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
+  <text x="210" y="1287" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23">
     relationship-safe overdue payment reminders, and automated 5% supplier price-creep detection.
   </text>
 
-  <rect x="170" y="1455" width="1535" height="175" rx="12" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
-  <text x="210" y="1508" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">
+  <rect x="170" y="1345" width="1535" height="165" rx="12" fill="#1E293B" stroke="#0284C7" stroke-width="2" />
+  <text x="210" y="1394" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">
     5. LIVING TEAM SOPs &amp; THE 15-MINUTE FRIDAY SCORECARD (CHAPTERS 9–10)
   </text>
-  <text x="210" y="1552" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25">
+  <text x="210" y="1435" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
     Turn 3-minute screen recordings into 7-block SOPs, delegate tasks by voice memo, and review your
   </text>
-  <text x="210" y="1590" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
+  <text x="210" y="1472" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23">
     entire company every Friday at 3:00 PM across 12 Core Owner KPIs in 15 minutes flat.
   </text>
 
-  <!-- Back Cover Comparison Matrix -->
-  <rect x="170" y="1670" width="1535" height="390" rx="14" fill="#1E293B" stroke="#334155" stroke-width="2" />
-  <text x="210" y="1725" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="800">
-    INSIDE THIS COMPLETE ENTERPRISE OPERATING MANUAL:
+  <!-- Back Cover Bottom-Left Feature & Author Card (X: 170 to 980, leaving X: 1020..1720 100% clear for Barcode + Transparency QR) -->
+  <rect x="170" y="1545" width="810" height="975" rx="14" fill="#1E293B" stroke="#334155" stroke-width="2" />
+  <text x="205" y="1605" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800">
+    INSIDE THIS OPERATING MANUAL:
   </text>
-  <text x="210" y="1785" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24">✓ 50 Copy-Ready JSON &amp; Markdown AI Workflow Prompts (Prompts 1.1 – 10.5)</text>
-  <text x="210" y="1835" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24">✓ 12 Red-Gate Emergency Business Operations Scripts (Customer, AR &amp; Outage)</text>
-  <text x="210" y="1885" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24">✓ 20 High-Resolution System Architecture &amp; Decision-Tree Vector Diagrams</text>
-  <text x="210" y="1935" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24">✓ 10 Department Implementation Workbooks &amp; Phased 90-Day Rollout Schedule</text>
-  <text x="210" y="1985" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="24">✓ Companion Offline Web Calculator Suite, Notion OS &amp; Make/n8n Blueprints</text>
+  <text x="205" y="1665" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="21">✓ 50 Copy-Ready AI Prompts (1.1–10.5)</text>
+  <text x="205" y="1715" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="21">✓ 12 Red-Gate Emergency Ops Scripts</text>
+  <text x="205" y="1765" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="21">✓ 20 System Architecture Diagrams</text>
+  <text x="205" y="1815" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="21">✓ 10 Department Action Workbooks</text>
+  <text x="205" y="1865" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="21">✓ 90-Day Phased Rollout Roadmap</text>
 
-  <!-- KDP Mandatory ISBN Barcode White Box (2.0" x 1.2" = 600 x 360 px at bottom-right of back cover) -->
-  <rect x="170" y="2160" width="860" height="360" rx="12" fill="#1E293B" stroke="#334155" stroke-width="2" />
-  <text x="210" y="2230" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="800">
-    BUSINESS &amp; ECONOMICS / OPERATIONS
+  <line x1="205" y1="1915" x2="940" y2="1915" stroke="#334155" stroke-width="2" />
+
+  <text x="205" y="1975" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800">
+    AUTHOR: OMAR SUNNY
   </text>
-  <text x="210" y="2280" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
-     Small Business Management &amp; AI Systems
+  <text x="205" y="2020" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22">
+    Enterprise Operations &amp; AI Systems
   </text>
-  <text x="210" y="2345" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="23">
-    Trim: 6.0" x 9.0" • {page_count} Pages • Spine: {spine_in}"
+  <text x="205" y="2058" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22">
+    Architecture for Small Business Teams
   </text>
-  <text x="210" y="2395" fill="#CBD5E1" font-family="JetBrains Mono, Consolas, monospace" font-size="22">
+
+  <line x1="205" y1="2105" x2="940" y2="2105" stroke="#334155" stroke-width="2" />
+
+  <text x="205" y="2165" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="800">
+    BUSINESS &amp; ECONOMICS / AI
+  </text>
+  <text x="205" y="2210" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22">
+    Small Business Management &amp; Operations
+  </text>
+  <text x="205" y="2265" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="21">
+    Trim: 6.0" x 9.0" • {page_count} Pages
+  </text>
+  <text x="205" y="2310" fill="#CBD5E1" font-family="JetBrains Mono, Consolas, monospace" font-size="21">
     Edition: 2026 Enterprise Print Edition
   </text>
 
-  <!-- Official KDP Barcode Safe Placement Zone (2.0" x 1.2" = 600 x 360 px) -->
-  <rect x="1105" y="2160" width="600" height="360" rx="6" fill="#FFFFFF" stroke="#0F172A" stroke-width="3" />
-  <text x="1405" y="2315" text-anchor="middle" fill="#0F172A" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">
-    ISBN BARCODE ZONE
-  </text>
-  <text x="1405" y="2355" text-anchor="middle" fill="#64748B" font-family="JetBrains Mono, Consolas, monospace" font-size="20">
-    2.00" x 1.20" KDP Print Safe Box
-  </text>
+  <!-- Official KDP Barcode + Transparency QR Code Pure Blank White Safe Box (ZERO text inside so barcode never overlaps) -->
+  <rect x="1045" y="1760" width="660" height="760" rx="8" fill="#FFFFFF" />
 
   <!-- ===================================================================== -->
   <!-- CENTER SPINE (X: 1837.5 to 2001.0 px | Width: 163.5 px = 0.545 in)    -->
   <!-- ===================================================================== -->
-  <rect x="1837.5" y="0" width="163.5" height="2775" fill="#0F172A" stroke="#059669" stroke-width="2" />
+  <rect x="1837.5" y="0" width="163.5" height="2775" fill="#101829" stroke="#334155" stroke-width="1.5" />
   <g transform="translate(1919.25, 1387.5) rotate(90)">
-    <text x="0" y="10" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="2">
-      THE SMALL BUSINESS AI AUTOMATION OPERATING SYSTEM   •   2026 EDITION
+    <text x="0" y="9" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="2">
+      THE SMALL BUSINESS AI AUTOMATION OPERATING SYSTEM   •   OMAR SUNNY
     </text>
   </g>
 
   <!-- ===================================================================== -->
-  <!-- FRONT COVER SAFE ZONE (X: 2080 to 3720, Y: 115 to 2660)               -->
+  <!-- FRONT COVER PANEL (X: 2001 to 3838, Y: 0 to 2775) — OMAR SUNNY COVER   -->
   <!-- ===================================================================== -->
-  <rect x="2075" y="115" width="1645" height="2545" rx="18" fill="none" stroke="#334155" stroke-width="3" />
-  <rect x="2130" y="175" width="1535" height="76" rx="12" fill="#1E293B" stroke="#059669" stroke-width="2" />
-  <circle cx="2175" cy="213" r="12" fill="#059669" />
-  <circle cx="2210" cy="213" r="12" fill="#0284C7" />
-  <circle cx="2245" cy="213" r="12" fill="#D97706" />
-  <text x="2285" y="223" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="2">
-    2026 ENTERPRISE EDITION • FOR 1–25 PERSON TEAMS
-  </text>
-
-  <text x="2130" y="380" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="34" font-weight="700" letter-spacing="3">
-    DETERMINISTIC HUMAN-IN-THE-LOOP OPERATIONS
-  </text>
-  <text x="2130" y="510" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="112" font-weight="900">
-    THE SMALL BUSINESS
-  </text>
-  <text x="2130" y="640" fill="#34D399" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="118" font-weight="900">
-    AI AUTOMATION
-  </text>
-  <text x="2130" y="770" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="112" font-weight="900">
-    OPERATING SYSTEM
-  </text>
-
-  <rect x="2130" y="825" width="520" height="10" rx="5" fill="url(#wrap_emerald)" />
-  <rect x="2670" y="825" width="280" height="10" rx="5" fill="url(#wrap_cyan)" />
-  <rect x="2970" y="825" width="150" height="10" rx="5" fill="url(#wrap_amber)" />
-
-  <text x="2130" y="905" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="36" font-weight="500">
-    A Practical System to Automate Lead Capture, Customer Support,
-  </text>
-  <text x="2130" y="958" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="36" font-weight="500">
-    Invoicing, Team Operations, and Weekly Owner Reporting
-  </text>
-
-  <!-- Front Cover Architecture Matrix Card -->
-  <rect x="2130" y="1035" width="1535" height="1140" rx="22" fill="#0F172A" stroke="#334155" stroke-width="3" />
-  <rect x="2130" y="1035" width="1535" height="70" rx="22" fill="#1E293B" />
-  <text x="2180" y="1080" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="26" font-weight="700">
-    5-DEPARTMENT OPERATING SYSTEM ARCHITECTURE • ZERO HALLUCINATION DESIGN
-  </text>
-
-  <circle cx="2897" cy="1595" r="175" fill="#1E293B" stroke="#059669" stroke-width="6" />
-  <text x="2897" y="1565" text-anchor="middle" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="25" font-weight="700">T.R.A.V. CORE</text>
-  <text x="2897" y="1615" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="38" font-weight="900">5-DEPT OS</text>
-  <text x="2897" y="1655" text-anchor="middle" fill="#94A3B8" font-family="JetBrains Mono, Consolas, monospace" font-size="22">50 PROMPTS • 12 SCRIPTS</text>
-
-  <rect x="2597" y="1145" width="600" height="135" rx="14" fill="#1E293B" stroke="#059669" stroke-width="3" />
-  <text x="2897" y="1198" text-anchor="middle" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="24" font-weight="700">DEPT 01 • SPEED-TO-LEAD (&lt;60s SLA)</text>
-  <text x="2897" y="1242" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="27" font-weight="700">Omnichannel Intake &amp; Missed-Call SMS Bot</text>
-
-  <rect x="2180" y="1330" width="480" height="160" rx="14" fill="#1E293B" stroke="#0284C7" stroke-width="3" />
-  <text x="2210" y="1385" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="23" font-weight="700">DEPT 02 • SALES &amp; QUOTING</text>
-  <text x="2210" y="1430" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Voice-to-3-Tier Proposals</text>
-  <text x="2210" y="1468" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22">&amp; 14-Day Polite Follow-Up Loop</text>
-
-  <rect x="3135" y="1330" width="480" height="160" rx="14" fill="#1E293B" stroke="#059669" stroke-width="3" />
-  <text x="3165" y="1385" fill="#34D399" font-family="JetBrains Mono, Consolas, monospace" font-size="23" font-weight="700">DEPT 03 • DELIVERY &amp; SUPPORT</text>
-  <text x="3165" y="1430" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Zero-Drop Onboarding, RAG</text>
-  <text x="3165" y="1468" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22">Support &amp; 5-Star Review Funnel</text>
-
-  <rect x="2180" y="1775" width="480" height="160" rx="14" fill="#1E293B" stroke="#D97706" stroke-width="3" />
-  <text x="2210" y="1830" fill="#FBBF24" font-family="JetBrains Mono, Consolas, monospace" font-size="23" font-weight="700">DEPT 04 • FINANCE &amp; A/R</text>
-  <text x="2210" y="1875" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Same-Day Invoicing, 5-Stage</text>
-  <text x="2210" y="1913" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22">AR Chaser &amp; Receipt OCR</text>
-
-  <rect x="3135" y="1775" width="480" height="160" rx="14" fill="#1E293B" stroke="#0284C7" stroke-width="3" />
-  <text x="3165" y="1830" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="23" font-weight="700">DEPT 05 • OWNER COMMAND</text>
-  <text x="3165" y="1875" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">7-Block Living SOPs &amp; Friday</text>
-  <text x="3165" y="1913" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22">15-Minute 12-KPI Scorecard</text>
-
-  <rect x="2180" y="2005" width="1435" height="120" rx="12" fill="#1E293B" stroke="#334155" stroke-width="2" />
-  <text x="2897" y="2058" text-anchor="middle" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="800">
-    50 TESTED AI PROMPTS • 12 EMERGENCY SCRIPTS • 10 WORKBOOKS • 90-DAY ROADMAP
-  </text>
-  <text x="2897" y="2102" text-anchor="middle" fill="#38BDF8" font-family="JetBrains Mono, Consolas, monospace" font-size="23">
-    MAKE.COM • ZAPIER • N8N • OPENAI • CLAUDE • NOTION • QUICKBOOKS • STRIPE
-  </text>
-
-  <rect x="2130" y="2260" width="1535" height="180" rx="16" fill="#1E293B" stroke="#059669" stroke-width="2" />
-  <text x="2897" y="2335" text-anchor="middle" fill="#34D399" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800">
-    EXECUTIVE OPERATIONS &amp; SYSTEMS ENGINEERING EDITION
-  </text>
-  <text x="2897" y="2395" text-anchor="middle" fill="#CBD5E1" font-family="JetBrains Mono, Consolas, monospace" font-size="24">
-    DESIGNED FOR CLINICS • HOME SERVICES • AGENCIES • RETAIL &amp; B2B TEAMS
-  </text>
+  {front_image_tag}
 </svg>
 """
 

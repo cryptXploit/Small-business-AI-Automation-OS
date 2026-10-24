@@ -20,7 +20,7 @@ Amazon Kindle Direct Publishing (`https://kdp.amazon.com`) serves as your global
 | **Subtitle** | `A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff` |
 | **Series Title** | `Enterprise Small Business Operations & AI Systems Series` (Book 2) |
 | **Edition Number** | `1` (`2026 Enterprise Edition`) |
-| **Primary Author / Contributor** | Your Legal Publishing Name or Studio Imprint (`Digital Publishing Studio`) |
+| **Primary Author / Contributor** | `Omar Sunny` |
 | **Publishing Rights** | `I own the copyright and I hold the necessary publishing rights.` |
 | **Primary Marketplace** | `Amazon.com` |
 | **Adult Content (`18+`)** | `No` |
@@ -29,31 +29,35 @@ Amazon Kindle Direct Publishing (`https://kdp.amazon.com`) serves as your global
 
 ---
 
-### 1.2 HTML-Formatted Amazon KDP Book Description (`< 4,000 Characters`)
-Copy and paste the exact KDP-compliant HTML block below directly into the **Description (Source View)** box on both your Kindle eBook and Paperback listings:
+### 1.2 Amazon KDP Book Description (100% Error-Free — Plain Text & HTML Versions)
 
+#### Option A: Plain Text Version (Paste Directly into KDP's Normal Description Box — No `</>` Required)
+```text
+Stop drowning in evening paperwork, missed customer calls, and overdue invoices. Install a deterministic, human-in-the-loop AI Operating System across your entire 1-to-25 person business in 90 days—without hiring extra administrative staff or writing complex code.
+
+Most small business owners lose 20% to 35% of their potential net profit to the three silent killers of small business growth: inbound leads that go cold because nobody replied within 5 minutes, hours of repetitive copy-pasting between disconnected software apps, and completed jobs that sit unbilled or unpaid for 40+ days.
+
+Generic "prompt packs" fail in real businesses because unguarded chatbots invent prices, hallucinate policies, and damage hard-earned local reputations. The Small Business AI Automation Operating System gives founders, clinic directors, home-service contractors, e-commerce operators, and B2B agency leaders a battle-tested systems engineering blueprint built on the T.R.A.V. (Trigger to Rules to AI to Verification) governance architecture.
+
+Inside This Complete 10-Chapter Enterprise Operations Manual, You Will Deploy:
+
+• Chapter 1 — The 5-Day Manual Friction Audit: Quantify your exact Annual Cost of Manual Friction (CMF) across Labor Waste, Leaked Lead Revenue, and Cashflow Drag, and rank your highest-ROI quick wins using the P.A.C.E. Matrix.
+• Chapter 2 — The Human-in-the-Loop T.R.A.V. Safety Gate: Separate deterministic pricing math from AI drafting using Green Gates (75% unattended 24/7 execution), Amber Gates (15-second Slack/Teams thumb approval for custom quotes), and Red Gates (immediate human takeover).
+• Chapter 3 — The 60-Second Speed-to-Lead Router: Capture website forms, missed phone calls, voicemails, WhatsApp messages, Facebook/IG Lead Ads, and Google Business messages into a unified router that texts back and books appointments in under 60 seconds.
+• Chapter 4 — 3-Option Good-Better-Best Proposals and The 14-Day Follow-Up Loop: Turn a 90-second post-visit voice note into a polished 3-tier quote PDF and automate polite, multi-channel follow-ups that stop the millisecond the client signs.
+• Chapter 5 — Frictionless Zero-Drop Client Onboarding: Wire Stripe, Square, and QuickBooks deposit webhooks to instant welcome packets, cloud folder provisioning, conditional intake validation, and scope-creep early warnings.
+• Chapter 6 — 24/7 Grounded RAG Customer Support: Resolve 60%+ of routine Tier-1 tickets (hours, parking, WISMO order status, rescheduling) with zero hallucination while escalating frustrated customers (Sentiment 1 or 2) to a human immediately.
+• Chapter 7 — The 5-Star Review and Repeat-Sales Flywheel: Send a 1-click sentiment check at the peak moment of gratitude—routing happy clients to Google Reviews and waking up 60/90/180-day dormant customers automatically.
+• Chapter 8 — Automated Invoicing, 5-Stage A/R Chasers and Receipt OCR: Compress Days Sales Outstanding (DSO) from 42 days down to 12 days with same-day billing, relationship-safe overdue reminders, and automated 5% vendor price-creep detection.
+• Chapter 9 — The Self-Running Team and Living SOP Engine: Convert 3-minute screen recordings into 7-block Standard Operating Procedures, delegate tasks by voice memo, and deploy an internal "Ask-the-SOP" bot for your staff.
+• Chapter 10 — The 15-Minute Friday Owner Scorecard and 90-Day Rollout: Review your entire company every Friday at 3:00 PM across 12 Core KPIs in 15 minutes flat.
+
+Includes 50 Copy-Ready AI Workflow Prompts (Prompts 1.1 to 10.5), 12 Red-Gate Emergency Operations Scripts, 20 Architecture and Decision-Tree Diagrams, and Step-by-Step Blueprints for Make.com, Zapier, n8n, OpenAI, Claude, Notion, and QuickBooks.
+```
+
+#### Option B: Strict KDP HTML Version (Click `</>` Source View Icon First Before Pasting)
 ```html
-<p><b>Stop drowning in evening paperwork, missed customer calls, and overdue invoices. Install a deterministic, human-in-the-loop AI Operating System across your entire 1-to-25 person business in 90 days—without hiring extra administrative staff or writing complex code.</b></p>
-
-<p>Most small business owners lose <b>20% to 35% of their potential net profit</b> to the three silent killers of small business growth: inbound leads that go cold because nobody replied within 5 minutes, hours of repetitive copy-pasting between disconnected software apps, and completed jobs that sit unbilled or unpaid for 40+ days.</p>
-
-<p>Generic "prompt packs" fail in real businesses because unguarded chatbots invent prices, hallucinate policies, and damage hard-earned local reputations. <b><i>The Small Business AI Automation Operating System</i></b> gives founders, clinic directors, home-service contractors, e-commerce operators, and B2B agency leaders a battle-tested systems engineering blueprint built on the <b>T.R.A.V. (Trigger -&gt; Rules -&gt; AI -&gt; Verification)</b> governance architecture.</p>
-
-<p><b>Inside This Complete 10-Chapter Enterprise Operations Manual, You Will Deploy:</b></p>
-<ul>
-  <li><b>Chapter 1 — The 5-Day Manual Friction Audit:</b> Quantify your exact Annual Cost of Manual Friction (CMF) across Labor Waste, Leaked Lead Revenue, and Cashflow Drag, and rank your highest-ROI quick wins using the P.A.C.E. Matrix.</li>
-  <li><b>Chapter 2 — The Human-in-the-Loop T.R.A.V. Safety Gate:</b> Separate deterministic pricing math from AI drafting using Green Gates (75% unattended 24/7 execution), Amber Gates (15-second Slack/Teams thumb approval for custom quotes), and Red Gates (immediate human takeover).</li>
-  <li><b>Chapter 3 — The 60-Second Speed-to-Lead Router:</b> Capture website forms, missed phone calls, voicemails, WhatsApp messages, Facebook/IG Lead Ads, and Google Business messages into a unified router that texts back and books appointments in under 60 seconds.</li>
-  <li><b>Chapter 4 — 3-Option Good-Better-Best Proposals &amp; The 14-Day Follow-Up Loop:</b> Turn a 90-second post-visit voice note into a polished 3-tier quote PDF and automate polite, multi-channel follow-ups that stop the millisecond the client signs.</li>
-  <li><b>Chapter 5 — Frictionless Zero-Drop Client Onboarding:</b> Wire Stripe, Square, and QuickBooks deposit webhooks to instant welcome packets, cloud folder provisioning, conditional intake validation, and scope-creep early warnings.</li>
-  <li><b>Chapter 6 — 24/7 Grounded RAG Customer Support:</b> Resolve 60%+ of routine Tier-1 tickets (hours, parking, WISMO order status, rescheduling) with zero hallucination while escalating frustrated customers (Sentiment &lt;= 2) to a human immediately.</li>
-  <li><b>Chapter 7 — The 5-Star Review &amp; Repeat-Sales Flywheel:</b> Send a 1-click sentiment check at the peak moment of gratitude—routing happy clients to Google Reviews and waking up 60/90/180-day dormant customers automatically.</li>
-  <li><b>Chapter 8 — Automated Invoicing, 5-Stage A/R Chasers &amp; Receipt OCR:</b> Compress Days Sales Outstanding (DSO) from 42 days down to 12 days with same-day billing, relationship-safe overdue reminders, and automated 5% vendor price-creep detection.</li>
-  <li><b>Chapter 9 — The Self-Running Team &amp; Living SOP Engine:</b> Convert 3-minute screen recordings into 7-block Standard Operating Procedures, delegate tasks by voice memo, and deploy an internal "Ask-the-SOP" bot for your staff.</li>
-  <li><b>Chapter 10 — The 15-Minute Friday Owner Scorecard &amp; 90-Day Rollout:</b> Review your entire company every Friday at 3:00 PM across 12 Core KPIs in 15 minutes flat.</li>
-</ul>
-
-<p><b>Includes 50 Copy-Ready AI Workflow Prompts (Prompts 1.1–10.5), 12 Red-Gate Emergency Operations Scripts, 20 Architecture &amp; Decision-Tree Diagrams, and Step-by-Step Blueprints for Make.com, Zapier, n8n, OpenAI, Claude, Notion, and QuickBooks.</b></p>
+<p><b>Stop drowning in evening paperwork, missed customer calls, and overdue invoices. Install a deterministic, human-in-the-loop AI Operating System across your entire 1-to-25 person business in 90 days—without hiring extra administrative staff or writing complex code.</b></p><p>Most small business owners lose <b>20% to 35% of their potential net profit</b> to the three silent killers of small business growth: inbound leads that go cold because nobody replied within 5 minutes, hours of repetitive copy-pasting between disconnected software apps, and completed jobs that sit unbilled or unpaid for 40+ days.</p><p>Generic prompt packs fail in real businesses because unguarded chatbots invent prices, hallucinate policies, and damage hard-earned local reputations. <b><i>The Small Business AI Automation Operating System</i></b> gives founders, clinic directors, home-service contractors, e-commerce operators, and B2B agency leaders a battle-tested systems engineering blueprint built on the <b>T.R.A.V. (Trigger to Rules to AI to Verification)</b> governance architecture.</p><p><b>Inside This Complete 10-Chapter Enterprise Operations Manual, You Will Deploy:</b></p><ul><li><b>Chapter 1 — The 5-Day Manual Friction Audit:</b> Quantify your exact Annual Cost of Manual Friction (CMF) across Labor Waste, Leaked Lead Revenue, and Cashflow Drag, and rank your highest-ROI quick wins using the P.A.C.E. Matrix.</li><li><b>Chapter 2 — The Human-in-the-Loop T.R.A.V. Safety Gate:</b> Separate deterministic pricing math from AI drafting using Green Gates (75% unattended 24/7 execution), Amber Gates (15-second Slack or Teams thumb approval for custom quotes), and Red Gates (immediate human takeover).</li><li><b>Chapter 3 — The 60-Second Speed-to-Lead Router:</b> Capture website forms, missed phone calls, voicemails, WhatsApp messages, Facebook and IG Lead Ads, and Google Business messages into a unified router that texts back and books appointments in under 60 seconds.</li><li><b>Chapter 4 — 3-Option Good-Better-Best Proposals and The 14-Day Follow-Up Loop:</b> Turn a 90-second post-visit voice note into a polished 3-tier quote PDF and automate polite, multi-channel follow-ups that stop the millisecond the client signs.</li><li><b>Chapter 5 — Frictionless Zero-Drop Client Onboarding:</b> Wire Stripe, Square, and QuickBooks deposit webhooks to instant welcome packets, cloud folder provisioning, conditional intake validation, and scope-creep early warnings.</li><li><b>Chapter 6 — 24/7 Grounded RAG Customer Support:</b> Resolve 60%+ of routine Tier-1 tickets (hours, parking, WISMO order status, rescheduling) with zero hallucination while escalating frustrated customers (Sentiment 1 or 2) to a human immediately.</li><li><b>Chapter 7 — The 5-Star Review and Repeat-Sales Flywheel:</b> Send a 1-click sentiment check at the peak moment of gratitude—routing happy clients to Google Reviews and waking up 60/90/180-day dormant customers automatically.</li><li><b>Chapter 8 — Automated Invoicing, 5-Stage A/R Chasers and Receipt OCR:</b> Compress Days Sales Outstanding (DSO) from 42 days down to 12 days with same-day billing, relationship-safe overdue reminders, and automated 5% vendor price-creep detection.</li><li><b>Chapter 9 — The Self-Running Team and Living SOP Engine:</b> Convert 3-minute screen recordings into 7-block Standard Operating Procedures, delegate tasks by voice memo, and deploy an internal Ask-the-SOP bot for your staff.</li><li><b>Chapter 10 — The 15-Minute Friday Owner Scorecard and 90-Day Rollout:</b> Review your entire company every Friday at 3:00 PM across 12 Core KPIs in 15 minutes flat.</li></ul><p><b>Includes 50 Copy-Ready AI Workflow Prompts (Prompts 1.1 to 10.5), 12 Red-Gate Emergency Operations Scripts, 20 Architecture and Decision-Tree Diagrams, and Step-by-Step Blueprints for Make.com, Zapier, n8n, OpenAI, Claude, Notion, and QuickBooks.</b></p>
 ```
 
 ---

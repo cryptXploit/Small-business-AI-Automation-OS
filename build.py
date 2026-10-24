@@ -510,6 +510,14 @@ def get_book_css(mode: str = "digital_letter") -> str:
     """
 
 
+def get_omar_sunny_cover_b64() -> str:
+    import base64
+    cover_jpg = STUDIO_ROOT / "08-COVER-DESIGN" / "omar-sunny-custom-front-cover.jpg"
+    if not cover_jpg.exists():
+        return ""
+    return "data:image/jpeg;base64," + base64.b64encode(cover_jpg.read_bytes()).decode("ascii")
+
+
 def build_complete_book_html(mode: str = "digital_letter") -> str:
     css = get_book_css(mode)
     edition_badge = (
@@ -563,12 +571,37 @@ def build_complete_book_html(mode: str = "digital_letter") -> str:
         f'<section class="chapter-section">{md_to_html_with_inline_svgs(bm_text, "back-matter")}</section>'
     )
 
-    return f"""<!DOCTYPE html>
+    cover_b64 = get_omar_sunny_cover_b64()
+    img_max_h = "3.45in" if mode == "kdp_6x9" else "4.6in"
+    img_filter = "filter: grayscale(100%) contrast(110%);" if mode == "kdp_6x9" else ""
+    cover_img_html = (
+        f'<div style="text-align:center; margin: 6px 0 10px 0;">'
+        f'<img src="{cover_b64}" alt="Book Cover" style="max-height:{img_max_h}; width:auto; border-radius:6px; border:1px solid #334155; {img_filter}"/>'
+        f'</div>'
+        if cover_b64
+        else ""
+    )
+
+    full_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <title>The Small Business AI Automation Operating System</title>
-<style>{css}</style>
+<style>
+{css}
+.title-cover-page {{
+    min-height: {"7.2in" if mode == "kdp_6x9" else "8.2in"} !important;
+    padding: {"0.28in 0.3in" if mode == "kdp_6x9" else "0.4in 0.4in"} !important;
+}}
+.title-cover-h1 {{
+    font-size: {"18pt" if mode == "kdp_6x9" else "22pt"} !important;
+    margin: 0 0 8px 0 !important;
+}}
+.title-cover-subtitle {{
+    font-size: {"9.5pt" if mode == "kdp_6x9" else "11pt"} !important;
+    margin-bottom: 8px !important;
+}}
+</style>
 </head>
 <body>
 <div class="title-cover-page">
@@ -576,13 +609,13 @@ def build_complete_book_html(mode: str = "digital_letter") -> str:
     <div class="title-cover-badge">{edition_badge}</div>
     <h1 class="title-cover-h1" style="border:none;">The Small Business AI Automation Operating System</h1>
     <div class="title-cover-subtitle">
-      A Practical System to Automate Lead Capture, Customer Follow-Ups, Invoicing, and Daily Operations—Save 15+ Hours a Week Without Writing Code or Hiring Extra Staff
+      A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff
     </div>
+    {cover_img_html}
   </div>
   <div class="title-cover-meta-grid">
-    <strong>System ID:</strong> SMALLBIZ-AI-AUTOMATION-OS-V1 &nbsp;|&nbsp; <strong>Companion Access Code:</strong> SMALLBIZ-OS-PRO-2026<br/>
-    <strong>Architecture:</strong> 10 Core Modules &bull; 50 Tested AI Prompts &bull; 20 Vector Architecture Diagrams &bull; 12 Emergency Scripts<br/>
-    <strong>Publisher:</strong> Executive Systems Publishing Studio &bull; ISBN-13: 978-1-964821-02-3
+    <strong>Author:</strong> Omar Sunny &nbsp;|&nbsp; <strong>System ID:</strong> SMALLBIZ-AI-AUTOMATION-OS-V1 &nbsp;|&nbsp; <strong>Access Code:</strong> SMALLBIZ-OS-PRO-2026<br/>
+    <strong>Architecture:</strong> 10 Core Modules &bull; 50 Tested AI Prompts &bull; 20 Vector Architecture Diagrams &bull; 12 Emergency Scripts
   </div>
 </div>
 
@@ -596,6 +629,12 @@ def build_complete_book_html(mode: str = "digital_letter") -> str:
 {"".join(sections_html)}
 </body>
 </html>"""
+
+    # For KDP 6x9 Print Interior, strip clickable <a href="..."> tags so zero non-printable PDF link annotations are emitted
+    if mode == "kdp_6x9":
+        full_html = re.sub(r'<a\s+[^>]*href="[^"]*"[^>]*>(.*?)</a>', r'<span>\1</span>', full_html, flags=re.DOTALL)
+
+    return full_html
 
 
 def render_html_to_pdf(browser_exe: str, html_content: str, output_pdf_path: Path) -> None:
@@ -623,21 +662,29 @@ def inject_pdf_metadata_and_acroform(
     subject: str,
     inject_form_fields: bool = False,
     field_prefix: str = "OS_Workbook",
+    strip_non_printable_annots: bool = False,
 ) -> dict:
     """
     Opens a rendered PDF with pypdf, attaches standard document metadata,
-    and optionally injects interactive /AcroForm text fields (/FT /Tx) across pages.
+    and optionally injects interactive /AcroForm text fields (/FT /Tx) across pages
+    or strips non-printable link annotations (/Annots) for KDP Print-on-Demand.
     Returns {"pages": int, "width_pt": float, "height_pt": float, "acroform_fields": int}.
     """
     reader = pypdf.PdfReader(str(pdf_path))
     writer = pypdf.PdfWriter()
     for page in reader.pages:
+        if strip_non_printable_annots and "/Annots" in page:
+            del page[NameObject("/Annots")]
         writer.add_page(page)
+    if strip_non_printable_annots:
+        for page in writer.pages:
+            if "/Annots" in page:
+                del page[NameObject("/Annots")]
 
     writer.add_metadata(
         {
             "/Title": title,
-            "/Author": "Executive Systems Publishing Studio",
+            "/Author": "Omar Sunny",
             "/Subject": subject,
             "/Keywords": "Small Business AI Automation, T.R.A.V. Gate, SOPs, Speed-to-Lead, Make.com, n8n, Zapier",
             "/Creator": "SmallBiz AI Automation OS Single-Source Compiler v1.0",
@@ -1541,8 +1588,7 @@ def main():
     # 1. Deliverable 1: Complete Digital Flagship Book PDF (US Letter)
     pdf_complete = STUDIO_ROOT / "09-EXPORTS" / "PDF" / "the-smallbiz-ai-automation-os-complete-book.pdf"
     print("[build.py] Compiling Deliverable 1: Complete Digital Flagship Book PDF...")
-    if not (pdf_complete.exists() and pdf_complete.stat().st_size > 512000):
-        render_html_to_pdf(browser_exe, build_complete_book_html("digital_letter"), pdf_complete)
+    render_html_to_pdf(browser_exe, build_complete_book_html("digital_letter"), pdf_complete)
     results["complete_book_pdf"] = inject_pdf_metadata_and_acroform(
         pdf_complete,
         title="The Small Business AI Automation Operating System — Complete Digital Edition",
@@ -1553,13 +1599,13 @@ def main():
     # 2. Deliverable 2: Amazon KDP 6"x9" Paperback Print-Ready Interior PDF
     pdf_kdp = STUDIO_ROOT / "09-EXPORTS" / "PRINT" / "the-smallbiz-ai-automation-os-kdp-paperback-6x9.pdf"
     print("[build.py] Compiling Deliverable 2: Amazon KDP 6x9 Paperback Print Interior PDF...")
-    if not (pdf_kdp.exists() and pdf_kdp.stat().st_size > 512000):
-        render_html_to_pdf(browser_exe, build_complete_book_html("kdp_6x9"), pdf_kdp)
+    render_html_to_pdf(browser_exe, build_complete_book_html("kdp_6x9"), pdf_kdp)
     results["kdp_6x9_pdf"] = inject_pdf_metadata_and_acroform(
         pdf_kdp,
         title="The Small Business AI Automation Operating System — KDP 6x9 Print Edition",
         subject="Amazon KDP 6x9 Trade Paperback Print Interior with Mirrored Gutter Margins",
         inject_form_fields=False,
+        strip_non_printable_annots=True,
     )
 
     # 3. Deliverable 3: Validated Reflowable EPUB 3.0
