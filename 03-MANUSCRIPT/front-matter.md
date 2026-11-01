@@ -1,16 +1,16 @@
 # The Small Business AI Automation Operating System
-### A Practical System to Automate Lead Capture, Customer Follow-Ups, Invoicing, and Daily Operations—Save 15+ Hours a Week Without Writing Code or Hiring Extra Staff
+### A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff
 
 ---
 
 ## 1. Publication Metadata & Edition Notice
 
 - **Full Title:** *The Small Business AI Automation Operating System*
-- **Subtitle:** *A Practical System to Automate Lead Capture, Customer Follow-Ups, Invoicing, and Daily Operations—Save 15+ Hours a Week Without Writing Code or Hiring Extra Staff*
+- **Subtitle:** *A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff*
+- **Author:** Md Omar Sunny (Omar Sunny)
 - **Project & System Identifier:** `SMALLBIZ-AI-AUTOMATION-OS-V1`
 - **Edition:** 2026 Enterprise & Small Business Operating Edition (Version 1.0)
-- **Publisher:** Executive Systems Publishing Studio — Operational Systems Division
-- **International Standard Book Number (ISBN-13):** `978-1-964821-02-3` (Digital & Hybrid Print Bundle Edition)
+- **Publisher:** Md Omar Sunny — Executive Systems Publishing Studio
 - **Companion Web Application Access Code:** `SMALLBIZ-OS-PRO-2026`
 - **Target Operational Profile:** Designed specifically for Founders, Owners, Managing Partners, Clinic Directors, Practice Managers, and Operations Leads running **1-to-25 person businesses** (`$250,000 to $5,000,000+` annual revenue) across four primary verticals:
   1. **Home Services & Commercial Trade Contractors:** HVAC, Plumbing, Electrical, Roofing, Solar, Pest Control, Landscaping, Commercial Cleaning, and Remodeling.
@@ -20,9 +20,9 @@
 - **Geographic & Regulatory Scope:** Engineered for cross-market deployment across the **United States, United Kingdom, Canada, Australia, New Zealand, and the European Union**, incorporating built-in compliance guardrails for **A2P 10DLC / TCPA / CASL / PECR** telecommunications rules, **HIPAA / PIPEDA / UK & EU GDPR / Australian Privacy Act** data minimization, and **Sales Tax / GST / HST / VAT** deterministic accounting standards.
 
 ### Copyright & Operational License Grant
-Copyright © 2026 Executive Systems Publishing Studio. All rights reserved.
+Copyright © 2026 Md Omar Sunny (Omar Sunny). All rights reserved.
 
-Purchasing or licensing *The Small Business AI Automation Operating System* grants the licensed small business entity a non-exclusive, perpetual internal operational license to deploy, customize, and execute all **50 Tested AI Workflow Prompts**, **10 Printable Action Workbooks**, **12 Emergency Business Operations Scripts**, **5 Notion & Spreadsheet Databases**, **Word/PowerPoint Editable SOP Suites**, and **5 Importable Make.com / Zapier / n8n JSON Blueprints** across its internal staff and commercial operations. Redistribution, resale, or public syndication of the raw source templates or interactive application code outside the licensed business entity is strictly prohibited without prior written consent.
+This book and all accompanying frameworks, workflows, prompts, diagrams, and operational scripts are original works authored by **Md Omar Sunny** (published under the pen/cover name **Omar Sunny**). Readers of this edition are granted a non-exclusive internal operational license to deploy, customize, and execute all **50 Tested AI Workflow Prompts**, **Action Workbooks**, **12 Emergency Business Operations Scripts**, **Database Schemas**, and **Workflow Blueprints** across their internal staff and business operations. Redistribution, resale, or public syndication outside the reader's business entity is strictly prohibited without prior written consent from the author, Md Omar Sunny.
 
 ### Operational, Financial & Legal Disclaimer
 The architectures, prompts, accounting schemas, and compliance checklists presented in this Operating System are provided for operational engineering and business education purposes. While every workflow incorporates deterministic human-in-the-loop verification gates (`T.R.A.V. Architecture`), automated systems interact with live customer communications, financial ledgers, and regulatory frameworks. Always verify tax mappings with your Certified Public Accountant (CPA) or Chartered Accountant, review telecommunications consent language (`A2P 10DLC`, `TCPA`, `GDPR`) with qualified legal counsel in your jurisdiction, and never configure an AI model to dispense clinical medical, legal, or regulated financial advice.

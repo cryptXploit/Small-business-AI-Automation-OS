@@ -614,7 +614,7 @@ def build_complete_book_html(mode: str = "digital_letter") -> str:
     {cover_img_html}
   </div>
   <div class="title-cover-meta-grid">
-    <strong>Author:</strong> Omar Sunny &nbsp;|&nbsp; <strong>System ID:</strong> SMALLBIZ-AI-AUTOMATION-OS-V1 &nbsp;|&nbsp; <strong>Access Code:</strong> SMALLBIZ-OS-PRO-2026<br/>
+    <strong>Author:</strong> Md Omar Sunny (Omar Sunny) &nbsp;|&nbsp; <strong>System ID:</strong> SMALLBIZ-AI-AUTOMATION-OS-V1 &nbsp;|&nbsp; <strong>Access Code:</strong> SMALLBIZ-OS-PRO-2026<br/>
     <strong>Architecture:</strong> 10 Core Modules &bull; 50 Tested AI Prompts &bull; 20 Vector Architecture Diagrams &bull; 12 Emergency Scripts
   </div>
 </div>
@@ -684,11 +684,11 @@ def inject_pdf_metadata_and_acroform(
     writer.add_metadata(
         {
             "/Title": title,
-            "/Author": "Omar Sunny",
+            "/Author": "Md Omar Sunny (Omar Sunny)",
             "/Subject": subject,
             "/Keywords": "Small Business AI Automation, T.R.A.V. Gate, SOPs, Speed-to-Lead, Make.com, n8n, Zapier",
             "/Creator": "SmallBiz AI Automation OS Single-Source Compiler v1.0",
-            "/Producer": "Executive Systems Publishing Studio (pypdf)",
+            "/Producer": "Md Omar Sunny (Executive Systems Publishing Studio)",
         }
     )
 
@@ -1255,6 +1255,19 @@ def sanitize_html_Fragment_to_strict_xhtml(html_fragment: str) -> str:
         r'src="images/\1"',
         html_fragment,
     )
+    # Rewrite internal chapter markdown links to valid EPUB .xhtml files
+    html_fragment = re.sub(
+        r'href="(?:\.\./03-MANUSCRIPT/)?(chapter-\d+|front-matter|back-matter)\.md"',
+        r'href="\1.xhtml"',
+        html_fragment,
+    )
+    # Unwrap any remaining local relative file links (e.g. ../05-WORKBOOKS/..., .md, .html) so Kindle never encounters broken links
+    html_fragment = re.sub(
+        r'<a\s+[^>]*href="(?!https?://|mailto:|chapter-\d+\.xhtml|front-matter\.xhtml|back-matter\.xhtml|#)[^"]*"[^>]*>(.*?)</a>',
+        r'<span>\1</span>',
+        html_fragment,
+        flags=re.DOTALL,
+    )
 
     VOID_TAGS = {
         "area", "base", "br", "col", "embed", "hr", "img", "input",
@@ -1436,6 +1449,15 @@ def build_epub3(epub_path: Path) -> dict:
         raw_md = preprocess_markdown_math_and_links(md_path.read_text(encoding="utf-8"))
         body_html = markdown.markdown(raw_md, extensions=["tables", "fenced_code", "sane_lists"])
         body_xhtml = sanitize_html_Fragment_to_strict_xhtml(body_html)
+        title_page_prefix = ""
+        if item_id == "front-matter":
+            title_page_prefix = """<div style="text-align:center; padding: 1.5em 0.5em; margin-bottom: 1.5em; border-bottom: 2px solid #059669;">
+  <h1 style="border:none; margin-bottom:0.3em;">The Small Business AI Automation Operating System</h1>
+  <p style="font-size:1.05em; color:#334155; margin-bottom:0.8em;"><strong>A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff</strong></p>
+  <p style="font-size:1.1em; color:#0F172A;"><strong>By Md Omar Sunny (Omar Sunny)</strong></p>
+  <p style="font-size:0.85em; color:#64748B;">Copyright &#169; 2026 Md Omar Sunny (Omar Sunny). All rights reserved.</p>
+</div>
+"""
         full_xhtml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="en" lang="en">
@@ -1445,7 +1467,7 @@ def build_epub3(epub_path: Path) -> dict:
   <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
-{body_xhtml}
+{title_page_prefix}{body_xhtml}
 </body>
 </html>"""
         # Validate XML well-formedness at build time
@@ -1527,12 +1549,12 @@ def build_epub3(epub_path: Path) -> dict:
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="BookId" xml:lang="en">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
     <dc:identifier id="BookId">{book_uuid}</dc:identifier>
-    <dc:title>The Small Business AI Automation Operating System: A Practical System to Automate Lead Capture, Customer Follow-Ups, Invoicing, and Daily Operations</dc:title>
-    <dc:creator>Executive Systems Publishing Studio</dc:creator>
-    <dc:publisher>Executive Systems Publishing Studio</dc:publisher>
+    <dc:title>The Small Business AI Automation Operating System: A Practical System to Automate Lead Capture, Customer Support, Invoicing, Team Operations, and Weekly Owner Reporting Without Hiring Extra Staff</dc:title>
+    <dc:creator>Md Omar Sunny</dc:creator>
+    <dc:publisher>Md Omar Sunny</dc:publisher>
     <dc:language>en</dc:language>
-    <dc:rights>Copyright (c) 2026 Executive Systems Publishing Studio. All rights reserved.</dc:rights>
-    <dc:description>Complete 10-chapter operational manual with 50 tested AI workflow prompts, 20 vector architecture diagrams, and 12 emergency scripts for 1-to-25 person businesses.</dc:description>
+    <dc:rights>Copyright (c) 2026 Md Omar Sunny (Omar Sunny). All rights reserved.</dc:rights>
+    <dc:description>Complete 10-chapter operational manual with 50 tested AI workflow prompts, 20 vector architecture diagrams, and 12 emergency scripts for 1-to-25 person businesses. By Md Omar Sunny (Omar Sunny).</dc:description>
     <meta property="dcterms:modified">{modified_utc}</meta>
   </metadata>
   <manifest>
